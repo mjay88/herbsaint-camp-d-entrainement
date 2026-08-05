@@ -1,8 +1,0 @@
-{
-  "printWidth": 80,
-  "bracketSameLine": false,
-  "singleQuote": false,
-  "semi": true,
-  "tabWidth": 2,
-  "trailingComma": "es5"
-}
