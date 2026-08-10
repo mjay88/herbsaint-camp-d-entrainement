@@ -19,6 +19,7 @@ export const SidebarItem = ({ label, iconSrc, href }: Props) => {
     <Button
       variant={active ? "sidebarOutline" : "sidebar"}
       className="justify-start h-[52px]"
+      nativeButton={false}
       render={
         <Link href={href}>
           <Image

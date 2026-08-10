@@ -1,3 +1,4 @@
+export const instant = false;
 import { auth } from "@clerk/nextjs/server";
 
 const LearnPage = async () => {
