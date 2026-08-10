@@ -19,7 +19,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         {/* //TODO: add Suspense fallback */}
         <Suspense>
-          <ClerkProvider>{children}</ClerkProvider>
+          <ClerkProvider afterSignOutUrl="/">{children}</ClerkProvider>
         </Suspense>
       </body>
     </html>
