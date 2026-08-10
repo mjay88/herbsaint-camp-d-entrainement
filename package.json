@@ -13,6 +13,10 @@
 <<<<<<< HEAD
     "@clerk/nextjs": "^7.7.1",
 =======
+<<<<<<< HEAD
+    "@clerk/nextjs": "^7.7.1",
+=======
+>>>>>>> origin/main
 >>>>>>> origin/main
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
