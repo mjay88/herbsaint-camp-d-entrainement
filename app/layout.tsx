@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { ClerkProvider } from "@clerk/nextjs";
 
 import "./globals.css";
-import { connection } from "next/server";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -14,14 +14,14 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
-
   return (
     <html className={cn("font-sans", inter.variable)}>
-        <body className="min-h-full flex flex-col">
-      <ClerkProvider>
-          {children}
-    </ClerkProvider>
-          </body>
-      </html>
+      <body className="min-h-full flex flex-col">
+        {/* //TODO: add Suspense fallback */}
+        <Suspense>
+          <ClerkProvider>{children}</ClerkProvider>
+        </Suspense>
+      </body>
+    </html>
   );
 }
