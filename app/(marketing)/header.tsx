@@ -28,7 +28,7 @@ export const Header = () => {
             >
               <Button size="lg"
               variant="ghost"
-              ></Button>
+              >LOGIN</Button>
             </SignInButton>
           </Show>
         </ClerkLoaded>
