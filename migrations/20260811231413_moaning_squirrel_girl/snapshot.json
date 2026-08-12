@@ -1,0 +1,68 @@
+{
+  "version": "8",
+  "dialect": "postgres",
+  "id": "0483a6c2-b8c5-495d-859d-7ee2bcbe491f",
+  "prevIds": [
+    "14c854de-d781-40d8-8cf9-58e35d106179"
+  ],
+  "ddl": [
+    {
+      "isRlsEnabled": false,
+      "name": "lessons",
+      "entityType": "tables",
+      "schema": "public"
+    },
+    {
+      "type": "serial",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "id",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "lessons"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "title",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "lessons"
+    },
+    {
+      "type": "text",
+      "typeSchema": null,
+      "notNull": true,
+      "dimensions": 0,
+      "default": null,
+      "generated": null,
+      "identity": null,
+      "name": "image_src",
+      "entityType": "columns",
+      "schema": "public",
+      "table": "lessons"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "courses_pkey",
+      "schema": "public",
+      "table": "lessons",
+      "entityType": "pks"
+    }
+  ],
+  "renames": [
+    "public.courses->public.lessons"
+  ]
+}
