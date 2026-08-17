@@ -2,9 +2,9 @@ import { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster } from "@/components/ui/sonner";
 
 import "./globals.css";
-import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -14,12 +14,15 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
-  "use cache"
+  "use cache";
   return (
     <html className={cn("font-sans", inter.variable)}>
       <body className="min-h-full flex flex-col">
         {/* //TODO: add Suspense fallback */}
-          <ClerkProvider afterSignOutUrl="/">{children}</ClerkProvider>
+        <ClerkProvider afterSignOutUrl="/">
+          <Toaster />
+          {children}
+        </ClerkProvider>
       </body>
     </html>
   );
