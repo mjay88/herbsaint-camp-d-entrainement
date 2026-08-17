@@ -9,6 +9,7 @@ import {
 import { auth } from "@clerk/nextjs/server";
 import { Loader } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function Home() {
   const { isAuthenticated, redirectToSignIn } = await auth();
@@ -52,6 +53,17 @@ if (!isAuthenticated) {
                   I ALREADY HAVE AN ACCOUNT
                 </Button>
               </SignInButton>
+            </Show>
+            <Show
+            when="signed-in"
+            >
+                <Button size="lg" variant="secondary" className="w-full">
+                  <Link
+                  href="/learn"
+                  >
+                    Continue Learning...
+                  </Link>
+                </Button>
             </Show>
           </ClerkLoaded>
         </div>
