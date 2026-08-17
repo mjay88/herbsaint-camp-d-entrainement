@@ -2,13 +2,14 @@ import { defineRelations } from "drizzle-orm";
 import * as schema from "./schema";
 
 export const relations = defineRelations(schema, (r) => ({
+  
   userProgress: {
-    activeLesson: r.one.lessons({
-      from: r.userProgress.activeLessonId,
-      to: r.lessons.id,
+    activeCourse: r.one.courses({
+      from: r.userProgress.activeCourseId,
+      to: r.courses.id,
     }),
   },
-  lessons: {
+  courses: {
     userProgress: r.many.userProgress(),
   },
 }));
