@@ -1,6 +1,7 @@
 import { db } from "@/db/drizzle";
 import { cacheLife, cacheTag } from "next/cache";
 import { challengeProgress, challenges } from "./schema";
+import { auth } from "@clerk/nextjs/server";
 //get all courses
 export const getCourses = async () => {
   "use cache";
@@ -42,15 +43,15 @@ export const getCourseById = async (courseId: number) => {
   return data;
 };
 
-
-export const getUnits = async (activeCourseId: number | null) => {
+export const getUnits = async (
+  activeCourseId: number | null,
+  authenticatedUserId: string | null,
+) => {
   "use cache";
   cacheTag(`units-activeCourseId-${activeCourseId ?? "none"}`);
   cacheLife("days");
-  //TODO: need to return empty array if userProgress.activeCourseId does not exist
 
-  if (!activeCourseId) {
-    //TODO: this will never run
+  if (!activeCourseId || !authenticatedUserId) {
     return [];
   }
 
@@ -60,27 +61,32 @@ export const getUnits = async (activeCourseId: number | null) => {
       lessons: {
         with: {
           challenges: {
-            with: { challengeProgress: true },
+            with: {
+              challengeProgress: {
+                where: {
+                  userId: authenticatedUserId,//TODO: make sure this works
+                },
+              },
+            },
           },
         },
       },
     },
   });
-//returns an object with a lessons array
+  //returns an object with a lessons array
   const normalizedData = data.map((unit) => {
     const lessonsWithCompletedStatus = unit.lessons.map((lesson) => {
       const allCompletedChallenges = lesson.challenges.every((challenge) => {
-        
         return (
           challenge.challengeProgress &&
           challenge.challengeProgress.length > 0 &&
           challenge.challengeProgress.every((progress) => progress.completed)
         );
       });
-      
+
       return { ...lesson, completed: allCompletedChallenges };
     });
-   
+
     return { ...unit, lessons: lessonsWithCompletedStatus };
   });
   return normalizedData;

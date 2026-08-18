@@ -19,7 +19,7 @@ export const UserProgress = ({ activeCourse, points, hearts }: Props) => {
           <Image
             src={activeCourse.imageSrc}
             alt={activeCourse.title}
-            className="rounded-md border"
+            className="rounded-md"
             height={42}
             width={42}
           />

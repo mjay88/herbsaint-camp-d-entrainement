@@ -1,6 +1,7 @@
 export const instant = false;
 import { auth } from "@clerk/nextjs/server";
 import { Header } from "./header";
+import { Unit } from "./unit";
 import { StickyWrapper } from "@/components/sticky-wrapper";
 import { UserProgress } from "@/components/user-progress";
 import { FeedWrapper } from "@/components/feed-wrapper";
@@ -12,7 +13,7 @@ const LearnPage = async () => {
 
   const userProgress = await getUserProgress(userId);
   //New pattern do to cacheComponents no cookies and headers in functions flagged with "use cache"
-  const units = await getUnits(userProgress?.activeCourseId ?? null);
+  const units = await getUnits(userProgress?.activeCourseId ?? null, userId);
 
   if (!userProgress || !userProgress.activeCourse) {
     redirect("/courses");
@@ -31,7 +32,15 @@ const LearnPage = async () => {
         <Header title={userProgress.activeCourse.title} />
         {units.map((unit) => (
           <div key={unit.id} className="mb-10">
-            {JSON.stringify(unit)}
+            <Unit
+              id={unit.id}
+              order={unit.order}
+              description={unit.description}
+              title={unit.title}
+              lessons={unit.lessons}
+              activeLesson={undefined}
+              activeLessonPercentage={50}
+            />
           </div>
         ))}
       </FeedWrapper>
