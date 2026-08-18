@@ -61,7 +61,37 @@ const main = async () => {
         id: 1,
         unitId: 1, // unit 1 : The Basics
         order: 1,
+        title: "A not on Hospitality",
+      },
+      {
+        id: 2,
+        unitId: 1,
+        order: 2,
         title: "Greeting Tables - Beverage Service",
+      },
+      {
+        id: 3,
+        unitId: 1, // unit 1 : The Basics
+        order: 3,
+        title: "First Course",
+      },
+      {
+        id: 4,
+        unitId: 1, // unit 1 : The Basics
+        order: 4,
+        title: "Second Course",
+      },
+      {
+        id: 5,
+        unitId: 1, // unit 1 : The Basics
+        order: 5,
+        title: "Dessert and After Dinner Drinks",
+      },
+      {
+        id: 6,
+        unitId: 1, // unit 1 : The Basics
+        order: 6,
+        title: "Resetting the Table",
       },
     ]);
 
