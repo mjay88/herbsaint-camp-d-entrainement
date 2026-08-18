@@ -1,6 +1,11 @@
 import { db } from "@/db/drizzle";
 import { cacheLife, cacheTag } from "next/cache";
-import { challengeProgress, challenges } from "./schema";
+import {
+  challengeProgress,
+  challenges,
+  lessons as currentLessons,
+  userProgress,
+} from "./schema";
 import { auth } from "@clerk/nextjs/server";
 //get all courses
 export const getCourses = async () => {
@@ -64,7 +69,7 @@ export const getUnits = async (
             with: {
               challengeProgress: {
                 where: {
-                  userId: authenticatedUserId,//TODO: make sure this works
+                  userId: authenticatedUserId, //TODO: make sure this works
                 },
               },
             },
@@ -73,7 +78,7 @@ export const getUnits = async (
       },
     },
   });
-  //returns an object with a lessons array
+
   const normalizedData = data.map((unit) => {
     const lessonsWithCompletedStatus = unit.lessons.map((lesson) => {
       const allCompletedChallenges = lesson.challenges.every((challenge) => {
@@ -90,4 +95,131 @@ export const getUnits = async (
     return { ...unit, lessons: lessonsWithCompletedStatus };
   });
   return normalizedData;
+};
+
+export const getCourseProgress = async (
+  authenticatedUserId: string | null,
+  activeCourseId: number | null,
+) => {
+  "use cache";
+  cacheTag(
+    `course-progress-userId-${authenticatedUserId ?? "none"}-activeCourseId-${activeCourseId ?? "none"}`,
+  );
+  cacheLife("days");
+
+  if (!authenticatedUserId || !activeCourseId) {
+    return null;
+  }
+
+  const unitsInActiveCourse = await db.query.units.findMany({
+    //TODO: understand this
+    orderBy: (units, { asc }) => [asc(units.order)],
+    where: { courseId: activeCourseId },
+    with: {
+      lessons: {
+        orderBy: (lessons, { asc }) => [asc(lessons.order)],
+        with: {
+          unit: true,
+          challenges: {
+            with: {
+              challengeProgress: {
+                where: { userId: authenticatedUserId },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+
+  const firstUncompletedLesson = unitsInActiveCourse
+    .flatMap((unit) => unit.lessons)
+    .find((lesson) => {
+      return lesson.challenges.some((challenge) => {
+        return (
+          //challenge has no progress at all
+          !challenge.challengeProgress ||
+          //challenge.challengeProgress exists but nothing has been completed yet
+          challenge.challengeProgress.length === 0 ||
+          //has some progress but not completed
+          challenge.challengeProgress.some(
+            (progress) => progress.completed === false,
+          )
+        );
+      });
+    });
+
+  return {
+    activeLesson: firstUncompletedLesson,
+    activeLessonId: firstUncompletedLesson?.id,
+  };
+};
+
+
+
+export const getLesson = async (authenticatedUserId: string | null,  activeLessonId: number | null) => {
+  "use cache";
+
+  if (!authenticatedUserId) {
+    return null;
+  }
+
+  const lessonId = activeLessonId;
+
+  if (!lessonId) return null;
+
+  const data = await db.query.lessons.findFirst({
+    where: { id: lessonId },
+    with: {
+      challenges: {
+        orderBy: (challenges, { asc }) => [asc(challenges.order)],
+        with: {
+          challengeOptions: true,
+          challengeProgress: {
+            where: { userId: authenticatedUserId },
+          },
+        },
+      },
+    },
+  });
+
+  if (!data || !data.challenges) {
+    return null;
+  }
+
+  const normalizedChallenges = data.challenges.map((challenge) => {
+    const completed =
+      challenge.challengeProgress &&
+      challenge.challengeProgress.length > 0 &&
+      challenge.challengeProgress.every((progress) => progress.completed);
+
+    return { ...challenge, completed };
+  });
+
+  return { ...data, challenges: normalizedChallenges };
+};
+
+export type Lesson = NonNullable<Awaited<ReturnType<typeof getLesson>>>; //TODO: might need to remove NonNullable
+
+export const getLessonPercentage = async (
+  activeLessonId: number | null,
+  lesson: Lesson,
+) => {
+  "use cache";
+  if (!activeLessonId) {
+    return 0;
+  }
+
+  if (!lesson) {
+    return 0;
+  }
+
+  const completedChallenges = lesson.challenges.filter(
+    (challenge) => challenge.completed,
+  );
+  const percentage = Math.round(
+    (completedChallenges.length / lesson.challenges.length) * 100,
+  );
+
+  return percentage;
 };
