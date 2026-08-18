@@ -4,15 +4,15 @@ import { Header } from "./header";
 import { StickyWrapper } from "@/components/sticky-wrapper";
 import { UserProgress } from "@/components/user-progress";
 import { FeedWrapper } from "@/components/feed-wrapper";
-import { getUserProgress } from "@/db/queries";
+import { getUnits, getUserProgress } from "@/db/queries";
 import { redirect } from "next/navigation";
 
 const LearnPage = async () => {
   const { userId } = await auth();
 
-  const userProgressData = getUserProgress(userId);
-
-  const [userProgress] = await Promise.all([userProgressData]);
+  const userProgress = await getUserProgress(userId);
+  //New pattern do to cacheComponents no cookies and headers in functions flagged with "use cache"
+  const units = await getUnits(userProgress?.activeCourseId ?? null);
 
   if (!userProgress || !userProgress.activeCourse) {
     redirect("/courses");
@@ -29,6 +29,11 @@ const LearnPage = async () => {
       </StickyWrapper>
       <FeedWrapper>
         <Header title={userProgress.activeCourse.title} />
+        {units.map((unit) => (
+          <div key={unit.id} className="mb-10">
+            {JSON.stringify(unit)}
+          </div>
+        ))}
       </FeedWrapper>
     </div>
   );

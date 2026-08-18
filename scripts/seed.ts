@@ -12,6 +12,11 @@ const main = async () => {
 
     await db.delete(schema.courses);
     await db.delete(schema.userProgress);
+    await db.delete(schema.units);
+    await db.delete(schema.lessons);
+    await db.delete(schema.challenges);
+    await db.delete(schema.challengeOptions);
+    await db.delete(schema.challengeProgress);
 
     await db.insert(schema.courses).values([
       {
@@ -38,6 +43,66 @@ const main = async () => {
         id: 5,
         title: "Wine Service Standards",
         imageSrc: "/wine-red.svg",
+      },
+    ]);
+
+    await db.insert(schema.units).values([
+      {
+        id: 1,
+        courseId: 1,
+        title: "Unit 1",
+        description: "The Basics",
+        order: 1,
+      },
+    ]);
+
+    await db.insert(schema.lessons).values([
+      {
+        id: 1,
+        unitId: 1, // unit 1 : The Basics
+        order: 1,
+        title: "Greeting Tables - Beverage Service",
+      },
+    ]);
+
+    await db.insert(schema.challenges).values([
+      {
+        id: 1,
+        lessonId: 1, // Nouns
+        type: "SELECT",
+        order: 1,
+        question: "Upon seating, how soon should a table be greeted?",
+      },
+    ]);
+
+    await db.insert(schema.challengeOptions).values([
+      {
+        id: 1,
+        challengeId: 1, //'Upon seating, how soon should a table be greeted?'
+        imageSrc: "",
+        correct: true,
+        text: "60 seconds",
+      },
+      {
+        id: 2,
+        challengeId: 1,
+        imageSrc: "",
+        correct: false,
+        text: "30 seconds",
+      },
+      {
+        id: 3,
+        challengeId: 1,
+        imageSrc: "",
+        correct: false,
+        text: "2 minutes",
+      },
+      {
+        id: 4,
+        challengeId: 1,
+        imageSrc: "",
+        correct: false,
+        text: "45 minutes",
       },
     ]);
 
