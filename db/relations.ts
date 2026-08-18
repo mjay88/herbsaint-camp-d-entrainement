@@ -13,25 +13,27 @@ export const relations = defineRelations(schema, (r) => ({
     userProgress: r.many.userProgress(), //userProgress = custom key. r.many.userProgress() defines that userProgress will be an array of objects. One course can have many different users actively on that course
     units: r.many.units(), //units = custom key. defines that units will be an array of objects. Once course can have several units
   },
+
   units: {
-    course: r.one.courses({
+    courses: r.one.courses({
       //course = custom key. r.one.courses defines that courseId will be a single object
       from: r.units.courseId, //
       to: r.courses.id,
     }),
+    lessons: r.many.lessons(),
   },
 
   lessons: {
-    unit: r.one.units({
+    units: r.one.units({
       //unit = custom key. r.one.units defines that a lesson will belong to only one unit
       from: r.lessons.unitId, //establish soft relation starts a unitId column in lessons table
       to: r.units.id, //establishes that lessons.unitId points to the id column in units
     }),
-    challenges: r.many.challenges(),//returns array of challenge objects associated with a specific lesson.
+    challenges: r.many.challenges(), //returns array of challenge objects associated with a specific lesson.
   },
 
   challenges: {
-    lesson: r.one.lessons({
+    lessons: r.one.lessons({
       //lesson = custom key. r.one.lessons defines that challenges will be associated with one lesson
       from: r.challenges.lessonId, //lessonId column in challenges table references id column in lessons table
       to: r.lessons.id, //column referenced by challenges.lessonId column

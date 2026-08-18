@@ -2,7 +2,7 @@ import { getCourses, getUserProgress } from "@/db/queries";
 import { List } from "./list";
 import { auth } from "@clerk/nextjs/server";
 
-const CousesPage = async () => {
+const CoursesPage = async () => {
   const { userId } = await auth();
 
   const coursesData = getCourses();
@@ -27,4 +27,4 @@ const CousesPage = async () => {
   );
 };
 
-export default CousesPage;
+export default CoursesPage;
