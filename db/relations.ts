@@ -15,7 +15,7 @@ export const relations = defineRelations(schema, (r) => ({
   },
 
   units: {
-    courses: r.one.courses({
+    course: r.one.courses({
       //course = custom key. r.one.courses defines that courseId will be a single object
       from: r.units.courseId, //
       to: r.courses.id,
@@ -24,7 +24,7 @@ export const relations = defineRelations(schema, (r) => ({
   },
 
   lessons: {
-    units: r.one.units({
+    unit: r.one.units({
       //unit = custom key. r.one.units defines that a lesson will belong to only one unit
       from: r.lessons.unitId, //establish soft relation starts a unitId column in lessons table
       to: r.units.id, //establishes that lessons.unitId points to the id column in units
