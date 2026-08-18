@@ -1,12 +1,6 @@
 import { db } from "@/db/drizzle";
 import { cacheLife, cacheTag } from "next/cache";
-import {
-  challengeProgress,
-  challenges,
-  lessons as currentLessons,
-  userProgress,
-} from "./schema";
-import { auth } from "@clerk/nextjs/server";
+
 //get all courses
 export const getCourses = async () => {
   "use cache";
@@ -81,6 +75,10 @@ export const getUnits = async (
 
   const normalizedData = data.map((unit) => {
     const lessonsWithCompletedStatus = unit.lessons.map((lesson) => {
+
+      if(lesson.challenges.length === 0){ //solves improperly returning true value for completed bug
+        return {...lesson, completed: false}
+      }
       const allCompletedChallenges = lesson.challenges.every((challenge) => {
         return (
           challenge.challengeProgress &&
