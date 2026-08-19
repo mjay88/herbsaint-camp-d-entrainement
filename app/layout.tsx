@@ -5,6 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/sonner";
 
 import "./globals.css";
+import { ExitModal } from "@/components/modals/exit-modal";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -21,6 +22,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
         {/* //TODO: add Suspense fallback */}
         <ClerkProvider afterSignOutUrl="/">
           <Toaster />
+          <ExitModal />
           {children}
         </ClerkProvider>
       </body>
