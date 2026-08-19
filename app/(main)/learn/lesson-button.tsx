@@ -46,7 +46,7 @@ export const LessonButton = ({
   
   const Icon = isCompleted ? Check : isLast ? Crown : Star
 
-  const href = isCompleted ? `/lesson/${id}` : "/lesson";//TODO: shouldn't this navigate to lesson/id if isCompleted is false?
+  const href = isCompleted ? `/lesson/${id}` : "/lesson";
 
   return (
     <Link

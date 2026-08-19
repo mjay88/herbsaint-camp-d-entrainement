@@ -29,7 +29,7 @@ export const Card = ({
     <div
       onClick={() => {}}
       className={cn(
-        "h-full border-2 rounded-xl border-b-4 hover:bg-black/5 p-4 lg:p-6 cursor-pointer active:border-b-2",
+        "h-full border-2 rounded-xl border-b-4 hover:bg-black/5 p-1 lg:p-1 cursor-pointer active:border-b-2",
         selected && "border-sky-300 bg-sky-100 hover:bg-sky-100",
         selected &&
           status === "correct" &&
@@ -46,16 +46,18 @@ export const Card = ({
           <Image src={imageSrc} alt={text} />
         </div>
       )}
+      {/* TODO: see if I need this wrapping div, since I'm not going to have images */}
       <div
         className={cn(
-          "flex flex-col justify-between",
-          type === "ASSIST" && "flex-row-reverse",
+          type === "SELECT" && "flex flex-col",
+          type === "ASSIST" && "flex justify-between flex-row-reverse",
         )}
       >
         {type === "ASSIST" && <div />}
+        
         <p
           className={cn(
-            "text-neutral-600 text-sm lg:text-base",
+            "text-neutral-600 text-sm text-center lg:text-base px-4 py-5 sm:p-6",
             selected && "text-sky-500",
             selected && status === "correct" && "text-green-500",
             selected && status === "wrong" && "text-rose-500",
@@ -65,7 +67,7 @@ export const Card = ({
         </p>
         <div
           className={cn(
-            "lg:w-[30px] lg:h-[30px] w-[20px] h-[20px] border-2 flex items-center justify-center rounded-lg text-neutral-400 lg:text-[15px] text-xs font-semibold",
+            "self-end lg:w-[30px] lg:h-[30px] w-[20px] h-[20px] px-4 py-4 sm:px-6 border-2 flex items-center justify-center rounded-lg text-neutral-400 lg:text-[15px] text-xs font-semibold",
             selected && "border-sky-300 text-sky-500",
             selected &&
               status === "correct" &&
