@@ -19,7 +19,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html className={cn("font-sans", inter.variable)}>
       <body className="min-h-full flex flex-col">
-        {/* //TODO: add Suspense fallback */}
+        {/* //TODO: add Suspense fallback https://clerk.com/docs/guides/development/rendering-modes#access-auth-data-with-use-auth*/}
         <ClerkProvider afterSignOutUrl="/">
           <Toaster />
           <ExitModal />

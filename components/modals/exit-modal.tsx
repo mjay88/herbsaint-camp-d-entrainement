@@ -31,8 +31,13 @@ export const ExitModal = () => {
     <Dialog open={isOpen} onOpenChange={close}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <div className="flex items-center gap-2">
-            <div className="grid flex-1 gap-2"></div>
+          <div className="flex items-center w-full justify-center mb-5">
+            <Image 
+            src="/mascot-begging.svg"
+            alt="Mascot"
+            height={100}
+            width={100}
+            />
           </div>
           <DialogTitle className="text-center font-bold text-2xl">
             Wait, don&apos;t go!
