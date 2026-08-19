@@ -19,7 +19,7 @@ export const Header = ({
         onClick={open} //TODO: Add onClick exit
         className="text-slate-500 hover:opacity-75 transition cursor-pointer"
       />
-      <Progress value={50} className="w-full">
+      <Progress value={percentage} className="w-full">
       </Progress>
       <div className="text-rose-500 flex items-center font-bold">
         <Image
