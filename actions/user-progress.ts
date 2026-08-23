@@ -8,6 +8,7 @@ import { db } from "@/db/drizzle";
 import { userProgress } from "@/db/schema";
 import { getCourseById, getUserProgress } from "@/db/queries";
 import { isRedirectError } from "next/dist/client/components/redirect-error";
+import { eq } from "drizzle-orm";
 
 export const upsertUserProgress = async (courseId: number) => {
   const { userId } = await auth();
@@ -49,17 +50,69 @@ export const upsertUserProgress = async (courseId: number) => {
       userName: user.firstName || "User",
       userImageSrc: user.imageUrl || "/mascot.svg",
     });
-
-   
   } catch (error) {
     if (isRedirectError(error)) {
       throw error;
     }
     console.error("Error in from inside upsertUserProgress: ", error);
-    return {error: "Something went wrong inside upsertUserProgess"}
+    return { error: "Something went wrong inside upsertUserProgess" };
   }
-   revalidateTag("courses:all", "days");
-    revalidatePath("/learn");
+  revalidateTag("courses:all", "days");
+  revalidatePath("/learn");
 
-    return {success: true};
+  return { success: true };
+};
+
+export const reduceHearts = async (activeChallengeId: number) => {
+  const { userId: activeUserId } = await auth();
+
+  if (!activeUserId) {
+    throw new Error("Unauthorized");
+  }
+
+  const currentUserProgress = await getUserProgress(activeUserId);
+
+  const challenge = await db.query.challenges.findFirst({
+    where: { id: activeChallengeId },
+  });
+
+  if (!challenge) {
+    throw new Error("Challenge not found");
+  }
+
+  const lessonId = challenge.lessonId;
+
+  const existingChallengeProgress = await db.query.challengeProgress.findFirst({
+    where: {
+      userId: activeUserId,
+      challengeId: activeChallengeId,
+    },
+  });
+
+  const isPractice = !!existingChallengeProgress;
+
+  if (isPractice) {
+    return { error: "practice" };
+  }
+
+  if (!currentUserProgress) {
+    throw new Error("User progress not found");
+  }
+
+  if (currentUserProgress.hearts === 0) {
+    return { error: "hearts" };
+  }
+
+  await db
+    .update(userProgress)
+    .set({
+      hearts: Math.max(currentUserProgress.hearts - 1, 0),
+    })
+    .where(eq(userProgress.userId, activeUserId));
+//TODO: update to use useTags
+  revalidatePath("/shop");
+  revalidatePath("/learn");
+  revalidatePath("/quests");
+  revalidatePath("/leaderboard");
+  revalidatePath(`/lesson/${lessonId}`);
 };
