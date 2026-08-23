@@ -98,41 +98,107 @@ const main = async () => {
     await db.insert(schema.challenges).values([
       {
         id: 1,
-        lessonId: 1, // Nouns
+        lessonId: 1, // Basics
         type: "SELECT",
         order: 1,
         question: "Upon seating, how soon should a table be greeted?",
       },
+      {
+        id: 2,
+        lessonId: 1, // Basics
+        type: "SELECT",
+        order: 2,
+        question: "What are our water options?",
+      },
+      {
+        id: 3,
+        lessonId: 1, // Basics
+        type: "SELECT",
+        order: 3,
+        question:
+          "Who is responsible for marking the table for the first course?",
+      },
     ]);
-
+    //'Upon seating, how soon should a table be greeted?'
     await db.insert(schema.challengeOptions).values([
       {
-        id: 1,
-        challengeId: 1, //'Upon seating, how soon should a table be greeted?'
+        challengeId: 1,
         imageSrc: "",
         correct: true,
         text: "60 seconds",
       },
       {
-        id: 2,
         challengeId: 1,
         imageSrc: "",
         correct: false,
         text: "30 seconds",
       },
       {
-        id: 3,
         challengeId: 1,
         imageSrc: "",
         correct: false,
         text: "2 minutes",
       },
       {
-        id: 4,
         challengeId: 1,
         imageSrc: "",
         correct: false,
         text: "45 minutes",
+      },
+    ]);
+    //'What are our water options?'
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 2,
+        imageSrc: "",
+        correct: false,
+        text: "Tap water and Mountain Valley.",
+      },
+      {
+        challengeId: 2,
+        imageSrc: "",
+        correct: false,
+        text: "The water is bad here, order a cocktail or wine.",
+      },
+      {
+        challengeId: 2,
+        imageSrc: "",
+        correct: true,
+        text: 'sparking, still, or ice water. Never say "tap" water to a guest',
+      },
+      {
+        challengeId: 2,
+        imageSrc: "",
+        correct: false,
+        text: "We don't offer water.",
+      },
+    ]);
+
+    //'Who is responsible for marking the table for the first course'
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 3,
+        imageSrc: "",
+        correct: false,
+        text: "The back waiter",
+      },
+      {
+        challengeId: 3,
+        imageSrc: "",
+        correct: false,
+        text: "The guests can grab their own utensils and share plates from the girdon",
+      },
+      {
+        challengeId: 3,
+        imageSrc: "",
+        correct: false,
+        text: "There is no need to mark the table for the first course, it is already set up.",
+      },
+      {
+        challengeId: 3,
+        imageSrc: "",
+        correct: true,
+        text: "The front waiter",
       },
     ]);
 
