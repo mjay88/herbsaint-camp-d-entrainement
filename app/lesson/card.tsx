@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { challenges } from "@/db/schema";
+import {useKey} from "react-use";
 
 type Props = {
   id: number;
@@ -25,9 +26,18 @@ export const Card = ({
   status,
   type,
 }: Props) => {
+
+  const handleClick = () => {
+    if (disabled) return;
+
+    onClick();
+  }
+
+  useKey(shortcut, handleClick, {}, [handleClick]);
+
   return (
     <div
-      onClick={() => {}}
+      onClick={handleClick}
       className={cn(
         "h-full border-2 rounded-xl border-b-4 hover:bg-black/5 p-1 lg:p-1 cursor-pointer active:border-b-2",
         selected && "border-sky-300 bg-sky-100 hover:bg-sky-100",
@@ -46,7 +56,7 @@ export const Card = ({
           <Image src={imageSrc} alt={text} />
         </div>
       )}
-      {/* TODO: see if I need this wrapping div, since I'm not going to have images */}
+      {/* TODO: see if I need this wrapping div, since I'm not going to have images. UPDATE: but you will have images for food items? */}
       <div
         className={cn(
           type === "SELECT" && "flex flex-col",
