@@ -10,6 +10,8 @@ import { getCourseById, getUserProgress } from "@/db/queries";
 import { isRedirectError } from "next/dist/client/components/redirect-error";
 import { eq } from "drizzle-orm";
 
+const POINTS_TO_REFILL = 10;
+
 export const upsertUserProgress = async (courseId: number) => {
   const { userId } = await auth();
   const user = await currentUser();
@@ -29,7 +31,6 @@ export const upsertUserProgress = async (courseId: number) => {
   //if(!course.units.length || !course.units[0].lessons.length){
   // throw new Error("Course is empty")
   //}
-  
 
   try {
     const existingUserProgress = await getUserProgress(userId);
@@ -59,16 +60,47 @@ export const upsertUserProgress = async (courseId: number) => {
     console.error("Error in from inside upsertUserProgress: ", error);
     return { error: "Something went wrong inside upsertUserProgess" };
   }
+  //TODO: clean this up
   revalidateTag("courses:all", "days");
   revalidatePath("/learn");
-  revalidatePath("/shop");
+  revalidatePath("/bodega");
   revalidatePath("/learn");
   revalidatePath("/quests");
   revalidatePath("/leaderboard");
   revalidatePath("/lesson");
-  revalidatePath(`/lesson/1`);
+  // revalidatePath(`/lesson/1`);//TODO: Do I need this dynamic?
 
   return { success: true };
+};
+
+export const refillHearts = async () => {
+  const { userId } = await auth();
+  const currentUserProgress = await getUserProgress(userId);
+
+  if (!currentUserProgress) {
+    throw new Error("User progress not found");
+  }
+
+  if (currentUserProgress.hearts === 5) {
+    throw new Error("Hearts are already full");
+  }
+
+  if (currentUserProgress.points < POINTS_TO_REFILL) {
+    throw new Error("Not enough points");
+  }
+
+  await db
+    .update(userProgress)
+    .set({
+      hearts: 5,
+      points: currentUserProgress.points - POINTS_TO_REFILL,
+    })
+    .where(eq(userProgress.userId, currentUserProgress.userId));
+
+  revalidatePath("/bodega");
+  revalidatePath("/learn");
+  revalidatePath("/quests");
+  revalidatePath("/leaderboard");
 };
 
 export const reduceHearts = async (activeChallengeId: number) => {
@@ -117,8 +149,8 @@ export const reduceHearts = async (activeChallengeId: number) => {
       hearts: Math.max(currentUserProgress.hearts - 1, 0),
     })
     .where(eq(userProgress.userId, activeUserId));
-//TODO: update to use useTags
-  revalidatePath("/shop");
+  //TODO: update to use useTags
+  revalidatePath("/bodega");
   revalidatePath("/learn");
   revalidatePath("/quests");
   revalidatePath("/leaderboard");
