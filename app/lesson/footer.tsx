@@ -2,12 +2,14 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { CheckCircle, XCircle } from "lucide-react";
 import { useKey, useMedia } from "react-use";
+import Link from "next/link";
+
 //TODO: Add logic for when challenge has status of "CIRRICULUM". Should be able to just click next.
 type Props = {
   onCheck: () => void;
   status: "correct" | "wrong" | "none" | "completed";
   disabled?: boolean;
-  lessonId?: boolean;
+  lessonId?: number;
 };
 
 export const Footer = ({ onCheck, status, disabled, lessonId }: Props) => {
@@ -38,9 +40,11 @@ export const Footer = ({ onCheck, status, disabled, lessonId }: Props) => {
           <Button
             variant="default"
             size={isMobile ? "sm" : "lg"}
-            onClick={() => window.location.href === `/lesson/${lessonId}`}
+            render={<Link href={`/lesson/${lessonId}`}>
+                Practice Again
+            </Link>}
           >
-            Practice Again
+          
           </Button>
         )}
         <Button

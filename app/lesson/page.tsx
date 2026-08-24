@@ -18,8 +18,8 @@ const LessonPage = async () => {
   );
   const lesson = (await getLesson(
     userId,
-    courseProgress?.activeLessonId ?? null,
-  )) as Lesson;
+    courseProgress?.activeLessonId ?? null
+  ));
 
   if (!lesson || !userProgress) {
     redirect("/learn");

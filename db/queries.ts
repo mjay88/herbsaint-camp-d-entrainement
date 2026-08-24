@@ -103,7 +103,7 @@ export const getCourseProgress = async (
   cacheTag(
     `course-progress-userId-${authenticatedUserId ?? "none"}-activeCourseId-${activeCourseId ?? "none"}`,
   );
-  cacheLife("days");
+  cacheLife("seconds");
 
   if (!authenticatedUserId || !activeCourseId) {
     return null;
@@ -162,8 +162,8 @@ export const getLesson = async (authenticatedUserId: string | null,  activeLesso
     return null;
   }
 
-  const lessonId = activeLessonId;
-
+  const lessonId = activeLessonId ?? null;
+  
   if (!lessonId) return null;
 
   const data = await db.query.lessons.findFirst({

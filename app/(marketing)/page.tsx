@@ -1,3 +1,4 @@
+export const instant = false; //TODO: Need to add suspense
 import { Button } from "@/components/ui/button";
 import {
   ClerkLoaded,
@@ -11,14 +12,12 @@ import { Loader } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-
 export default async function Home() {
   const { isAuthenticated, redirectToSignIn } = await auth();
 
-if (!isAuthenticated) {
-    return redirectToSignIn();
-  }
-
+  // if (!isAuthenticated) {
+  //   return redirectToSignIn();
+  // }
 
   return (
     <div className="max-w-[988px] mx-auto flex-1 w-full flex flex-col lg:flex-row items-center justify-center p-4 gap-2">
@@ -55,16 +54,10 @@ if (!isAuthenticated) {
                 </Button>
               </SignInButton>
             </Show>
-            <Show
-            when="signed-in"
-            >
-                <Button size="lg" variant="secondary" className="w-full">
-                  <Link
-                  href="/learn"
-                  >
-                    Continue Learning...
-                  </Link>
-                </Button>
+            <Show when="signed-in">
+              <Button size="lg" variant="secondary" className="w-full">
+                <Link href="/learn">Continue Learning...</Link>
+              </Button>
             </Show>
           </ClerkLoaded>
         </div>
