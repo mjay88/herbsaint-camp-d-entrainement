@@ -10,10 +10,12 @@ import { QuestionBubble } from "./question-bubble";
 import { upsertChallengeProgress } from "@/actions/challenge-progress";
 import { toast } from "sonner";
 import { reduceHearts } from "@/actions/user-progress";
-import { useAudio, useWindowSize } from "react-use";
+import { useAudio, useWindowSize, useMount } from "react-use";
 import { useRouter } from "next/navigation";
 import Confetti from "react-confetti";
 import Image from "next/image";
+import { useHeartsModal } from "@/store/use-hearts-modal";
+import { usePracticeModal } from "@/store/use-practice-modal";
 
 type Props = {
   initialPercentage: number;
@@ -31,6 +33,15 @@ export const Quiz = ({
   initialLessonId,
   initialLessonChallenges,
 }: Props) => {
+  const { open: openHeartsModal } = useHeartsModal();
+  const { open: openPracticeModal } = usePracticeModal();
+
+  useMount(() => {
+    if(initialPercentage === 100){
+      openPracticeModal();
+    }
+  })
+
   const { width, height } = useWindowSize();
 
   const router = useRouter();
@@ -45,7 +56,9 @@ export const Quiz = ({
   const [pending, startTransition] = useTransition();
   const [lessonId] = useState(initialLessonId);
   const [hearts, setHearts] = useState(initialHearts);
-  const [percentage, setPercentage] = useState(initialPercentage);
+  const [percentage, setPercentage] = useState(() => {
+    return initialPercentage === 100 ? 0 : initialPercentage;
+  });
   const [challenges] = useState(initialLessonChallenges);
   const [activeIndex, setActiveIndex] = useState(() => {
     const uncompletedIndex = challenges.findIndex(
@@ -72,7 +85,6 @@ export const Quiz = ({
   };
 
   const onSelect = (id: number) => {
-  
     if (status !== "none") return;
 
     setSelectedOption(id);
@@ -106,7 +118,7 @@ export const Quiz = ({
         upsertChallengeProgress(challenge.id)
           .then((response) => {
             if (response?.error === "hearts") {
-              console.error("Missing hearts");
+              openHeartsModal();
               return;
             }
 
@@ -126,7 +138,7 @@ export const Quiz = ({
         reduceHearts(challenge.id)
           .then((response) => {
             if (response?.error === "hearts") {
-              console.error("Missing hearts");
+              openHeartsModal();
               return;
             }
             incorrectControls.play();
@@ -169,26 +181,18 @@ export const Quiz = ({
             height={50}
             width={50}
           />
-          <h1
-          className="text-xl leg:text-3xl font-bold text-neutral-700"
-          >
-            Great job! <br/> You&apos;ve completed the lesson.
+          <h1 className="text-xl leg:text-3xl font-bold text-neutral-700">
+            Great job! <br /> You&apos;ve completed the lesson.
           </h1>
           <div className="flex items-center gap-x-4 w-full">
-            <ResultCard 
-             variant="points"
-             value={challenges.length * 10}
-            />
-            <ResultCard 
-             variant="hearts"
-             value={hearts}
-            />
+            <ResultCard variant="points" value={challenges.length * 10} />
+            <ResultCard variant="hearts" value={hearts} />
           </div>
         </div>
-        <Footer 
-        lessonId={lessonId}
-        status="completed"
-        onCheck={() => router.push("/learn")}
+        <Footer
+          lessonId={lessonId}
+          status="completed"
+          onCheck={() => router.push("/learn")}
         />
       </>
     );
@@ -197,13 +201,11 @@ export const Quiz = ({
   const title =
     challenge.type === "ASSIST" ? "Select the best option" : challenge.question;
 
-  
-
   return (
     <>
-    {finishAudio}
-    {incorrectAudio}
-    {correctAudio}
+      {finishAudio}
+      {incorrectAudio}
+      {correctAudio}
       <Header hearts={hearts} percentage={percentage} />
       <div className="flex-1">
         <div className="h-full flex items-center justify-center">

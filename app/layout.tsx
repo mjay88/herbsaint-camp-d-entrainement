@@ -6,6 +6,8 @@ import { Toaster } from "@/components/ui/sonner";
 
 import "./globals.css";
 import { ExitModal } from "@/components/modals/exit-modal";
+import { HeartsModal } from "@/components/modals/hearts-modal";
+import { PracticeModal } from "@/components/modals/practice-modal";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -23,6 +25,8 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
         <ClerkProvider afterSignOutUrl="/">
           <Toaster />
           <ExitModal />
+          <HeartsModal />
+          <PracticeModal />
           {children}
         </ClerkProvider>
       </body>

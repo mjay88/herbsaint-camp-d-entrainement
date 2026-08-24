@@ -5,7 +5,7 @@ import { cacheLife, cacheTag } from "next/cache";
 export const getCourses = async () => {
   "use cache";
   cacheTag("courses:all");
-  cacheLife("days");
+  cacheLife("seconds");
 
   const data = await db.query.courses.findMany();
   return data;
@@ -15,7 +15,7 @@ export const getCourses = async () => {
 export const getUserProgress = async (userId: string | null) => {
   "use cache";
   cacheTag("user-progress");
-  cacheLife("days");
+  cacheLife("seconds");
 
   if (!userId) {
     return null;
@@ -33,7 +33,7 @@ export const getUserProgress = async (userId: string | null) => {
 export const getCourseById = async (courseId: number) => {
   "use cache";
   cacheTag(`course-id-${courseId}`);
-  cacheLife("days");
+  cacheLife("seconds");
 
   const data = await db.query.courses.findFirst({
     where: { id: courseId },
@@ -48,7 +48,7 @@ export const getUnits = async (
 ) => {
   "use cache";
   cacheTag(`units-activeCourseId-${activeCourseId ?? "none"}`);
-  cacheLife("days");
+  cacheLife("seconds");
 
   if (!activeCourseId || !authenticatedUserId) {
     return [];

@@ -29,6 +29,8 @@ export const upsertUserProgress = async (courseId: number) => {
   //if(!course.units.length || !course.units[0].lessons.length){
   // throw new Error("Course is empty")
   //}
+  
+
   try {
     const existingUserProgress = await getUserProgress(userId);
     //if there is userProgress associated with the current user
@@ -59,6 +61,12 @@ export const upsertUserProgress = async (courseId: number) => {
   }
   revalidateTag("courses:all", "days");
   revalidatePath("/learn");
+  revalidatePath("/shop");
+  revalidatePath("/learn");
+  revalidatePath("/quests");
+  revalidatePath("/leaderboard");
+  revalidatePath("/lesson");
+  revalidatePath(`/lesson/1`);
 
   return { success: true };
 };
@@ -114,5 +122,6 @@ export const reduceHearts = async (activeChallengeId: number) => {
   revalidatePath("/learn");
   revalidatePath("/quests");
   revalidatePath("/leaderboard");
+  revalidatePath("/lesson");
   revalidatePath(`/lesson/${lessonId}`);
 };
