@@ -13,7 +13,10 @@ import { Quiz } from "../quiz";
 
 const LessonIdPage = async ({params}: PageProps<"/lesson/[lessonId]">) => {
   const {lessonId} = await params;
-  const { userId } = await auth();
+  const { userId, isAuthenticated, redirectToSignIn } = await auth();
+  if (!isAuthenticated) {
+    return redirectToSignIn();
+  }
   const userProgress = await getUserProgress(userId);
   const courseProgress = await getCourseProgress(
     userId,

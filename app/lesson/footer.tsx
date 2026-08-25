@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { CheckCircle, XCircle } from "lucide-react";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import { useKey, useMedia } from "react-use";
 
 //TODO: Add logic for when challenge has status of "CIRRICULUM". Should be able to just click next.

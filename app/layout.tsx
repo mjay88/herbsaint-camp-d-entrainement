@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   "use cache";
+  //not protected, public route
   return (
     <html className={cn("font-sans", inter.variable)}>
       <body className="min-h-full flex flex-col">

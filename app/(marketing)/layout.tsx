@@ -1,11 +1,12 @@
+import { auth } from "@clerk/nextjs/server";
 import { Footer } from "./footer";
 import { Header } from "./header";
 
 type Props = {
     children: React.ReactNode;
 }
-const MarketingLayout = ({children}: Props) => {
-
+const MarketingLayout = async ({children}: Props) => {
+//not protected, public route
     return (
         <div className="min-h-screen flex flex-col">
             <Header />

@@ -3,8 +3,11 @@ import { List } from "./list";
 import { auth } from "@clerk/nextjs/server";
 
 const CoursesPage = async () => {
-  const { userId } = await auth();
-
+  const { userId, isAuthenticated, redirectToSignIn } = await auth();
+  if (!isAuthenticated) {
+    return redirectToSignIn();
+  }
+  
   const coursesData = getCourses();
   const userProgressData = getUserProgress(userId);
 

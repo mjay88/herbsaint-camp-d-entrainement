@@ -9,7 +9,10 @@ import { redirect } from "next/navigation";
 import { Quiz } from "./quiz";
 //TODO: for the logic of "CIRRICULUM", will not to mark as complete when next is clicked, or just base progress off of completed "SELECT" and "ASSIST" challenges
 const LessonPage = async () => {
-  const { userId } = await auth();
+  const { userId, isAuthenticated, redirectToSignIn } = await auth();
+  if (!isAuthenticated) {
+    return redirectToSignIn();
+  }
   const userProgress = await getUserProgress(userId);
   const courseProgress = await getCourseProgress(
     userId,

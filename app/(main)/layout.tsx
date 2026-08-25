@@ -1,12 +1,16 @@
 import { MobileHeader } from "@/components/mobile-header";
 import { Sidebar } from "@/components/sidebar";
-
+import { auth } from "@clerk/nextjs/server";
 
 type Props = {
   children: React.ReactNode;
 };
 
-const MainLayout = ({ children }: Props) => {
+const MainLayout = async ({ children }: Props) => {
+  const { isAuthenticated, redirectToSignIn } = await auth();
+  if (!isAuthenticated) {
+    return redirectToSignIn();
+  }
   return (
     <>
       <MobileHeader />

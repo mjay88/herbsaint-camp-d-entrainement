@@ -7,8 +7,7 @@ import { StickyWrapper } from "@/components/sticky-wrapper";
 import { UserProgress } from "@/components/user-progress";
 import { getUserProgress } from "@/db/queries";
 
-import { Separator } from "@/components/ui/separator";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
+
 import { quests } from "@/constants";
 import { Progress } from "@/components/ui/progress";
 
