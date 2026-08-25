@@ -58,7 +58,6 @@ export const upsertUserProgress = async (courseId: number) => {
     console.error("Error in from inside upsertUserProgress: ", error);
     return { error: "Something went wrong inside upsertUserProgess" };
   }
-  //TODO: clean this up
   updateTag(`user-progress-${userId ?? "none"}`);
   updateTag(`units-activeCourseId-${courseId ?? "none"}`);
   updateTag(
@@ -142,7 +141,6 @@ export const reduceHearts = async (activeChallengeId: number) => {
       hearts: Math.max(currentUserProgress.hearts - 1, 0),
     })
     .where(eq(userProgress.userId, activeUserId));
-  //TODO: update to use useTags
   updateTag(`user-progress-${activeUserId ?? "none"}`);
   updateTag("leaderboard");
   updateTag(`lesson-${lessonId ?? "none"}-user-${activeUserId ?? "none"}`);

@@ -1,4 +1,5 @@
 import { db } from "@/db/drizzle";
+import { auth } from "@clerk/nextjs/server";
 import { cacheLife, cacheTag } from "next/cache";
 
 //get all courses
@@ -176,7 +177,6 @@ export const getLesson = async (
     `lesson-${activeLessonId ?? "none"}-user-${authenticatedUserId ?? "none"}`,
   );
   cacheLife("seconds");
-
   if (!authenticatedUserId) {
     return null;
   }

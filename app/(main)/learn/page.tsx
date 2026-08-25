@@ -12,7 +12,7 @@ import { Quests } from "@/components/quests";
 
 const LearnPage = async () => {
   const { userId } = await auth();
-  //TODO: redirect is no userId
+  
 
   const userProgress = await getUserProgress(userId);
   //New pattern do to cacheComponents no cookies and headers in functions flagged with "use cache"

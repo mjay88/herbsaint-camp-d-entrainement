@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/sonner";
@@ -8,6 +8,8 @@ import "./globals.css";
 import { ExitModal } from "@/components/modals/exit-modal";
 import { HeartsModal } from "@/components/modals/hearts-modal";
 import { PracticeModal } from "@/components/modals/practice-modal";
+import { Suspense } from "react";
+import Skeleton from "@/components/ui/skeleton";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -21,7 +23,8 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html className={cn("font-sans", inter.variable)}>
       <body className="min-h-full flex flex-col">
-        {/* //TODO: add Suspense fallback https://clerk.com/docs/guides/development/rendering-modes#access-auth-data-with-use-auth*/}
+        <Suspense fallback={<Skeleton />}>
+
         <ClerkProvider afterSignOutUrl="/">
           <Toaster />
           <ExitModal />
@@ -29,6 +32,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
           <PracticeModal />
           {children}
         </ClerkProvider>
+        </Suspense>
       </body>
     </html>
   );
