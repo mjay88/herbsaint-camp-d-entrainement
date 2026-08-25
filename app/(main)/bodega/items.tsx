@@ -7,7 +7,6 @@ import Image from "next/image";
 import { useTransition } from "react";
 import { toast } from "sonner";
 
-
 type Props = {
   hearts: number;
   points: number;

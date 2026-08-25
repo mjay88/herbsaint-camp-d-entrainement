@@ -8,6 +8,7 @@ import { FeedWrapper } from "@/components/feed-wrapper";
 import { getCourseProgress, getUnits, getUserProgress, getLesson, getLessonPercentage, Lesson } from "@/db/queries";
 import { redirect } from "next/navigation";
 import { lessons, units as unitsSchema } from "@/db/schema";
+import { Quests } from "@/components/quests";
 
 const LearnPage = async () => {
   const { userId } = await auth();
@@ -40,6 +41,7 @@ const LearnPage = async () => {
           hearts={userProgress.hearts}
           points={userProgress.points}
         />
+        <Quests points={userProgress.points} />
       </StickyWrapper>
       <FeedWrapper>
         <Header title={userProgress.activeCourse.title} />

@@ -1,12 +1,15 @@
+import Image from "next/image";
+import { redirect } from "next/navigation";
+
+
 import { FeedWrapper } from "@/components/feed-wrapper";
 import { StickyWrapper } from "@/components/sticky-wrapper";
 import { UserProgress } from "@/components/user-progress";
 import { getUserProgress } from "@/db/queries";
-import { userProgress } from "@/db/schema";
 import { auth } from "@clerk/nextjs/server";
-import Image from "next/image";
-import { redirect } from "next/navigation";
+
 import { Items } from "./items";
+import { Quests } from "@/components/quests";
 
 const BodegaPage = async () => {
   const { userId } = await auth();
@@ -24,6 +27,7 @@ const BodegaPage = async () => {
           hearts={userProgress.hearts}
           points={userProgress.points}
         ></UserProgress>
+         <Quests points={userProgress.points} />
       </StickyWrapper>
       <FeedWrapper>
         <div className="w-full flex flex-col items-center">

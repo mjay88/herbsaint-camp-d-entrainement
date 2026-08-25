@@ -11,7 +11,6 @@ import { isRedirectError } from "next/dist/client/components/redirect-error";
 import { eq } from "drizzle-orm";
 import { POINTS_TO_REFILL } from "@/constants";
 
-
 export const upsertUserProgress = async (courseId: number) => {
   const { userId } = await auth();
   const user = await currentUser();
@@ -27,8 +26,8 @@ export const upsertUserProgress = async (courseId: number) => {
   }
   //test toast
   // throw new Error("test");
-  if(!course.units.length || !course.units[0].lessons.length){
-  throw new Error("Course is empty")
+  if (!course.units.length || !course.units[0].lessons.length) {
+    throw new Error("Course is empty");
   }
 
   try {
