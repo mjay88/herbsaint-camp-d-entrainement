@@ -201,14 +201,14 @@ const main = async () => {
         text: "The front waiter",
       },
     ]);
-    //****************trouble shooting error********************* Add challenges for lesson 2
+    //Add challenges for lesson 2
     await db.insert(schema.challenges).values([
       {
         id: 4,
         lessonId: 2, // Basics
         type: "SELECT",
         order: 1,
-        question: "Upon seating, how soon should a table be greeted?",
+        question: "Upon seating, how soon should a table be greeted lesson2?",
       },
       {
         id: 5,

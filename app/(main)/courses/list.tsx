@@ -19,7 +19,6 @@ export const List = ({ courses, activeCourseId }: Props) => {
   const [pending, startTransition] = useTransition();
 
   const onClick = (id: number) => {
-    console.log("firing onClick");
     if (pending) return;
 
     if (id === activeCourseId) {

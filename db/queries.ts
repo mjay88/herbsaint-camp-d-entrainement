@@ -37,6 +37,16 @@ export const getCourseById = async (courseId: number) => {
 
   const data = await db.query.courses.findFirst({
     where: { id: courseId },
+    with: {
+      units: {
+        orderBy: (units, { asc }) => [asc(units.order)],
+        with: {
+          lessons: {
+            orderBy: (lessons, { asc }) => [asc(lessons.order)],
+          },
+        },
+      },
+    },
   });
 
   return data;
@@ -55,11 +65,14 @@ export const getUnits = async (
   }
 
   const data = await db.query.units.findMany({
+     orderBy: (units, { asc }) => [asc(units.order)],
     where: { id: activeCourseId },
     with: {
       lessons: {
+        orderBy: (lessons, { asc }) => [asc(lessons.order)],
         with: {
           challenges: {
+            orderBy: (challenges, { asc }) => [asc(challenges.order)],
             with: {
               challengeProgress: {
                 where: {
@@ -75,9 +88,9 @@ export const getUnits = async (
 
   const normalizedData = data.map((unit) => {
     const lessonsWithCompletedStatus = unit.lessons.map((lesson) => {
-
-      if(lesson.challenges.length === 0){ //solves improperly returning true value for completed bug
-        return {...lesson, completed: false}
+      if (lesson.challenges.length === 0) {
+        //solves improperly returning true value for completed bug
+        return { ...lesson, completed: false };
       }
       const allCompletedChallenges = lesson.challenges.every((challenge) => {
         return (
@@ -153,9 +166,10 @@ export const getCourseProgress = async (
   };
 };
 
-
-
-export const getLesson = async (authenticatedUserId: string | null,  activeLessonId: number | null) => {
+export const getLesson = async (
+  authenticatedUserId: string | null,
+  activeLessonId: number | null,
+) => {
   "use cache";
 
   if (!authenticatedUserId) {
@@ -163,7 +177,6 @@ export const getLesson = async (authenticatedUserId: string | null,  activeLesso
   }
 
   const lessonId = activeLessonId ?? null;
-  
   if (!lessonId) return null;
 
   const data = await db.query.lessons.findFirst({
@@ -193,7 +206,6 @@ export const getLesson = async (authenticatedUserId: string | null,  activeLesso
 
     return { ...challenge, completed };
   });
-
   return { ...data, challenges: normalizedChallenges };
 };
 

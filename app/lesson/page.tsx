@@ -3,7 +3,6 @@ import {
   getCourseProgress,
   getLesson,
   getUserProgress,
-  Lesson,
 } from "@/db/queries";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
@@ -20,7 +19,6 @@ const LessonPage = async () => {
     userId,
     courseProgress?.activeLessonId ?? null
   ));
-
   if (!lesson || !userProgress) {
     redirect("/learn");
   }

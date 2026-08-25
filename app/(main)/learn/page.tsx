@@ -19,9 +19,9 @@ const LearnPage = async () => {
 
   const courseProgress = await getCourseProgress(userId, userProgress?.activeCourseId ?? null);
 
-  const lesson = await getLesson(userId, courseProgress?.activeLessonId ?? null) as Lesson;
+  const lesson = await getLesson(userId, courseProgress?.activeLessonId ?? null) as Lesson;//TODO: Check if I need this type assertion
   const lessonPercentage = await getLessonPercentage(courseProgress?.activeLessonId ?? null, lesson)
-
+  console.log("lessonPercentage: ", lessonPercentage)
   if (!userProgress || !userProgress.activeCourse) {
     redirect("/courses");
   }

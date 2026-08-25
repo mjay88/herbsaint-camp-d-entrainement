@@ -19,15 +19,14 @@ type Props = {
 }
 
 export const Unit = ({
-    id,
-    order,
+    id,//TODO: check this
+    order,//TODO: check this
     title,
     description,
     lessons,
     activeLesson,
     activeLessonPercentage
 }: Props) => {
- 
 
     return (
         <>
