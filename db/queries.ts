@@ -4,8 +4,8 @@ import { cacheLife, cacheTag } from "next/cache";
 //get all courses
 export const getCourses = async () => {
   "use cache";
-  cacheTag("courses:all");
-  cacheLife("seconds");
+  cacheTag("courses:all"); //TODO: this is global, does it need to be?
+  cacheLife("days");
 
   const data = await db.query.courses.findMany();
   return data;
@@ -14,7 +14,8 @@ export const getCourses = async () => {
 //getUserProgress accepts userId, which is passed in from CoursesPage and LearnPage after calling await auth()
 export const getUserProgress = async (userId: string | null) => {
   "use cache";
-  cacheTag("user-progress");
+
+  cacheTag(`user-progress-${userId ?? "none"}`);
   cacheLife("seconds");
 
   if (!userId) {
@@ -65,7 +66,7 @@ export const getUnits = async (
   }
 
   const data = await db.query.units.findMany({
-     orderBy: (units, { asc }) => [asc(units.order)],
+    orderBy: (units, { asc }) => [asc(units.order)],
     where: { id: activeCourseId },
     with: {
       lessons: {
@@ -171,6 +172,10 @@ export const getLesson = async (
   activeLessonId: number | null,
 ) => {
   "use cache";
+  cacheTag(
+    `lesson-${activeLessonId ?? "none"}-user-${authenticatedUserId ?? "none"}`,
+  );
+  cacheLife("seconds");
 
   if (!authenticatedUserId) {
     return null;
@@ -216,6 +221,8 @@ export const getLessonPercentage = async (
   lesson: Lesson,
 ) => {
   "use cache";
+  cacheTag(`lesson-percentage-${activeLessonId ?? "none"}`)
+  cacheLife("seconds");
   if (!activeLessonId) {
     return 0;
   }
@@ -234,25 +241,24 @@ export const getLessonPercentage = async (
   return percentage;
 };
 
-
 export const getTopTenUsers = async (userId: string | null) => {
-  "use cache"
-
-  if(!userId){
+  "use cache";
+   cacheTag("leaderboard");
+   cacheLife("seconds");
+  if (!userId) {
     return [];
   }
 
   const data = await db.query.userProgress.findMany({
-    orderBy: (userProgress, {desc}) => [desc(userProgress.points)],
+    orderBy: (userProgress, { desc }) => [desc(userProgress.points)],
     limit: 10,
     columns: {
       userId: true,
       userName: true,
       userImageSrc: true,
-      points: true
-    }
-  })
+      points: true,
+    },
+  });
 
   return data;
-
-}
+};

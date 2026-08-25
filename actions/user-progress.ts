@@ -1,7 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath, revalidateTag, updateTag } from "next/cache";
 import { auth, currentUser } from "@clerk/nextjs/server";
 
 import { db } from "@/db/drizzle";
@@ -39,8 +39,8 @@ export const upsertUserProgress = async (courseId: number) => {
         userName: user.firstName || "User",
         userImageSrc: user.imageUrl || "/mascot.svg",
       });
-      revalidateTag("courses:all", "days");
-      revalidatePath("/learn");
+
+      updateTag(`user-progress-${userId ?? "none"}`);
       redirect("/learn");
     }
 
@@ -59,13 +59,12 @@ export const upsertUserProgress = async (courseId: number) => {
     return { error: "Something went wrong inside upsertUserProgess" };
   }
   //TODO: clean this up
-  revalidateTag("courses:all", "days");
-  revalidatePath("/bodega");
-  revalidatePath("/learn");
-  revalidatePath("/quests");
-  revalidatePath("/leaderboard");
+  updateTag(`user-progress-${userId ?? "none"}`);
+  updateTag(`units-activeCourseId-${courseId ?? "none"}`);
+  updateTag(
+    `course-progress-userId-${userId ?? "none"}-activeCourseId-${courseId ?? "none"}`,
+  );
   revalidatePath("/lesson");
-  // revalidatePath(`/lesson/1`);//TODO: Do I need this dynamic?
 
   return { success: true };
 };
@@ -93,11 +92,8 @@ export const refillHearts = async () => {
       points: currentUserProgress.points - POINTS_TO_REFILL,
     })
     .where(eq(userProgress.userId, currentUserProgress.userId));
-
-  revalidatePath("/bodega");
-  revalidatePath("/learn");
-  revalidatePath("/quests");
-  revalidatePath("/leaderboard");
+  updateTag(`user-progress-${userId ?? "none"}`);
+  updateTag("leaderboard");
 };
 
 export const reduceHearts = async (activeChallengeId: number) => {
@@ -147,10 +143,7 @@ export const reduceHearts = async (activeChallengeId: number) => {
     })
     .where(eq(userProgress.userId, activeUserId));
   //TODO: update to use useTags
-  revalidatePath("/bodega");
-  revalidatePath("/learn");
-  revalidatePath("/quests");
-  revalidatePath("/leaderboard");
-  revalidatePath("/lesson");
-  revalidatePath(`/lesson/${lessonId}`);
+  updateTag(`user-progress-${activeUserId ?? "none"}`);
+  updateTag("leaderboard");
+  updateTag(`lesson-${lessonId ?? "none"}-user-${activeUserId ?? "none"}`);
 };

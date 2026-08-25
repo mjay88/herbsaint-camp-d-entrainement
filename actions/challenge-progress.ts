@@ -2,10 +2,10 @@
 
 import { db } from "@/db/drizzle";
 import { getUserProgress } from "@/db/queries";
-import { challengeProgress, challenges, userProgress } from "@/db/schema";
+import { challengeProgress,  userProgress } from "@/db/schema";
 import { auth } from "@clerk/nextjs/server";
-import { and, eq } from "drizzle-orm";
-import { revalidatePath } from "next/cache";
+import {  eq } from "drizzle-orm";
+import { updateTag } from "next/cache";
 
 export const upsertChallengeProgress = async (activeChallengeId: number) => {
   const { userId: activeUserId } = await auth();
@@ -55,12 +55,16 @@ export const upsertChallengeProgress = async (activeChallengeId: number) => {
         points: currentUserProgress.points + 10,
       })
       .where(eq(userProgress.userId, activeUserId));
-
-    revalidatePath("/learn");
-    revalidatePath("/lesson");
-    revalidatePath("/quests");
-    revalidatePath("/leaderboard");
-    revalidatePath(`/lesson/${lessonId}`);
+    //upsertChallengeProgress updates multiple tables, updateTag re runs the queries for that data
+    updateTag(`user-progress-${activeUserId ?? "none"}`);
+    updateTag(
+      `units-activeCourseId-${currentUserProgress.activeCourseId ?? "none"}`,
+    );
+    updateTag(`lesson-${lessonId ?? "none"}-user-${activeUserId ?? "none"}`);
+    updateTag(
+      `course-progress-userId-${activeUserId ?? "none"}-activeCourseId-${currentUserProgress.activeCourseId ?? "none"}`,
+    );
+    updateTag("leaderboard");
     return;
   }
 
@@ -77,12 +81,14 @@ export const upsertChallengeProgress = async (activeChallengeId: number) => {
     })
     .where(eq(userProgress.userId, activeUserId));
 
-
-//TODO: update to use useTags
-
-  revalidatePath("/learn");
-  revalidatePath("/lesson");
-  revalidatePath("/quests");
-  revalidatePath("/leaderboard");
-  revalidatePath(`/lesson/${lessonId}`);
+  //upsertChallengeProgress updates multiple tables, updateTag re runs the queries for that data
+    updateTag(`user-progress-${activeUserId ?? "none"}`);
+    updateTag(
+      `units-activeCourseId-${currentUserProgress.activeCourseId ?? "none"}`,
+    );
+    updateTag(`lesson-${lessonId ?? "none"}-user-${activeUserId ?? "none"}`);
+    updateTag(
+      `course-progress-userId-${activeUserId ?? "none"}-activeCourseId-${currentUserProgress.activeCourseId ?? "none"}`,
+    );
+    updateTag("leaderboard");
 };
