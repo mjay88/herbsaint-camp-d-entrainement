@@ -1,4 +1,4 @@
-export const instant = false; //TODO: Need to add Suspense and push fetch to leaf : https://nextjs.org/docs/messages/blocking-prerender-runtime#wrap-in-or-move-into-suspense
+export const instant = false; //route renders per request, no useful static shell since this is a page
 import { getCourseProgress, getLesson, getUserProgress } from "@/db/queries";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
@@ -17,6 +17,7 @@ const LessonIdPage = async ({params}: PageProps<"/lesson/[lessonId]">) => {
   if (!isAuthenticated) {
     return redirectToSignIn();
   }
+  console.log("LessonIdPage")
   const userProgress = await getUserProgress(userId);
   const courseProgress = await getCourseProgress(
     userId,
@@ -38,6 +39,7 @@ const LessonIdPage = async ({params}: PageProps<"/lesson/[lessonId]">) => {
 
   return (
     <Quiz
+      key="practice-quiz"
       initialLessonId={lesson.id}
       initialLessonChallenges={lesson.challenges}
       initialHearts={userProgress.hearts}

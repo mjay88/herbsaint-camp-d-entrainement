@@ -90,6 +90,8 @@ export const Quiz = ({
     setSelectedOption(id);
   };
   //TODO: Need to add logic of "CIRRICULUM", which will allow next/continue
+  //TODO: Need practice lesson progress not to be saved, when in practice mode. 
+  //TODO: Need current lesson header to reflect the hearts gained in practice mode. 
   const onContinue = () => {
     if (!selectedOption) return;
     //

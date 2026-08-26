@@ -19,8 +19,8 @@ type Props = {
 }
 
 export const Unit = ({
-    id,//TODO: check this
-    order,//TODO: check this
+    id,
+    order,
     title,
     description,
     lessons,

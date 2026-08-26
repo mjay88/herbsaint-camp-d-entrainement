@@ -1,5 +1,4 @@
 import { db } from "@/db/drizzle";
-import { auth } from "@clerk/nextjs/server";
 import { cacheLife, cacheTag } from "next/cache";
 
 //get all courses
@@ -180,10 +179,9 @@ export const getLesson = async (
   if (!authenticatedUserId) {
     return null;
   }
-
+  
   const lessonId = activeLessonId ?? null;
   if (!lessonId) return null;
-
   const data = await db.query.lessons.findFirst({
     where: { id: lessonId },
     with: {
@@ -218,7 +216,7 @@ export type Lesson = NonNullable<Awaited<ReturnType<typeof getLesson>>>; //TODO:
 
 export const getLessonPercentage = async (
   activeLessonId: number | null,
-  lesson: Lesson,
+  lesson: Lesson | null,
 ) => {
   "use cache";
   cacheTag(`lesson-percentage-${activeLessonId ?? "none"}`)

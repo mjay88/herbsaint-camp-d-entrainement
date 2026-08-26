@@ -12,6 +12,7 @@ import { eq } from "drizzle-orm";
 import { POINTS_TO_REFILL } from "@/constants";
 
 export const upsertUserProgress = async (courseId: number) => {
+  console.log("firing at the end of practice?")
   const { userId } = await auth();
   const user = await currentUser();
 
@@ -70,6 +71,12 @@ export const upsertUserProgress = async (courseId: number) => {
 
 export const refillHearts = async () => {
   const { userId } = await auth();
+  const user = await currentUser();
+
+  if (!userId || !user) {
+    throw new Error("Unauthorized");
+  }
+  
   const currentUserProgress = await getUserProgress(userId);
 
   if (!currentUserProgress) {

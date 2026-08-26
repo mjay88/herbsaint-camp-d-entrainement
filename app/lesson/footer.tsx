@@ -1,7 +1,11 @@
+"use client"
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { CheckCircle, XCircle } from "lucide-react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { useKey, useMedia } from "react-use";
 
 //TODO: Add logic for when challenge has status of "CIRRICULUM". Should be able to just click next.
@@ -13,7 +17,9 @@ type Props = {
 };
 
 export const Footer = ({ onCheck, status, disabled, lessonId }: Props) => {
+ 
   useKey("Enter", onCheck, {}, [onCheck]);
+  const router = useRouter()
   const isMobile = useMedia("(max-width: 1024px", true); //TODO: set to true for development. Phone usage will probably be primary use case so may need to set default value to false when done with development.
   return (
     <footer
@@ -38,13 +44,12 @@ export const Footer = ({ onCheck, status, disabled, lessonId }: Props) => {
         )}
         {status === "completed" && (
           <Button
-            nativeButton={false}
             variant="default"
             size={isMobile ? "sm" : "lg"}
-            // onClick={() => (window.location.href = `/lesson/${lessonId}`)}//TODO: Need to make sure that this triggers us mount so practice modal opens
-            // onClick={() => {redirect(`/lesson/${lessonId}`)}} //TODO: Need to revalidate cache for lesson/lessonId?
-            render={<Link href={`/lesson/${lessonId}`}>Practice Again</Link>}
-          ></Button>
+            onClick={() => router.push(`/lesson/${lessonId}`)}
+            //onClick={() => (window.location.href = `/lesson/${lessonId}`)}//TODO: Need to make sure that this triggers us mount so practice modal opens
+          
+          >Practice Again</Button>
         )}
         <Button
           disabled={disabled}

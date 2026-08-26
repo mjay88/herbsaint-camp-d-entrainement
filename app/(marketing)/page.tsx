@@ -1,4 +1,3 @@
-export const instant = false; //TODO: Need to add suspense
 import { Button } from "@/components/ui/button";
 import {
   ClerkLoaded,
@@ -31,9 +30,6 @@ export default async function Home() {
             <Show when="signed-out">
               <SignUpButton
                 mode="modal"
-                forceRedirectUrl="/learn"
-                //TODO: use environemtn variable instead of props once learn page is created
-                signInForceRedirectUrl="/learn"
               >
                 <Button size="lg" variant="secondary" className="w-full">
                   SIGN UP
@@ -41,8 +37,7 @@ export default async function Home() {
               </SignUpButton>
               <SignInButton
                 mode="modal"
-                forceRedirectUrl="/learn"
-                signUpForceRedirectUrl="/learn"
+                
               >
                 <Button size="lg" variant="primaryOutline" className="w-full">
                   I ALREADY HAVE AN ACCOUNT

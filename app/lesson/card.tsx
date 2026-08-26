@@ -56,7 +56,6 @@ export const Card = ({
           <Image src={imageSrc} alt={text} />
         </div>
       )}
-      {/* TODO: see if I need this wrapping div, since I'm not going to have images. UPDATE: but you will have images for food items? */}
       <div
         className={cn(
           type === "SELECT" && "flex flex-col",
