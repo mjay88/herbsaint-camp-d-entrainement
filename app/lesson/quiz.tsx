@@ -42,6 +42,8 @@ export const Quiz = ({
     }
   })
 
+  console.log("initialHearts: ", initialHearts);
+
   const { width, height } = useWindowSize();
 
   const router = useRouter();

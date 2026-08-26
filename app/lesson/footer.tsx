@@ -46,8 +46,8 @@ export const Footer = ({ onCheck, status, disabled, lessonId }: Props) => {
           <Button
             variant="default"
             size={isMobile ? "sm" : "lg"}
-            onClick={() => router.push(`/lesson/${lessonId}`)}
-            //onClick={() => (window.location.href = `/lesson/${lessonId}`)}//TODO: Need to make sure that this triggers us mount so practice modal opens
+            // onClick={() => router.push(`/lesson/${lessonId}`)}
+            onClick={() => (window.location.href = `/lesson/${lessonId}`)}//TODO: Need to make sure that this triggers us mount so practice modal opens
           
           >Practice Again</Button>
         )}

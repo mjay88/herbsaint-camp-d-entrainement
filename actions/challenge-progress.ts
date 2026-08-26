@@ -67,7 +67,9 @@ export const upsertChallengeProgress = async (activeChallengeId: number) => {
     );
     updateTag("leaderboard");
     //TODO: see todos in quiz.tsx
-    revalidatePath(`/lesson/${lessonId}`);
+    // revalidatePath(`/lesson/${lessonId}`);
+    
+    revalidatePath("/learn") //TODO: Trying to have hearts in lesson/header update when coming straight from practice
     return;
   }
 
