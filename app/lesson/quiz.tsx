@@ -16,6 +16,7 @@ import Confetti from "react-confetti";
 import Image from "next/image";
 import { useHeartsModal } from "@/store/use-hearts-modal";
 import { usePracticeModal } from "@/store/use-practice-modal";
+import { CurriculumBubble } from "./curriculum-bubble";
 
 type Props = {
   initialPercentage: number;
@@ -33,17 +34,14 @@ export const Quiz = ({
   initialLessonId,
   initialLessonChallenges,
 }: Props) => {
-  
   const { open: openHeartsModal } = useHeartsModal();
   const { open: openPracticeModal } = usePracticeModal();
 
   useMount(() => {
-    if(initialPercentage === 100){
+    if (initialPercentage === 100) {
       openPracticeModal();
     }
-    
-  })
-
+  });
 
   const { width, height } = useWindowSize();
 
@@ -74,7 +72,8 @@ export const Quiz = ({
   const [status, setStatus] = useState<"correct" | "wrong" | "none">("none");
 
   const challenge = challenges[activeIndex];
-  console.log("challenge: ********************************************************", challenge)
+  const isCurriculum = challenge.type === "CURRICULUM";
+  console.log("isCurriculum: ", isCurriculum);
   const options = challenge?.challengeOptions ?? [];
 
   useEffect(() => {
@@ -95,11 +94,24 @@ export const Quiz = ({
     setSelectedOption(id);
   };
   //TODO: Need to add logic of "CIRRICULUM", which will allow next/continue
-  //TODO: Need practice lesson progress not to be saved, when in practice mode. 
- 
+
   const onContinue = () => {
-    if (!selectedOption) return; //disables button
-    //after selection
+    
+     if (challenge.type === "CURRICULUM") {
+      startTransition(() => {
+        upsertChallengeProgress(challenge.id)
+          .then((response) => {
+            onNext(); //TODO: see if order of this matters
+            setPercentage((prev) => prev + 100 / challenges.length);
+            setStatus("none");
+            setSelectedOption(undefined);
+          })
+          .catch(() => toast.error("Something went wrong. Please try again."));
+      });
+      return
+    }
+
+    if (!selectedOption) return; 
     if (status === "wrong") {
       setStatus("none");
       setSelectedOption(undefined);
@@ -107,18 +119,19 @@ export const Quiz = ({
     }
     //after selection
     if (status === "correct") {
-      onNext(); 
+      onNext();
       setStatus("none");
       setSelectedOption(undefined);
       return;
     }
-    
+
     const correctOption = options.find((option) => option.correct);
 
     if (!correctOption) {
       return;
     }
-   //handle status actions
+    //TODO CURRICULUM: add case for curriculum if challenge.type === curriculum, save progress
+    //handle status actions
     if (correctOption.id === selectedOption) {
       startTransition(() => {
         upsertChallengeProgress(challenge.id)
@@ -158,6 +171,26 @@ export const Quiz = ({
       });
     }
   };
+
+  if (challenge.type === "CURRICULUM") {
+    return (
+      <>
+        {finishAudio}
+        {correctAudio}
+        {incorrectAudio}
+        <div className="flex gap-y-4 lg:gap-y-4 lg:max-w-4xl mx-auto text-center items-center justify-center h-full">
+          <CurriculumBubble question={challenge.question} />
+        </div>
+        <Footer
+          disabled={!isCurriculum}
+          status={status}
+          onCheck={onContinue}
+          isCurriculum={isCurriculum}
+        />
+        ;
+      </>
+    );
+  }
 
   if (!challenge) {
     return (
@@ -203,6 +236,9 @@ export const Quiz = ({
       </>
     );
   }
+  {
+    /* TODO CURRICULUM: if type === CURRICULUM don't need to render challenge*/
+  }
 
   const title =
     challenge.type === "ASSIST" ? "Select the best option" : challenge.question;
@@ -240,6 +276,7 @@ export const Quiz = ({
         disabled={pending || !selectedOption}
         status={status}
         onCheck={onContinue}
+        isCurriculum={isCurriculum}
       />
     </>
   );

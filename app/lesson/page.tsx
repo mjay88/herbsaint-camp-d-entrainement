@@ -7,7 +7,6 @@ import {
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { Quiz } from "./quiz";
-//TODO: for the logic of "CIRRICULUM", will not to mark as complete when next is clicked, or just base progress off of completed "SELECT" and "ASSIST" challenges
 const LessonPage = async () => {
   const { userId, isAuthenticated, redirectToSignIn } = await auth();
   if (!isAuthenticated) {

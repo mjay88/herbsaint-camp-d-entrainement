@@ -35,7 +35,7 @@ export const lessons = pgTable("lessons", {
   order: integer("order").notNull(),
 });
 
-export const challengesEnum = pgEnum("type", ["SELECT", "ASSIST"]);
+export const challengesEnum = pgEnum("type", ["SELECT", "ASSIST", "CURRICULUM"]);
 
 export const challenges = pgTable("challenges", {
   id: serial("id").primaryKey(),
