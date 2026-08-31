@@ -56,9 +56,10 @@ export const Card = ({
           <Image src={imageSrc} alt={text} />
         </div>
       )}
+      {/* TODO: see if I need this wrapping div, since I'm not going to have images. UPDATE: but you will have images for food items? */}
       <div
         className={cn(
-          type === "SELECT" && "flex flex-col",
+          type === "SELECT" && "h-full flex flex-col",
           type === "ASSIST" && "flex justify-between flex-row-reverse",
         )}
       >
@@ -74,9 +75,11 @@ export const Card = ({
         >
           {text}
         </p>
+        <div className="mt-auto w-full">
+
         <div
           className={cn(
-            "self-end lg:w-[30px] lg:h-[30px] w-[20px] h-[20px] px-4 py-4 sm:px-6 border-2 flex items-center justify-center rounded-lg text-neutral-400 lg:text-[15px] text-xs font-semibold",
+            "ml-auto lg:w-[30px] lg:h-[30px] w-[20px] h-[20px] px-4 py-4 sm:px-6 border-2 flex items-center justify-center rounded-lg text-neutral-400 lg:text-[15px] text-xs font-semibold",
             selected && "border-sky-300 text-sky-500",
             selected &&
               status === "correct" &&
@@ -85,6 +88,7 @@ export const Card = ({
           )}
         >
           {shortcut}
+        </div>
         </div>
       </div>
     </div>

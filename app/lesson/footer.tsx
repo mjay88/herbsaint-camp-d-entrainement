@@ -73,7 +73,7 @@ export const Footer = ({ onCheck, status, disabled, lessonId, isCurriculum }: Pr
           > 
             
             {(status === "none" && !isCurriculum) && "Check"}
-            {status === "correct" || isCurriculum && "Next"}
+            {(status === "correct" || isCurriculum) && "Next"}
             {status === "wrong" && "Retry"}
           </Button>
         )}
