@@ -27,6 +27,7 @@ export const Challenge = ({
         type === "ASSIST" && "grid-cols-1",
         type === "SELECT" &&
           "grid-cols-2 lg:grid-cols-[repeat(2,minmax(0,1fr))]",
+          //TODO CURRICULUM: update style for curriculum
       )}
     >
       {options.map((option, i) => (

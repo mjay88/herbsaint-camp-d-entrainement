@@ -11,12 +11,14 @@ import { useKey, useMedia } from "react-use";
 //TODO: Add logic for when challenge has status of "CIRRICULUM". Should be able to just click next.
 type Props = {
   onCheck: () => void;
+  //TODO CURRICULUM: if status is curriculum, make next button available
   status: "correct" | "wrong" | "none" | "completed";
   disabled?: boolean;
   lessonId?: number;
+  isCurriculum?: boolean;
 };
 
-export const Footer = ({ onCheck, status, disabled, lessonId }: Props) => {
+export const Footer = ({ onCheck, status, disabled, lessonId, isCurriculum }: Props) => {
   useKey("Enter", onCheck, {}, [onCheck]);
   const router = useRouter();
   const isMobile = useMedia("(max-width: 1024px", true); //TODO: set to true for development. Phone usage will probably be primary use case so may need to set default value to false when done with development.
@@ -68,9 +70,10 @@ export const Footer = ({ onCheck, status, disabled, lessonId }: Props) => {
             onClick={onCheck}
             size={isMobile ? "sm" : "lg"}
             variant={status === "wrong" ? "danger" : "secondary"}
-          >
-            {status === "none" && "Check"}
-            {status === "correct" && "Next"}
+          > 
+            
+            {(status === "none" && !isCurriculum) && "Check"}
+            {status === "correct" || isCurriculum && "Next"}
             {status === "wrong" && "Retry"}
           </Button>
         )}
