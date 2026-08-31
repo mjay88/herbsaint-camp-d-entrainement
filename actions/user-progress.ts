@@ -65,6 +65,7 @@ export const upsertUserProgress = async (courseId: number) => {
     `course-progress-userId-${userId ?? "none"}-activeCourseId-${courseId ?? "none"}`,
   );
   revalidatePath("/lesson");
+  revalidatePath("/learn");
 
   return { success: true };
 };

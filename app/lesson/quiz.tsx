@@ -26,13 +26,14 @@ type Props = {
     challengeOptions: (typeof challengeOptions.$inferSelect)[];
   })[];
 };
-
+//TODO: quiz is not remounting, so challenges stays undefined. Double check actions, the come up with a way to make Quiz re-mount when the "Continue" button is clicked from footer
 export const Quiz = ({
   initialPercentage,
   initialHearts,
   initialLessonId,
   initialLessonChallenges,
 }: Props) => {
+  
   const { open: openHeartsModal } = useHeartsModal();
   const { open: openPracticeModal } = usePracticeModal();
 
@@ -40,9 +41,9 @@ export const Quiz = ({
     if(initialPercentage === 100){
       openPracticeModal();
     }
+    
   })
 
-  console.log("initialHearts: ", initialHearts);
 
   const { width, height } = useWindowSize();
 
@@ -73,6 +74,7 @@ export const Quiz = ({
   const [status, setStatus] = useState<"correct" | "wrong" | "none">("none");
 
   const challenge = challenges[activeIndex];
+  console.log("challenge: ********************************************************", challenge)
   const options = challenge?.challengeOptions ?? [];
 
   useEffect(() => {
@@ -83,6 +85,7 @@ export const Quiz = ({
   }, [challenge]);
 
   const onNext = () => {
+    //if Footer button is "Continue", need to revalidate challenges or remount quiz so second lesson also isn't completed
     setActiveIndex((current) => current + 1);
   };
 
@@ -93,30 +96,29 @@ export const Quiz = ({
   };
   //TODO: Need to add logic of "CIRRICULUM", which will allow next/continue
   //TODO: Need practice lesson progress not to be saved, when in practice mode. 
-  //TODO: Need current lesson header to reflect the hearts gained in practice mode. 
+ 
   const onContinue = () => {
-    if (!selectedOption) return;
-    //
+    if (!selectedOption) return; //disables button
+    //after selection
     if (status === "wrong") {
       setStatus("none");
       setSelectedOption(undefined);
       return;
     }
-    //if status is already correct?
+    //after selection
     if (status === "correct") {
-      onNext();
+      onNext(); 
       setStatus("none");
       setSelectedOption(undefined);
       return;
     }
-
+    
     const correctOption = options.find((option) => option.correct);
 
     if (!correctOption) {
       return;
     }
-    //This fires the first time onContinue is clicked. It sets the status, and updates the label on the footer button.
-    //onContinue also is called again once status is set.
+   //handle status actions
     if (correctOption.id === selectedOption) {
       startTransition(() => {
         upsertChallengeProgress(challenge.id)

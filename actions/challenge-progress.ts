@@ -8,7 +8,6 @@ import { eq } from "drizzle-orm";
 import { revalidatePath, updateTag } from "next/cache";
 
 export const upsertChallengeProgress = async (activeChallengeId: number) => {
-  console.log("firing at the end of practice?");
   const { userId: activeUserId } = await auth();
 
   if (!activeUserId) {
@@ -67,9 +66,10 @@ export const upsertChallengeProgress = async (activeChallengeId: number) => {
     );
     updateTag("leaderboard");
     //TODO: see todos in quiz.tsx
-    // revalidatePath(`/lesson/${lessonId}`);
+    // revalidatePath(`/lesson/${lessonId}`);//TODO: Is this necessary for updating hearts in practice mode?
     
     revalidatePath("/learn") //TODO: Trying to have hearts in lesson/header update when coming straight from practice
+    revalidatePath("lesson") //TODO: Check if this is necessary to handle the case for second lesson showing if(!challenge) from quiz component
     return;
   }
 
