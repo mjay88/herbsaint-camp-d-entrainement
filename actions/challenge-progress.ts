@@ -41,6 +41,7 @@ export const upsertChallengeProgress = async (activeChallengeId: number) => {
   }
 
   if (isPractice) {
+    //Do not save progress if practicing
     // await db
     //   .update(challengeProgress)
     //   .set({

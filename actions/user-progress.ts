@@ -12,7 +12,6 @@ import { eq } from "drizzle-orm";
 import { POINTS_TO_REFILL } from "@/constants";
 
 export const upsertUserProgress = async (courseId: number) => {
-  console.log("firing at the end of practice?")
   const { userId } = await auth();
   const user = await currentUser();
 
