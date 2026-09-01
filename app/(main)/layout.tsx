@@ -1,3 +1,5 @@
+export const instant = false //TODO: Handle this properly
+
 import { MobileHeader } from "@/components/mobile-header";
 import { Sidebar } from "@/components/sidebar";
 import { auth } from "@clerk/nextjs/server";
