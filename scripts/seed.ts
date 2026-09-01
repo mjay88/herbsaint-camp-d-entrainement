@@ -1,6 +1,6 @@
 import "dotenv/config";
 import { drizzle } from "drizzle-orm/neon-http";
-import { eq } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 
 import * as schema from "../db/schema";
 
@@ -317,7 +317,22 @@ const main = async () => {
         text: "The front waiter",
       },
     ]);
-
+    //Syncs react-admin and react-simple-data-rest with existing db
+    await db.execute(
+      sql`SELECT setval('courses_id_seq', (SELECT MAX(id) FROM courses))`,
+    );
+    await db.execute(
+      sql`SELECT setval('units_id_seq', (SELECT MAX(id) FROM units))`,
+    );
+    await db.execute(
+      sql`SELECT setval('lessons_id_seq', (SELECT MAX(id) FROM lessons))`,
+    );
+    await db.execute(
+      sql`SELECT setval('challenges_id_seq', (SELECT MAX(id) FROM challenges))`,
+    );
+    await db.execute(
+      sql`SELECT setval('challenge_options_id_seq', (SELECT MAX(id) FROM challenge_options))`,
+    );
     console.log("Seeding finished");
   } catch (error) {
     console.error(error);

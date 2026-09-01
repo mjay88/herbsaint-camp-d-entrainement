@@ -25,6 +25,10 @@ const nextConfig: NextConfig = {
             key: "Content-Range",
             value: "bytes: 0-9/*",
           },
+           {
+            key: "Access-Control-Expose-Headers",
+            value: "Content Range",
+          },
         ],
       },
     ];

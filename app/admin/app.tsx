@@ -52,14 +52,14 @@ const App = () => {
         list={ChallengeList}
         create={ChallengeCreate}
         edit={ChallengeEdit}
-        recordRepresentation="title"
+        recordRepresentation="question"
       />
       <Resource
         name="challengeOptions"
         list={ChallengeOptionList}
         create={ChallengeOptionCreate}
         edit={ChallengeOptionEdit}
-        recordRepresentation="title"
+        recordRepresentation="text"
       />
     </Admin>
   );
