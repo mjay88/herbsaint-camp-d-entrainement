@@ -22,7 +22,7 @@ const LearnPage = async () => {
   if (!isAuthenticated) {
     return redirectToSignIn();
   }
-//TODO: When the first lesson is completed. Navigating back to learn from the lesson/footer and then navigating to the next lesson does not refresh state in the Quiz component so if(!challenge) logic fires. May have something to do with updateTags?
+//TODO: When the first lesson is completed. Navigating back to learn from the lesson/footer does and then navigating to the next lesson does not refresh state in the Quiz component so if(!challenge) logic fires. May have something to do with updateTags?
   const userProgress = await getUserProgress(userId); //Needs to re-run after challenge is completed
   //New pattern do to cacheComponents no cookies and headers in functions flagged with "use cache"
   const units = await getUnits(userProgress?.activeCourseId ?? null, userId);

@@ -70,7 +70,7 @@ export const upsertChallengeProgress = async (activeChallengeId: number) => {
     // revalidatePath(`/lesson/${lessonId}`);//TODO: Is this necessary for updating hearts in practice mode?
     
     revalidatePath("/learn") //TODO: Trying to have hearts in lesson/header update when coming straight from practice
-    revalidatePath("lesson") //TODO: Check if this is necessary to handle the case for second lesson showing if(!challenge) from quiz component
+    //revalidatePath("lesson") //TODO: Check if this is necessary to handle the case for second lesson showing if(!challenge) from quiz component
     return;
   }
 
