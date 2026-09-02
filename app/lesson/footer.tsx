@@ -2,10 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { CheckCircle, XCircle } from "lucide-react";
-import Link from "next/link";
-import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 import { useKey, useMedia } from "react-use";
 
 //TODO: Add logic for when challenge has status of "CIRRICULUM". Should be able to just click next.
@@ -60,7 +57,7 @@ export const Footer = ({ onCheck, status, disabled, lessonId, isCurriculum }: Pr
             size={isMobile ? "sm" : "lg"}
             onClick={() => (window.location.href = `/learn`)}//TODO: oncheck uses router.push which does not load new lesson, so second lesson automattically loadeds as completed. 
           >
-            Continue New Button
+            Continue
           </Button>
         )}
         {status !== "completed" && (

@@ -36,7 +36,6 @@ export const Quiz = ({
 }: Props) => {
   const { open: openHeartsModal } = useHeartsModal();
   const { open: openPracticeModal } = usePracticeModal();
-
   useMount(() => {
     if (initialPercentage === 100) {
       openPracticeModal();
@@ -72,8 +71,7 @@ export const Quiz = ({
   const [status, setStatus] = useState<"correct" | "wrong" | "none">("none");
 
   const challenge = challenges[activeIndex];
-  const isCurriculum = challenge.type === "CURRICULUM";
-  console.log("isCurriculum: ", isCurriculum);
+  const isCurriculum = challenge?.type === "CURRICULUM";
   const options = challenge?.challengeOptions ?? [];
 
   useEffect(() => {
@@ -96,7 +94,12 @@ export const Quiz = ({
   //TODO: Need to add logic of "CIRRICULUM", which will allow next/continue
 
   const onContinue = () => {
-    
+    //after the last challenge for the last lesson has been completed
+     if(!challenge){
+      console.log("FIRING LAST CHALLENGE OF LAST LESSON COMPLETE************")
+       return;
+     }
+
      if (challenge.type === "CURRICULUM") {
       startTransition(() => {
         upsertChallengeProgress(challenge.id)
@@ -172,25 +175,7 @@ export const Quiz = ({
     }
   };
 
-  if (challenge.type === "CURRICULUM") {
-    return (
-      <>
-        {finishAudio}
-        {correctAudio}
-        {incorrectAudio}
-        <div className="flex gap-y-4 lg:gap-y-4 lg:max-w-4xl mx-auto text-center items-center justify-center h-full">
-          <CurriculumBubble question={challenge.question} />
-        </div>
-        <Footer
-          disabled={!isCurriculum}
-          status={status}
-          onCheck={onContinue}
-          isCurriculum={isCurriculum}
-        />
-        ;
-      </>
-    );
-  }
+ 
 
   if (!challenge) {
     return (
@@ -236,6 +221,26 @@ export const Quiz = ({
       </>
     );
   }
+
+   if (challenge.type === "CURRICULUM") {
+    return (
+      <>
+        {finishAudio}
+        {correctAudio}
+        {incorrectAudio}
+        <div className="flex gap-y-4 lg:gap-y-4 lg:max-w-4xl mx-auto text-center items-center justify-center h-full">
+          <CurriculumBubble question={challenge.question} />
+        </div>
+        <Footer
+          disabled={!isCurriculum}
+          status={status}
+          onCheck={onContinue}
+          isCurriculum={isCurriculum}
+        />
+        ;
+      </>
+    );
+  } 
   {
     /* TODO CURRICULUM: if type === CURRICULUM don't need to render challenge*/
   }

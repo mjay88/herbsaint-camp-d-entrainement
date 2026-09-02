@@ -21,6 +21,7 @@ export const UnitBanner = ({ title, description }: Props) => {
         variant="secondary"
         className="hidden xl:flex border-2 border-b-4 active:border-b-2 bg-orange-400"
         render={
+          //TODO: Send this link somewhere useful
           <Link href="/lesson">
             <NotebookText className="size-10" />
           </Link>
