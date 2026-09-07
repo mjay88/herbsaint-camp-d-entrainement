@@ -20,7 +20,14 @@ export const ExitModal = () => {
   const [isClient, setIsClient] = useState(false);
   const { isOpen, close } = useExitModal();
 
-  //isClient indicates a boundary to the client. It doesn't mean that this is not rendered on the server. So it's just not a server component. But this can cause hydration errors because of the way we are controlling our models with zustand.
+  
+/**
+ * 
+ * Since Next.js renders components twice, first on the server and again on the client, having different outputs on both the client and the server will result in hydration errors. When this component is first rendered on the client it will set isClient to true. The if check prevents hydration errors by preventing the component from rendering on the client side if it hasn't been rendered on the server side. This is a Zustand work around to prevent hydration errors.
+ * 
+ */
+  
+
   useEffect(() => setIsClient(true), []);
 
   if (!isClient) {
@@ -66,7 +73,7 @@ export const ExitModal = () => {
                   onClick={() => {
                     close();
                     router.push("/learn");
-                    //window.location.href = `/learn`; //TODO: When 
+                    
                   }}
                 >
                   End Session

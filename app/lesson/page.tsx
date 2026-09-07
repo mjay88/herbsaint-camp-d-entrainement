@@ -16,7 +16,6 @@ const LessonPage = async () => {
     userId,
     courseProgress?.activeLessonId ?? null,
   );
-
   return (
     <LessonPageClient lesson={lesson} userProgress={userProgress ?? null} />
   );

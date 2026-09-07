@@ -67,7 +67,7 @@ export const upsertChallengeProgress = async (
         points: currentUserProgress.points + 10,
       })
       .where(eq(userProgress.userId, activeUserId));
-    //TODO: check if all of these tags are necessary for updating challengeProgress
+    
     updateTag(`user-progress-${activeUserId ?? "none"}`);
     updateTag(
       `units-activeCourseId-${currentUserProgress.activeCourseId ?? "none"}`,
@@ -77,10 +77,14 @@ export const upsertChallengeProgress = async (
       `course-progress-userId-${activeUserId ?? "none"}-activeCourseId-${currentUserProgress.activeCourseId ?? "none"}`,
     ); 
     updateTag("leaderboard");
-    revalidatePath(`/lesson/${lessonId}`); //TODO: Is this necessary for updating hearts in practice mode?
 
-    revalidatePath("/learn"); //TODO: Trying to have hearts in lesson/header update when coming straight from practice
-
+    /**
+     * Was using these a catch all cache revalidations for everything on /learn and /lesson pages, but everything seems to be working now with updateTags
+     * revalidatePath(`/lesson/${lessonId}`);
+     * revalidatePath(`/lesson`);
+     * revalidatePath("/learn");
+     */
+   
     return;
   }
 
