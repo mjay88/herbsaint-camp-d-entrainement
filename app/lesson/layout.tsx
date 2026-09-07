@@ -1,18 +1,16 @@
-import { auth } from "@clerk/nextjs/server";
+import { LessonContent } from "./lesson-content";
+import { Suspense } from "react";
+import Skeleton from "@/components/ui/skeleton";
 
 type Props = {
   children: React.ReactNode;
 };
 
 const LessonLayout = async ({ children }: Props) => {
-  const { isAuthenticated, redirectToSignIn } = await auth();
-  if (!isAuthenticated) {
-    return redirectToSignIn();
-  }
   return (
-    <div className="flex flex-col h-full">
-      <div className="flex flex-col h-full w-full">{children}</div>
-    </div>
+    <Suspense fallback={<Skeleton />}>
+      <LessonContent>{children}</LessonContent>
+    </Suspense>
   );
 };
 

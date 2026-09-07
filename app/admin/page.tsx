@@ -1,4 +1,4 @@
-export const instant = false //TODO: Handle this properly
+export const instant = false
 import { redirect } from "next/navigation";
 import { AdminClient } from "./admin-client";
 

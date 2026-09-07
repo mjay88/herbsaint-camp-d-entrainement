@@ -1,86 +1,15 @@
-export const instant = false;
-import { auth } from "@clerk/nextjs/server";
-import { Header } from "./header";
-import { Unit } from "./unit";
-import { StickyWrapper } from "@/components/sticky-wrapper";
-import { UserProgress } from "@/components/user-progress";
-import { FeedWrapper } from "@/components/feed-wrapper";
-import {
-  getCourseProgress,
-  getUnits,
-  getUserProgress,
-  getLesson,
-  getLessonPercentage,
-  Lesson,
-} from "@/db/queries";
-import { redirect } from "next/navigation";
-import { lessons, units as unitsSchema } from "@/db/schema";
-import { Quests } from "@/components/quests";
+import { Suspense } from "react";
+import { LearnPageContent } from "./learn-page-content";
+import Skeleton from "@/components/ui/skeleton";
+
 
 const LearnPage = async () => {
-  const { userId, isAuthenticated, redirectToSignIn } = await auth();
-  if (!isAuthenticated) {
-    return redirectToSignIn();
-  }
-//TODO: When the first lesson is completed. Navigating back to learn from the lesson/footer does and then navigating to the next lesson does not refresh state in the Quiz component so if(!challenge) logic fires. May have something to do with updateTags. Current work around is using window.location.href in footer
-  const userProgress = await getUserProgress(userId); 
-  //New pattern do to cacheComponents no cookies and headers in functions flagged with "use cache"
-  const units = await getUnits(userProgress?.activeCourseId ?? null, userId);
-
-  const courseProgress = await getCourseProgress(
-    userId,
-    userProgress?.activeCourseId ?? null,
-  );
-
-  const lesson = (await getLesson(
-    userId,
-    courseProgress?.activeLessonId ?? null,
-  )) 
-  const lessonPercentage = await getLessonPercentage(
-    courseProgress?.activeLessonId ?? null,
-    lesson ?? null,
-  );
-  if (!userProgress || !userProgress.activeCourse) {
-    redirect("/courses");
-  }
-
-  if (!courseProgress) {
-    redirect("/courses");
-  }
-
+ 
   return (
-    <div className="flex flex-row-reverse gap-[48px] px-6">
-      <StickyWrapper>
-        <UserProgress
-          activeCourse={userProgress.activeCourse}
-          hearts={userProgress.hearts}
-          points={userProgress.points}
-        />
-        <Quests points={userProgress.points} />
-      </StickyWrapper>
-      <FeedWrapper>
-        <Header title={userProgress.activeCourse.title} />
-        {units.map((unit) => (
-          <div key={unit.id} className="mb-10">
-            <Unit
-              id={unit.id}
-              order={unit.order}
-              description={unit.description}
-              title={unit.title}
-              lessons={unit.lessons}
-              activeLesson={
-                courseProgress.activeLesson as
-                  | (typeof lessons.$inferSelect & {
-                      unit: typeof unitsSchema.$inferSelect;
-                    })
-                  | undefined
-              }
-              activeLessonPercentage={lessonPercentage}
-            />
-          </div>
-        ))}
-      </FeedWrapper>
-    </div>
+      <Suspense fallback={<Skeleton />}>
+        <LearnPageContent></LearnPageContent>
+      </Suspense>
+
   );
 };
 
