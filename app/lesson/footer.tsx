@@ -22,6 +22,7 @@ export const Footer = ({
 }: Props) => {
   useKey("Enter", onCheck, {}, [onCheck]);
   const router = useRouter();
+
   const isMobile = useMedia("(max-width: 1024px", true); //TODO: set to true for development. Phone usage will probably be primary use case so may need to set default value to false when done with development.
   return (
     <footer
@@ -49,9 +50,15 @@ export const Footer = ({
             variant="default"
             size={isMobile ? "sm" : "lg"}
             // onClick={() => router.push(`/lesson/${lessonId}`)}
-            onClick={() => (window.location.href = `/lesson/${lessonId}`)}
+            //TODO: oncheck uses router.push which does not load new lesson, so second lesson automattically loadeds as completed. window.location.href does a hard refresh. Double check issue might be in the upsertChallengeProgress or upsertUserProgress and improper mapping of updateTag for correct queries
+            onClick={() =>
+              //If the last lesson is completed, there is no lessonId, so navigate to /lesson instead
+              (window.location.href = lessonId
+                ? `/lesson/${lessonId}`
+                : `/lesson`)
+            }
           >
-            Practice Again
+            {lessonId ? "Practice Again" : "Start The Course Again"}
           </Button>
         )}
         {status === "completed" && (
@@ -59,8 +66,7 @@ export const Footer = ({
             variant="secondary"
             className="ml-auto"
             size={isMobile ? "sm" : "lg"}
-            onClick={() => (window.location.href = `/learn`)} //TODO: oncheck uses router.push which does not load new lesson, so second lesson automattically loadeds as completed. window.location.href does a hard refresh.
-            //Double check issue might be in the upsertChallengeProgress or upsertUserProgress and improper mapping of updateTag for correct queries
+            onClick={() => (window.location.href = `/learn`)} //TODO: oncheck uses router.push which does not load new lesson, so second lesson automattically loadeds as completed. window.location.href does a hard refresh. Double check issue might be in the upsertChallengeProgress or upsertUserProgress and improper mapping of updateTag for correct queries
           >
             Continue
           </Button>

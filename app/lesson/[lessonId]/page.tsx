@@ -1,14 +1,10 @@
-export const instant = false; //route renders per request, no useful static shell since this is a page
-import { getCourseProgress, getLesson, getUserProgress } from "@/db/queries";
+export const instant = false; //TODO: route renders per request, no useful static shell since this is a page
+import {getLesson, getUserProgress } from "@/db/queries";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { Quiz } from "../quiz";
 
-// type Props = {
-//   params: {
-//     lessonId: number;
-//   };
-// };
+
 
 const LessonIdPage = async ({params}: PageProps<"/lesson/[lessonId]">) => {
   const {lessonId} = await params;
@@ -16,12 +12,8 @@ const LessonIdPage = async ({params}: PageProps<"/lesson/[lessonId]">) => {
   if (!isAuthenticated) {
     return redirectToSignIn();
   }
-  console.log("LessonIdPage")
   const userProgress = await getUserProgress(userId);
-  const courseProgress = await getCourseProgress(
-    userId,
-    userProgress?.activeCourseId ?? null,
-  );
+  
   const lesson = await getLesson(
     userId,
     +lessonId,

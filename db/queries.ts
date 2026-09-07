@@ -4,7 +4,7 @@ import { cacheLife, cacheTag } from "next/cache";
 //get all courses
 export const getCourses = async () => {
   "use cache";
-  cacheTag("courses:all"); //TODO: this is global, does it need to be?
+  cacheTag("courses:all"); 
   cacheLife("days");
 
   const data = await db.query.courses.findMany();
@@ -77,7 +77,7 @@ export const getUnits = async (
             with: {
               challengeProgress: {
                 where: {
-                  userId: authenticatedUserId, //TODO: make sure this works
+                  userId: authenticatedUserId, 
                 },
               },
             },
@@ -124,7 +124,7 @@ export const getCourseProgress = async (
   }
 
   const unitsInActiveCourse = await db.query.units.findMany({
-    //TODO: understand this
+    
     orderBy: (units, { asc }) => [asc(units.order)],
     where: { courseId: activeCourseId },
     with: {

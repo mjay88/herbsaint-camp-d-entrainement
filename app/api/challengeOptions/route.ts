@@ -12,7 +12,6 @@ export const GET = async () => {
     return new NextResponse("Unauthorized", { status: 401 });
   }
   const data = await db.query.challengeOptions.findMany();
-  console.log("challenge options: ", NextResponse.json(data));
   return NextResponse.json(data);
 };
 

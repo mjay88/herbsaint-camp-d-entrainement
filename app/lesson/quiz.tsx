@@ -27,7 +27,7 @@ type Props = {
     challengeOptions: (typeof challengeOptions.$inferSelect)[];
   })[];
 };
-//TODO: quiz is not remounting, so challenges stays undefined. Double check actions, the come up with a way to make Quiz re-mount when the "Continue" button is clicked from footer
+
 export const Quiz = ({
   initialPercentage,
   initialHearts,
@@ -45,7 +45,6 @@ export const Quiz = ({
   const { width, height } = useWindowSize();
 
   const router = useRouter();
-
   const [finishAudio, _f, finishControls] = useAudio({ src: "/finish.mp3" });
 
   const [correctAudio, _c, correctControls] = useAudio({ src: "/correct.wav" });
@@ -56,9 +55,11 @@ export const Quiz = ({
   const [pending, startTransition] = useTransition();
   const [lessonId] = useState(initialLessonId);
   const [hearts, setHearts] = useState(initialHearts);
+
   const [percentage, setPercentage] = useState(() => {
     return initialPercentage === 100 ? 0 : initialPercentage;
   });
+  //TODO: If I don't want to track challenges in practice mode, i'll need to find a way of resetting challenges. I can possible pass !challenges boolean and setChallenges to Header and then to ExitModal, or use a seperate Context to track pracitce mode
   const [challenges] = useState(initialLessonChallenges);
   const [activeIndex, setActiveIndex] = useState(() => {
     const uncompletedIndex = challenges.findIndex(
@@ -130,7 +131,7 @@ export const Quiz = ({
     if (!correctOption) {
       return;
     }
-  
+
     //handle status actions
     if (correctOption.id === selectedOption) {
       startTransition(() => {
@@ -223,6 +224,7 @@ export const Quiz = ({
         {finishAudio}
         {correctAudio}
         {incorrectAudio}
+        <Header hearts={hearts} percentage={percentage} />
         <div className="flex gap-y-4 lg:gap-y-4 lg:max-w-4xl mx-auto text-center items-center justify-center h-full">
           <CurriculumBubble question={challenge.question} />
         </div>
@@ -236,9 +238,7 @@ export const Quiz = ({
       </>
     );
   }
-  {
-    /* TODO CURRICULUM: if type === CURRICULUM don't need to render challenge*/
-  }
+
 
   const title =
     challenge.type === "ASSIST" ? "Select the best option" : challenge.question;
