@@ -1,7 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { revalidatePath, revalidateTag, updateTag } from "next/cache";
+import { revalidatePath,  updateTag } from "next/cache";
 import { auth, currentUser } from "@clerk/nextjs/server";
 
 import { db } from "@/db/drizzle";
@@ -16,12 +16,12 @@ import { POINTS_TO_REFILL } from "@/constants";
  * 
  * updates or creates userProgress object
  * Sets the active course ie "Back Waiter - Steps of Service"
- * 
+ *  Revalidates tags associated with getUserProgress, getLesson, getUnits, getCourseProgress
  * 
  */
 
 export const upsertUserProgress = async (courseId: number) => {
-  //TODO: add isCurriculum logic, same as upsertChallengeProgress
+  
   const { userId } = await auth();
   const user = await currentUser();
 
@@ -78,6 +78,11 @@ export const upsertUserProgress = async (courseId: number) => {
   return { success: true };
 };
 
+/**
+ * Updates the users hearts.
+ * Revalidates tags associated with getUserProgress, getLesson. getTopTenUsers
+ */
+
 export const refillHearts = async () => {
   const { userId } = await auth();
   const user = await currentUser();
@@ -110,6 +115,12 @@ export const refillHearts = async () => {
   updateTag(`user-progress-${userId ?? "none"}`);
   updateTag("leaderboard");
 };
+
+/**
+ * Decrements the user hearts.
+ * Revalidates tags associated with getUserProgress, getLesson. getTopTenUsers
+ * 
+ */
 
 export const reduceHearts = async (activeChallengeId: number) => {
   const { userId: activeUserId } = await auth();

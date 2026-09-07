@@ -67,7 +67,7 @@ export const upsertChallengeProgress = async (
         points: currentUserProgress.points + 10,
       })
       .where(eq(userProgress.userId, activeUserId));
-    //TODO: check if all of these tags are necessary for updating userProgress
+    //TODO: check if all of these tags are necessary for updating challengeProgress
     updateTag(`user-progress-${activeUserId ?? "none"}`);
     updateTag(
       `units-activeCourseId-${currentUserProgress.activeCourseId ?? "none"}`,
@@ -90,7 +90,7 @@ export const upsertChallengeProgress = async (
     completed: true,
   });
   if (isCurriculum) {
-    //TODO: need to figure out what tags are going to update the user progress.
+   
     updateTag(`user-progress-${activeUserId ?? "none"}`); //getUserProgress
     updateTag(
       `units-activeCourseId-${currentUserProgress.activeCourseId ?? "none"}`,
