@@ -11,7 +11,17 @@ import { isRedirectError } from "next/dist/client/components/redirect-error";
 import { eq } from "drizzle-orm";
 import { POINTS_TO_REFILL } from "@/constants";
 
+
+/**
+ * 
+ * updates or creates userProgress object
+ * Sets the active course ie "Back Waiter - Steps of Service"
+ * 
+ * 
+ */
+
 export const upsertUserProgress = async (courseId: number) => {
+  //TODO: add isCurriculum logic, same as upsertChallengeProgress
   const { userId } = await auth();
   const user = await currentUser();
 
@@ -24,8 +34,7 @@ export const upsertUserProgress = async (courseId: number) => {
   if (!course) {
     throw new Error("Course not found");
   }
-  //test toast
-  // throw new Error("test");
+  
   if (!course.units.length || !course.units[0].lessons.length) {
     throw new Error("Course is empty");
   }
@@ -76,7 +85,7 @@ export const refillHearts = async () => {
   if (!userId || !user) {
     throw new Error("Unauthorized");
   }
-  
+
   const currentUserProgress = await getUserProgress(userId);
 
   if (!currentUserProgress) {

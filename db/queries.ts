@@ -14,7 +14,7 @@ export const getCourses = async () => {
 //getUserProgress accepts userId, which is passed in from CoursesPage and LearnPage after calling await auth()
 export const getUserProgress = async (userId: string | null) => {
   "use cache";
-
+  
   cacheTag(`user-progress-${userId ?? "none"}`);
   cacheLife("seconds");
 

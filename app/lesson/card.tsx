@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { challenges } from "@/db/schema";
-import {useKey} from "react-use";
+import { useKey } from "react-use";
 
 type Props = {
   id: number;
@@ -26,12 +26,11 @@ export const Card = ({
   status,
   type,
 }: Props) => {
-
   const handleClick = () => {
     if (disabled) return;
 
     onClick();
-  }
+  };
 
   useKey(shortcut, handleClick, {}, [handleClick]);
 
@@ -64,7 +63,7 @@ export const Card = ({
         )}
       >
         {type === "ASSIST" && <div />}
-        
+
         <p
           className={cn(
             "text-neutral-600 text-sm text-center lg:text-base px-4 py-5 sm:p-6",
@@ -76,19 +75,20 @@ export const Card = ({
           {text}
         </p>
         <div className="mt-auto w-full">
+          {/* TODO: Fix paragraph or above did from stealing space from footer when text is long */}
 
-        <div
-          className={cn(
-            "ml-auto lg:w-[30px] lg:h-[30px] w-[20px] h-[20px] px-4 py-4 sm:px-6 border-2 flex items-center justify-center rounded-lg text-neutral-400 lg:text-[15px] text-xs font-semibold",
-            selected && "border-sky-300 text-sky-500",
-            selected &&
-              status === "correct" &&
-              "border-green-500 text-green-500",
-            selected && status === "wrong" && "border-rose-500 text-rose-500",
-          )}
-        >
-          {shortcut}
-        </div>
+          <div
+            className={cn(
+              "ml-auto lg:w-[30px] lg:h-[30px] w-[20px] h-[20px] px-4 py-4 sm:px-6 border-2 flex items-center justify-center rounded-lg text-neutral-400 lg:text-[15px] text-xs font-semibold",
+              selected && "border-sky-300 text-sky-500",
+              selected &&
+                status === "correct" &&
+                "border-green-500 text-green-500",
+              selected && status === "wrong" && "border-rose-500 text-rose-500",
+            )}
+          >
+            {shortcut}
+          </div>
         </div>
       </div>
     </div>

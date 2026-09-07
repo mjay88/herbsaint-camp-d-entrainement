@@ -7,7 +7,17 @@ import { auth } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
 import { revalidatePath, updateTag } from "next/cache";
 
-export const upsertChallengeProgress = async (activeChallengeId: number) => {
+/**
+ * updates challenge completed to true.
+ * In practice mode updates hearts but not points, unless isCurriculum is true then updates neither
+ * If isCurriculum is true, only updates challenge completed to true, does not update points
+ *
+ */
+
+export const upsertChallengeProgress = async (
+  activeChallengeId: number,
+  isCurriculum?: boolean,
+) => {
   const { userId: activeUserId } = await auth();
 
   if (!activeUserId) {
@@ -49,6 +59,7 @@ export const upsertChallengeProgress = async (activeChallengeId: number) => {
     //   })
     //   .where(eq(challengeProgress.id, existingChallengeProgress.id));
 
+    if (isCurriculum) return;
     await db
       .update(userProgress)
       .set({
@@ -56,21 +67,20 @@ export const upsertChallengeProgress = async (activeChallengeId: number) => {
         points: currentUserProgress.points + 10,
       })
       .where(eq(userProgress.userId, activeUserId));
-    //upsertChallengeProgress updates multiple tables, updateTag makes tells quiries used in page.tsx to fire
+    //TODO: check if all of these tags are necessary for updating userProgress
     updateTag(`user-progress-${activeUserId ?? "none"}`);
     updateTag(
       `units-activeCourseId-${currentUserProgress.activeCourseId ?? "none"}`,
     );
-    updateTag(`lesson-${lessonId ?? "none"}-user-${activeUserId ?? "none"}`);
+    updateTag(`lesson-${lessonId ?? "none"}-user-${activeUserId ?? "none"}`); 
     updateTag(
       `course-progress-userId-${activeUserId ?? "none"}-activeCourseId-${currentUserProgress.activeCourseId ?? "none"}`,
-    );
+    ); 
     updateTag("leaderboard");
-    //TODO: see todos in quiz.tsx
-    // revalidatePath(`/lesson/${lessonId}`);//TODO: Is this necessary for updating hearts in practice mode?
-    
-    revalidatePath("/learn") //TODO: Trying to have hearts in lesson/header update when coming straight from practice
-    //revalidatePath("lesson") //TODO: Check if this is necessary to handle the case for second lesson showing if(!challenge) from quiz component
+    revalidatePath(`/lesson/${lessonId}`); //TODO: Is this necessary for updating hearts in practice mode?
+
+    revalidatePath("/learn"); //TODO: Trying to have hearts in lesson/header update when coming straight from practice
+
     return;
   }
 
@@ -79,7 +89,19 @@ export const upsertChallengeProgress = async (activeChallengeId: number) => {
     userId: activeUserId,
     completed: true,
   });
-
+  if (isCurriculum) {
+    //TODO: need to figure out what tags are going to update the user progress.
+    updateTag(`user-progress-${activeUserId ?? "none"}`); //getUserProgress
+    updateTag(
+      `units-activeCourseId-${currentUserProgress.activeCourseId ?? "none"}`,
+    ); //getUnits
+    updateTag(`lesson-${lessonId ?? "none"}-user-${activeUserId ?? "none"}`);//getLesson
+    updateTag(
+      `course-progress-userId-${activeUserId ?? "none"}-activeCourseId-${currentUserProgress.activeCourseId ?? "none"}`,
+    ); //getCourseProgress
+    updateTag("leaderboard");
+    return;
+  }
   await db
     .update(userProgress)
     .set({
@@ -87,7 +109,6 @@ export const upsertChallengeProgress = async (activeChallengeId: number) => {
     })
     .where(eq(userProgress.userId, activeUserId));
 
-  //upsertChallengeProgress updates multiple tables, updateTag re runs the queries for that data
   updateTag(`user-progress-${activeUserId ?? "none"}`);
   updateTag(
     `units-activeCourseId-${currentUserProgress.activeCourseId ?? "none"}`,

@@ -5,17 +5,21 @@ import { CheckCircle, XCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useKey, useMedia } from "react-use";
 
-//TODO: Add logic for when challenge has status of "CIRRICULUM". Should be able to just click next.
 type Props = {
   onCheck: () => void;
-  //TODO CURRICULUM: if status is curriculum, make next button available
   status: "correct" | "wrong" | "none" | "completed";
   disabled?: boolean;
   lessonId?: number;
   isCurriculum?: boolean;
 };
 
-export const Footer = ({ onCheck, status, disabled, lessonId, isCurriculum }: Props) => {
+export const Footer = ({
+  onCheck,
+  status,
+  disabled,
+  lessonId,
+  isCurriculum,
+}: Props) => {
   useKey("Enter", onCheck, {}, [onCheck]);
   const router = useRouter();
   const isMobile = useMedia("(max-width: 1024px", true); //TODO: set to true for development. Phone usage will probably be primary use case so may need to set default value to false when done with development.
@@ -45,7 +49,7 @@ export const Footer = ({ onCheck, status, disabled, lessonId, isCurriculum }: Pr
             variant="default"
             size={isMobile ? "sm" : "lg"}
             // onClick={() => router.push(`/lesson/${lessonId}`)}
-            onClick={() => (window.location.href = `/lesson/${lessonId}`)} //TODO: Need to make sure that this triggers us mount so practice modal opens
+            onClick={() => (window.location.href = `/lesson/${lessonId}`)}
           >
             Practice Again
           </Button>
@@ -55,7 +59,8 @@ export const Footer = ({ onCheck, status, disabled, lessonId, isCurriculum }: Pr
             variant="secondary"
             className="ml-auto"
             size={isMobile ? "sm" : "lg"}
-            onClick={() => (window.location.href = `/learn`)}//TODO: oncheck uses router.push which does not load new lesson, so second lesson automattically loadeds as completed. 
+            onClick={() => (window.location.href = `/learn`)} //TODO: oncheck uses router.push which does not load new lesson, so second lesson automattically loadeds as completed. window.location.href does a hard refresh.
+            //Double check issue might be in the upsertChallengeProgress or upsertUserProgress and improper mapping of updateTag for correct queries
           >
             Continue
           </Button>
@@ -67,9 +72,8 @@ export const Footer = ({ onCheck, status, disabled, lessonId, isCurriculum }: Pr
             onClick={onCheck}
             size={isMobile ? "sm" : "lg"}
             variant={status === "wrong" ? "danger" : "secondary"}
-          > 
-            
-            {(status === "none" && !isCurriculum) && "Check"}
+          >
+            {status === "none" && !isCurriculum && "Check"}
             {(status === "correct" || isCurriculum) && "Next"}
             {status === "wrong" && "Retry"}
           </Button>

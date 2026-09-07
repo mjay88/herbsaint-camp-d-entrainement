@@ -82,7 +82,6 @@ export const Quiz = ({
   }, [challenge]);
 
   const onNext = () => {
-    //if Footer button is "Continue", need to revalidate challenges or remount quiz so second lesson also isn't completed
     setActiveIndex((current) => current + 1);
   };
 
@@ -91,30 +90,28 @@ export const Quiz = ({
 
     setSelectedOption(id);
   };
-  //TODO: Need to add logic of "CIRRICULUM", which will allow next/continue
 
   const onContinue = () => {
-    //after the last challenge for the last lesson has been completed
-     if(!challenge){
-      console.log("FIRING LAST CHALLENGE OF LAST LESSON COMPLETE************")
-       return;
-     }
+    //after the last challenge for the last lesson has been completed, just return. Navigation happens from conditional render in lesson-page-client.tsx (confetti)
+    if (!challenge) {
+      return;
+    }
 
-     if (challenge.type === "CURRICULUM") {
+    if (isCurriculum) {
       startTransition(() => {
-        upsertChallengeProgress(challenge.id)
+        upsertChallengeProgress(challenge.id, isCurriculum)
           .then((response) => {
-            onNext(); //TODO: see if order of this matters
+            onNext();
             setPercentage((prev) => prev + 100 / challenges.length);
             setStatus("none");
             setSelectedOption(undefined);
           })
           .catch(() => toast.error("Something went wrong. Please try again."));
       });
-      return
+      return;
     }
 
-    if (!selectedOption) return; 
+    if (!selectedOption) return;
     if (status === "wrong") {
       setStatus("none");
       setSelectedOption(undefined);
@@ -133,7 +130,7 @@ export const Quiz = ({
     if (!correctOption) {
       return;
     }
-    //TODO CURRICULUM: add case for curriculum if challenge.type === curriculum, save progress
+  
     //handle status actions
     if (correctOption.id === selectedOption) {
       startTransition(() => {
@@ -174,8 +171,6 @@ export const Quiz = ({
       });
     }
   };
-
- 
 
   if (!challenge) {
     return (
@@ -222,7 +217,7 @@ export const Quiz = ({
     );
   }
 
-   if (challenge.type === "CURRICULUM") {
+  if (challenge.type === "CURRICULUM") {
     return (
       <>
         {finishAudio}
@@ -240,7 +235,7 @@ export const Quiz = ({
         ;
       </>
     );
-  } 
+  }
   {
     /* TODO CURRICULUM: if type === CURRICULUM don't need to render challenge*/
   }
