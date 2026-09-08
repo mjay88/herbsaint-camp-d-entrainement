@@ -55,7 +55,6 @@ export const Card = ({
           <Image src={imageSrc} alt={text} />
         </div>
       )}
-      {/* TODO: see if I need this wrapping div, since I'm not going to have images. UPDATE: but you will have images for food items? */}
       <div
         className={cn(
           type === "SELECT" && "h-full flex flex-col",
@@ -66,7 +65,7 @@ export const Card = ({
 
         <p
           className={cn(
-            "text-neutral-600 text-sm text-center lg:text-base px-4 py-5 sm:p-6",
+            "text-neutral-600 text-sm text-center lg:text-base px-4 py-5 -mb-5 sm:p-6",
             selected && "text-sky-500",
             selected && status === "correct" && "text-green-500",
             selected && status === "wrong" && "text-rose-500",
@@ -75,8 +74,6 @@ export const Card = ({
           {text}
         </p>
         <div className="mt-auto w-full">
-          {/* TODO: Fix paragraph or above did from stealing space from footer when text is long */}
-
           <div
             className={cn(
               "ml-auto lg:w-[30px] lg:h-[30px] w-[20px] h-[20px] px-4 py-4 sm:px-6 border-2 flex items-center justify-center rounded-lg text-neutral-400 lg:text-[15px] text-xs font-semibold",
