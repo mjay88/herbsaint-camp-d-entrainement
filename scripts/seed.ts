@@ -50,7 +50,7 @@ const main = async () => {
       {
         id: 1,
         courseId: 1,
-        title: "Unit 1",
+        title: "Back Waiter - Steps of Service",
         description: "The Basics",
         order: 1,
       },
@@ -59,7 +59,7 @@ const main = async () => {
     await db.insert(schema.lessons).values([
       {
         id: 1,
-        unitId: 1, // unit 1 : The Basics
+        unitId: 1,
         order: 1,
         title: "A note on Hospitality",
       },
@@ -94,37 +94,43 @@ const main = async () => {
         title: "Resetting the Table",
       },
     ]);
-
+    /**
+     * Course id - 1: Back Waiter Steps of Service
+     * Unit id - 1:  Back Waiter - Steps of Service
+     * Lesson id - 1: A note on Hospitality
+     */
     await db.insert(schema.challenges).values([
       {
         id: 1,
-        lessonId: 1, // Basics
+        lessonId: 1,
         type: "CURRICULUM",
         order: 1,
         question:
-          "The hospitality we strive to provide is welcoming guests into our own home for a dinner party. Our style is familial but always professional. We greet everyone with a smile and never let anyone walk out without a warm goodbye! Everything we do is aimed at making our guests feel welcome, comfortable, and well cared for. We create the atmosphere with the music we play, how the restaurant is set up and presented, how sharp the team looks, and with decadent smells wafting from the kitchen. Coming to work each day is an opportunity to leave the stress of our personal lives at the door and enter the stage, which is our dining room! We, as hosts, set the tone of the party. It’s much easier for everyone to have a good time if it looks like we are.",
+          "The hospitality we strive to provide is welcoming guests into our own home for a dinner party. Our style is familial but always professional. We greet everyone with a smile and never let anyone walk out without a warm goodbye! Everything we do is aimed at making our guests feel welcome, comfortable, and well cared for. We create the atmosphere with the music we play, how the restaurant is set up and presented, how sharp the team looks, and with decadent smells wafting from the kitchen. Coming to work each day is an opportunity to leave the stress of our personal lives at the door and enter the stage, which is our dining room! We, as hosts, set the tone of the party. It's much easier for everyone to have a good time if it looks like we are.",
       },
       {
         id: 2,
-        lessonId: 1, // Basics
-        type: "SELECT",
+        lessonId: 1,
+        type: "CURRICULUM",
         order: 2,
-        question: "Upon seating, how soon should a table be greeted?",
+        question:
+          "Service is important. When we are seamless and consistent in our guest interactions, we take all the stress and confusion out of guests' choices. From the appearance of the table when guests are seated to our demeanor as we walk through the dining room, our level of control and professionalism puts guests at ease, even subconsciously. Your energy, whether positive or negative, will be absorbed by both your teammates and guests, so contribute good vibes!",
       },
       {
         id: 3,
-        lessonId: 1, // Basics
-        type: "SELECT",
+        lessonId: 1,
+        type: "CURRICULUM",
         order: 3,
-        question: "What are our water options?",
+        question:
+          "Every guest and every table is different. A key skill for any server, bartender, or manager is identifying how guests are feeling and what style of service they want. Do they look tired? Maybe they just drove into town? Maybe a couple has been fighting. Is this an important business lunch, and should we remain in the background? Is this their first time joining us, and they want the full spiel and all the interaction you can give? Don't force engagement if guests want privacy, and be present if they are excited to hear from you. Either way is okay and provides great service, because it is specifically what the guest wants. Be adaptable and stay attentive.",
       },
       {
         id: 4,
-        lessonId: 1, // Basics
-        type: "SELECT",
+        lessonId: 1,
+        type: "CURRICULUM",
         order: 4,
         question:
-          "Who is responsible for marking the table for the first course?",
+          "Service can go a long way to making a guest feel satisfied; Hospitality makes people feel at home and excited for their next visit.",
       },
     ]);
     //'Upon seating, how soon should a table be greeted?'
