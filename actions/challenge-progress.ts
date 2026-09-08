@@ -5,19 +5,14 @@ import { getUserProgress } from "@/db/queries";
 import { challengeProgress, userProgress } from "@/db/schema";
 import { auth } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
-import { revalidatePath, updateTag } from "next/cache";
+import { updateTag } from "next/cache";
 
 /**
  * updates challenge completed to true.
- * In practice mode updates hearts but not points, unless isCurriculum is true then updates neither
- * If isCurriculum is true, only updates challenge completed to true, does not update points
- *
+ * In practice mode updates hearts but not points,
  */
 
-export const upsertChallengeProgress = async (
-  activeChallengeId: number,
-  isCurriculum?: boolean,
-) => {
+export const upsertChallengeProgress = async (activeChallengeId: number) => {
   const { userId: activeUserId } = await auth();
 
   if (!activeUserId) {
@@ -59,7 +54,6 @@ export const upsertChallengeProgress = async (
     //   })
     //   .where(eq(challengeProgress.id, existingChallengeProgress.id));
 
-    if (isCurriculum) return;
     await db
       .update(userProgress)
       .set({
@@ -67,15 +61,15 @@ export const upsertChallengeProgress = async (
         points: currentUserProgress.points + 10,
       })
       .where(eq(userProgress.userId, activeUserId));
-    
+
     updateTag(`user-progress-${activeUserId ?? "none"}`);
     updateTag(
       `units-activeCourseId-${currentUserProgress.activeCourseId ?? "none"}`,
     );
-    updateTag(`lesson-${lessonId ?? "none"}-user-${activeUserId ?? "none"}`); 
+    updateTag(`lesson-${lessonId ?? "none"}-user-${activeUserId ?? "none"}`);
     updateTag(
       `course-progress-userId-${activeUserId ?? "none"}-activeCourseId-${currentUserProgress.activeCourseId ?? "none"}`,
-    ); 
+    );
     updateTag("leaderboard");
 
     /**
@@ -84,7 +78,7 @@ export const upsertChallengeProgress = async (
      * revalidatePath(`/lesson`);
      * revalidatePath("/learn");
      */
-   
+
     return;
   }
 
@@ -93,19 +87,7 @@ export const upsertChallengeProgress = async (
     userId: activeUserId,
     completed: true,
   });
-  if (isCurriculum) {
-   
-    updateTag(`user-progress-${activeUserId ?? "none"}`); //getUserProgress
-    updateTag(
-      `units-activeCourseId-${currentUserProgress.activeCourseId ?? "none"}`,
-    ); //getUnits
-    updateTag(`lesson-${lessonId ?? "none"}-user-${activeUserId ?? "none"}`);//getLesson
-    updateTag(
-      `course-progress-userId-${activeUserId ?? "none"}-activeCourseId-${currentUserProgress.activeCourseId ?? "none"}`,
-    ); //getCourseProgress
-    updateTag("leaderboard");
-    return;
-  }
+
   await db
     .update(userProgress)
     .set({
@@ -113,13 +95,13 @@ export const upsertChallengeProgress = async (
     })
     .where(eq(userProgress.userId, activeUserId));
 
-  updateTag(`user-progress-${activeUserId ?? "none"}`);
+  updateTag(`user-progress-${activeUserId ?? "none"}`); //getUserProgress
   updateTag(
     `units-activeCourseId-${currentUserProgress.activeCourseId ?? "none"}`,
-  );
-  updateTag(`lesson-${lessonId ?? "none"}-user-${activeUserId ?? "none"}`);
+  ); //getUnits
+  updateTag(`lesson-${lessonId ?? "none"}-user-${activeUserId ?? "none"}`); //getLesson
   updateTag(
     `course-progress-userId-${activeUserId ?? "none"}-activeCourseId-${currentUserProgress.activeCourseId ?? "none"}`,
-  );
+  ); //getCourseProgress
   updateTag("leaderboard");
 };

@@ -35,7 +35,7 @@ type Props = {
  */
 const LessonPageClient = ({ lesson, userProgress }: Props) => {
   const { width, height } = useWindowSize();
-
+  console.log("userProgress from in lessonPageClient: ", userProgress)
   const [finishAudio, _f, finishControls] = useAudio({ src: "/finish.mp3" });
 
   useEffect(() => {
@@ -98,6 +98,7 @@ const LessonPageClient = ({ lesson, userProgress }: Props) => {
         initialLessonChallenges={lesson?.challenges}
         initialHearts={userProgress?.hearts}
         initialPercentage={initialPercentage}
+        initialUserProgress={userProgress}
       />
     </>
   );
