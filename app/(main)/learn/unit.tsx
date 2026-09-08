@@ -40,6 +40,7 @@ export const Unit = ({
                 <LessonButton 
                 key={lesson.id}
                 id={lesson.id}
+                lessonTitle={lesson.title}
                 index={index}
                 totalCount={lessons.length - 1}
                 current={isCurrent}

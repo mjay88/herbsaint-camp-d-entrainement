@@ -13,6 +13,7 @@ type Props = {
   locked?: boolean;
   current?: boolean;
   percentage: number;
+  lessonTitle: string;
 };
 
 export const LessonButton = ({
@@ -22,6 +23,7 @@ export const LessonButton = ({
   locked,
   current,
   percentage,
+  lessonTitle
 }: Props) => {
   const cycleLength = 8;
   const cycleIndex = index % cycleLength;
@@ -62,8 +64,8 @@ export const LessonButton = ({
     >
      {current ? (
         <div className="h-[102px] w-[102px] relative">
-            <div className="absolute -top-6 left-2.5 px-3 py-2.5 border-2 font-bold uppercase text-orange-500 bg-white rounded-xl animate-bounce tracking-wide z-10">
-                Start
+            <div className="absolute w-64 lg:w-max -top-6 left-2.5 lg:left-10 px-3 text-center py-2.5 border-2 font-bold uppercase text-orange-500 bg-white rounded-xl animate-bounce tracking-wide z-10">
+                {lessonTitle}
             </div>
             <div className="absolute left-1/2 bottom-2 w-0 h-0 border-x-8 border-x-transparent border-t-8 transform -translate-x-1/2" />
             <CircularProgressbarWithChildren
@@ -97,6 +99,7 @@ export const LessonButton = ({
         </div>
      ): 
      (
+      
            <Button
             size="rounded"
             variant={locked ? "locked" : "secondary"}
