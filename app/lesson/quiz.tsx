@@ -7,7 +7,10 @@ import { Footer } from "./footer";
 import { ResultCard } from "./result-card";
 import { Challenge } from "./challenge";
 import { QuestionBubble } from "./question-bubble";
-import { upsertChallengeProgress } from "@/actions/challenge-progress";
+import {
+  revalidatePathWhenStatusIsCompleted,
+  upsertChallengeProgress,
+} from "@/actions/challenge-progress";
 import { toast } from "sonner";
 import { reduceHearts } from "@/actions/user-progress";
 import { useAudio, useWindowSize, useMount } from "react-use";
@@ -26,7 +29,7 @@ type Props = {
     completed: boolean;
     challengeOptions: (typeof challengeOptions.$inferSelect)[];
   })[];
-  initialUserProgress: typeof userProgress.$inferSelect;
+  initialUserProgress: typeof userProgress.$inferSelect; //TODO: See if I can remove this
 };
 
 export const Quiz = ({
@@ -62,12 +65,17 @@ export const Quiz = ({
   const [percentage, setPercentage] = useState(() => {
     return isPractice ? 0 : initialPercentage;
   });
-  //TODO: If I don't want to track challenges in practice mode, i'll need to find a way of resetting challenges. I can possible pass !challenges boolean and setChallenges to Header and then to ExitModal, or use a seperate Context to track pracitce mode
+
   const [challenges] = useState(initialLessonChallenges);
+
   const [activeIndex, setActiveIndex] = useState(() => {
     const uncompletedIndex = challenges.findIndex(
       (challenge) => !challenge.completed,
     );
+    if (isPractice) {
+      console.log("firing isPractice setActiveIndex");
+      return 0;
+    }
     return uncompletedIndex === -1 ? 0 : uncompletedIndex;
   });
 
@@ -116,6 +124,7 @@ export const Quiz = ({
           })
           .catch(() => toast.error("Something went wrong. Please try again."));
       });
+      correctControls.play();
       return;
     }
 
@@ -180,6 +189,18 @@ export const Quiz = ({
     }
   };
 
+  const onContinueWhenFinishedLesson = () => {
+    
+    if (isPractice) {
+      revalidatePathWhenStatusIsCompleted(lessonId);
+      console.log("firing refresh")
+      router.refresh();
+    } else {
+      revalidatePathWhenStatusIsCompleted();
+      router.push("/learn");
+    }
+  };
+
   if (!challenge) {
     return (
       <>
@@ -216,10 +237,11 @@ export const Quiz = ({
             <ResultCard variant="hearts" value={hearts} />
           </div>
         </div>
+
         <Footer
           lessonId={lessonId}
           status="completed"
-          onCheck={() => (window.location.href = `/learn`)}
+          onCheck={onContinueWhenFinishedLesson}
         />
       </>
     );

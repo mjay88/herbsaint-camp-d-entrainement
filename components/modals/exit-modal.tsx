@@ -14,6 +14,7 @@ import {
 
 import { Button } from "../ui/button";
 import { useExitModal } from "@/store/use-exit-modal";
+import { revalidatePathWhenStatusIsCompleted } from "@/actions/challenge-progress";
 
 export const ExitModal = () => {
   const router = useRouter();
@@ -72,6 +73,7 @@ export const ExitModal = () => {
                   size="lg"
                   onClick={() => {
                     close();
+                    revalidatePathWhenStatusIsCompleted();
                     router.push("/learn");
                     
                   }}

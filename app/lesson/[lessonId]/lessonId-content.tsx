@@ -42,6 +42,7 @@ export const LessonIdContent = async ({params}: Props) => {
       initialLessonChallenges={lesson.challenges}
       initialHearts={userProgress.hearts}
       initialPercentage={initialPercentage}
+      initialUserProgress={userProgress}
     />
   );
 };

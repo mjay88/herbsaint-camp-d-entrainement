@@ -28,14 +28,14 @@ type Props = {
   userProgress: typeof userProgress.$inferSelect | null;
 };
 /**
- * LessonPageClient was created to handle the case where there are no more lessons. 
+ * LessonPageClient was created to handle the case where there are no more lessons.
  * LessonPage was redirecting to /learn if there were no lessons or no userProgress found
- * skipping the Confetti screen. Confetti and hooks could not be called from LessonPage, 
- * so I needed to add a "use client" wrapper  
+ * skipping the Confetti screen. Confetti and hooks could not be called from LessonPage,
+ * so I needed to add a "use client" wrapper
  */
 const LessonPageClient = ({ lesson, userProgress }: Props) => {
   const { width, height } = useWindowSize();
-  console.log("userProgress from in lessonPageClient: ", userProgress)
+  console.log("userProgress from in lessonPageClient: ", userProgress);
   const [finishAudio, _f, finishControls] = useAudio({ src: "/finish.mp3" });
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const LessonPageClient = ({ lesson, userProgress }: Props) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lesson, userProgress]);
-
+  //TODO: From inside of the Footer, on the last challenge of the last lesson the "Next" button is not displayed, it this is rendered instead. Need to make a smoother transition.
   if (!lesson || !userProgress) {
     return (
       <>
@@ -94,6 +94,7 @@ const LessonPageClient = ({ lesson, userProgress }: Props) => {
     <>
       {finishAudio}
       <Quiz
+         key={`${lesson.id}-${lesson.challenges.filter(c => c.completed).length}`}
         initialLessonId={lesson.id}
         initialLessonChallenges={lesson?.challenges}
         initialHearts={userProgress?.hearts}

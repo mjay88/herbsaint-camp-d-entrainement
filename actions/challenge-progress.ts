@@ -5,7 +5,7 @@ import { getUserProgress } from "@/db/queries";
 import { challengeProgress, userProgress } from "@/db/schema";
 import { auth } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
-import { updateTag } from "next/cache";
+import { revalidatePath, updateTag } from "next/cache";
 
 /**
  * updates challenge completed to true.
@@ -104,4 +104,17 @@ export const upsertChallengeProgress = async (activeChallengeId: number) => {
     `course-progress-userId-${activeUserId ?? "none"}-activeCourseId-${currentUserProgress.activeCourseId ?? "none"}`,
   ); //getCourseProgress
   updateTag("leaderboard");
+};
+
+export const revalidatePathWhenStatusIsCompleted = async (
+  lessonId?: number,
+) => {
+  if(lessonId){
+    revalidatePath(`/lesson/${lessonId}`);
+    revalidatePath(`/lesson`);
+    revalidatePath("/learn");
+  } else {
+    revalidatePath(`/lesson`);
+    revalidatePath("/learn");
+  }
 };

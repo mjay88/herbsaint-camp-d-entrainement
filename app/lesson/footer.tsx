@@ -11,6 +11,7 @@ type Props = {
   disabled?: boolean;
   lessonId?: number;
   isCurriculum?: boolean;
+  isLastChallenge?: boolean;
 };
 
 export const Footer = ({
@@ -45,28 +46,26 @@ export const Footer = ({
             Try again.
           </div>
         )}
+        
         {status === "completed" && (
           <Button
             variant="default"
             size={isMobile ? "sm" : "lg"}
             // onClick={() => router.push(`/lesson/${lessonId}`)}
-            //TODO: oncheck uses router.push which does not load new lesson, so second lesson automattically loadeds as completed. window.location.href does a hard refresh. Need to optimize with a new server function that revalidates paths
-            onClick={() =>
-              //If the last lesson is completed, there is no lessonId, so navigate to /lesson instead
-              (window.location.href = lessonId
-                ? `/lesson/${lessonId}`
-                : `/lesson`)
-            }
+          
+            //If the last lesson is completed, there is no lessonId, so navigate to /learn instead
+            onClick={onCheck}
           >
-            {lessonId ? "Practice Again" : "Start The Course Again"}
+            Practice Again
           </Button>
         )}
+          
         {status === "completed" && (
           <Button
             variant="secondary"
             className="ml-auto"
             size={isMobile ? "sm" : "lg"}
-            onClick={() => (window.location.href = `/learn`)} //TODO: oncheck uses router.push which does not load new lesson, so second lesson automattically loadeds as completed. window.location.href does a hard refresh. Double check issue might be in the upsertChallengeProgress or upsertUserProgress and improper mapping of updateTag for correct queries
+            onClick={onCheck} 
           >
             Continue
           </Button>
