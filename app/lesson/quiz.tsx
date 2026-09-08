@@ -1,6 +1,6 @@
 "use client";
 
-import { challengeOptions, challenges } from "@/db/schema";
+import { challengeOptions, challenges, userProgress } from "@/db/schema";
 import { useEffect, useState, useTransition } from "react";
 import { Header } from "./header";
 import { Footer } from "./footer";
@@ -26,6 +26,7 @@ type Props = {
     completed: boolean;
     challengeOptions: (typeof challengeOptions.$inferSelect)[];
   })[];
+  initialUserProgress: typeof userProgress.$inferSelect;
 };
 
 export const Quiz = ({
@@ -33,11 +34,13 @@ export const Quiz = ({
   initialHearts,
   initialLessonId,
   initialLessonChallenges,
+  initialUserProgress,
 }: Props) => {
   const { open: openHeartsModal } = useHeartsModal();
   const { open: openPracticeModal } = usePracticeModal();
+  const isPractice = initialPercentage === 100;
   useMount(() => {
-    if (initialPercentage === 100) {
+    if (isPractice) {
       openPracticeModal();
     }
   });
@@ -57,7 +60,7 @@ export const Quiz = ({
   const [hearts, setHearts] = useState(initialHearts);
 
   const [percentage, setPercentage] = useState(() => {
-    return initialPercentage === 100 ? 0 : initialPercentage;
+    return isPractice ? 0 : initialPercentage;
   });
   //TODO: If I don't want to track challenges in practice mode, i'll need to find a way of resetting challenges. I can possible pass !challenges boolean and setChallenges to Header and then to ExitModal, or use a seperate Context to track pracitce mode
   const [challenges] = useState(initialLessonChallenges);
@@ -91,7 +94,11 @@ export const Quiz = ({
 
     setSelectedOption(id);
   };
-
+  /**
+   * Controls the footer button function
+   * If !challenge, end of lesson has been reached, return and continue on to Confetti
+   *
+   */
   const onContinue = () => {
     //after the last challenge for the last lesson has been completed, just return. Navigation happens from conditional render in lesson-page-client.tsx (confetti)
     if (!challenge) {
@@ -100,7 +107,7 @@ export const Quiz = ({
 
     if (isCurriculum) {
       startTransition(() => {
-        upsertChallengeProgress(challenge.id, isCurriculum)
+        upsertChallengeProgress(challenge.id)
           .then((response) => {
             onNext();
             setPercentage((prev) => prev + 100 / challenges.length);
@@ -147,7 +154,7 @@ export const Quiz = ({
             setPercentage((prev) => prev + 100 / challenges.length);
 
             //For practice
-            if (initialPercentage === 100) {
+            if (isPractice) {
               setHearts((prev) => Math.min(prev + 1, 5));
             }
           })
@@ -212,7 +219,7 @@ export const Quiz = ({
         <Footer
           lessonId={lessonId}
           status="completed"
-          onCheck={() => router.push("/learn")}
+          onCheck={() => (window.location.href = `/learn`)}
         />
       </>
     );
@@ -238,7 +245,6 @@ export const Quiz = ({
       </>
     );
   }
-
 
   const title =
     challenge.type === "ASSIST" ? "Select the best option" : challenge.question;
