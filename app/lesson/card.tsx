@@ -65,7 +65,7 @@ export const Card = ({
 
         <p
           className={cn(
-            "text-neutral-600 text-sm text-center lg:text-base px-4 py-5 -mb-5 sm:p-6",
+            "text-neutral-600 text-xs text-center sm:text-sm lg:text-base px-4 py-5 -mb-5 sm:p-6",
             selected && "text-sky-500",
             selected && status === "correct" && "text-green-500",
             selected && status === "wrong" && "text-rose-500",
