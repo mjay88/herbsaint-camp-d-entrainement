@@ -7,7 +7,6 @@ export const LessonPageContent = async () => {
     return redirectToSignIn();
   }
   const userProgress = await getUserProgress(userId);
-  console.log("userProgress: ", userProgress)
   const courseProgress = await getCourseProgress(
     userId,
     userProgress?.activeCourseId ?? null,
