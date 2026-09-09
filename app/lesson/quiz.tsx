@@ -57,6 +57,7 @@ export const Quiz = ({
 
   const [pending, startTransition] = useTransition();
   const [lessonId] = useState(initialLessonId);
+  const [userProgress] = useState(initialUserProgress);
   const [hearts, setHearts] = useState(initialHearts);
 
   const [percentage, setPercentage] = useState(() => {
@@ -213,7 +214,15 @@ export const Quiz = ({
             Great job! <br /> You&apos;ve completed the lesson.
           </h1>
           <div className="flex items-center gap-x-4 w-full">
-            <ResultCard variant="points" value={challenges.length * 10} />
+            {isPractice ? (
+              <ResultCard
+                variant="points"
+                value={userProgress.points + challenges.length * 10}
+              />
+            ) : (
+              <ResultCard variant="points" value={challenges.length * 10} />
+            )}
+
             <ResultCard variant="hearts" value={hearts} />
           </div>
         </div>
