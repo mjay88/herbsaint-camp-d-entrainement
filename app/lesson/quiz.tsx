@@ -116,6 +116,7 @@ export const Quiz = ({
           })
           .catch(() => toast.error("Something went wrong. Please try again."));
       });
+      correctControls.play();
       return;
     }
 
