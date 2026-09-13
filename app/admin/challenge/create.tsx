@@ -34,6 +34,7 @@ export const ChallengeCreate = () => {
         <ReferenceInput source="lessonId" reference="lessons" />
 
         <NumberInput source="order" validate={[required()]} label="Order" />
+        <TextInput source="imageSrc" label="Image URL" defaultValue={""} />
       </SimpleForm>
     </Create>
   );
