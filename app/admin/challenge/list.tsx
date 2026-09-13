@@ -16,6 +16,7 @@ export const ChallengeList = () => {
         <TextField source="type" />
         <TextField source="question" />
         <NumberField source="order" />
+        <TextField source="imageSrc" />
       </Datagrid>
     </List>
   );
