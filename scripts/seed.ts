@@ -26,13 +26,14 @@ const main = async () => {
       },
       {
         id: 2,
-        title: "Dessert Menu",
-        imageSrc: "/pie.svg",
-      },
-      {
-        id: 3,
         title: "Front Waiter - Steps of Service",
         imageSrc: "/main-courses.svg",
+      },
+      //TODO: 
+      {
+        id: 3,
+        title: "Dessert Menu",
+        imageSrc: "/pie.svg",
       },
       {
         id: 4,
@@ -1100,7 +1101,7 @@ const main = async () => {
         lessonId: 6,
         type: "CURRICULUM",
         order: 160,
-        imageSrc: null,
+        imageSrc: "/desserts/vanilla-pot-de-creme.svg",
         question: `The Vanilla Pot de Crème contains dairy, citrus, and gluten (from the cookies).\n\nMarking: Teaspoon.`,
       },
       {
@@ -1196,7 +1197,7 @@ const main = async () => {
         lessonId: 6,
         type: "CURRICULUM",
         order: 280,
-        imageSrc: null,
+        imageSrc: "/desserts/flourless-chocolate-cake.svg",
         question: `The Flourless Chocolate Cake contains nuts (from the peanut brittle) and dairy.\n\nMarking: Appetizer Fork, Soup Spoon if à la mode.`,
       },
       {
@@ -1245,7 +1246,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 340,
         imageSrc: null,
-        question: `Changes frequently. Sometimes the ice cream can be made gluten free by omitting the cookie. The sorbet is always gluten-free without the cookie.\n\nMarking: Soup Spoon.`,
+        question: `Our ice cream and sorbet selection changes frequently. Sometimes the ice cream can be made gluten free by omitting the cookie. The sorbet is always gluten-free without the cookie.\n\nMarking: Soup Spoon.`,
       },
       {
         id: 78,
@@ -1261,7 +1262,7 @@ const main = async () => {
         lessonId: 6,
         type: "CURRICULUM",
         order: 380,
-        imageSrc: "/desserts/artisanal-cheese.svg",
+        imageSrc: null,
         question: `Artisanal Cheese:\n\nAlways a soft, a firm, and a bleu cheese offering, served with a fruit jam, Marcona almonds or pistachios, and lavash crackers.\n\nOur current offerings are:\n\nSoft — Walden, from Sequatchee Cove, Tennessee (cow, pasteurized)\nFirm — Griffin, from Sweet Grass Dairy, Thomasville, Georgia (cow, raw)\nBleu — Roquefort, France (sheep, raw)`,
       },
       {

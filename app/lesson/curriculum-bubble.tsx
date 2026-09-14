@@ -11,14 +11,14 @@ export const CurriculumBubble = ({ question, imageSrc }: Props) => {
       {imageSrc ? (
         <>
         <Image
-          src={`/desserts/banana-brown-butter-tart.svg`}
-          alt="Mascot"
+          src={imageSrc}
+          alt="Mascot" //TODO: Fix to appropriate string
           height={300}
           width={300}
           className="hidden lg:block"
           />
           <Image
-          src={`/desserts/banana-brown-butter-tart.svg`}
+          src={imageSrc}
           alt="Mascot"
           height={200}
           width={200}
