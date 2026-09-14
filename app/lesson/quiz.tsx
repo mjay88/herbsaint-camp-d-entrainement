@@ -243,7 +243,9 @@ export const Quiz = ({
         {incorrectAudio}
         <Header hearts={hearts} percentage={percentage} />
         <div className="flex gap-y-4 lg:gap-y-4 lg:max-w-4xl mx-auto text-center items-center justify-center h-full">
-          <CurriculumBubble question={challenge.question} />
+         
+          <CurriculumBubble question={challenge.question} imageSrc={challenge?.imageSrc} />
+          
         </div>
         <Footer
           disabled={!isCurriculum}
@@ -258,7 +260,7 @@ export const Quiz = ({
 
   const title =
     challenge.type === "ASSIST" ? "Select the best option" : challenge.question;
-
+ console.log("challenge: ", challenge)
   return (
     <>
       {finishAudio}
@@ -271,7 +273,6 @@ export const Quiz = ({
             <h1 className="text-lg lg:text-3xl text-center lg:text-start font-bold text-neutral-700">
               {title}
             </h1>
-
             <div>
               {challenge.type === "ASSIST" && (
                 <QuestionBubble question={challenge.question} />

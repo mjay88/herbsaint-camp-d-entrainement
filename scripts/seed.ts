@@ -54,11 +54,10 @@ const main = async () => {
         description: "The Basics",
         order: 1,
       },
-   
     ]);
-/**
- * Lessons for Course 1, Unit 1 Back waiter steps of service
- */
+    /**
+     * Lessons for Course 1, Unit 1 Back waiter steps of service
+     */
     await db.insert(schema.lessons).values([
       {
         id: 1,
@@ -90,17 +89,16 @@ const main = async () => {
         order: 5,
         title: "Serving Dessert and After Dinner Drinks",
       },
-     
+
       {
         id: 6,
-        unitId: 1, 
+        unitId: 1,
         order: 6,
         title: "The Dessert Menu",
       },
     ]);
-   
- //TODO: Make Dessert a stand alone course as well
 
+    //TODO: Make Dessert a stand alone course as well
 
     /**
      * Course id - 1: Back Waiter Steps of Service
@@ -820,7 +818,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 4,
         imageSrc: null,
-        question: `Mark for dessert, dropping share plates when appropriate. Silverware should be dropped to the guest's sides, fork on the left, spoon on the right. Check if anyone needs a new napkin. This should be done prior to ringing in the dessert order.\\nServe dessert from the guest's left with your left hand, announcing it when dropping. Check back with your guest within 2 bites or 2 minutes. Are the guests involved in conversation? Can this QC should be accomplished by simply topping off drinks and making eye contact with each guest?.`,
+        question: `Mark for dessert, dropping share plates when appropriate. Silverware should be dropped to the guest's sides, fork on the left, spoon on the right. Check if anyone needs a new napkin. This should be done prior to ringing in the dessert order.\n\nServe dessert from the guest's left with your left hand, announcing it when dropping. Check back with your guest within 2 bites or 2 minutes. Are the guests involved in conversation? Can this QC should be accomplished by simply topping off drinks and making eye contact with each guest?.`,
       },
 
       {
@@ -837,7 +835,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 6,
         imageSrc: null,
-        question: `Keep refilling water as long as guests are still seated and manicure the table, even after check has been picked up.\\nThank guests as they are leaving.`,
+        question: `Keep refilling water as long as guests are still seated and manicure the table, even after check has been picked up.\n\nThank guests as they are leaving.`,
       },
       {
         id: 41,
@@ -969,7 +967,7 @@ const main = async () => {
       },
     ]);
 
-   /**
+    /**
      * Course id - 1: Back Waiter Steps of Service
      * Unit id - 1:  Back Waiter - Steps of Service
      * Lesson id - 6: Dessert Menu
@@ -995,15 +993,355 @@ const main = async () => {
       {
         id: 46,
         lessonId: 6,
-        type: "CURRICULUM",
+        type: "SELECT",
         order: 3,
         imageSrc: null,
-        question: `It is important to communicate with the guest regarding the severity of any potential food allergies. The bakery upholds the same high standards of food safety that all Link Restaurant groups do, but since our desserts are not made in house we cannot 100% guarantee that they are cross-contamination safe as far as guests allergies are concerned.`,
+        question: `Where are all of our desserts made?`,
+      },
+      {
+        id: 47,
+        lessonId: 6,
+        type: "SELECT",
+        order: 4,
+        imageSrc: null,
+        question: `Who is the executive pastry chef for the Link Restaurant Group?`,
+      },
+      {
+        id: 48,
+        lessonId: 6,
+        type: "SELECT",
+        order: 5,
+        imageSrc: null,
+        question: `What is the correct verbiage regarding allergies and cross-contamination concerning our dessert menu?`,
+      },
+      {
+        id: 49,
+        lessonId: 6,
+        type: "CURRICULUM",
+        order: 6,
+        imageSrc: "/desserts/banana-brown-butter-tart.svg",
+        question: `The Banana Brown Butter Tart:\n\nA shell of pasta frolla dough is filled with slices of banana and a spiced brown butter filling. Pasta frolla is an Italian sweet shortcrust pastry. It's made from flour, butter, sugar, and egg yolks, giving it a rich, sandy, cookie-like texture rather than the flaky layers of a traditional pie crust.`,
+      },
+      {
+        id: 50,
+        lessonId: 6,
+        type: "CURRICULUM",
+        order: 7,
+        imageSrc: "/desserts/banana-brown-butter-tart.svg",
+        question: `The tart is served with: crème fraîche, which is a slightly soured cream, tangier and thicker than regular whipped cream, with a subtle cultured flavor; salted caramel; as well as brûléed bananas. \n\nSliced bananas are topped with sugar and then torched quickly to create a thin, crackly caramelized shell.\n\nThe Banana brown butter tart has been on the Herbsaint menu since day one. It is by far our most well-known and popular dessert.`,
+      },
+      {
+        id: 51,
+        lessonId: 6,
+        type: "CURRICULUM",
+        order: 8,
+        imageSrc: null,
+        question: `The Banana Brown Butter Tart can be served à la mode with either vanilla or the ICDJ. It does not contain nuts. It is also not gluten free, due to the crust containing flour.\n\nMarking: Appetizer Fork, Soup spoon if à la mode.`,
+      },
+      {
+        id: 52,
+        lessonId: 6,
+        type: "SELECT",
+        order: 9,
+        imageSrc: null,
+        question: `What is pasta frolla dough?`,
+      },
+      {
+        id: 53,
+        lessonId: 6,
+        type: "SELECT",
+        order: 10,
+        imageSrc: null,
+        question: `What best describes crème fraîche?`,
+      },
+      {
+        id: 54,
+        lessonId: 6,
+        type: "SELECT",
+        order: 11,
+        imageSrc: null,
+        question: `Can the Banana Brown Butter Tart be served with ice cream?`,
+      },
+      {
+        id: 55,
+        lessonId: 6,
+        type: "SELECT",
+        order: 12,
+        imageSrc: null,
+        question: `Can the Banana Brown Butter Tart be modified to be gluten free?`,
+      },
+      {
+        id: 56,
+        lessonId: 6,
+        type: "CURRICULUM",
+        order: 13,
+        imageSrc: null,
+        question: `The suggested wine pairing for the Banana Brown Butter Tart is Petit Métris "Chaumes" 2015, Coteaux du Layon.\n\nMade from late-harvest, vine-dried Chenin Blanc. Bright and refreshingly balanced with aromas of apples and pears dressed in cinnamon. More tropical and exotic on the palate. Pronounced acidity. Sweet yet balanced. Pairs beautifully with the Banana Brown Butter Tart — its bright acidity cuts through the richness of the brown butter and caramel, while its notes of apple, pear, and cinnamon echo the tart's warm spice and caramelized banana.`,
+      },
+     
+      {
+        id: 57,
+        lessonId: 6,
+        type: "SELECT",
+        order: 14,
+        imageSrc: null,
+        question: `What is the suggested wine pairing for the Banana Brown Butter Tart?`,
       },
     ]);
 
-    
+    /**
+     * ChallengeOptions - lessonId : 6
+     */
+    //  {
+    //     id: 46,
+    //     lessonId: 6,
+    //     type: "SELECT",
+    //     order: 3,
+    //     imageSrc: null,
+    //     question: `Where are all of our desserts made?`,
+    //   },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 46,
+        imageSrc: "",
+        correct: false,
+        text: `We make our desserts in house in the back prep kitchen.`,
+      },
+      {
+        challengeId: 46,
+        imageSrc: "",
+        correct: false,
+        text: `Our desserts are all sourced from local farmers.`,
+      },
+      {
+        challengeId: 46,
+        imageSrc: "",
+        correct: true,
+        text: `La Boulangerie - Link Restaurant Group's neighborhood bakery and cafe.`,
+      },
+      {
+        challengeId: 46,
+        imageSrc: "",
+        correct: false,
+        text: `Paul Hollywood from the Great British Bake-off makes all of our desserts.`,
+      },
+    ]);
+    //  {
+    //       id: 47,
+    //       lessonId: 6,
+    //       type: "SELECT",
+    //       order: 4,
+    //       imageSrc: null,
+    //       question: `Who is the executive pastry chef for the Link Restaurant Group?`,
+    //     },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 47,
+        imageSrc: "",
+        correct: false,
+        text: `Donald Link`,
+      },
+      {
+        challengeId: 47,
+        imageSrc: "",
+        correct: false,
+        text: `Stephen Stryjewski`,
+      },
+      {
+        challengeId: 47,
+        imageSrc: "",
+        correct: false,
+        text: `Paul Hollywood from the Great British Bake-off.`,
+      },
+      {
+        challengeId: 47,
+        imageSrc: "",
+        correct: true,
+        text: `Maggie Scales`,
+      },
+    ]);
+    // {
+    //     id: 48,
+    //     lessonId: 6,
+    //     type: "SELECT",
+    //     order: 5,
+    //     imageSrc: null,
+    //     question: `What is the correct verbiage regarding allergies and cross-contamination concerning our dessert menu?`,
+    //   },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 48,
+        imageSrc: "",
+        correct: true,
+        text: `Since our desserts are not made in house we cannot 100% guarantee that they are cross-contamination safe as far as allergies are concerned.`,
+      },
+      {
+        challengeId: 48,
+        imageSrc: "",
+        correct: false,
+        text: `If you have a soy bean allergy you shouldn't even be in the building.`,
+      },
+      {
+        challengeId: 48,
+        imageSrc: "",
+        correct: false,
+        text: `We have epipens on hand just in case anything goes terribly wrong.`,
+      },
+      {
+        challengeId: 48,
+        imageSrc: "",
+        correct: false,
+        text: `We do not need to worry about cross-contamination when it comes to desserts.`,
+      },
+    ]);
+    //  {
+    //         id: 52,
+    //         lessonId: 6,
+    //         type: "SELECT",
+    //         order: 9,
+    //         imageSrc: null,
+    //         question: `What is pasta frolla dough?`,
+    //       },
 
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 52,
+        imageSrc: "",
+        correct: false,
+        text: `A type of pie crust made out of graham crackers and spices.`,
+      },
+      {
+        challengeId: 52,
+        imageSrc: "",
+        correct: true,
+        text: `An Italian sweet shortcrust pastry.`,
+      },
+      {
+        challengeId: 52,
+        imageSrc: "",
+        correct: false,
+        text: `A flourless type of pastry shell.`,
+      },
+      {
+        challengeId: 52,
+        imageSrc: "",
+        correct: false,
+        text: `A rich pastry shell made with equal parts butter and flour.`,
+      },
+    ]);
+    // {
+    //   id: 53,
+    //   lessonId: 6,
+    //   type: "SELECT",
+    //   order: 10,
+    //   imageSrc: null,
+    //   question: `What best describes crème fraîche?`,
+    // },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 53,
+        imageSrc: "",
+        correct: false,
+        text: `It is the same as sour cream just with sugar added to it.`,
+      },
+      {
+        challengeId: 53,
+        imageSrc: "",
+        correct: false,
+        text: `It is a really fresh cream. Fraîche is French for "fresh".`,
+      },
+      {
+        challengeId: 53,
+        imageSrc: "",
+        correct: false,
+        text: `It is a cream made from goats milk and honey.`,
+      },
+      {
+        challengeId: 53,
+        imageSrc: "",
+        correct: true,
+        text: `A slightly soured cream, tangier and thicker than regular whipped cream, with a subtle cultured flavor.`,
+      },
+    ]);
+    //  {
+    //     id: 54,
+    //     lessonId: 6,
+    //     type: "SELECT",
+    //     order: 11,
+    //     imageSrc: null,
+    //     question: `Can the Banana Brown Butter Tart be served with ice cream?`,
+    //   },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 54,
+        imageSrc: "",
+        correct: true,
+        text: `Yes. Either vanilla or the Ice Cream of the Day.`,
+      },
+      {
+        challengeId: 54,
+        imageSrc: "",
+        correct: false,
+        text: `No. It comes as is.`,
+      },
+    ]);
+    // {
+    //   id: 55,
+    //   lessonId: 6,
+    //   type: "SELECT",
+    //   order: 12,
+    //   imageSrc: null,
+    //   question: `Can the Banana Brown Butter Tart be modified to be gluten free?`,
+    // },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 55,
+        imageSrc: "",
+        correct: false,
+        text: `Yes. It can be made with a gluten free crust.`,
+      },
+      {
+        challengeId: 55,
+        imageSrc: "",
+        correct: true,
+        text: `No. The pastry dough contains gluten.`,
+      },
+    ]);
+
+    //  {
+    //     id: 58,
+    //     lessonId: 6,
+    //     type: "SELECT",
+    //     order: 15,
+    //     imageSrc: null,
+    //     question: `What is the suggested wine pairing for the Banana Brown Butter Tart?`,
+    //   },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 57,
+        imageSrc: "",
+        correct: false,
+        text: `Tawny Port, Niepoort 10y`,
+      },
+      {
+        challengeId: 57,
+        imageSrc: "",
+        correct: false,
+        text: `Fernet-Branca Menta`,
+      },
+      {
+        challengeId: 57,
+        imageSrc: "",
+        correct: true,
+        text: `Petit Métris "Chaumes" 2015, Coteaux du Layon.`,
+      },
+      {
+        challengeId: 57,
+        imageSrc: "",
+        correct: false,
+        text: `Moscato d'Asti. Elio Perrone, 'Sourgal' 2024`,
+      },
+    ]);
     //Syncs react-admin and react-simple-data-rest with existing db
     await db.execute(
       sql`SELECT setval('courses_id_seq', (SELECT MAX(id) FROM courses))`,
