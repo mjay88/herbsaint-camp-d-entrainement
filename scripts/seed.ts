@@ -42,6 +42,11 @@ const main = async () => {
       },
       {
         id: 5,
+        title: "Drinks Menu",
+        imageSrc: "/glass-wine.svg",
+      },
+      {
+        id: 6,
         title: "Wine Service Standards",
         imageSrc: "/wine-red.svg",
       },
