@@ -29,7 +29,7 @@ const main = async () => {
         title: "Front Waiter - Steps of Service",
         imageSrc: "/main-courses.svg",
       },
-      //TODO: 
+      //TODO: How to include The Dessert Menu and The Menu as their own stand alone courses. I don't want one single lesson-button for the entire course. Or who cares if its one button.
       {
         id: 3,
         title: "Dessert Menu",
@@ -51,8 +51,8 @@ const main = async () => {
       {
         id: 1,
         courseId: 1,
-        title: "Back Waiter - Steps of Service",
-        description: "The Basics",
+        title: "Back Waiter",
+        description: "Steps of Service",
         order: 10,
       },
     ]);
@@ -506,7 +506,7 @@ const main = async () => {
         challengeId: 15,
         imageSrc: "",
         correct: false,
-        text: `After the last guest has finished their entree.`,
+        text: `After the last guest has finished their entrée.`,
       },
       {
         challengeId: 15,
@@ -1951,6 +1951,2163 @@ const main = async () => {
         imageSrc: "",
         correct: false,
         text: `A Double hopped IPA.`,
+      },
+    ]);
+
+    /**
+     * Course id - 2: Front Waiter - Steps of Service
+     * Unit id - 2: Front Waiter - Steps of Service
+     */
+    await db.insert(schema.units).values([
+      {
+        id: 2,
+        courseId: 2,
+        title: "Front Waiter",
+        description: "Steps of Service",
+        order: 10,
+      },
+    ]);
+
+    /**
+     * Lessons for Course 2, Unit 2 Front Waiter Steps of Service
+     */
+    await db.insert(schema.lessons).values([
+      {
+        id: 8,
+        unitId: 2,
+        order: 10,
+        title: "Greeting the Table and Beverage Service",
+      },
+      {
+        id: 9,
+        unitId: 2,
+        order: 20,
+        title: "Taking the Order",
+      },
+      {
+        id: 10,
+        unitId: 2,
+        order: 30,
+        title: "Ringing in the Order",
+      },
+      {
+        id: 11,
+        unitId: 2,
+        order: 40,
+        title: `The Pass / Expo Window`,
+      },
+      {
+        id: 12,
+        unitId: 2,
+        order: 50,
+        title: "Wine Service",
+      },
+      {
+        id: 13,
+        unitId: 2,
+        order: 60,
+        title: "First Course",
+      },
+      {
+        id: 14,
+        unitId: 2,
+        order: 70,
+        title: "Second Course",
+      },
+      {
+        id: 15,
+        unitId: 2,
+        order: 80,
+        title: "Serving Dessert",
+      },
+      {
+        id: 16,
+        unitId: 2,
+        order: 90,
+        title: "Critical Points of Service",
+      },
+    ]);
+
+    /**
+     * Course id - 2: Front Waiter - Steps of Service
+     * Unit id - 2: Front Waiter - Steps of Service
+     * Lesson id - 8: Greeting the Table and Beverage Service
+     */
+    await db.insert(schema.challenges).values([
+      {
+        id: 107,
+        lessonId: 8,
+        type: "CURRICULUM",
+        order: 10,
+        imageSrc: null,
+        question: `The Host/Hostess will provide a Resy Chit for the seated table. Read all pertinent information before approaching the table.\n\nThis information may include: XXP status, number of visits, and friends of notes; dietary restrictions and allergies; birthday or anniversary celebration notes; item purchases or pre-orders — often to be immediately brought to the table; and a detailed run of show.`,
+      },
+      {
+        id: 108,
+        lessonId: 8,
+        type: "CURRICULUM",
+        order: 20,
+        imageSrc: null,
+        question: `Greet the table within 60 seconds of seating. Introduce yourself and your partner, and smile and make eye contact. This greeting will set the tone of the guests' entire meal. You are always knowledgeable and confident.\n\nThis initial interaction is when you make the guest really feel like you know everything about the restaurant, that they can relax, and let you guide them through their dining experience. We're here to create a warm and welcoming environment. The guests should feel like they are in good hands.\n\n"Hi, welcome to Herbsaint. My name is ____."\n"My partner ____ and I will be serving you this afternoon/evening."\n\nOften, this is your table's first time dining with us. Introducing yourself and your partner helps set the expectation of team service, for those not familiar with this style of service.`,
+      },
+      {
+        id: 109,
+        lessonId: 8,
+        type: "CURRICULUM",
+        order: 30,
+        imageSrc: null,
+        question: `Take this time to make your initial read of the table. This is the most important step in determining how you'll treat the table, from diction and posture, to level of engagement.\n\nIs this an LRG Regular or XXP? Who is the host? Is this a business meeting, a celebration, or a first date? Are the guests already looking at the wine list? Do the guests want to be engaged and guided, or left with minimal interruptions? As you approach the table, are you interrupting, or rescuing?`,
+      },
+      {
+        id: 110,
+        lessonId: 8,
+        type: "SELECT",
+        order: 40,
+        imageSrc: null,
+        question: `Why is the initial read of the table considered the most important step in determining service style?`,
+      },
+      {
+        id: 111,
+        lessonId: 8,
+        type: "SELECT",
+        order: 50,
+        imageSrc: null,
+        question: `Within how many seconds should a table be greeted after being seated?`,
+      },
+      {
+        id: 112,
+        lessonId: 8,
+        type: "CURRICULUM",
+        order: 60,
+        imageSrc: null,
+        question: `While greeting the guests, reach to the center of the table and push the Salt and Pepper shakers together. For patio tables, greet with a Herbsaint logo coaster.\n\nThis is a non-verbal cue, signaling to your partner that the table, inside or outside, has been greeted.`,
+      },
+      {
+        id: 113,
+        lessonId: 8,
+        type: "CURRICULUM",
+        order: 70,
+        imageSrc: null,
+        question: `Ask for the guests' preferred water service. Never say: "bottled, or just tap?"\n\n"Would you prefer bottled still, sparkling, or ice water this afternoon/evening."\n\nThis is also the time to mention our cocktails, wines by the glass, and beers on the back of the menu.\n\nCommunicate the guests' water preference to your Back Waiter. Never automatically bring ice water. It sets a tone of being rushed and the table's needs being ignored from the beginning.\n\nHand signals are the fastest way to communicate, silently and from across the floor: tap on your shoulder means tap water, "bubble" fingers means sparkling bottled water, and swiping your hand from left to right means still bottled water.`,
+      },
+      {
+        id: 114,
+        lessonId: 8,
+        type: "SELECT",
+        order: 80,
+        imageSrc: null,
+        question: `What is the hand signal for sparkling bottled water?`,
+      },
+      {
+        id: 115,
+        lessonId: 8,
+        type: "SELECT",
+        order: 90,
+        imageSrc: null,
+        question: `What should you never ask a table when offering water service?`,
+      },
+      {
+        id: 215,
+        lessonId: 8,
+        type: "CURRICULUM",
+        order: 99,
+        imageSrc: null,
+        question: `Once your back waiter delivers water service, approach the table to ask if they're ready to order beverages. Use your knowledge of the spirit list to ask for a spirit preference and any qualifying questions for classic cocktails (vermouth, twist, olives, up/rocks, etc). If guests would like to start with a bottle of wine, guide them through the list or suggest to send over a manager if they have more detailed questions.`,
+      },
+      {
+        id: 116,
+        lessonId: 8,
+        type: "CURRICULUM",
+        order: 100,
+        imageSrc: null,
+        question: `Deliver the drinks from the bar to the table within 3-4 minutes of ordering.\n\nAlways use a tray in your left hand. Announce the beverage as it is served with your right hand, to the guest's right. Hold glasses at the stem or as close to the base as possible. Never touch or get even close to the rim.`,
+      },
+      {
+        id: 117,
+        lessonId: 8,
+        type: "CURRICULUM",
+        order: 110,
+        imageSrc: null,
+        question: `Do not stand at the bar waiting for drinks. If drinks are taking longer than 5 minutes, alert a manager.\n\nInstead of waiting and staring run another sections drinks, run some food, or check on your section.\n\n.If other drinks are ready when yours are, add them to your tray and deliver multiple tables. Teamwork goes beyond your section!`,
+      },
+      {
+        id: 118,
+        lessonId: 8,
+        type: "SELECT",
+        order: 120,
+        imageSrc: null,
+        question: `Should you stand at the bar staring at the bartenders while they make your drinks, like you have nothing better to do?`,
+      },
+      {
+        id: 119,
+        lessonId: 8,
+        type: "CURRICULUM",
+        order: 130,
+        imageSrc: null,
+        question: `As drinks are delivered, this is the opportune time to recite the daily off-menu specials without further interrupting the table. Maintain eye contact with guests and continue smiling.\n\nWhen special cards are printed, do not read the specials. Elaborate on the preparation and ingredients, while highlighting the card and our signature items.\n\nInform the guests of any 86'd items: "Unfortunately, we are out of _____ tonight."\n\nOffer to answer any questions. Be sure of the facts. Never make things up.\n\nPoint out the wine list and offer to suggest wine. If a guest has specific questions about the wine list you're not comfortable answering, offer to send a manager or sommelier to the table.`,
+      },
+      {
+        id: 120,
+        lessonId: 8,
+        type: "SELECT",
+        order: 140,
+        imageSrc: null,
+        question: `If a guest asks a specific wine list question you are not comfortable answering, what should you do?`,
+      },
+      {
+        id: 121,
+        lessonId: 8,
+        type: "CURRICULUM",
+        order: 150,
+        imageSrc: null,
+        question: `While at the table, never lean at or over it, or support yourself with one hand on the table or on the back of a chair. Never sit down, crouch next to, or touch a guest.`,
+      },
+      {
+        id: 122,
+        lessonId: 8,
+        type: "SELECT",
+        order: 160,
+        imageSrc: null,
+        question: `Which of the following should be avoided while at a guest's table?`,
+      },
+    ]);
+
+    /**
+     * ChallengeOptions - lessonId : 8
+     */
+
+    // { id: 110, lessonId: 8, type: "SELECT", order: 40, question: `Why is the initial read of the table considered the most important step in determining service style?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 110,
+        imageSrc: "",
+        correct: true,
+        text: `It determines how you'll treat the table, from diction and posture to level of engagement.`,
+      },
+      {
+        challengeId: 110,
+        imageSrc: "",
+        correct: false,
+        text: `It determines how much to charge the table for their meal.`,
+      },
+      {
+        challengeId: 110,
+        imageSrc: "",
+        correct: false,
+        text: `It has no real impact, every table should be treated exactly the same.`,
+      },
+      {
+        challengeId: 110,
+        imageSrc: "",
+        correct: false,
+        text: `It determines whether the table is going to be a pain in the ass or not.`,
+      },
+    ]);
+
+    // { id: 111, lessonId: 8, type: "SELECT", order: 50, question: `Within how many seconds should a table be greeted after being seated?` },
+    await db.insert(schema.challengeOptions).values([
+      { challengeId: 111, imageSrc: "", correct: false, text: `45 minutes` },
+      { challengeId: 111, imageSrc: "", correct: false, text: `2 minutes` },
+      { challengeId: 111, imageSrc: "", correct: false, text: `10 seconds` },
+      { challengeId: 111, imageSrc: "", correct: true, text: `60 seconds` },
+    ]);
+
+    // { id: 114, lessonId: 8, type: "SELECT", order: 80, question: `What is the hand signal for sparkling bottled water?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 114,
+        imageSrc: "",
+        correct: false,
+        text: `Tap on your shoulder.`,
+      },
+      {
+        challengeId: 114,
+        imageSrc: "",
+        correct: true,
+        text: `"Bubble" fingers.`,
+      },
+      {
+        challengeId: 114,
+        imageSrc: "",
+        correct: false,
+        text: `Swipe your hand from left to right.`,
+      },
+      { challengeId: 114, imageSrc: "", correct: false, text: `A thumbs up.` },
+    ]);
+
+    // { id: 115, lessonId: 8, type: "SELECT", order: 90, question: `What should you never ask a table when offering water service?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 115,
+        imageSrc: "",
+        correct: true,
+        text: `"Bottled, or just tap?"`,
+      },
+      {
+        challengeId: 115,
+        imageSrc: "",
+        correct: false,
+        text: `"Would you prefer bottled still, sparkling, or ice water?"`,
+      },
+      {
+        challengeId: 115,
+        imageSrc: "",
+        correct: false,
+        text: `"Is Mississippi River tap water fine for everyone?"`,
+      },
+      {
+        challengeId: 115,
+        imageSrc: "",
+        correct: false,
+        text: `"Can I start everyone off with some water?"`,
+      },
+    ]);
+
+    // { id: 118, lessonId: 8, type: "SELECT", order: 120, question: `Should you stand at the bar staring at the bartenders while they make your drinks, like you have nothing better to do?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 118,
+        imageSrc: "",
+        correct: false,
+        text: `Yes, it helps them move faster.`,
+      },
+      {
+        challengeId: 118,
+        imageSrc: "",
+        correct: false,
+        text: `Yes, that way you can run them exactly when they are ready.`,
+      },
+      {
+        challengeId: 118,
+        imageSrc: "",
+        correct: true,
+        text: `No. There is plenty to do. Make yourself useful and circle back for the drinks in a minute or two.`,
+      },
+      {
+        challengeId: 118,
+        imageSrc: "",
+        correct: false,
+        text: `Yes, bartenders like the attention.`,
+      },
+    ]);
+
+    // { id: 120, lessonId: 8, type: "SELECT", order: 140, question: `If a guest asks a specific wine list question you are not comfortable answering, what should you do?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 120,
+        imageSrc: "",
+        correct: false,
+        text: `Make something up on the spot, they'll never know.`,
+      },
+      {
+        challengeId: 120,
+        imageSrc: "",
+        correct: false,
+        text: `Tell the guest you don't know and walk away.`,
+      },
+      {
+        challengeId: 120,
+        imageSrc: "",
+        correct: true,
+        text: `Offer to send a manager or sommelier to the table.`,
+      },
+      {
+        challengeId: 120,
+        imageSrc: "",
+        correct: false,
+        text: `Anwser their question with a question of your own. Example: do you prefer earthy or more fruit forward wine?`,
+      },
+    ]);
+
+    // { id: 122, lessonId: 8, type: "SELECT", order: 160, question: `Which of the following should be avoided while at a guest's table?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 122,
+        imageSrc: "",
+        correct: true,
+        text: `Leaning on the table or the back of a guest's chair.`,
+      },
+      {
+        challengeId: 122,
+        imageSrc: "",
+        correct: false,
+        text: `Making eye contact with the guest.`,
+      },
+      {
+        challengeId: 122,
+        imageSrc: "",
+        correct: false,
+        text: `Announcing the dish you're serving.`,
+      },
+      { challengeId: 122, imageSrc: "", correct: false, text: `Smiling.` },
+    ]);
+
+    /**
+     * Course id - 2: Front Waiter - Steps of Service
+     * Unit id - 2: Front Waiter - Steps of Service
+     * Lesson id - 9: Taking the Order
+     */
+    await db.insert(schema.challenges).values([
+      {
+        id: 123,
+        lessonId: 9,
+        type: "CURRICULUM",
+        order: 10,
+        imageSrc: null,
+        question: `Return to the table within 3-5 minutes to take the order. We encourage each table to provide a full order. Women's orders should be taken first if at all possible.\n\nWrite down each order with the corresponding seat number in your server book. Note all special requests, and repeat the order back to the guests. Always write down the order. Don't rely on memory.`,
+      },
+      {
+        id: 124,
+        lessonId: 9,
+        type: "CURRICULUM",
+        order: 20,
+        imageSrc: null,
+        question: `Let the table know how you plan on grouping and coursing their order. This will remove any uncertainty for you or for the guest. With the full order taken, Chef will be in control of the pacing for each course.`,
+      },
+      {
+        id: 216,
+        lessonId: 9,
+        type: "CURRICULUM",
+        order: 21,
+        imageSrc: null,
+        question: `As ambassadors for the restaurant, we know the menu inside and out. It is our job to help the guest navigate their meal so they have the optimal experience. Alert tables of items with long cook times so that they are not wondering and waiting where their food is.\n\nSuggest reorganizing their courses if it would enhance their meal and make sense. Know the dishes well enough to answer general questions regarding allergies and possible modifications. Do not “upsell” by being pushy. Describe the menu eloquently, but do not only suggest high priced items or too much food, be intentional and always in the best interest of the guest.`,
+      },
+      {
+        id: 125,
+        lessonId: 9,
+        type: "SELECT",
+        order: 30,
+        imageSrc: null,
+        question: `Within how many minutes should you return to the table to take the order?`,
+      },
+      {
+        id: 126,
+        lessonId: 9,
+        type: "SELECT",
+        order: 40,
+        imageSrc: null,
+        question: `Ideally, whose order should be taken first at the table?`,
+      },
+      {
+        id: 127,
+        lessonId: 9,
+        type: "CURRICULUM",
+        order: 50,
+        imageSrc: null,
+        question: `Handling special requests is part of guiding the guest's experience. If a guest asks if we have anything for vegetarians, let them know we have several vegetarian-friendly items and point them out, communicating any additional dietary restrictions to the kitchen via kitchen modifiers. The chef prepares a vegetarian and vegan friendly entrée daily. It should be posted in the server alley.`,
+      },
+      {
+        id: 217,
+        lessonId: 9,
+        type: "CURRICULUM",
+        order: 51,
+        imageSrc: null,
+        question: `If asked what we have for kids, point out the child-friendly items on the menu and mention other items the kitchen regularly prepares for children. Ask parents if they'd like the child's order to come out as soon as possible, with the first course, or with the rest of the table's meal. Children's dishes are not available for adults.`,
+      },
+      {
+        id: 128,
+        lessonId: 9,
+        type: "CURRICULUM",
+        order: 60,
+        imageSrc: null,
+        question: `As a rule of thumb, you can subtract from a dish rather than add to it, unless the item is cooked into the dish. For example: a guest can order the Duck Leg Confit without the Yellow Squash, with a side of Green Beans instead.`,
+      },
+      {
+        id: 218,
+        lessonId: 9,
+        type: "CURRICULUM",
+        order: 61,
+        imageSrc: null,
+        question: `If a guest mentions an allergy, say "Pardon me for just a moment, and I'll check with the Chef". Use the allergy matrix posted in the server alley as your guide, but always double check with the kitchen expo. Guide them through the approved items on the menu according to their specific sensitivities. Never assume, guess, or try to figure it out on your own. Allergies are a serious liability for which the Chef is solely responsible.`,
+      },
+      {
+        id: 129,
+        lessonId: 9,
+        type: "SELECT",
+        order: 70,
+        imageSrc: null,
+        question: `What should you do if a guest tells you they have a food allergy?`,
+      },
+      {
+        id: 130,
+        lessonId: 9,
+        type: "SELECT",
+        order: 80,
+        imageSrc: null,
+        question: `Can you substitue ingredients that aren't cooked into the dish?`,
+      },
+      {
+        id: 131,
+        lessonId: 9,
+        type: "CURRICULUM",
+        order: 90,
+        imageSrc: null,
+        question: `If a guest requests a swap, like the Blueberry Fried Pie with Vanilla Ice Cream, simply say "Certainly," ring in the substitution, and inform the Expo window of the change.\n\nAny guest may order food to go, with a few exceptions: raw or undercooked food, or food that does not travel well. See the Chef or a manager with any questions. Desserts may be ordered to go as long as they don't include frozen items or items served in a ramekin.`,
+      },
+      {
+        id: 132,
+        lessonId: 9,
+        type: "CURRICULUM",
+        order: 100,
+        imageSrc: null,
+        question: `Our goal is to always make guests feel comfortable and welcome, even when we can't accommodate a particular request. Rather than telling a guest "No substitutions," try a positive redirection: "I'm happy to order you a side of ______."\n\nThis lets the guest know you'll get them something they'll enjoy, while also letting them know to expect the item on the bill, avoiding awkward situations later.`,
+      },
+      {
+        id: 133,
+        lessonId: 9,
+        type: "SELECT",
+        order: 110,
+        imageSrc: null,
+        question: `Instead of saying "No substitutions," what should you say to a guest?`,
+      },
+      {
+        id: 134,
+        lessonId: 9,
+        type: "CURRICULUM",
+        order: 120,
+        imageSrc: null,
+        question: `The Front Waiter is responsible for pre-setting share plates and share spoons for the first course, before the order goes into Toast. This is the time to make room in the center of the table for those shared items to be dropped. Communicate with your Back Waiter, mentioning share plates, marking, and any special needs.`,
+      },
+      {
+        id: 135,
+        lessonId: 9,
+        type: "CURRICULUM",
+        order: 130,
+        imageSrc: null,
+        question: `Remove menus and bring them to the host stand or wait station. Menus should never be tucked under your arm while you take another order. Looking in control, even when we're on the hustle, makes the dining room appear under control and puts guests at ease.\n\nAfter the order is taken, scan the table and remove excess or unnecessary silver, debris, and glasses that will not be needed.`,
+      },
+      {
+        id: 136,
+        lessonId: 9,
+        type: "CURRICULUM",
+        order: 140,
+        imageSrc: null,
+        question: `Prior to ringing the order into Toast, be aware of menu items that come out quickly, and time your order so water, bread, and wine or cocktails are on the table before the first course arrives.\n\nIf soups or salads are the only items ordered for the first course, hold the food order for an appropriate amount of time to allow your Back Waiter to serve bread first.`,
+      },
+      {
+        id: 137,
+        lessonId: 9,
+        type: "SELECT",
+        order: 150,
+        imageSrc: null,
+        question: `Why should you time when you send an order into Toast?`,
+      },
+    ]);
+
+    /**
+     * ChallengeOptions - lessonId : 9
+     */
+
+    // { id: 125, lessonId: 9, type: "SELECT", order: 30, question: `Within how many minutes should you return to the table to take the order?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 125,
+        imageSrc: "",
+        correct: false,
+        text: `45-60 minutes.`,
+      },
+      {
+        challengeId: 125,
+        imageSrc: "",
+        correct: false,
+        text: `Immediately after greeting.`,
+      },
+      { challengeId: 125, imageSrc: "", correct: true, text: `3-5 minutes.` },
+      {
+        challengeId: 125,
+        imageSrc: "",
+        correct: false,
+        text: `Only once the guest flags you down.`,
+      },
+    ]);
+
+    // { id: 126, lessonId: 9, type: "SELECT", order: 40, question: `Ideally, whose order should be taken first at the table?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 126,
+        imageSrc: "",
+        correct: true,
+        text: `Women's orders.`,
+      },
+      {
+        challengeId: 126,
+        imageSrc: "",
+        correct: false,
+        text: `The host's order.`,
+      },
+      {
+        challengeId: 126,
+        imageSrc: "",
+        correct: false,
+        text: `Whoever looks the hungriest or has been the pushiest so far.`,
+      },
+      {
+        challengeId: 126,
+        imageSrc: "",
+        correct: false,
+        text: `It doesn't matter, take orders in a clockwise direction.`,
+      },
+    ]);
+
+    // { id: 129, lessonId: 9, type: "SELECT", order: 70, question: `What should you do if a guest tells you they have a food allergy?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 129,
+        imageSrc: "",
+        correct: false,
+        text: `Use your best judgment to recommend a dish.`,
+      },
+      {
+        challengeId: 129,
+        imageSrc: "",
+        correct: true,
+        text: `Reference the allergy matrix in the server alley, then double check with the kitchen expo according to their specific sensitivities.`,
+      },
+      {
+        challengeId: 129,
+        imageSrc: "",
+        correct: false,
+        text: `Tell them to avoid anything that sounds risky.`,
+      },
+      {
+        challengeId: 129,
+        imageSrc: "",
+        correct: false,
+        text: `Tell them to live a little and just go for it. What's the worst that could happen?`,
+      },
+    ]);
+
+    // { id: 130, lessonId: 9, type: "SELECT", order: 80, question: `As a general rule, can you add ingredients to a dish that aren't already part of it?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 130,
+        imageSrc: "",
+        correct: false,
+        text: `Yes, but only if it makes the dish spicier though.`,
+      },
+      {
+        challengeId: 130,
+        imageSrc: "",
+        correct: true,
+        text: `No. As a rule, you can subtract from a dish rather than add to it.`,
+      },
+      {
+        challengeId: 130,
+        imageSrc: "",
+        correct: false,
+        text: `Yes, guests can create whatever dish they would like, the Chef loves that actually.`,
+      },
+      {
+        challengeId: 130,
+        imageSrc: "",
+        correct: false,
+        text: `No modifications of any kind are ever allowed.`,
+      },
+    ]);
+
+    // { id: 133, lessonId: 9, type: "SELECT", order: 110, question: `Instead of saying "No substitutions," what should you say to a guest?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 133,
+        imageSrc: "",
+        correct: false,
+        text: `"I'm sorry, I don't think I quite understand the question."`,
+      },
+      {
+        challengeId: 133,
+        imageSrc: "",
+        correct: true,
+        text: `"I'm happy to order you a side of ______."`,
+      },
+      {
+        challengeId: 133,
+        imageSrc: "",
+        correct: false,
+        text: `"You'll have to ask the kitchen yourself."`,
+      },
+      {
+        challengeId: 133,
+        imageSrc: "",
+        correct: false,
+        text: `"Sorry, this isn't Chipotle."`,
+      },
+    ]);
+
+    // { id: 137, lessonId: 9, type: "SELECT", order: 150, question: `Why should you time when you send an order into Toast?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 137,
+        imageSrc: "",
+        correct: true,
+        text: `So water, bread, and drinks are on the table before the first course arrives.`,
+      },
+      {
+        challengeId: 137,
+        imageSrc: "",
+        correct: false,
+        text: `So the kitchen can take a break between tickets.`,
+      },
+      {
+        challengeId: 137,
+        imageSrc: "",
+        correct: false,
+        text: `Timing doesn't matter, orders should always be sent in immediately.`,
+      },
+      {
+        challengeId: 137,
+        imageSrc: "",
+        correct: false,
+        text: `So you can doom scroll through your phone before your next table or between courses.`,
+      },
+    ]);
+
+    /**
+     * Course id - 2: Front Waiter - Steps of Service
+     * Unit id - 2: Front Waiter - Steps of Service
+     * Lesson id - 10: Ringing in the Order
+     */
+    await db.insert(schema.challenges).values([
+      {
+        id: 138,
+        lessonId: 10,
+        type: "CURRICULUM",
+        order: 10,
+        imageSrc: null,
+        question: `When entering the order in Toast, group like items within each course by quantity, note seat numbers for every guest, and place course lines appropriately. Take your time and check the ticket once more before sending it to the kitchen.`,
+      },
+      {
+        id: 139,
+        lessonId: 10,
+        type: "CURRICULUM",
+        order: 20,
+        imageSrc: null,
+        question: `Before sending the ticket, verify: the ticket name if there's an XXP or allergy; any relevant modifiers, such as share, more to come, only, or drop on top; the correct number of entrées, course lines, seat numbers, and steak temps; and any allergies along with the item removed or altered to comply with them.`,
+      },
+      {
+        id: 140,
+        lessonId: 10,
+        type: "SELECT",
+        order: 30,
+        imageSrc: null,
+        question: `What should the ticket name reflect if a guest has an allergy or is XXP?`,
+      },
+      {
+        id: 141,
+        lessonId: 10,
+        type: "CURRICULUM",
+        order: 40,
+        imageSrc: null,
+        question: `Modifiers communicate coursing intent to the kitchen.\n"More to Come" is used when only apps are ordered but more will be ordered shortly.\n"Apps in" is used when ordering entrées while apps are already ordered but not yet on the table. \n"Drop on top" is used when apps are on the table and the guests want the next course to arrive while they still have apps, or when it's an add-on the table wants right away.\n"Only" marks the only course ordered, with no further food or courses to follow.\n"Add as Entrée" is used when adding an item for an entrée, or for a joiner at the table.`,
+      },
+      {
+        id: 142,
+        lessonId: 10,
+        type: "SELECT",
+        order: 50,
+        imageSrc: null,
+        question: `When would you use the "Drop on top" modifier?`,
+      },
+      {
+        id: 143,
+        lessonId: 10,
+        type: "SELECT",
+        order: 60,
+        imageSrc: null,
+        question: `When would you use the "More to Come" modifier?`,
+      },
+      {
+        id: 144,
+        lessonId: 10,
+        type: "CURRICULUM",
+        order: 70,
+        imageSrc: null,
+        question: `When several guests at one table order the same thing and one has a special request, press the quantity on the ordered item and list every seat number, then use "type prep" to add the specific seat number and modification. For example: \n\n3 Gem Lettuce\n\n  seat 1\n\n  seat 2\n\n    "type prep"\\n  seat 3 dressing on side.\n\nWhen a guest orders a specific liquor in a specific cocktail, order the liquor first, then use the modifier to indicate the cocktail it goes in.`,
+      },
+      {
+        id: 145,
+        lessonId: 10,
+        type: "CURRICULUM",
+        order: 80,
+        imageSrc: null,
+        question: `To ring in an allergy modifier, name the ticket for the allergy itself, for example "Gluten Allergy," then use "type prep" on the affected seat's item to note the modification, such as no bread`,
+      },
+      {
+        id: 146,
+        lessonId: 10,
+        type: "SELECT",
+        order: 90,
+        imageSrc: null,
+        question: `How should you name a ticket for a guest with an allergy?`,
+      },
+    ]);
+
+    /**
+     * ChallengeOptions - lessonId : 10
+     */
+
+    // { id: 140, lessonId: 10, type: "SELECT", order: 30, question: `What should the ticket name reflect if a guest has an allergy or is XXP?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 140,
+        imageSrc: "",
+        correct: true,
+        text: `The relevant status or condition, such as the allergy or the XXP's name at the top of the ticket.`,
+      },
+      {
+        challengeId: 140,
+        imageSrc: "",
+        correct: false,
+        text: `The guest's nick name if you can get it.`,
+      },
+      {
+        challengeId: 140,
+        imageSrc: "",
+        correct: false,
+        text: `The table number only, nothing else.`,
+      },
+      {
+        challengeId: 140,
+        imageSrc: "",
+        correct: false,
+        text: `The ticket should only be named if it's a birthday or an anniversary.`,
+      },
+    ]);
+
+    // { id: 142, lessonId: 10, type: "SELECT", order: 50, question: `When would you use the "Drop on top" modifier?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 142,
+        imageSrc: "",
+        correct: false,
+        text: `When only apps have been ordered so far.`,
+      },
+      {
+        challengeId: 142,
+        imageSrc: "",
+        correct: true,
+        text: `When apps are on the table and the guests want the next course now, or for an urgent add-on.`,
+      },
+      {
+        challengeId: 142,
+        imageSrc: "",
+        correct: false,
+        text: `When it's the only item ordered for the table.`,
+      },
+      {
+        challengeId: 142,
+        imageSrc: "",
+        correct: false,
+        text: `When adding a joiner's entrée to the table.`,
+      },
+    ]);
+
+    // { id: 143, lessonId: 10, type: "SELECT", order: 60, question: `When would you use the "More to Come" modifier?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 143,
+        imageSrc: "",
+        correct: true,
+        text: `When only apps are ordered but the table will order more shortly.`,
+      },
+      {
+        challengeId: 143,
+        imageSrc: "",
+        correct: false,
+        text: `When the table has finished ordering entirely.`,
+      },
+      {
+        challengeId: 143,
+        imageSrc: "",
+        correct: false,
+        text: `When apps are already on the table.`,
+      },
+      {
+        challengeId: 143,
+        imageSrc: "",
+        correct: false,
+        text: `When you want to keep the kitchen in suspense.`,
+      },
+    ]);
+
+    // { id: 146, lessonId: 10, type: "SELECT", order: 90, question: `How should you name a ticket for a guest with an allergy?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 146,
+        imageSrc: "",
+        correct: false,
+        text: `By the guest's seat number only.`,
+      },
+      {
+        challengeId: 146,
+        imageSrc: "",
+        correct: true,
+        text: `By the allergy itself, for example "Gluten Allergy."`,
+      },
+      {
+        challengeId: 146,
+        imageSrc: "",
+        correct: false,
+        text: `By the guest's name and if it's their birthday.`,
+      },
+      {
+        challengeId: 146,
+        imageSrc: "",
+        correct: false,
+        text: `Allergies don't need to be named on the ticket.`,
+      },
+    ]);
+
+    /**
+     * Course id - 2: Front Waiter - Steps of Service
+     * Unit id - 2: Front Waiter - Steps of Service
+     * Lesson id - 11: "The Pass / Expo Window"
+     */
+    await db.insert(schema.challenges).values([
+      {
+        id: 147,
+        lessonId: 11,
+        type: "CURRICULUM",
+        order: 10,
+        imageSrc: null,
+        question: `The Pass, or expo window, is the most important area of the restaurant. It is both the Front and Back Waiters' number one responsibility: Run Hot Food. Always keep an eye out for food in the window and help deliver it, whether it's your table's order or not.`,
+      },
+      {
+        id: 219,
+        lessonId: 11,
+        type: "CURRICULUM",
+        order: 11,
+        imageSrc: null,
+        question: `Never take food out without a ticket, even if you're certain you know where it goes. Repeat the name of the dish, the table, and the seat number to the expediter every time. When dropping food, check that the table has proper presets, like share plates or a steak knife. Food does not get dropped on an unmarked table.`,
+      },
+      {
+        id: 148,
+        lessonId: 11,
+        type: "CURRICULUM",
+        order: 20,
+        imageSrc: null,
+        question: `If food must come back to the window because a table isn't ready, communicate a reason and timeline to the Expo. "Not marked" or "Marking now" means about 30 seconds. "Need to be cleared and marked" means 1-2 minutes.\n\n"Still working on the first course" requires a time estimate before the table will be clear and marked. The kitchen may need to refire the entire order. That will need to be communicated to a manager in case there is a long lag between courses.`,
+      },
+      {
+        id: 149,
+        lessonId: 11,
+        type: "SELECT",
+        order: 30,
+        imageSrc: null,
+        question: `Roughly how long is the timeline for "Not marked" or "Marking now" at the pass?`,
+      },
+      {
+        id: 150,
+        lessonId: 11,
+        type: "SELECT",
+        order: 40,
+        imageSrc: null,
+        question: `Who should be informed if the kitchen needs to refire an entire order because of a long lag between courses?`,
+      },
+      {
+        id: 151,
+        lessonId: 11,
+        type: "CURRICULUM",
+        order: 50,
+        imageSrc: null,
+        question: `All food leaves the window on the left side. Dishes should always be carried away from your body. Never use any area of your torso to balance dishes, whether serving or bussing.\n\nIf it feels awkward, it looks awkward.`,
+      },
+      {
+        id: 152,
+        lessonId: 11,
+        type: "SELECT",
+        order: 60,
+        imageSrc: null,
+        question: `How should dishes be carried when leaving the expo window?`,
+      },
+    ]);
+
+    /**
+     * ChallengeOptions - lessonId : 11
+     */
+
+    // { id: 149, lessonId: 11, type: "SELECT", order: 30, question: `Roughly how long is the timeline for "Not marked" or "Marking now" at the pass?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 149,
+        imageSrc: "",
+        correct: true,
+        text: `About 30 seconds.`,
+      },
+      {
+        challengeId: 149,
+        imageSrc: "",
+        correct: false,
+        text: `About 1-2 minutes.`,
+      },
+      {
+        challengeId: 149,
+        imageSrc: "",
+        correct: false,
+        text: `About 5 minutes.`,
+      },
+      {
+        challengeId: 149,
+        imageSrc: "",
+        correct: false,
+        text: `There's no expected timeline.`,
+      },
+    ]);
+
+    // { id: 150, lessonId: 11, type: "SELECT", order: 40, question: `Who should be informed if the kitchen needs to refire an entire order because of a long lag between courses?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 150,
+        imageSrc: "",
+        correct: false,
+        text: `No one, this happens all the time.`,
+      },
+      {
+        challengeId: 150,
+        imageSrc: "",
+        correct: false,
+        text: `Only the guests at the table.`,
+      },
+      { challengeId: 150, imageSrc: "", correct: true, text: `A manager.` },
+      {
+        challengeId: 150,
+        imageSrc: "",
+        correct: false,
+        text: `Everyone in the server alley.`,
+      },
+    ]);
+
+    // { id: 152, lessonId: 11, type: "SELECT", order: 60, question: `How should dishes be carried when leaving the expo window?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 152,
+        imageSrc: "",
+        correct: false,
+        text: `Gracefully balanced against your torso for stability.`,
+      },
+      {
+        challengeId: 152,
+        imageSrc: "",
+        correct: true,
+        text: `Carried away from your body.`,
+      },
+      {
+        challengeId: 152,
+        imageSrc: "",
+        correct: false,
+        text: `However is fastest, as long as the food doesn't spill.`,
+      },
+      {
+        challengeId: 152,
+        imageSrc: "",
+        correct: false,
+        text: `Stacked as high as possible to minimize trips.`,
+      },
+    ]);
+
+    /**
+     * Course id - 2: Front Waiter - Steps of Service
+     * Unit id - 2: Front Waiter - Steps of Service
+     * Lesson id - 12: Wine Service
+     */
+    await db.insert(schema.challenges).values([
+      {
+        id: 153,
+        lessonId: 12,
+        type: "CURRICULUM",
+        order: 10,
+        imageSrc: null,
+        question: `The Front Waiter should open the wine. If the Front Waiter is busy, it's acceptable for the Back Waiter to open it. This should be discussed within the team as soon as the order has been placed.\n\nType prep the seat number of the host or guest ordering the bottle. When the order is placed, the glasses should go down immediately, thinking of them as share plates. Double check that glasses are thoroughly polished, and only touch and carry them at the stem. Remember managers are always available to answer questions and open wine. An experienced server always knows when to ask for help.`,
+      },
+      {
+        id: 154,
+        lessonId: 12,
+        type: "CURRICULUM",
+        order: 20,
+        imageSrc: null,
+        question: `A wine chit will print in the server alley for a manager to retrieve. This chit will include the bottle name, varietal, and vintage; its storage location in house; and the seat number of the host or guest.`,
+      },
+      {
+        id: 155,
+        lessonId: 12,
+        type: "CURRICULUM",
+        order: 30,
+        imageSrc: null,
+        question: `Present the bottle with the label facing the host or guest ordering. Have a folded linen with you for wiping the lip of the bottle after each pour; it's unnecessary to drape this linen over your wrist.\n\nPoint out the name of the producer and wine, the vintage, and the wine region. It's perfectly acceptable for a guest to touch the bottle to check the temperature.`,
+      },
+      {
+        id: 156,
+        lessonId: 12,
+        type: "SELECT",
+        order: 40,
+        imageSrc: null,
+        question: `What information does a wine chit include?`,
+      },
+      {
+        id: 157,
+        lessonId: 12,
+        type: "CURRICULUM",
+        order: 50,
+        imageSrc: null,
+        question: `Once the guest has confirmed the order, open the bottle, always keeping the label facing the guest. Cut the foil over the cork at the base of the lip of the bottle, and place the foil in your pocket.\n\nOnce opened, remove the cork from the worm and place it next to the host's wine glass. Screw tops should be placed in your pocket.`,
+      },
+      {
+        id: 158,
+        lessonId: 12,
+        type: "CURRICULUM",
+        order: 60,
+        imageSrc: null,
+        question: `Pour 1.5 to 2 ounces for the guest who ordered the bottle to taste. This taste is to ensure the wine is sound. If a guest refuses a wine simply because they don't like it, never question them: "Very good. I'll have a manager or sommelier right over to help find something you'll enjoy a bit more." Remove the bottle and let your manager know.\n\nWine can be esoteric and intimidating. It's our job to take all pretense out of the process and make the guest feel at ease.`,
+      },
+      {
+        id: 159,
+        lessonId: 12,
+        type: "SELECT",
+        order: 70,
+        imageSrc: null,
+        question: `How many ounces should you pour for an initial bottle tasting?`,
+      },
+      {
+        id: 160,
+        lessonId: 12,
+        type: "SELECT",
+        order: 80,
+        imageSrc: null,
+        question: `What should you do if a guest simply doesn't like the wine they tasted?`,
+      },
+      {
+        id: 161,
+        lessonId: 12,
+        type: "CURRICULUM",
+        order: 90,
+        imageSrc: null,
+        question: `Hold the bottle with your palm on the back label. When the bottle is twisted and raised to finish the pour, the label should again face the guest.\n\nAfter approval, walk clockwise around the table, pouring ladies first, then men, then finally the host, regardless of gender. Never stand in one place and pour for everyone. If the table has eight guests or more, you may pour consecutive seats regardless of gender, being mindful of how many guests you're pouring for.`,
+      },
+      {
+        id: 162,
+        lessonId: 12,
+        type: "CURRICULUM",
+        order: 100,
+        imageSrc: null,
+        question: `Place the bottle on the table, or in a wine bucket for sparkling and white wines. Offer to remove the cork from the table and place it in your pocket.\n\nWine levels should be kept at 4 ounces full, unless the host or guest requests to pour themselves. If they'd like to pour, communicate this to your Back Waiter and all managers on the floor.`,
+      },
+      {
+        id: 163,
+        lessonId: 12,
+        type: "SELECT",
+        order: 110,
+        imageSrc: null,
+        question: `What wine level should glasses be kept at?`,
+      },
+      {
+        id: 164,
+        lessonId: 12,
+        type: "CURRICULUM",
+        order: 120,
+        imageSrc: null,
+        question: `Wine ordered with apps should be poured before the entrées arrive. If one guest is low on wine, fill their glass regardless of the others. Whenever possible, pour from the guest's right side.\n\nDon't ask if a guest wants more wine, just pour. The guest will let you know when they're finished drinking. Communicate this to your Back Waiter.`,
+      },
+      {
+        id: 165,
+        lessonId: 12,
+        type: "CURRICULUM",
+        order: 130,
+        imageSrc: null,
+        question: `Constantly manicure the table of empty wine glasses, corks, and bottles throughout service.`,
+      },
+      {
+        id: 166,
+        lessonId: 12,
+        type: "SELECT",
+        order: 140,
+        imageSrc: null,
+        question: `Should you ask a guest if they'd like more wine before pouring?`,
+      },
+    ]);
+
+    /**
+     * ChallengeOptions - lessonId : 12
+     */
+
+    // { id: 156, lessonId: 12, type: "SELECT", order: 40, question: `What information does a wine chit include?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 156,
+        imageSrc: "",
+        correct: true,
+        text: `Bottle name, varietal, and vintage; storage location; and seat number of the host or guest.`,
+      },
+      {
+        challengeId: 156,
+        imageSrc: "",
+        correct: false,
+        text: `Only the guest's name.`,
+      },
+      {
+        challengeId: 156,
+        imageSrc: "",
+        correct: false,
+        text: `The price of the bottle only.`,
+      },
+      {
+        challengeId: 156,
+        imageSrc: "",
+        correct: false,
+        text: `Tasting notes specific to that bottle of wine.`,
+      },
+    ]);
+
+    // { id: 159, lessonId: 12, type: "SELECT", order: 70, question: `How many ounces should you pour for an initial bottle tasting?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 159,
+        imageSrc: "",
+        correct: false,
+        text: `A full 5-6 ounces.`,
+      },
+      {
+        challengeId: 159,
+        imageSrc: "",
+        correct: true,
+        text: `1.5 to 2 ounces.`,
+      },
+      {
+        challengeId: 159,
+        imageSrc: "",
+        correct: false,
+        text: `Just enough to wet the bottom of the glass.`,
+      },
+      {
+        challengeId: 159,
+        imageSrc: "",
+        correct: false,
+        text: `A full glass, so they can properly judge it.`,
+      },
+    ]);
+
+    // { id: 160, lessonId: 12, type: "SELECT", order: 80, question: `What should you do if a guest simply doesn't like the wine they tasted?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 160,
+        imageSrc: "",
+        correct: false,
+        text: `Question them to understand exactly what's wrong with it.`,
+      },
+      {
+        challengeId: 160,
+        imageSrc: "",
+        correct: false,
+        text: `Let them know they can take it home with them anyway.`,
+      },
+      {
+        challengeId: 160,
+        imageSrc: "",
+        correct: true,
+        text: `Remove the bottle and offer to send a manager or sommelier to help find something they'll enjoy more.`,
+      },
+      {
+        challengeId: 160,
+        imageSrc: "",
+        correct: false,
+        text: `Charge them for the bottle regardless.`,
+      },
+    ]);
+
+    // { id: 163, lessonId: 12, type: "SELECT", order: 110, question: `What wine level should glasses be kept at?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 163,
+        imageSrc: "",
+        correct: false,
+        text: `Completely full at all times.`,
+      },
+      {
+        challengeId: 163,
+        imageSrc: "",
+        correct: true,
+        text: `4 ounces full.`,
+      },
+      {
+        challengeId: 163,
+        imageSrc: "",
+        correct: false,
+        text: `Half a glass, no more.`,
+      },
+      {
+        challengeId: 163,
+        imageSrc: "",
+        correct: false,
+        text: `Empty the bottle as soon as possilbe to encourage them to order another one.`,
+      },
+    ]);
+
+    // { id: 166, lessonId: 12, type: "SELECT", order: 140, question: `Should you ask a guest if they'd like more wine before pouring?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 166,
+        imageSrc: "",
+        correct: false,
+        text: `Yes, always ask before pouring.`,
+      },
+      {
+        challengeId: 166,
+        imageSrc: "",
+        correct: true,
+        text: `No, just pour. The guest will let you know when they're finished.`,
+      },
+      {
+        challengeId: 166,
+        imageSrc: "",
+        correct: false,
+        text: `It is up to you to decide who has been over served.`,
+      },
+      {
+        challengeId: 166,
+        imageSrc: "",
+        correct: false,
+        text: `Not if they are drinking it very quickly.`,
+      },
+    ]);
+
+    /**
+     * Course id - 2: Front Waiter - Steps of Service
+     * Unit id - 2: Front Waiter - Steps of Service
+     * Lesson id - 13: First Course
+     */
+    await db.insert(schema.challenges).values([
+      {
+        id: 167,
+        lessonId: 13,
+        type: "CURRICULUM",
+        order: 10,
+        imageSrc: null,
+        question: `Serve the first course: women first if possible, placing plates discreetly from the left side with your left hand. Always announce the dish you're presenting. Know where you're going, know your seat numbers, and do NOT auction off food at the table.\n\nWatch your elbows. Do not lean over the table, avoid reaching in front of a guest whenever possible, and excuse your reach if you can't avoid it. When possible, drop entrées and large format items before sides, since they're more visually impressive and can be difficult to present with sides already scattered around the table.`,
+      },
+      {
+        id: 168,
+        lessonId: 13,
+        type: "CURRICULUM",
+        order: 20,
+        imageSrc: null,
+        question: `Refrain from using common house terms for our signature dishes, like calling something a "spag app." Instead: "This is the housemade spaghetti with guanciale and a fried poached egg to share."`,
+      },
+      {
+        id: 169,
+        lessonId: 13,
+        type: "CURRICULUM",
+        order: 30,
+        imageSrc: null,
+        question: `Check back with guests and make yourself available within 2 bites or 2 minutes. Always manicure the table while doing so, checking beverage levels. This is another opportunity to read the table: is someone picking at or not eating their food? Making eye contact is an effective way to judge a guest's needs and give them an opportunity to communicate.\n\nNever ask, "Are we enjoying everything?"`,
+      },
+      {
+        id: 170,
+        lessonId: 13,
+        type: "SELECT",
+        order: 40,
+        imageSrc: null,
+        question: `What phrase should you avoid asking a table when checking on their food?`,
+      },
+      {
+        id: 171,
+        lessonId: 13,
+        type: "SELECT",
+        order: 50,
+        imageSrc: null,
+        question: `Within what timeframe should you check back on a table after dropping a course?`,
+      },
+      {
+        id: 172,
+        lessonId: 13,
+        type: "CURRICULUM",
+        order: 60,
+        imageSrc: null,
+        question: `If a guest isn't enjoying their dish, take it away. Offer to have it remade or bring a different dish entirely. It's imperative to find out exactly what the guest didn't enjoy about the dish, since Chef will need this information.\n\nBring the dish to the right side of the expo so the information can be relayed. Chef may want to check the quality of the item. Always alert a manager as well.`,
+      },
+      {
+        id: 173,
+        lessonId: 13,
+        type: "CURRICULUM",
+        order: 70,
+        imageSrc: null,
+        question: `Communicate to the kitchen the new dish or refire needed, along with the table and seat number. Re-ring the new item or refire, modifying it with DON'T MAKE.`,
+      },
+      {
+        id: 174,
+        lessonId: 13,
+        type: "SELECT",
+        order: 80,
+        imageSrc: null,
+        question: `What modifier should be used when re-ringing a dish that needs to be redone?`,
+      },
+      {
+        id: 175,
+        lessonId: 13,
+        type: "CURRICULUM",
+        order: 90,
+        imageSrc: null,
+        question: `Clear the first course as needed. If possible, wait until the last person has finished eating. Remove all used plates and silverware. Ask "May I take your plate?" Once you've asked one guest, it's unnecessary to continue asking the others; a guest will let you know if they're not ready.\n\nIf a guest has placed their fork and knife parallel to one another on the right-hand side of the plate, there's no need to ask; this is the guest signaling they're finished. Avoid clearing a table while other people are still eating. Exceptions: stacked plates, a napkin on the plate, or a guest asking for it to be taken.`,
+      },
+      {
+        id: 176,
+        lessonId: 13,
+        type: "CURRICULUM",
+        order: 100,
+        imageSrc: null,
+        question: `Guests should be cleared from their right-hand side with your right hand. Place the first plate in your left hand; it will act as your tray for off-sized dishes and silver. The second plate is balanced on your left wrist and palm, and subsequent plates are stacked on the second. Never clear more than you're comfortable with. If it feels awkward, it looks awkward.\n\nIf you need help, ask your partner before approaching the table, or make eye contact with a passing server. Take dirty dishes directly to the kitchen. Never approach another table with full hands.`,
+      },
+      {
+        id: 177,
+        lessonId: 13,
+        type: "SELECT",
+        order: 110,
+        imageSrc: null,
+        question: `Which side should a guest be cleared from?`,
+      },
+      {
+        id: 178,
+        lessonId: 13,
+        type: "CURRICULUM",
+        order: 120,
+        imageSrc: null,
+        question: `Whenever moving through the dining room, keep your eyes up and smile. Be aware of tight spaces and corners. If another server has a wine glass or tray behind their back, surreptitiously take it.\n\nYour eyes should be constantly moving between the expo window, cocktails and wine at the bar, your Back Waiter, other servers' and customers' eyes, and the tables in your section.`,
+      },
+      {
+        id: 179,
+        lessonId: 13,
+        type: "CURRICULUM",
+        order: 130,
+        imageSrc: null,
+        question: `Because we all work together as teams in the tip pool, help each other at all times. Offer to assist in resetting a neighboring team's table, clear plates, run drinks, or polish bar glassware.\n\nCommunicate to your Back Waiter any needs for the second course, like share plates, marking, water service, or another round of drinks.`,
+      },
+      {
+        id: 180,
+        lessonId: 13,
+        type: "SELECT",
+        order: 140,
+        imageSrc: null,
+        question: `Why should you help other servers, even outside your own section?`,
+      },
+    ]);
+
+    /**
+     * ChallengeOptions - lessonId : 13
+     */
+
+    // { id: 170, lessonId: 13, type: "SELECT", order: 40, question: `What phrase should you avoid asking a table when checking on their food?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 170,
+        imageSrc: "",
+        correct: true,
+        text: `"Are we enjoying everything?"`,
+      },
+      {
+        challengeId: 170,
+        imageSrc: "",
+        correct: false,
+        text: `"How is everything tasting so far?"`,
+      },
+      {
+        challengeId: 170,
+        imageSrc: "",
+        correct: false,
+        text: `"I told you you would like it."`,
+      },
+      {
+        challengeId: 170,
+        imageSrc: "",
+        correct: false,
+        text: `"Would you like more water?"`,
+      },
+    ]);
+
+    // { id: 171, lessonId: 13, type: "SELECT", order: 50, question: `Within what timeframe should you check back on a table after dropping a course?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 171,
+        imageSrc: "",
+        correct: true,
+        text: `2 bites or 2 minutes.`,
+      },
+      { challengeId: 171, imageSrc: "", correct: false, text: `10 minutes.` },
+      {
+        challengeId: 171,
+        imageSrc: "",
+        correct: false,
+        text: `Only if the guest flags you down.`,
+      },
+      {
+        challengeId: 171,
+        imageSrc: "",
+        correct: false,
+        text: `2 bites or 5 minutes.`,
+      },
+    ]);
+
+    // { id: 174, lessonId: 13, type: "SELECT", order: 80, question: `What modifier should be used when re-ringing a dish that needs to be redone?` },
+    await db.insert(schema.challengeOptions).values([
+      { challengeId: 174, imageSrc: "", correct: false, text: `Add as Entrée` },
+      { challengeId: 174, imageSrc: "", correct: false, text: `More to Come` },
+      { challengeId: 174, imageSrc: "", correct: true, text: `DON'T MAKE` },
+      { challengeId: 174, imageSrc: "", correct: false, text: `Heck of a Rush` },
+    ]);
+
+    // { id: 177, lessonId: 13, type: "SELECT", order: 110, question: `Which side should a guest be cleared from?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 177,
+        imageSrc: "",
+        correct: true,
+        text: `Their right-hand side, with your right hand.`,
+      },
+      {
+        challengeId: 177,
+        imageSrc: "",
+        correct: false,
+        text: `Their left-hand side, with your left hand.`,
+      },
+      {
+        challengeId: 177,
+        imageSrc: "",
+        correct: false,
+        text: `Whichever side is most convenient.`,
+      },
+      {
+        challengeId: 177,
+        imageSrc: "",
+        correct: false,
+        text: `It doesn't matter which side.`,
+      },
+    ]);
+
+    // { id: 180, lessonId: 13, type: "SELECT", order: 140, question: `Why should you help other servers, even outside your own section?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 180,
+        imageSrc: "",
+        correct: true,
+        text: `Because everyone works together as teams in the tip pool.`,
+      },
+      {
+        challengeId: 180,
+        imageSrc: "",
+        correct: false,
+        text: `You're only required to help if a manager tells you to.`,
+      },
+      {
+        challengeId: 180,
+        imageSrc: "",
+        correct: false,
+        text: `You shouldn't, it's everyone for themselves out there.`,
+      },
+      {
+        challengeId: 180,
+        imageSrc: "",
+        correct: false,
+        text: `Only if you have nothing else to do.`,
+      },
+    ]);
+
+    /**
+     * Course id - 2: Front Waiter - Steps of Service
+     * Unit id - 2: Front Waiter - Steps of Service
+     * Lesson id - 14: Second Course
+     */
+    await db.insert(schema.challenges).values([
+      {
+        id: 181,
+        lessonId: 14,
+        type: "CURRICULUM",
+        order: 10,
+        imageSrc: null,
+        question: `Check beverage levels, refill waters and iced tea, pour wine, and offer more drinks. Confirm the table is marked and ready for the next course. This is also the time to offer the next round or bottle of wine before the entrées hit the table. Manicure the table, removing anything unnecessary.`,
+      },
+      {
+        id: 182,
+        lessonId: 14,
+        type: "CURRICULUM",
+        order: 20,
+        imageSrc: null,
+        question: `Throughout the meal, let guests know what's happening. Being proactive when addressing a guest's discomfort is always best. Often, simply acknowledging a problem or letting the guest know steps are being taken to resolve it is all it takes. People want to feel taken care of, not overlooked.`,
+      },
+      {
+        id: 183,
+        lessonId: 14,
+        type: "CURRICULUM",
+        order: 30,
+        imageSrc: null,
+        question: `If a guest seems stressed or upset at any time, let a manager know immediately. Moments matter when guests' perceptions are involved; this may be the difference between recovery or failure in service.`,
+      },
+      {
+        id: 184,
+        lessonId: 14,
+        type: "SELECT",
+        order: 40,
+        imageSrc: null,
+        question: `What should you do if a guest seems stressed or upset?`,
+      },
+      {
+        id: 185,
+        lessonId: 14,
+        type: "CURRICULUM",
+        order: 50,
+        imageSrc: null,
+        question: `Serve the second course: women first if possible, placing plates discreetly from the left side with your left hand. Always announce the dish you're presenting. Know where you're going, know your seat numbers, and do NOT auction off food at the table.\n\nWatch your elbows. Do not lean over the table, avoid reaching in front of a guest whenever possible, and excuse your reach if you can't avoid it. When possible, drop entrées and large format items before sides.`,
+      },
+      {
+        id: 186,
+        lessonId: 14,
+        type: "CURRICULUM",
+        order: 60,
+        imageSrc: null,
+        question: `When dropping food, always place the protein toward the guest and say the name of the dish. For example, if a Duck Confit is ordered, twist the plate so the bone is in the 12 o'clock position.`,
+      },
+      {
+        id: 187,
+        lessonId: 14,
+        type: "SELECT",
+        order: 70,
+        imageSrc: null,
+        question: `Where should the bone be positioned when serving the Duck Confit?`,
+      },
+      {
+        id: 188,
+        lessonId: 14,
+        type: "CURRICULUM",
+        order: 80,
+        imageSrc: null,
+        question: `Manicure the table after putting plates down, keeping everything as neat as possible.`,
+      },
+      {
+        id: 189,
+        lessonId: 14,
+        type: "CURRICULUM",
+        order: 90,
+        imageSrc: null,
+        question: `Check back with guests within 2 bites or 2 minutes to make sure they're satisfied. What is your reading of the table? Are the guests involved in conversation? Can this QC be accomplished by simply topping off drinks and making eye contact with each guest? Do they want engagement?`,
+      },
+      {
+        id: 190,
+        lessonId: 14,
+        type: "SELECT",
+        order: 100,
+        imageSrc: null,
+        question: `How can a QC check sometimes be accomplished without directly interrupting the table?`,
+      },
+      {
+        id: 191,
+        lessonId: 14,
+        type: "CURRICULUM",
+        order: 110,
+        imageSrc: null,
+        question: `Clear the second course, removing everything but unfinished drinks.`,
+      },
+      {
+        id: 192,
+        lessonId: 14,
+        type: "CURRICULUM",
+        order: 120,
+        imageSrc: null,
+        question: `The table should be crumbed and cleaned. Just like at the start of the meal, we never drop menus on a dirty table. Communicate to your Back Waiter that the table is ready for dessert menus.`,
+      },
+      {
+        id: 193,
+        lessonId: 14,
+        type: "SELECT",
+        order: 130,
+        imageSrc: null,
+        question: `What should never happen before dessert menus are dropped on the table?`,
+      },
+    ]);
+
+    /**
+     * ChallengeOptions - lessonId : 14
+     */
+
+    // { id: 184, lessonId: 14, type: "SELECT", order: 40, question: `What should you do if a guest seems stressed or upset?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 184,
+        imageSrc: "",
+        correct: false,
+        text: `Ignore it, peoples' problems are their own.`,
+      },
+      {
+        challengeId: 184,
+        imageSrc: "",
+        correct: true,
+        text: `Let a manager know immediately.`,
+      },
+      {
+        challengeId: 184,
+        imageSrc: "",
+        correct: false,
+        text: `Wait until the end of the meal to mention it.`,
+      },
+      {
+        challengeId: 184,
+        imageSrc: "",
+        correct: false,
+        text: `Ask them directly what's wrong in front of the whole table.`,
+      },
+    ]);
+
+    // { id: 187, lessonId: 14, type: "SELECT", order: 70, question: `Where should the bone be positioned when serving Duck Confit?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 187,
+        imageSrc: "",
+        correct: false,
+        text: `6 o'clock position.`,
+      },
+      {
+        challengeId: 187,
+        imageSrc: "",
+        correct: false,
+        text: `3 o'clock position.`,
+      },
+      {
+        challengeId: 187,
+        imageSrc: "",
+        correct: true,
+        text: `12 o'clock position.`,
+      },
+      {
+        challengeId: 187,
+        imageSrc: "",
+        correct: false,
+        text: `It depends on whether the guest is left or right handed.`,
+      },
+    ]);
+
+    // { id: 190, lessonId: 14, type: "SELECT", order: 100, question: `How can a QC check sometimes be accomplished without directly interrupting the table?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 190,
+        imageSrc: "",
+        correct: false,
+        text: `By asking loudly if everyone is doing okay.`,
+      },
+      {
+        challengeId: 190,
+        imageSrc: "",
+        correct: false,
+        text: `You should always interrupt directly to ask.`,
+      },
+      {
+        challengeId: 190,
+        imageSrc: "",
+        correct: false,
+        text: `By having a manager come check on the table instead.`,
+      },
+      {
+        challengeId: 190,
+        imageSrc: "",
+        correct: true,
+        text: `By topping off drinks and making eye contact.`,
+      },
+    ]);
+
+    // { id: 193, lessonId: 14, type: "SELECT", order: 130, question: `What should never happen before dessert menus are dropped on the table?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 193,
+        imageSrc: "",
+        correct: true,
+        text: `Dropping menus on a dirty table.`,
+      },
+      {
+        challengeId: 193,
+        imageSrc: "",
+        correct: false,
+        text: `Clearing the second course.`,
+      },
+      {
+        challengeId: 193,
+        imageSrc: "",
+        correct: false,
+        text: `Communicating with your Back Waiter.`,
+      },
+      {
+        challengeId: 193,
+        imageSrc: "",
+        correct: false,
+        text: `Crumbing the table.`,
+      },
+    ]);
+
+    /**
+     * Course id - 2: Front Waiter - Steps of Service
+     * Unit id - 2: Front Waiter - Steps of Service
+     * Lesson id - 15: Serving Dessert
+     */
+    await db.insert(schema.challenges).values([
+      {
+        id: 194,
+        lessonId: 15,
+        type: "CURRICULUM",
+        order: 10,
+        imageSrc: null,
+        question: `A dessert order being taken is communicated non-verbally, through several cues: the Salt and Pepper shakers have been removed from the table, dessert menus are no longer on the table, and silverware is pre-set on the table. Talk to each other on the team, and verify that a dessert order is in Toast.`,
+      },
+      {
+        id: 195,
+        lessonId: 15,
+        type: "SELECT",
+        order: 20,
+        imageSrc: null,
+        question: `Which of the following is a non-verbal cue that a dessert order has been taken?`,
+      },
+      {
+        id: 196,
+        lessonId: 15,
+        type: "CURRICULUM",
+        order: 30,
+        imageSrc: null,
+        question: `The Front or Back Waiter can take the coffee or dessert order, and should prepare the table for dessert or coffee with the proper silverware, share plates, and/or sugar caddy.`,
+      },
+      {
+        id: 197,
+        lessonId: 15,
+        type: "CURRICULUM",
+        order: 40,
+        imageSrc: null,
+        question: `Serve dessert from the guest's left with your left hand, announcing it when dropping. Check back with your guest within 2 bites or 2 minutes.`,
+      },
+      {
+        id: 198,
+        lessonId: 15,
+        type: "CURRICULUM",
+        order: 50,
+        imageSrc: null,
+        question: `Print the check. Have it ready, and carry it on you.`,
+      },
+      {
+        id: 199,
+        lessonId: 15,
+        type: "SELECT",
+        order: 60,
+        imageSrc: null,
+        question: `Within what timeframe should you check back with a guest after dropping dessert?`,
+      },
+      {
+        id: 200,
+        lessonId: 15,
+        type: "CURRICULUM",
+        order: 70,
+        imageSrc: null,
+        question: `Help your Back Waiter clear desserts, removing all dishes, unused glasses, and napkins placed on the table. Do not let half-finished desserts sit for 5 minutes. Good eye contact will let you know when they're ready for the check, if they need more coffee, or if they're ready for the dessert to be cleared.`,
+      },
+      {
+        id: 201,
+        lessonId: 15,
+        type: "CURRICULUM",
+        order: 80,
+        imageSrc: null,
+        question: `Present the check: "Please let me know if there's anything else I can do for you."`,
+      },
+      {
+        id: 202,
+        lessonId: 15,
+        type: "CURRICULUM",
+        order: 90,
+        imageSrc: null,
+        question: `Process credit cards immediately after collecting, bringing the check straight back to the table. Thank your guest and smile. Always make eye contact with the guest when picking up and dropping off payment. Thanking them by last name is the best way to personalize the close of their dining experience.`,
+      },
+      {
+        id: 203,
+        lessonId: 15,
+        type: "SELECT",
+        order: 100,
+        imageSrc: null,
+        question: `What is the best way to personalize the close of a guest's dining experience?`,
+      },
+      {
+        id: 204,
+        lessonId: 15,
+        type: "CURRICULUM",
+        order: 110,
+        imageSrc: null,
+        question: `Collect the check presenter before the guests leave the table. It is your responsibility to obtain correct and full payment for every table.`,
+      },
+      {
+        id: 205,
+        lessonId: 15,
+        type: "CURRICULUM",
+        order: 120,
+        imageSrc: null,
+        question: `Never question a guest's tip amount, such as "Was service okay, because you only left 10%?" This is grounds for immediate dismissal. We all know how difficult it can be to get stiffed on a big table, but we have to take the 10% along with the 30% tips. It's the nature of the business we're in.`,
+      },
+      {
+        id: 206,
+        lessonId: 15,
+        type: "SELECT",
+        order: 130,
+        imageSrc: null,
+        question: `What happens if you question a guest's tip amount?`,
+      },
+      {
+        id: 207,
+        lessonId: 15,
+        type: "CURRICULUM",
+        order: 140,
+        imageSrc: null,
+        question: `Keep refilling water as long as guests are still seated. If they refuse water service, remove the empty glasses.`,
+      },
+      {
+        id: 208,
+        lessonId: 15,
+        type: "CURRICULUM",
+        order: 150,
+        imageSrc: null,
+        question: `Thank guests as they are leaving. Let the floater know and immediately clean the table properly and reset it within 3 minutes. Trays are never set on the table or on a chair. The Back Waiter should continue performing all side-work while tables remain in your section.\n\nThe Front Waiter should stay on the floor until all tables in their section are finished.`,
+      },
+      {
+        id: 209,
+        lessonId: 15,
+        type: "SELECT",
+        order: 160,
+        imageSrc: null,
+        question: `How many minutes should it take to reset a table after guests leave?`,
+      },
+    ]);
+
+    /**
+     * ChallengeOptions - lessonId : 15
+     */
+
+    // { id: 195, lessonId: 15, type: "SELECT", order: 20, question: `Which of the following is a non-verbal cue that a dessert order has been taken?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 195,
+        imageSrc: "",
+        correct: false,
+        text: `The guest smiling at you.`,
+      },
+      {
+        challengeId: 195,
+        imageSrc: "",
+        correct: true,
+        text: `Salt and Pepper shakers have been removed from the table.`,
+      },
+      {
+        challengeId: 195,
+        imageSrc: "",
+        correct: false,
+        text: `The table asking for the check.`,
+      },
+      {
+        challengeId: 195,
+        imageSrc: "",
+        correct: false,
+        text: `The table ordering more wine.`,
+      },
+    ]);
+
+    // { id: 199, lessonId: 15, type: "SELECT", order: 60, question: `Within what timeframe should you check back with a guest after dropping dessert?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 199,
+        imageSrc: "",
+        correct: true,
+        text: `2 bites or 2 minutes.`,
+      },
+      { challengeId: 199, imageSrc: "", correct: false, text: `10 minutes.` },
+      {
+        challengeId: 199,
+        imageSrc: "",
+        correct: false,
+        text: `Only when they ask for the check.`,
+      },
+      {
+        challengeId: 199,
+        imageSrc: "",
+        correct: false,
+        text: `You don't need to check back after dessert.`,
+      },
+    ]);
+
+    // { id: 203, lessonId: 15, type: "SELECT", order: 100, question: `What is the best way to personalize the close of a guest's dining experience?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 203,
+        imageSrc: "",
+        correct: false,
+        text: `Giving them a free dessert.`,
+      },
+      {
+        challengeId: 203,
+        imageSrc: "",
+        correct: true,
+        text: `Thanking them by their last name.`,
+      },
+      {
+        challengeId: 203,
+        imageSrc: "",
+        correct: false,
+        text: `Asking them if they'd like a around of shots.`,
+      },
+      {
+        challengeId: 203,
+        imageSrc: "",
+        correct: false,
+        text: `Telling them we really need them to leave now so we can seat the next table.`,
+      },
+    ]);
+
+    // { id: 206, lessonId: 15, type: "SELECT", order: 130, question: `What happens if you question a guest's tip amount?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 206,
+        imageSrc: "",
+        correct: true,
+        text: `It is grounds for immediate dismissal.`,
+      },
+      {
+        challengeId: 206,
+        imageSrc: "",
+        correct: false,
+        text: `You'll receive a formal warning.`,
+      },
+      {
+        challengeId: 206,
+        imageSrc: "",
+        correct: false,
+        text: `Nothing, it's a totally acceptable thing to ask.`,
+      },
+      {
+        challengeId: 206,
+        imageSrc: "",
+        correct: false,
+        text: `You'll need to split the tip with a manager so you don't get written up.`,
+      },
+    ]);
+
+    // { id: 209, lessonId: 15, type: "SELECT", order: 160, question: `How many minutes should it take to reset a table after guests leave?` },
+    await db.insert(schema.challengeOptions).values([
+      { challengeId: 209, imageSrc: "", correct: false, text: `1 minute.` },
+      { challengeId: 209, imageSrc: "", correct: false, text: `5 minutes.` },
+      {
+        challengeId: 209,
+        imageSrc: "",
+        correct: false,
+        text: `15 minutes, no rush.`,
+      },
+      { challengeId: 209, imageSrc: "", correct: true, text: `3 minutes.` },
+    ]);
+
+    /**
+     * Course id - 2: Front Waiter - Steps of Service
+     * Unit id - 2: Front Waiter - Steps of Service
+     * Lesson id - 16: Critical Points of Service
+     */
+    await db.insert(schema.challenges).values([
+      {
+        id: 210,
+        lessonId: 16,
+        type: "CURRICULUM",
+        order: 10,
+        imageSrc: null,
+        question: `Perception of time is not linear. It is very subjective, and dependent on mood. What may feel like a painful twenty minutes waiting for a movie line, a lecture, or a glass of water may have only actually been three minutes.\n\nThere are regular moments during a meal where the server's sensitivity to a guest's subjective sense of time is crucial. People who happily spend three hours at a table will grow impatient and seemingly irrational having to wait three minutes for water they requested.`,
+      },
+      {
+        id: 220,
+        lessonId: 16,
+        type: "CURRICULUM",
+        order: 11,
+        imageSrc: null,
+        question: `There are regular moments during a meal where the server's sensitivity to a guest's subjective sense of time is crucial. People who happily spend three hours at a table will grow impatient and seemingly irrational having to wait three minutes for water they requested.`,
+      },
+      {
+        id: 211,
+        lessonId: 16,
+        type: "CURRICULUM",
+        order: 20,
+        imageSrc: null,
+        question: `These are some critical points of service where skewed perceptions of time most commonly occur:\n\nAs soon as the guest has been seated\nWhen a course is finished and they have dirty dishes in front of them\nWhen beverage levels are low; when food is taking an inordinate amount of time\nWhen a guest is alone\nAfter a guest has requested something in particular\nWhen guests have their kids with them\nWhen a guest is waiting for their check and change.`,
+      },
+      {
+        id: 212,
+        lessonId: 16,
+        type: "SELECT",
+        order: 30,
+        imageSrc: null,
+        question: `Why is it important to recognize critical points of service?`,
+      },
+      {
+        id: 213,
+        lessonId: 16,
+        type: "SELECT",
+        order: 40,
+        imageSrc: null,
+        question: `Which of the following is an example of a critical point of service?`,
+      },
+      {
+        id: 214,
+        lessonId: 16,
+        type: "CURRICULUM",
+        order: 50,
+        imageSrc: null,
+        question: `Because these are times when the guest is particularly sensitive to their needs, it is important for the server to be aware of these critical points and read body language. Service that might otherwise be excellent may be perceived as slow, inattentive, or even incompetent if we do not pay extra attention at these critical times.`,
+      },
+    ]);
+
+    /**
+     * ChallengeOptions - lessonId : 16
+     */
+
+    // { id: 212, lessonId: 16, type: "SELECT", order: 30, question: `Why is it important to recognize critical points of service?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 212,
+        imageSrc: "",
+        correct: true,
+        text: `Because a guest's perception of time is subjective, and skewed perceptions happen most easily at these moments.`,
+      },
+      {
+        challengeId: 212,
+        imageSrc: "",
+        correct: false,
+        text: `Because guests are always right, regardless of the situation.`,
+      },
+      {
+        challengeId: 212,
+        imageSrc: "",
+        correct: false,
+        text: `Because it determines how much a guest should tip.`,
+      },
+      {
+        challengeId: 212,
+        imageSrc: "",
+        correct: false,
+        text: `Because every guest is important.`,
+      },
+    ]);
+
+    // { id: 213, lessonId: 16, type: "SELECT", order: 40, question: `Which of the following is an example of a critical point of service?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 213,
+        imageSrc: "",
+        correct: false,
+        text: `When the guest is actively eating a course.`,
+      },
+      {
+        challengeId: 213,
+        imageSrc: "",
+        correct: false,
+        text: `When the restaurant first opens for the day.`,
+      },
+      {
+        challengeId: 213,
+        imageSrc: "",
+        correct: true,
+        text: `When beverage levels are low.`,
+      },
+      {
+        challengeId: 213,
+        imageSrc: "",
+        correct: false,
+        text: `When they can see their server staring at their phone in the corner.`,
       },
     ]);
 
