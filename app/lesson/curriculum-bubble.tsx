@@ -35,13 +35,7 @@ export const CurriculumBubble = ({ question, imageSrc }: Props) => {
             width={300}
             className="hidden lg:block"
           />
-          <Image
-            src="/mascot.svg"
-            alt="Mascot"
-            height={150}
-            width={150}
-            className="block lg:hidden"
-          />
+       
         </>
       )}
 
@@ -51,10 +45,19 @@ export const CurriculumBubble = ({ question, imageSrc }: Props) => {
           <>
             <div className="absolute hidden lg:block -left-6 top-1/3 w-3 h-3 border-x-[16px] border-x-transparent border-t-16 transform -translate-y-1/2 rotate-90" />
             <div className="absolute block lg:hidden -bottom-4 right-1/3 w-3 h-3 border-x-[16px] border-x-transparent border-t-16 transform -translate-x-1/2" />
+            
           </>
         )}
       </div>
-     
+        {!imageSrc && (
+             <Image
+            src="/mascot.svg"
+            alt="Mascot"
+            height={150}
+            width={150}
+            className="block lg:hidden"
+          />
+        )}
     </div>
   );
 };

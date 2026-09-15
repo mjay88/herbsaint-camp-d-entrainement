@@ -32,13 +32,13 @@ const main = async () => {
       //TODO: How to include The Dessert Menu and The Menu as their own stand alone courses. I don't want one single lesson-button for the entire course. Or who cares if its one button.
       {
         id: 3,
-        title: "Dessert Menu",
-        imageSrc: "/pie.svg",
+        title: "The Menu",
+        imageSrc: "/spaghetti.svg",
       },
       {
         id: 4,
-        title: "The Menu",
-        imageSrc: "/spaghetti.svg",
+        title: "Dessert Menu",
+        imageSrc: "/pie.svg",
       },
       {
         id: 5,
@@ -3453,7 +3453,12 @@ const main = async () => {
       { challengeId: 174, imageSrc: "", correct: false, text: `Add as Entrée` },
       { challengeId: 174, imageSrc: "", correct: false, text: `More to Come` },
       { challengeId: 174, imageSrc: "", correct: true, text: `DON'T MAKE` },
-      { challengeId: 174, imageSrc: "", correct: false, text: `Heck of a Rush` },
+      {
+        challengeId: 174,
+        imageSrc: "",
+        correct: false,
+        text: `Heck of a Rush`,
+      },
     ]);
 
     // { id: 177, lessonId: 13, type: "SELECT", order: 110, question: `Which side should a guest be cleared from?` },
@@ -4116,6 +4121,1101 @@ const main = async () => {
       },
     ]);
 
+    /**
+     * Course id - 3: The Menu
+     * Unit id - 3: The Menu
+     */
+    await db.insert(schema.units).values([
+      {
+        id: 3,
+        courseId: 3,
+        title: "The Menu",
+        description: "Soups, Salads, Small Plates, Mains, and Sides",
+        order: 10,
+      },
+    ]);
+
+    /**
+     * Lessons for Course 3, Unit 3 The Menu
+     */
+    await db.insert(schema.lessons).values([
+      {
+        id: 17,
+        unitId: 3,
+        order: 10,
+        title: "Soups & Salads",
+      },
+      {
+        id: 18,
+        unitId: 3,
+        order: 20,
+        title: "Small Plates",
+      },
+      {
+        id: 19,
+        unitId: 3,
+        order: 30,
+        title: "Main Courses",
+      },
+      {
+        id: 20,
+        unitId: 3,
+        order: 40,
+        title: "Sides",
+      },
+    ]);
+
+    /**
+     * Course id - 3: The Menu
+     * Unit id - 3: The Menu
+     * Lesson id - 17: Soups & Salads
+     */
+    await db.insert(schema.challenges).values([
+      {
+        id: 221,
+        lessonId: 17,
+        type: "CURRICULUM",
+        order: 10,
+        imageSrc: null,
+        question: `Soup of the Day — $13\n\n. The Sour du Jour changes frequently. A description will be given during pre-shift, as well as any allergy concerns.`,
+      },
+      {
+        id: 222,
+        lessonId: 17,
+        type: "CURRICULUM",
+        order: 20,
+        imageSrc: null,
+        question: `Gumbo — $14\n\nChef's Signature dish:\n\nAdapted from one of his Grandmother's recipies. The gumbo begins with a dark roux of flour and soybean oil. Onion, bell pepper, serrano pepper, garlic, and Cajun seasonings — cayenne, paprika, chili powder, white pepper, black pepper, and filé — are added to the roux and cooked down.\n\nThe following day a fortified stock (stock poured over roasted chicken bones, then simmered overnight) is added along with chicken, Andouille, and Tasso. Okra is sautéed with oil and added in last. The finished gumbo rests overnight before being served, with Louisiana rice and green onions.\n\nOur gumbo recipe is specific to Herbsaint — recipes vary between LRG restaurants.\n\nMarking: Soup Spoon.`,
+      },
+      {
+        id: 268,
+        lessonId: 17,
+        type: "CURRICULUM",
+        order: 21,
+        imageSrc: null,
+        question: `Andouille is a coarse ground smoked sausage made with pork, garlic, pepper, onions, and seasonings.\n\nTasso is smoked, spiced, and cured meat — a specialty of south Louisiana cuisine made from pork shoulder with chili powder, cayenne, curing salt, black and white pepper, and oregano. Both are made in house at our sister restaurant Butcher.`,
+      },
+      {
+        id: 269,
+        lessonId: 17,
+        type: "CURRICULUM",
+        order: 22,
+        imageSrc: null,
+        question: `Gumbo Allergens:\n\ngluten, allium, dairy (rice), soybean oil, nightshade (cayenne and paprika).`,
+      },
+      {
+        id: 223,
+        lessonId: 17,
+        type: "SELECT",
+        order: 30,
+        imageSrc: null,
+        question: `What type of fat forms the base of Herbsaint's gumbo roux?`,
+      },
+      {
+        id: 224,
+        lessonId: 17,
+        type: "SELECT",
+        order: 40,
+        imageSrc: null,
+        question: `What is Tasso?`,
+      },
+      {
+        id: 225,
+        lessonId: 17,
+        type: "CURRICULUM",
+        order: 50,
+        imageSrc: null,
+        question: `Watermelon Gazpacho — $26\n\nA Spanish-style cold soup made with local watermelon, tomatoes, fennel, onions, jalapeños, mint, and basil — blended until slightly chunky, not fully puréed. Seasoned with sherry and red wine vinegars, finished with olive oil.\n\nTopped with 1.25 oz of Louisiana crab dressed in a jalapeño-lime mayo (Calabrian jalapeño, lime juice and zest, house mayo). Finished with fresh mint, fried ciabatta croutons, and olive oil.\n\nAllergens: allium, nightshade (tomato and jalapeño), gluten (fried bread).\n\nMarking: Soup Spoon`,
+      },
+      {
+        id: 270,
+        lessonId: 17,
+        type: "CURRICULUM",
+        order: 51,
+        imageSrc: null,
+        question: `Watermelon Gazpacho Allergens:\n\nallium, nightshade (tomato and jalapeño), gluten (fried bread).`,
+      },
+      {
+        id: 226,
+        lessonId: 17,
+        type: "CURRICULUM",
+        order: 60,
+        imageSrc: null,
+        question: `Farm Lettuces — $16\n\nLittle gem lettuce washed and dressed in an herb-buttermilk vinaigrette — a fancy ranch made with mayonnaise, buttermilk, sour cream, onion, garlic, dill, chives, and tarragon. Seasoned with cayenne, paprika, onion powder, garlic powder, dry thyme, and apple cider vinegar.\n\nTopped with sliced raw radish, fresh dill, and toasted panko breadcrumbs (toasted in soy oil and butter — contains dairy).\n\nMarking: Fork, knife.`
+      },
+      {
+        id: 271,
+        lessonId: 17,
+        type: "CURRICULUM",
+        order: 61,
+        imageSrc: null,
+        question: `Farm Lettuces Allergens:\n\nmayo (egg), dairy (dressing and breadcrumbs), gluten (breadcrumbs), allium.`,
+      },
+      {
+        id: 227,
+        lessonId: 17,
+        type: "CURRICULUM",
+        order: 70,
+        imageSrc: null,
+        question: `Chermoula Marinated Zucchini — $15\n\nLocal zucchini (or squash, depending on availability) charred on the grill, cooled, cut into obliques, and marinated with chermoula — a North African condiment made with cilantro, parsley, cumin, coriander, chilis, preserved lemon, ginger, and microplaned garlic.\n\nArtichoke aioli is spread on the bottom of the plate, the zucchini is placed on top, then finished with confit tomatoes (farm tomatoes, deseeded and slow-cooked overnight in olive oil with thyme and garlic), Valbreso feta (a French sheep's milk cheese), and dried Persian lime powder.\n\nCan be made dairy-free by omitting the cheese. Not commonly modified otherwise.\n\nAllergens: dairy (feta), garlic, nightshade (tomato). Egg in the aioli.\n\nMarking: Fork, knife.`,
+      },
+      {
+        id: 272,
+        lessonId: 17,
+        type: "CURRICULUM",
+        order: 70,
+        imageSrc: null,
+        question: `Chermoula Marinated Zucchini — Allergens: dairy (feta), garlic, nightshade (tomato). Egg in the aioli.`,
+      },
+      {
+        id: 228,
+        lessonId: 17,
+        type: "SELECT",
+        order: 80,
+        imageSrc: null,
+        question: `What type of cheese is used on the Chermoula Marinated Zucchini?`,
+      },
+      {
+        id: 229,
+        lessonId: 17,
+        type: "SELECT",
+        order: 90,
+        imageSrc: null,
+        question: `Can the Chermoula Marinated Zucchini be modified to be dairy-free?`,
+      },
+      {
+        id: 230,
+        lessonId: 17,
+        type: "SELECT",
+        order: 100,
+        imageSrc: null,
+        question: `What type of shellfish is served with the Watermelon Gazpacho?`,
+      },
+    ]);
+
+    /**
+     * ChallengeOptions - lessonId : 17
+     */
+
+    // { id: 223, lessonId: 17, type: "SELECT", order: 30, question: `What type of fat forms the base of Herbsaint's gumbo roux?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 223,
+        imageSrc: "",
+        correct: true,
+        text: `Flour and soybean oil.`,
+      },
+      {
+        challengeId: 223,
+        imageSrc: "",
+        correct: false,
+        text: `Butter and flour.`,
+      },
+      {
+        challengeId: 223,
+        imageSrc: "",
+        correct: false,
+        text: `Lard and cornmeal.`,
+      },
+      {
+        challengeId: 223,
+        imageSrc: "",
+        correct: false,
+        text: `Olive oil and flour.`,
+      },
+    ]);
+
+    // { id: 224, lessonId: 17, type: "SELECT", order: 40, question: `What is Tasso?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 224,
+        imageSrc: "",
+        correct: false,
+        text: `A coarse ground smoked sausage made from pork.`,
+      },
+      {
+        challengeId: 224,
+        imageSrc: "",
+        correct: false,
+        text: `A slow-roasted duck leg cured in duck fat.`,
+      },
+      {
+        challengeId: 224,
+        imageSrc: "",
+        correct: true,
+        text: `A smoked, spiced, and cured pork shoulder — a specialty of south Louisiana cuisine.`,
+      },
+      {
+        challengeId: 224,
+        imageSrc: "",
+        correct: false,
+        text: `A type of andouille sausage imported from France.`,
+      },
+    ]);
+
+    // { id: 228, lessonId: 17, type: "SELECT", order: 80, question: `What type of cheese is used on the Chermoula Marinated Zucchini?` },
+    await db.insert(schema.challengeOptions).values([
+      { challengeId: 228, imageSrc: "", correct: false, text: `Grana Padano.` },
+      {
+        challengeId: 228,
+        imageSrc: "",
+        correct: true,
+        text: `Valbreso feta — a French sheep's milk cheese.`,
+      },
+      {
+        challengeId: 228,
+        imageSrc: "",
+        correct: false,
+        text: `Pecorino Romano.`,
+      },
+      {
+        challengeId: 228,
+        imageSrc: "",
+        correct: false,
+        text: `Crème fraîche.`,
+      },
+    ]);
+
+    // { id: 229, lessonId: 17, type: "SELECT", order: 90, question: `Can the Chermoula Marinated Zucchini be modified to be dairy-free?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 229,
+        imageSrc: "",
+        correct: false,
+        text: `No, the aoli contains diary.`,
+      },
+      {
+        challengeId: 229,
+        imageSrc: "",
+        correct: false,
+        text: `Yes, by removing the Chermoula.`,
+      },
+      {
+        challengeId: 229,
+        imageSrc: "",
+        correct: true,
+        text: `Yes, by omitting the feta.`,
+      },
+      { challengeId: 229, imageSrc: "", correct: false, text: `Only the Gumbo is dairy free.` },
+    ]);
+
+    // { id: 230, lessonId: 17, type: "SELECT", order: 100, question: `What gives the Watermelon Gazpacho its protein component?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 230,
+        imageSrc: "",
+        correct: false,
+        text: `Gulf shrimp dressed in a serrano vinaigrette.`,
+      },
+      {
+        challengeId: 230,
+        imageSrc: "",
+        correct: false,
+        text: `Sliced bluefin tuna on toasted bread.`,
+      },
+      {
+        challengeId: 230,
+        imageSrc: "",
+        correct: true,
+        text: `Louisiana crab dressed in a jalapeño-lime mayo.`,
+      },
+      {
+        challengeId: 230,
+        imageSrc: "",
+        correct: false,
+        text: `Kampachi crudo served on the side.`,
+      },
+    ]);
+
+    /**
+     * Course id - 3: The Menu
+     * Unit id - 3: The Menu
+     * Lesson id - 18: Small Plates
+     */
+    await db.insert(schema.challenges).values([
+      {
+        id: 231,
+        lessonId: 18,
+        type: "CURRICULUM",
+        order: 10,
+        imageSrc: null,
+        question: `Cornmeal Fried Oysters — $22\n\nLouisiana oysters sourced from P & J Oyster House. 5 to 8 oysters per order depending on the size. Breaded in a simple mix of flour and cornmeal; the oyster liquor acts as the natural binder so no egg wash is needed. Salted straight out of the fryer.\n\nServed with sesame slaw — napa cabbage, julienned carrots, green onions, sesame vinaigrette (sesame oil, sesame seeds, rice wine vinegar — no soy), finished with lemon — and house hot sauce made with Louisiana hot sauce, horseradish, and lemon juice.\n\nMarking: Fork, dinner knife, share plate if shared.`,
+      },
+      {
+        id: 273,
+        lessonId: 18,
+        type: "CURRICULUM",
+        order: 11,
+        imageSrc: null,
+        question: `Cornmeal Fried Oysters Allergens:\n\nbivalve, allium, peanut oil (fryer), gluten, nightshade (chili in hot sauce), citrus, finfish (Worcestershire in hot sauce).\n\nModifications: gluten-free dredge available using corn flour only — cannot guarantee no cross-contamination as oysters share the same fryer. Can do no slaw, no hot sauce, or no citrus.`,
+      },
+      {
+        id: 232,
+        lessonId: 18,
+        type: "SELECT",
+        order: 20,
+        imageSrc: null,
+        question: `What is used as the binder in the Cornmeal Fried Oysters breading instead of egg wash?`,
+      },
+      {
+        id: 233,
+        lessonId: 18,
+        type: "CURRICULUM",
+        order: 30,
+        imageSrc: null,
+        question: `Beef Short Rib — $20\n\nA 2 oz portion of red wine-braised short rib, braised 4 to 5 hours with mirepoix, red wine, chicken stock, thyme, rosemary, peppercorns, and garlic until fork-tender. Portioned, trimmed, and pan-roasted in the oven to order — the presentation side is always crisped.\n\nServed on a wedge of potato rösti: grated Kennebec potatoes salted to draw out moisture, pressed into a cast iron pan, pan-roasted and finished in an oven to form a cake, then cut into wedges and deep-fried in peanut oil to order.\n\nFinished with salsa verde (blanched parsley and basil, rough-chopped with olive oil and raw garlic) and horseradish cream (sour cream base with horseradish, Worcestershire, vinegar, hot sauce, salt and pepper).\n\nMarking: Fork, dinner knife, share plate if shared.`,
+      },
+      {
+        id: 274,
+        lessonId: 18,
+        type: "CURRICULUM",
+        order: 31,
+        imageSrc: null,
+        question: `Beef Short Rib Allergens:\n\n allium, peanut oil (rösti), gluten (rösti), finfish (Worcestershire), cross-contamination from the frier.\n\nModifications: Can accommodate celiac. Rosti can be pan friend to accomodate peanut allergy. Either sauce can be served on the side or omitted. Happy to accommodate.`,
+      },
+      {
+        id: 234,
+        lessonId: 18,
+        type: "SELECT",
+        order: 40,
+        imageSrc: null,
+        question: `What oil are the potato rösti wedges fried in for the Beef Short Rib?`,
+      },
+      {
+        id: 235,
+        lessonId: 18,
+        type: "CURRICULUM",
+        order: 50,
+        imageSrc: null,
+        question: `Housemade Spaghetti — $20\n\nChef's Signature small plate. House-cured guanciale is diced and rendered in a pan to which is added garlic, shallot, chicken stock, heavy cream, seasoned with black pepper, and finished with Grana Padano cheese, lemon juice, and parsley.\n\nHouse made semolina spaghetti is tossed in the sauce and finished with Wang (Korean seedless chili pepper flakes). Topped with a fried poached egg and a crispy strip of guanciale.\n\nSignature Moment — Recommend the guest slowly cut into the egg and let the yolk run over the rest of the dish.`
+      },
+      {
+        id: 275,
+        lessonId: 18,
+        type: "CURRICULUM",
+        order: 51,
+        imageSrc: null,
+        question: `Guanciale is cured pork jowls like pancetta but more heavily seasoned with garlic, warm spices, lots of black pepper and salt.\n\nGrana Padano cheese is similar at Parmesan but with a younger required age minimum of 9 months and with a milder, sweeter, and creamier taste.\n\nThe Fried poached farm egg is poached just until the whites set, cooled, then panko-breaded and fried to order so the whites are solid but the yolk is still runny.`,
+      },
+      {
+        id: 276,
+        lessonId: 18,
+        type: "CURRICULUM",
+        order: 52,
+        imageSrc: null,
+        question: `Housemade Spaghetti Allergens:\n\nallium, dairy (cheese, cream), gluten (pasta, breading), citrus (lemon — not listed on menu), nightshade (Wang).\n\nModifications: no meat, no egg, egg on the side, no Wang.\n\nMarking: Fork, dinner knife, share plate if shared.`,
+      },
+      {
+        id: 236,
+        lessonId: 18,
+        type: "SELECT",
+        order: 60,
+        imageSrc: null,
+        question: `What is the signature moment of the Housemade Spaghetti?`,
+      },
+      {
+        id: 237,
+        lessonId: 18,
+        type: "SELECT",
+        order: 70,
+        imageSrc: null,
+        question: `What allergen is present in the Housemade Spaghetti but not listed on the menu?`,
+      },
+      {
+        id: 238,
+        lessonId: 18,
+        type: "CURRICULUM",
+        order: 80,
+        imageSrc: null,
+        question: `Kanpachi Crudo — $19\n\nKanpachi — greater amberjack, is a clean, firm white fish. 1.5 oz per serving.\n\nSerrano-lime vinaigrette (fish sauce base): serrano chilis (seeds removed), fish sauce, lime juice, cilantro, palm sugar, salt, and water to thin — blended and puréed.\n\nChili relish (components rotate with pepper availability): peppers, charred on the grill, steamed through in residual heat, skins removed, finely brunoised. Mixed with yuzu kosho (a Japanese fermented hot sauce of citrus zest and chili), olive oil, salt, and sugar — more pepper-forward than spicy.\n\nTopped with crispy shallots (store-bought, gluten-free, not breaded), shiso chiffonade, and Maldon sea salt.\n\nMarking: Fork, knife.`,
+      },
+      {
+        id: 277,
+        lessonId: 18,
+        type: "CURRICULUM",
+        order: 81,
+        imageSrc: null,
+        question: `Kanpachi Crudo Allergens  — :\n\nfinfish, chili, citrus, allium, nightshade (serrano and jalapeño).\n\nModifications: no sauce, sauce on the side, no chili, no shallot, no added salt. No modifications that strip the dish entirely.`,
+      },
+      {
+        id: 239,
+        lessonId: 18,
+        type: "CURRICULUM",
+        order: 90,
+        imageSrc: null,
+        question: `Bluefin Tuna Tartare — $22\n\nTwo ounces of chopped bluefin tuna ranched off the coast of Baja — a mix of leaner and fattier cuts (top loin, chutoro, otoro) for balance. Served on toasted pain blanc (brushed with olive oil, toasted until the outside sets but still fluffy inside).\n\nSmeared with yuzu mayonnaise: house mayo with yuzu juice and yuzu powder — bright acidity to complement the fat of the tuna.\n\nTuna dressed with tare: soy sauce, sake, mirin, green onions, cooked down until alcohol is cooked off.\n\nFinished with Maldon sea salt and togarashi spice (toasted nori, sesame seeds, dried chili, criolla sella chilis — mild heat and nutty).\n\nMarking: Fork, knife.`,
+      },
+      {
+        id: 278,
+        lessonId: 18,
+        type: "CURRICULUM",
+        order: 91,
+        imageSrc: null,
+        question: `Bluefin Tuna Tartare Allergens:\n\ngluten (bread), soy sauce, finfish, allium (aioli), sesame, nightshade (chili).\n\nModifications: no mayo, no tare, no togarashi. Will not serve without bread.`,
+      },
+      {
+        id: 240,
+        lessonId: 18,
+        type: "SELECT",
+        order: 100,
+        imageSrc: null,
+        question: `What is togarashi made of?`,
+      },
+      {
+        id: 241,
+        lessonId: 18,
+        type: "SELECT",
+        order: 110,
+        imageSrc: null,
+        question: `Can the Bluefin Tuna Tartare be served without bread?`,
+      },
+      {
+        id: 242,
+        lessonId: 18,
+        type: "CURRICULUM",
+        order: 120,
+        imageSrc: null,
+        question: `Grilled Lamb Kofta — $20\n\nA Turkish-style meatball of 4 oz total ground lamb shoulder with cumin, cinnamon, coriander, Aleppo chili (approachable heat), bulgur wheat (contains gluten — cannot be made gluten-free), chopped parsley, mint, and grated onion. Cured with pink salt — the lamb will always appear slightly rosy even when fully cooked through to medium-well. Grilled to order.\n\nServed on cucumber yogurt: yogurt with grated cucumber folded in, lemon juice, Aleppo chili, and olive oil. Finished with fresh dill and lightly sweet-pickled lima beans which bring a nice acidic balance to the dish.\n\nAllergens: gluten (bulgur wheat), dairy (yogurt), onion, garlic, legume (lima beans), nightshade (Aleppo).\n\nModifications: no yogurt, no limas, no dill. Cannot be made gluten-free.\n\nMarking: Fork, knife.`,
+      },
+      {
+        id: 279,
+        lessonId: 18,
+        type: "CURRICULUM",
+        order: 121,
+        imageSrc: null,
+        question: `Grilled Lamb Kofta Allergens:\n\ngluten (bulgur wheat), dairy (yogurt), onion, garlic, legume (lima beans), nightshade (Aleppo).\n\nModifications: no yogurt, no limas, no dill. Cannot be made gluten-free.`,
+      },
+      {
+        id: 243,
+        lessonId: 18,
+        type: "CURRICULUM",
+        order: 130,
+        imageSrc: null,
+        question: `Fried Green Tomatoes — $19\n\nTwo pieces per order. Sliced green tomatoes dredged in AP flour, egg wash (egg and milk), and panko breadcrumbs, then fried in peanut oil.\n\nSauce gribiche: hard-boiled eggs folded into mayonnaise with whole grain mustard, brunoise cornichons, capers, shallots, lemon juice, and evoo.\n\nTopped with about four chilled poached Gulf shrimp (sourced from the same supplier for 26 years, Captain Dino) dressed in sauce gribiche, then finished with fines herbes: tarragon, parsley, chives, and celery leaf.\n\nMarking: Fork, dinner knife, share plate if shared.`,
+      },
+      {
+        id: 280,
+        lessonId: 18,
+        type: "CURRICULUM",
+        order: 131,
+        imageSrc: null,
+        question: `Fried Green Tomatoes Allergens:\n\ngluten, shellfish (shrimp), egg, dairy, soy oil, allium, citrus. Cannot be made gluten-free or dairy-free.\n\nModifications: shrimp on the side, sauce on the side, or either can be omitted.\n\nNote: the gribiche does not contain shrimp and is safe to serve to guests with shrimp allergies.`,
+      },
+      {
+        id: 244,
+        lessonId: 18,
+        type: "SELECT",
+        order: 140,
+        imageSrc: null,
+        question: `Can the Fried Green Tomatoes be made gluten-free or dairy-free?`,
+      },
+      {
+        id: 245,
+        lessonId: 18,
+        type: "SELECT",
+        order: 150,
+        imageSrc: null,
+        question: `Does the sauce gribiche on the Fried Green Tomatoes contain shrimp?`,
+      },
+    ]);
+
+    /**
+     * ChallengeOptions - lessonId : 18
+     */
+
+    // { id: 232, lessonId: 18, type: "SELECT", order: 20, question: `What is used as the binder in the Cornmeal Fried Oysters breading instead of egg wash?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 232,
+        imageSrc: "",
+        correct: true,
+        text: `The oyster's own liquor acts as the natural binder.`,
+      },
+      {
+        challengeId: 232,
+        imageSrc: "",
+        correct: false,
+        text: `Egg wash (egg and milk).`,
+      },
+      { challengeId: 232, imageSrc: "", correct: false, text: `Buttermilk.` },
+      {
+        challengeId: 232,
+        imageSrc: "",
+        correct: false,
+        text: `House mayonnaise.`,
+      },
+    ]);
+
+    // { id: 234, lessonId: 18, type: "SELECT", order: 40, question: `What oil are the potato rösti wedges fried in for the Beef Short Rib?` },
+    await db.insert(schema.challengeOptions).values([
+      { challengeId: 234, imageSrc: "", correct: false, text: `Dab oil.` },
+      { challengeId: 234, imageSrc: "", correct: false, text: `Soybean oil.` },
+      { challengeId: 234, imageSrc: "", correct: true, text: `Peanut oil.` },
+      {
+        challengeId: 234,
+        imageSrc: "",
+        correct: false,
+        text: `Pennzoil High Mileage 5W-30.`,
+      },
+    ]);
+
+    // { id: 236, lessonId: 18, type: "SELECT", order: 60, question: `What is the signature moment of the Housemade Spaghetti?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 236,
+        imageSrc: "",
+        correct: false,
+        text: `Tossing the pasta tableside with guanciale fat.`,
+      },
+      {
+        challengeId: 236,
+        imageSrc: "",
+        correct: false,
+        text: `Grating fresh Grana Padano over the dish.`,
+      },
+      {
+        challengeId: 236,
+        imageSrc: "",
+        correct: true,
+        text: `Cutting into the fried poached egg and letting the yolk run over the rest of the dish.`,
+      },
+      {
+        challengeId: 236,
+        imageSrc: "",
+        correct: false,
+        text: `Topping the pasta with Wang chili flakes tableside.`,
+      },
+    ]);
+
+    // { id: 237, lessonId: 18, type: "SELECT", order: 70, question: `What allergen is present in the Housemade Spaghetti but not listed on the menu?` },
+    await db.insert(schema.challengeOptions).values([
+      { challengeId: 237, imageSrc: "", correct: false, text: `Shellfish.` },
+      { challengeId: 237, imageSrc: "", correct: false, text: `Peanut oil.` },
+      {
+        challengeId: 237,
+        imageSrc: "",
+        correct: true,
+        text: `Citrus (lemon).`,
+      },
+      { challengeId: 237, imageSrc: "", correct: false, text: `Pizza.` },
+    ]);
+
+    // { id: 240, lessonId: 18, type: "SELECT", order: 100, question: `What is togarashi made of?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 240,
+        imageSrc: "",
+        correct: false,
+        text: `It's a store bought spice.`,
+      },
+      {
+        challengeId: 240,
+        imageSrc: "",
+        correct: false,
+        text: `Yuzu juice, chili, and olive oil.`,
+      },
+      {
+        challengeId: 240,
+        imageSrc: "",
+        correct: true,
+        text: `Toasted nori, sesame seeds, dried chili, and criolla sella chilis — mild heat and nutty.`,
+      },
+      {
+        challengeId: 240,
+        imageSrc: "",
+        correct: false,
+        text: `Palm sugar, fish sauce, and lime juice.`,
+      },
+    ]);
+
+    // { id: 241, lessonId: 18, type: "SELECT", order: 110, question: `Can the Bluefin Tuna Tartare be served without bread?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 241,
+        imageSrc: "",
+        correct: false,
+        text: `Yes, we can serve it without bread on request.`,
+      },
+      {
+        challengeId: 241,
+        imageSrc: "",
+        correct: true,
+        text: `No. We will not serve the tartare without bread.`,
+      },
+    ]);
+
+    // { id: 244, lessonId: 18, type: "SELECT", order: 140, question: `Can the Fried Green Tomatoes be made gluten-free or dairy-free?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 244,
+        imageSrc: "",
+        correct: false,
+        text: `Yes, both modifications are available on request.`,
+      },
+      {
+        challengeId: 244,
+        imageSrc: "",
+        correct: false,
+        text: `Only gluten-free is available.`,
+      },
+      {
+        challengeId: 244,
+        imageSrc: "",
+        correct: false,
+        text: `Only dairy-free is available.`,
+      },
+      {
+        challengeId: 244,
+        imageSrc: "",
+        correct: true,
+        text: `Neither — it cannot be made gluten-free or dairy-free.`,
+      },
+    ]);
+
+    // { id: 245, lessonId: 18, type: "SELECT", order: 150, question: `Does the sauce gribiche on the Fried Green Tomatoes contain shrimp?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 245,
+        imageSrc: "",
+        correct: false,
+        text: `Yes, there is shrimp mixed into the gribiche.`,
+      },
+      {
+        challengeId: 245,
+        imageSrc: "",
+        correct: true,
+        text: `No — the gribiche does not contain shrimp and is safe to serve to guests with shrimp allergies.`,
+      },
+    ]);
+
+    /**
+     * Course id - 3: The Menu
+     * Unit id - 3: The Menu
+     * Lesson id - 19: Main Courses
+     */
+    await db.insert(schema.challenges).values([
+      {
+        id: 246,
+        lessonId: 19,
+        type: "CURRICULUM",
+        order: 10,
+        imageSrc: null,
+        question: `Fish of the Day — Market Price\n\nChanges frequently and will be covered during pre-shift everyday.`,
+      },
+      {
+        id: 247,
+        lessonId: 19,
+        type: "CURRICULUM",
+        order: 20,
+        imageSrc: null,
+        question: `Grilled Tuna Sandwich — $28\n\n3 oz of gulf yellowfin tuna (sourced from the Gulf of Mexico). Grilled to medium-rare and sliced — served medium-rare unless well done is specified. Dressed with shaved red onions, tomatoes, bibb lettuce, sliced avocado, and preserved lemon-caper aioli (mayo with chopped preserved lemons and capers) on grilled olive bread. Served with house-made potato chips and cucumbers marinated in sherry vinegar and olive oil.\n\nMarking: Fork, dinner knife.`,
+      },
+      {
+        id: 281,
+        lessonId: 19,
+        type: "CURRICULUM",
+        order: 21,
+        imageSrc: null,
+        question: `Grilled Tuna Sandwich Allergens:\n\nAllergens: seafood, allium, gluten (bread and possibly chips), nightshade.\n\nModifications: no bread, no onion, no avocado, no chips. Chips cannot be substituted for anything else. Never served open-faced. Can either be medium-rare or well done.\n\nMarking: Fork, dinner knife.`,
+      },
+      {
+        id: 248,
+        lessonId: 19,
+        type: "SELECT",
+        order: 30,
+        imageSrc: null,
+        question: `What temperatures can be taken for the Grilled Tuna Sandwich?`,
+      },
+      {
+        id: 249,
+        lessonId: 19,
+        type: "CURRICULUM",
+        order: 40,
+        imageSrc: null,
+        question: `Louisiana Jumbo Shrimp — $38\n\nFive ounces of peeled fresh-never-frozen Gulf shrimp, never deveined, harvested by Captain Dino of Jean Lafitte, LA — the same supplier for 26 years. Seasoned with a Cajun spice blend (paprika, garlic powder, bay, white and black pepper, allspice, mustard seed, thyme, cayenne) and finished with lemon juice after searing.\n\nServed on a room-temperature corn salad: roasted corn cut off the cob, charred cucumbers (salted and cured before charring to draw moisture and concentrate flavor), freshly cut cherry tomatoes (substituted with Creole or heirloom when available), and chopped pickled banana peppers. Dressed with a creamy tomato dressing (ketchup, mayo, butter, tomato, salt, paprika, and pepper) and topped with fresh cilantro and a lime wedge.\n\nMarking: Fork, dinner knife.`,
+      },
+      {
+        id: 282,
+        lessonId: 19,
+        type: "CURRICULUM",
+        order: 41,
+        imageSrc: null,
+        question: `Louisiana Jumbo Shrimp Allergens:\n\nallium, nightshade, butter in the dressing, shellfish, tomato, cilantro. citrus.\n\nModifications: no dressing, no cilantro, no Cajun spice.`,
+      },
+      {
+        id: 250,
+        lessonId: 19,
+        type: "SELECT",
+        order: 50,
+        imageSrc: null,
+        question: `Where are the shrimp for the Louisiana Jumbo Shrimp sourced from?`,
+      },
+      {
+        id: 251,
+        lessonId: 19,
+        type: "CURRICULUM",
+        order: 60,
+        imageSrc: null,
+        question: `Muscovy Duck Leg Confit — $46\n\nChef's Signature entrée. Duck legs dusted with salt, pepper, allspice, and fennel to cure overnight, then confited at a low temperature in duck fat with rosemary, sage, thyme, and whole garlic cloves. The duck leg is crisped in a pan, then placed on top of dirty rice. The dish is served with seasonal vegetables and finished with an orange gastrique (caramelized sugar, reduced orange juice, cane vinegar, lemon juice, and olive oil).\n\nWhen serving, twist the plate so the bone is in the 12 o'clock position.\n\nAllergens: allium, dairy (dirty rice), nightshade. Flag citrus allergies (gastrique).\n\nModifications: no dirty rice, no veg, no sauce.\n\nMarking: Fork, steak knife.`,
+      },
+      {
+        id: 283,
+        lessonId: 19,
+        type: "CURRICULUM",
+        order: 61,
+        imageSrc: null,
+        question: `Dirty rice — \n\na mixture of ground pork shoulder, chicken livers, garlic, onion, celery, and traditional Cajun seasonings (paprika, cayenne, black and white pepper, chili powder, and oregano). Sautéed with butter, garlic, chicken stock, and a small addition of popcorn rice (1:2 dirty to rice ratio), finished with green onions. `,
+      },
+       {
+        id: 284,
+        lessonId: 19,
+        type: "CURRICULUM",
+        order: 62,
+        imageSrc: null,
+        question: `Muscovy Duck Leg Confit Allergens:\n\nallium, dairy (dirty rice), nightshade, citrus (gastrique).\n\nModifications: no dirty rice, no veg, no sauce.`,
+      },
+      {
+        id: 252,
+        lessonId: 19,
+        type: "SELECT",
+        order: 70,
+        imageSrc: null,
+        question: `What is dirty rice made of?`,
+      },
+      {
+        id: 253,
+        lessonId: 19,
+        type: "SELECT",
+        order: 80,
+        imageSrc: null,
+        question: `When serving the Duck Leg Confit, where should the bone be positioned?`,
+      },
+      {
+        id: 254,
+        lessonId: 19,
+        type: "CURRICULUM",
+        order: 90,
+        imageSrc: null,
+        question: `Credo Farms Chicken — $38\n\nSkin-on airline breast marinated in olive oil, lemon zest, and chopped thyme, then grilled.\n\nServed on creamed corn: onion, garlic, Fresno jalapeño (fine dice), white wine, corn, cream (partially blended for body), thyme, and sugar. Topped with about 2 oz of roasted oyster mushrooms (farmed from Mushroom Maggies on the north shore), sautéed in soy oil on both sides and finished with butter, shallot, garlic, thyme, and salt. Finished with pickled chilies on top. Be aware that the pick-up time for this dish is 22 to 27 minutes.\n\nMarking: Fork, steak knife.`,
+      },
+      {
+        id: 285,
+        lessonId: 19,
+        type: "CURRICULUM",
+        order: 91,
+        imageSrc: null,
+        question: `Credo Farms Chicken Allergens:\n\nallium, dairy (cream, butter), mushroom, nightshade (jalapeño, pickled chilies).\n\nModifications: no mushrooms, no creamed corn, no pickled chilies.`,
+      },
+    
+      {
+        id: 256,
+        lessonId: 19,
+        type: "SELECT",
+        order: 110,
+        imageSrc: null,
+        question: `What is the approximate pick-up time for the Credo Farms Chicken?`,
+      },
+      {
+        id: 257,
+        lessonId: 19,
+        type: "CURRICULUM",
+        order: 120,
+        imageSrc: null,
+        question: `Grilled Wagyu Bavette — $48\n\nA 6 oz Texas Wagyu bavette steak grilled to the guest's desired temperature, sliced and garnished with chimichurri (parsley, cilantro, oregano, garlic, lemon zest, anchovies, pickled Fresno chilies, and EVOO). Served with house-made French fries and pimentón aioli.\n\nThe bavette, also known as flap steak, is a long, flat, and tender cut from the bottom sirloin near the flank. It is a lean cut with a rich, beefy flavor very similar to a flank steak. Wagyu refers to any of the four Japanese breeds of beef cattle — the Wagyu we serve is farmed in Texas.\n\nMarking: Fork, steak knife.`,
+      },
+      {
+        id: 286,
+        lessonId: 19,
+        type: "CURRICULUM",
+        order: 121,
+        imageSrc: null,
+        question: `Grilled Wagyu Bavette Allergens:\n\nfish (anchovies in chimichurri), allium, citrus.\n\nModifications: no sauce, sauce on the side, no fries.`,
+      },
+      {
+        id: 258,
+        lessonId: 19,
+        type: "SELECT",
+        order: 130,
+        imageSrc: null,
+        question: `What hidden allergen does the chimichurri on the Grilled Wagyu Bavette contain?`,
+      },
+      {
+        id: 259,
+        lessonId: 19,
+        type: "CURRICULUM",
+        order: 140,
+        imageSrc: null,
+        question: `14 oz. Mayura Station Australian Wagyu Striploin — $140\n\nFor the Table. A 14 oz Australian Wagyu striploin from Mayura Station — 100% full-blood Wagyu. Seared in beef tallow and thyme, then pan-roasted. Sliced and served simply with sea salt and extra virgin olive oil.\n\nNo modifications available.\n\nMarking: Fork, steak knife.`,
+      },
+      {
+        id: 260,
+        lessonId: 19,
+        type: "SELECT",
+        order: 150,
+        imageSrc: null,
+        question: `What is the Wagyu Striploin seared in?`,
+      },
+    ]);
+
+    /**
+     * ChallengeOptions - lessonId : 19
+     */
+
+    // { id: 248, lessonId: 19, type: "SELECT", order: 30, question: `What temperatures can be taken for the Grilled Tuna Sandwich?` },
+    await db.insert(schema.challengeOptions).values([
+      { challengeId: 248, imageSrc: "", correct: false, text: `Only well done.` },
+      { challengeId: 248, imageSrc: "", correct: false, text: `Any temperature the guest would like.` },
+      { challengeId: 248, imageSrc: "", correct: true, text: `Medium-rare or Well done` },
+      { challengeId: 248, imageSrc: "", correct: false, text: `Medium-well+.` },
+    ]);
+
+    // { id: 250, lessonId: 19, type: "SELECT", order: 50, question: `Where are the shrimp for the Louisiana Jumbo Shrimp sourced from?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 250,
+        imageSrc: "",
+        correct: false,
+        text: `Farm-raised shrimp sourced from Vietnam.`,
+      },
+      {
+        challengeId: 250,
+        imageSrc: "",
+        correct: false,
+        text: `Freshwater shrimp from the Mississippi River.`,
+      },
+      {
+        challengeId: 250,
+        imageSrc: "",
+        correct: true,
+        text: `Captain Dino of Jean Lafitte, LA — the same supplier for 26 years.`,
+      },
+      {
+        challengeId: 250,
+        imageSrc: "",
+        correct: false,
+        text: `Walmart.`,
+      },
+    ]);
+
+    // { id: 252, lessonId: 19, type: "SELECT", order: 70, question: `What is dirty rice made of?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 252,
+        imageSrc: "",
+        correct: false,
+        text: `Jasmine rice sautéed with butter, garlic, and herbs.`,
+      },
+      {
+        challengeId: 252,
+        imageSrc: "",
+        correct: true,
+        text: `Ground pork shoulder, chicken livers, garlic, onion, celery, Cajun seasonings, and popcorn rice.`,
+      },
+      {
+        challengeId: 252,
+        imageSrc: "",
+        correct: false,
+        text: `Brown rice cooked with andouille and tasso.`,
+      },
+      {
+        challengeId: 252,
+        imageSrc: "",
+        correct: false,
+        text: `Risotto-style rice finished with duck fat.`,
+      },
+    ]);
+
+    // { id: 253, lessonId: 19, type: "SELECT", order: 80, question: `When serving the Duck Leg Confit, where should the bone be positioned?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 253,
+        imageSrc: "",
+        correct: false,
+        text: `6 o'clock position.`,
+      },
+      {
+        challengeId: 253,
+        imageSrc: "",
+        correct: false,
+        text: `3 o'clock position.`,
+      },
+      {
+        challengeId: 253,
+        imageSrc: "",
+        correct: true,
+        text: `12 o'clock position.`,
+      },
+      {
+        challengeId: 253,
+        imageSrc: "",
+        correct: false,
+        text: `It doesn't matter as long as the duck is on the plate.`,
+      },
+    ]);
+
+    // { id: 256, lessonId: 19, type: "SELECT", order: 110, question: `What is the approximate pick-up time for the Credo Farms Chicken?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 256,
+        imageSrc: "",
+        correct: false,
+        text: `30 minutes.`,
+      },
+      {
+        challengeId: 256,
+        imageSrc: "",
+        correct: false,
+        text: `5 to 10 minutes.`,
+      },
+      {
+        challengeId: 256,
+        imageSrc: "",
+        correct: true,
+        text: `22 to 27 minutes.`,
+      },
+      {
+        challengeId: 256,
+        imageSrc: "",
+        correct: false,
+        text: `The chicken is already cooked through.`,
+      },
+    ]);
+
+    // { id: 258, lessonId: 19, type: "SELECT", order: 130, question: `What hidden allergen does the chimichurri on the Grilled Wagyu Bavette contain?` },
+    await db.insert(schema.challengeOptions).values([
+      { challengeId: 258, imageSrc: "", correct: false, text: `Shellfish.` },
+      {
+        challengeId: 258,
+        imageSrc: "",
+        correct: true,
+        text: `Anchovies (finfish).`,
+      },
+      { challengeId: 258, imageSrc: "", correct: false, text: `Peanut oil.` },
+      { challengeId: 258, imageSrc: "", correct: false, text: `Dairy.` },
+    ]);
+
+    // { id: 260, lessonId: 19, type: "SELECT", order: 150, question: `What is the Wagyu Striploin seared in?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 260,
+        imageSrc: "",
+        correct: false,
+        text: `Soybean oil and butter.`,
+      },
+      {
+        challengeId: 260,
+        imageSrc: "",
+        correct: false,
+        text: `Duck fat and rosemary.`,
+      },
+      {
+        challengeId: 260,
+        imageSrc: "",
+        correct: true,
+        text: `Beef tallow and thyme.`,
+      },
+      {
+        challengeId: 260,
+        imageSrc: "",
+        correct: false,
+        text: `Extra virgin olive oil and garlic.`,
+      },
+    ]);
+
+    /**
+     * Course id - 3: The Menu
+     * Unit id - 3: The Menu
+     * Lesson id - 20: Sides
+     */
+    await db.insert(schema.challenges).values([
+      {
+        id: 261,
+        lessonId: 20,
+        type: "CURRICULUM",
+        order: 10,
+        imageSrc: null,
+        question: `Dirty Rice — $9\n\nA mixture of ground pork shoulder, chicken livers, garlic, onion, celery, and traditional Cajun seasonings (paprika, cayenne, black and white pepper, chili powder, and oregano). Finished with a quick sauté of butter, garlic, chicken stock, and a small addition of popcorn rice (1:2 dirty to rice ratio), and topped with green onions.\n\nAllergens: allium, dairy (rice, butter).\n\nModifications: none.\n\nMarking: Fork, knife.`,
+      },
+      {
+        id: 262,
+        lessonId: 20,
+        type: "CURRICULUM",
+        order: 20,
+        imageSrc: null,
+        question: `French Fries with Pimentón Aioli — $9\n\nRusset potatoes cut in house, soaked overnight in water, then blanched three times in peanut oil at 256°F. Fried at 350°F when fired. Served with a ramekin of pimentón aioli.\n\nAllergens: peanut oil, gluten (cross contamination).\n\nModifications: no aioli.\n\nMarking: Fork, knife.`,
+      },
+      {
+        id: 263,
+        lessonId: 20,
+        type: "CURRICULUM",
+        order: 30,
+        imageSrc: null,
+        question: `Charred Squash with Romesco and Hazelnuts — $10\n\nCharred summer squash (seasoned with salt and pepper) placed on top of Romesco — a Spanish sauce made with piquillo peppers, red bell peppers, onion, garlic, chili paste, EVOO, sherry vinegar, and Marcona almonds. Topped with toasted hazelnuts.\n\nAllergens: allium, tree nuts (almonds and hazelnuts), nightshade (peppers, chili paste).\n\nMarking: Fork, knife.`,
+      },
+      {
+        id: 264,
+        lessonId: 20,
+        type: "SELECT",
+        order: 40,
+        imageSrc: null,
+        question: `What nut is used in the Romesco sauce on the Charred Squash?`,
+      },
+      {
+        id: 265,
+        lessonId: 20,
+        type: "CURRICULUM",
+        order: 50,
+        imageSrc: null,
+        question: `Grilled Okra with Confit Tomato, Shoyu Vin., Pickled Shallots, and Toasted Sesame — $10\n\nLocal grilled okra seasoned with salt and pepper, cooked on the grill. Dressed with a shoyu vinaigrette (soy sauce, black garlic, rice wine vinegar, and oil), chopped confit tomato, pickled shallots, and toasted sesame.\n\nAllergens: allium, sesame, soy sauce, nightshade (tomato).\n\nModifications: no sesame, no tomato, no vinaigrette.\n\nMarking: Fork, knife.`,
+      },
+   
+      {
+        id: 267,
+        lessonId: 20,
+        type: "SELECT",
+        order: 70,
+        imageSrc: null,
+        question: `Which side dish contains tree nuts?`,
+      },
+    ]);
+
+    /**
+     * ChallengeOptions - lessonId : 20
+     */
+
+    // { id: 264, lessonId: 20, type: "SELECT", order: 40, question: `What nut is used in the Romesco sauce on the Charred Squash?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 264,
+        imageSrc: "",
+        correct: false,
+        text: `Toasted pecans.`,
+      },
+      {
+        challengeId: 264,
+        imageSrc: "",
+        correct: true,
+        text: `Marcona almonds.`,
+      },
+      { challengeId: 264, imageSrc: "", correct: false, text: `Pine nuts.` },
+      { challengeId: 264, imageSrc: "", correct: false, text: `Walnuts.` },
+    ]);
+
+  
+
+    // { id: 267, lessonId: 20, type: "SELECT", order: 70, question: `Which side dish contains tree nuts?` },
+    await db.insert(schema.challengeOptions).values([
+      { challengeId: 267, imageSrc: "", correct: false, text: `Dirty Rice.` },
+      { challengeId: 267, imageSrc: "", correct: false, text: `French Fries.` },
+      {
+        challengeId: 267,
+        imageSrc: "",
+        correct: true,
+        text: `Charred Squash with Romesco and Hazelnuts.`,
+      },
+      { challengeId: 267, imageSrc: "", correct: false, text: `Grilled Okra.` },
+    ]);
+//TODO: make sure challenge Id is correct.
     //Syncs react-admin and react-simple-data-rest with existing db
     await db.execute(
       sql`SELECT setval('courses_id_seq', (SELECT MAX(id) FROM courses))`,
