@@ -1,7 +1,7 @@
 "use client";
 
 import { toast } from "sonner";
-import { useTransition, useEffect } from "react";
+import { useTransition } from "react";
 import { useRouter } from "next/navigation";
 
 import { courses, userProgress } from "@/db/schema";
@@ -20,7 +20,7 @@ export const List = ({ courses, activeCourseId }: Props) => {
 
   const onClick = (id: number) => {
     if (pending) return;
-
+ //TODO: If course is not active it makes you double click before navigating to learn.
     if (id === activeCourseId) {
       return router.push("/learn");
     }

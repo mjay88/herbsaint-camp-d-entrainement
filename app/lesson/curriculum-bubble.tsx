@@ -10,22 +10,23 @@ export const CurriculumBubble = ({ question, imageSrc }: Props) => {
     <div className="flex flex-col lg:flex-row items-center justify-evenly gap-y-10 gap-x-4 mb-6">
       {imageSrc ? (
         <>
-        <Image
-          src={imageSrc}
-          alt="Mascot" //TODO: Fix to appropriate string
-          height={300}
-          width={300}
-          className="hidden lg:block"
+          <Image
+            src={imageSrc}
+            alt="Mascot" //TODO: Fix to appropriate string
+            height={300}
+            width={300}
+            className="hidden lg:block"
+            placeholder="blur"
           />
           <Image
-          src={imageSrc}
-          alt="Mascot"
-          height={200}
-          width={200}
-        className="block lg:hidden"
+            src={imageSrc}
+            alt="Mascot"
+            height={200}
+            width={200}
+            className="block lg:hidden"
+            placeholder="blur"
           />
-      
-          </>
+        </>
       ) : (
         <>
           <Image
@@ -35,7 +36,6 @@ export const CurriculumBubble = ({ question, imageSrc }: Props) => {
             width={300}
             className="hidden lg:block"
           />
-       
         </>
       )}
 
@@ -45,19 +45,18 @@ export const CurriculumBubble = ({ question, imageSrc }: Props) => {
           <>
             <div className="absolute hidden lg:block -left-6 top-1/3 w-3 h-3 border-x-[16px] border-x-transparent border-t-16 transform -translate-y-1/2 rotate-90" />
             <div className="absolute block lg:hidden -bottom-4 right-1/3 w-3 h-3 border-x-[16px] border-x-transparent border-t-16 transform -translate-x-1/2" />
-            
           </>
         )}
       </div>
-        {!imageSrc && (
-             <Image
-            src="/mascot.svg"
-            alt="Mascot"
-            height={150}
-            width={150}
-            className="block lg:hidden"
-          />
-        )}
+      {!imageSrc && (
+        <Image
+          src="/mascot.svg"
+          alt="Mascot"
+          height={150}
+          width={150}
+          className="block lg:hidden"
+        />
+      )}
     </div>
   );
 };

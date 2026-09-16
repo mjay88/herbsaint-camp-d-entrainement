@@ -33,17 +33,17 @@ const main = async () => {
       {
         id: 3,
         title: "The Menu",
-        imageSrc: "/spaghetti.svg",
+        imageSrc: "/menu/house-spaghetti.webp",
       },
       {
         id: 4,
         title: "Dessert Menu",
-        imageSrc: "/pie.svg",
+        imageSrc: "/desserts/banana-brown-butter-tart.webp",
       },
       {
         id: 5,
         title: "Drinks Menu",
-        imageSrc: "/glass-wine.svg",
+        imageSrc: "/drinks/out-of-office.webp",
       },
       {
         id: 6,
@@ -824,7 +824,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 40,
         imageSrc: null,
-        question: `Mark for dessert, dropping share plates when appropriate. Silverware should be dropped to the guest's sides, fork on the left, spoon on the right. Check if anyone needs a new napkin. This should be done prior to ringing in the dessert order.\n\nServe dessert from the guest's left with your left hand, announcing it when dropping. Check back with your guest within 2 bites or 2 minutes. Are the guests involved in conversation? Can this QC should be accomplished by simply topping off drinks and making eye contact with each guest?.`,
+        question: `Serve dessert from the guest's left with your left hand, announcing it when dropping. Check back with your guest within 2 bites or 2 minutes. Are the guests involved in conversation? Can this QC should be accomplished by simply topping off drinks and making eye contact with each guest?.`,
       },
 
       {
@@ -1025,7 +1025,7 @@ const main = async () => {
         lessonId: 6,
         type: "CURRICULUM",
         order: 60,
-        imageSrc: "/desserts/banana-brown-butter-tart.svg",
+        imageSrc: "/desserts/banana-brown-butter-tart.webp",
         question: `The Banana Brown Butter Tart:\n\nA shell of pasta frolla dough is filled with slices of banana and a spiced brown butter filling. Pasta frolla is an Italian sweet shortcrust pastry. It's made from flour, butter, sugar, and egg yolks, giving it a rich, sandy, cookie-like texture rather than the flaky layers of a traditional pie crust.`,
       },
       {
@@ -1098,7 +1098,7 @@ const main = async () => {
         lessonId: 6,
         type: "CURRICULUM",
         order: 150,
-        imageSrc: "/desserts/vanilla-pot-de-creme.svg",
+        imageSrc: "/desserts/vanilla-pot-de-creme.webp",
         question: `The Vanilla Pot de Crème:\n\nA creamy lemon and vanilla custard topped with local berries — blueberries and blackberries. Served with two Fig Newton cookies.`,
       },
       {
@@ -1106,7 +1106,7 @@ const main = async () => {
         lessonId: 6,
         type: "CURRICULUM",
         order: 160,
-        imageSrc: "/desserts/vanilla-pot-de-creme.svg",
+        imageSrc: "/desserts/vanilla-pot-de-creme.webp",
         question: `The Vanilla Pot de Crème contains dairy, citrus, and gluten (from the cookies).\n\nMarking: Teaspoon.`,
       },
       {
@@ -1146,7 +1146,7 @@ const main = async () => {
         lessonId: 6,
         type: "CURRICULUM",
         order: 210,
-        imageSrc: "/desserts/fried-peach-hand-pies.svg",
+        imageSrc: "/desserts/fried-peach-hand-pies.webp",
         question: `The Fried Peach Hand Pies:\n\nPeaches and lemon zest in a crème fraîche pie dough, fried to order in peanut oil and tossed in cinnamon sugar. Served with butter pecan ice cream and ginger cookie crumbs.`,
       },
       {
@@ -1154,7 +1154,7 @@ const main = async () => {
         lessonId: 6,
         type: "CURRICULUM",
         order: 220,
-        imageSrc: null,
+        imageSrc: "/desserts/fried-peach-hand-pies.webp",
         question: `The Fried Peach Hand Pies contain gluten, dairy, and peanuts (from the frying oil).\n\nMarking: Appetizer Fork, Soup Spoon.`,
       },
       {
@@ -1194,7 +1194,7 @@ const main = async () => {
         lessonId: 6,
         type: "CURRICULUM",
         order: 270,
-        imageSrc: "/desserts/flourless-chocolate-cake.svg",
+        imageSrc: "/desserts/flourless-chocolate-cake.webp",
         question: `The Flourless Chocolate Cake:\n\nAn intense and moussey flourless chocolate cake, served room temperature and dusted with cocoa powder. Topped with dulce de leche sauce (milk caramel), whipped cream, and Spanish peanut brittle.`,
       },
       {
@@ -1202,7 +1202,7 @@ const main = async () => {
         lessonId: 6,
         type: "CURRICULUM",
         order: 280,
-        imageSrc: "/desserts/flourless-chocolate-cake.svg",
+        imageSrc: "/desserts/flourless-chocolate-cake.webp",
         question: `The Flourless Chocolate Cake contains nuts (from the peanut brittle) and dairy.\n\nMarking: Appetizer Fork, Soup Spoon if à la mode.`,
       },
       {
@@ -1242,7 +1242,7 @@ const main = async () => {
         lessonId: 6,
         type: "CURRICULUM",
         order: 330,
-        imageSrc: "/desserts/ice-cream.svg",
+        imageSrc: "/desserts/ice-cream.webp",
         question: `ICDJ & Seasonal Sorbet:\n\nChanges frequently — refer to the current dessert menu for offerings.`,
       },
       {
@@ -4241,7 +4241,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 60,
         imageSrc: null,
-        question: `Farm Lettuces — $16\n\nLittle gem lettuce washed and dressed in an herb-buttermilk vinaigrette — a fancy ranch made with mayonnaise, buttermilk, sour cream, onion, garlic, dill, chives, and tarragon. Seasoned with cayenne, paprika, onion powder, garlic powder, dry thyme, and apple cider vinegar.\n\nTopped with sliced raw radish, fresh dill, and toasted panko breadcrumbs (toasted in soy oil and butter — contains dairy).\n\nMarking: Fork, knife.`
+        question: `Farm Lettuces — $16\n\nLittle gem lettuce washed and dressed in an herb-buttermilk vinaigrette — a fancy ranch made with mayonnaise, buttermilk, sour cream, onion, garlic, dill, chives, and tarragon. Seasoned with cayenne, paprika, onion powder, garlic powder, dry thyme, and apple cider vinegar.\n\nTopped with sliced raw radish, fresh dill, and toasted panko breadcrumbs (toasted in soy oil and butter — contains dairy).\n\nMarking: Fork, knife.`,
       },
       {
         id: 271,
@@ -4396,7 +4396,12 @@ const main = async () => {
         correct: true,
         text: `Yes, by omitting the feta.`,
       },
-      { challengeId: 229, imageSrc: "", correct: false, text: `Only the Gumbo is dairy free.` },
+      {
+        challengeId: 229,
+        imageSrc: "",
+        correct: false,
+        text: `Only the Gumbo is dairy free.`,
+      },
     ]);
 
     // { id: 230, lessonId: 17, type: "SELECT", order: 100, question: `What gives the Watermelon Gazpacho its protein component?` },
@@ -4438,7 +4443,7 @@ const main = async () => {
         lessonId: 18,
         type: "CURRICULUM",
         order: 10,
-        imageSrc: null,
+        imageSrc: "/menu/oysters.webp",
         question: `Cornmeal Fried Oysters — $22\n\nLouisiana oysters sourced from P & J Oyster House. 5 to 8 oysters per order depending on the size. Breaded in a simple mix of flour and cornmeal; the oyster liquor acts as the natural binder so no egg wash is needed. Salted straight out of the fryer.\n\nServed with sesame slaw — napa cabbage, julienned carrots, green onions, sesame vinaigrette (sesame oil, sesame seeds, rice wine vinegar — no soy), finished with lemon — and house hot sauce made with Louisiana hot sauce, horseradish, and lemon juice.\n\nMarking: Fork, dinner knife, share plate if shared.`,
       },
       {
@@ -4446,7 +4451,7 @@ const main = async () => {
         lessonId: 18,
         type: "CURRICULUM",
         order: 11,
-        imageSrc: null,
+        imageSrc: "/menu/oysters.webp",
         question: `Cornmeal Fried Oysters Allergens:\n\nbivalve, allium, peanut oil (fryer), gluten, nightshade (chili in hot sauce), citrus, finfish (Worcestershire in hot sauce).\n\nModifications: gluten-free dredge available using corn flour only — cannot guarantee no cross-contamination as oysters share the same fryer. Can do no slaw, no hot sauce, or no citrus.`,
       },
       {
@@ -4462,7 +4467,7 @@ const main = async () => {
         lessonId: 18,
         type: "CURRICULUM",
         order: 30,
-        imageSrc: null,
+        imageSrc: "/menu/short-rib.webp",
         question: `Beef Short Rib — $20\n\nA 2 oz portion of red wine-braised short rib, braised 4 to 5 hours with mirepoix, red wine, chicken stock, thyme, rosemary, peppercorns, and garlic until fork-tender. Portioned, trimmed, and pan-roasted in the oven to order — the presentation side is always crisped.\n\nServed on a wedge of potato rösti: grated Kennebec potatoes salted to draw out moisture, pressed into a cast iron pan, pan-roasted and finished in an oven to form a cake, then cut into wedges and deep-fried in peanut oil to order.\n\nFinished with salsa verde (blanched parsley and basil, rough-chopped with olive oil and raw garlic) and horseradish cream (sour cream base with horseradish, Worcestershire, vinegar, hot sauce, salt and pepper).\n\nMarking: Fork, dinner knife, share plate if shared.`,
       },
       {
@@ -4470,7 +4475,7 @@ const main = async () => {
         lessonId: 18,
         type: "CURRICULUM",
         order: 31,
-        imageSrc: null,
+        imageSrc: "/menu/short-rib.webp",
         question: `Beef Short Rib Allergens:\n\n allium, peanut oil (rösti), gluten (rösti), finfish (Worcestershire), cross-contamination from the frier.\n\nModifications: Can accommodate celiac. Rosti can be pan friend to accomodate peanut allergy. Either sauce can be served on the side or omitted. Happy to accommodate.`,
       },
       {
@@ -4486,15 +4491,15 @@ const main = async () => {
         lessonId: 18,
         type: "CURRICULUM",
         order: 50,
-        imageSrc: null,
-        question: `Housemade Spaghetti — $20\n\nChef's Signature small plate. House-cured guanciale is diced and rendered in a pan to which is added garlic, shallot, chicken stock, heavy cream, seasoned with black pepper, and finished with Grana Padano cheese, lemon juice, and parsley.\n\nHouse made semolina spaghetti is tossed in the sauce and finished with Wang (Korean seedless chili pepper flakes). Topped with a fried poached egg and a crispy strip of guanciale.\n\nSignature Moment — Recommend the guest slowly cut into the egg and let the yolk run over the rest of the dish.`
+        imageSrc: "/menu/house-spaghetti.webp",
+        question: `Housemade Spaghetti — $20\n\nChef's Signature small plate. House-cured guanciale is diced and rendered in a pan to which is added garlic, shallot, chicken stock, heavy cream, seasoned with black pepper, and finished with Grana Padano cheese, lemon juice, and parsley.\n\nHouse made semolina spaghetti is tossed in the sauce and finished with Wang (Korean seedless chili pepper flakes). Topped with a fried poached egg and a crispy strip of guanciale.\n\nSignature Moment — Recommend the guest slowly cut into the egg and let the yolk run over the rest of the dish.`,
       },
       {
         id: 275,
         lessonId: 18,
         type: "CURRICULUM",
         order: 51,
-        imageSrc: null,
+        imageSrc: "/menu/house-spaghetti.webp",
         question: `Guanciale is cured pork jowls like pancetta but more heavily seasoned with garlic, warm spices, lots of black pepper and salt.\n\nGrana Padano cheese is similar at Parmesan but with a younger required age minimum of 9 months and with a milder, sweeter, and creamier taste.\n\nThe Fried poached farm egg is poached just until the whites set, cooled, then panko-breaded and fried to order so the whites are solid but the yolk is still runny.`,
       },
       {
@@ -4502,7 +4507,7 @@ const main = async () => {
         lessonId: 18,
         type: "CURRICULUM",
         order: 52,
-        imageSrc: null,
+        imageSrc: "/menu/house-spaghetti.webp",
         question: `Housemade Spaghetti Allergens:\n\nallium, dairy (cheese, cream), gluten (pasta, breading), citrus (lemon — not listed on menu), nightshade (Wang).\n\nModifications: no meat, no egg, egg on the side, no Wang.\n\nMarking: Fork, dinner knife, share plate if shared.`,
       },
       {
@@ -4526,7 +4531,7 @@ const main = async () => {
         lessonId: 18,
         type: "CURRICULUM",
         order: 80,
-        imageSrc: null,
+        imageSrc: "/menu/crudo.webp",
         question: `Kanpachi Crudo — $19\n\nKanpachi — greater amberjack, is a clean, firm white fish. 1.5 oz per serving.\n\nSerrano-lime vinaigrette (fish sauce base): serrano chilis (seeds removed), fish sauce, lime juice, cilantro, palm sugar, salt, and water to thin — blended and puréed.\n\nChili relish (components rotate with pepper availability): peppers, charred on the grill, steamed through in residual heat, skins removed, finely brunoised. Mixed with yuzu kosho (a Japanese fermented hot sauce of citrus zest and chili), olive oil, salt, and sugar — more pepper-forward than spicy.\n\nTopped with crispy shallots (store-bought, gluten-free, not breaded), shiso chiffonade, and Maldon sea salt.\n\nMarking: Fork, knife.`,
       },
       {
@@ -4534,7 +4539,7 @@ const main = async () => {
         lessonId: 18,
         type: "CURRICULUM",
         order: 81,
-        imageSrc: null,
+        imageSrc: "/menu/crudo.webp",
         question: `Kanpachi Crudo Allergens  — :\n\nfinfish, chili, citrus, allium, nightshade (serrano and jalapeño).\n\nModifications: no sauce, sauce on the side, no chili, no shallot, no added salt. No modifications that strip the dish entirely.`,
       },
       {
@@ -4542,7 +4547,7 @@ const main = async () => {
         lessonId: 18,
         type: "CURRICULUM",
         order: 90,
-        imageSrc: null,
+        imageSrc: "/menu/tuna-tartare.webp",
         question: `Bluefin Tuna Tartare — $22\n\nTwo ounces of chopped bluefin tuna ranched off the coast of Baja — a mix of leaner and fattier cuts (top loin, chutoro, otoro) for balance. Served on toasted pain blanc (brushed with olive oil, toasted until the outside sets but still fluffy inside).\n\nSmeared with yuzu mayonnaise: house mayo with yuzu juice and yuzu powder — bright acidity to complement the fat of the tuna.\n\nTuna dressed with tare: soy sauce, sake, mirin, green onions, cooked down until alcohol is cooked off.\n\nFinished with Maldon sea salt and togarashi spice (toasted nori, sesame seeds, dried chili, criolla sella chilis — mild heat and nutty).\n\nMarking: Fork, knife.`,
       },
       {
@@ -4550,7 +4555,7 @@ const main = async () => {
         lessonId: 18,
         type: "CURRICULUM",
         order: 91,
-        imageSrc: null,
+        imageSrc: "/menu/tuna-tartare.webp",
         question: `Bluefin Tuna Tartare Allergens:\n\ngluten (bread), soy sauce, finfish, allium (aioli), sesame, nightshade (chili).\n\nModifications: no mayo, no tare, no togarashi. Will not serve without bread.`,
       },
       {
@@ -4574,7 +4579,7 @@ const main = async () => {
         lessonId: 18,
         type: "CURRICULUM",
         order: 120,
-        imageSrc: null,
+        imageSrc: "/menu/kofta.webp",
         question: `Grilled Lamb Kofta — $20\n\nA Turkish-style meatball of 4 oz total ground lamb shoulder with cumin, cinnamon, coriander, Aleppo chili (approachable heat), bulgur wheat (contains gluten — cannot be made gluten-free), chopped parsley, mint, and grated onion. Cured with pink salt — the lamb will always appear slightly rosy even when fully cooked through to medium-well. Grilled to order.\n\nServed on cucumber yogurt: yogurt with grated cucumber folded in, lemon juice, Aleppo chili, and olive oil. Finished with fresh dill and lightly sweet-pickled lima beans which bring a nice acidic balance to the dish.\n\nAllergens: gluten (bulgur wheat), dairy (yogurt), onion, garlic, legume (lima beans), nightshade (Aleppo).\n\nModifications: no yogurt, no limas, no dill. Cannot be made gluten-free.\n\nMarking: Fork, knife.`,
       },
       {
@@ -4582,7 +4587,7 @@ const main = async () => {
         lessonId: 18,
         type: "CURRICULUM",
         order: 121,
-        imageSrc: null,
+        imageSrc: "/menu/kofta.webp",
         question: `Grilled Lamb Kofta Allergens:\n\ngluten (bulgur wheat), dairy (yogurt), onion, garlic, legume (lima beans), nightshade (Aleppo).\n\nModifications: no yogurt, no limas, no dill. Cannot be made gluten-free.`,
       },
       {
@@ -4590,7 +4595,7 @@ const main = async () => {
         lessonId: 18,
         type: "CURRICULUM",
         order: 130,
-        imageSrc: null,
+        imageSrc: "/menu/fried-green-tomatos.webp",
         question: `Fried Green Tomatoes — $19\n\nTwo pieces per order. Sliced green tomatoes dredged in AP flour, egg wash (egg and milk), and panko breadcrumbs, then fried in peanut oil.\n\nSauce gribiche: hard-boiled eggs folded into mayonnaise with whole grain mustard, brunoise cornichons, capers, shallots, lemon juice, and evoo.\n\nTopped with about four chilled poached Gulf shrimp (sourced from the same supplier for 26 years, Captain Dino) dressed in sauce gribiche, then finished with fines herbes: tarragon, parsley, chives, and celery leaf.\n\nMarking: Fork, dinner knife, share plate if shared.`,
       },
       {
@@ -4598,7 +4603,7 @@ const main = async () => {
         lessonId: 18,
         type: "CURRICULUM",
         order: 131,
-        imageSrc: null,
+        imageSrc: "/menu/fried-green-tomatos.webp",
         question: `Fried Green Tomatoes Allergens:\n\ngluten, shellfish (shrimp), egg, dairy, soy oil, allium, citrus. Cannot be made gluten-free or dairy-free.\n\nModifications: shrimp on the side, sauce on the side, or either can be omitted.\n\nNote: the gribiche does not contain shrimp and is safe to serve to guests with shrimp allergies.`,
       },
       {
@@ -4866,7 +4871,7 @@ const main = async () => {
         imageSrc: null,
         question: `Dirty rice — \n\na mixture of ground pork shoulder, chicken livers, garlic, onion, celery, and traditional Cajun seasonings (paprika, cayenne, black and white pepper, chili powder, and oregano). Sautéed with butter, garlic, chicken stock, and a small addition of popcorn rice (1:2 dirty to rice ratio), finished with green onions. `,
       },
-       {
+      {
         id: 284,
         lessonId: 19,
         type: "CURRICULUM",
@@ -4906,7 +4911,7 @@ const main = async () => {
         imageSrc: null,
         question: `Credo Farms Chicken Allergens:\n\nallium, dairy (cream, butter), mushroom, nightshade (jalapeño, pickled chilies).\n\nModifications: no mushrooms, no creamed corn, no pickled chilies.`,
       },
-    
+
       {
         id: 256,
         lessonId: 19,
@@ -4963,9 +4968,24 @@ const main = async () => {
 
     // { id: 248, lessonId: 19, type: "SELECT", order: 30, question: `What temperatures can be taken for the Grilled Tuna Sandwich?` },
     await db.insert(schema.challengeOptions).values([
-      { challengeId: 248, imageSrc: "", correct: false, text: `Only well done.` },
-      { challengeId: 248, imageSrc: "", correct: false, text: `Any temperature the guest would like.` },
-      { challengeId: 248, imageSrc: "", correct: true, text: `Medium-rare or Well done` },
+      {
+        challengeId: 248,
+        imageSrc: "",
+        correct: false,
+        text: `Only well done.`,
+      },
+      {
+        challengeId: 248,
+        imageSrc: "",
+        correct: false,
+        text: `Any temperature the guest would like.`,
+      },
+      {
+        challengeId: 248,
+        imageSrc: "",
+        correct: true,
+        text: `Medium-rare or Well done`,
+      },
       { challengeId: 248, imageSrc: "", correct: false, text: `Medium-well+.` },
     ]);
 
@@ -5168,7 +5188,7 @@ const main = async () => {
         imageSrc: null,
         question: `Grilled Okra with Confit Tomato, Shoyu Vin., Pickled Shallots, and Toasted Sesame — $10\n\nLocal grilled okra seasoned with salt and pepper, cooked on the grill. Dressed with a shoyu vinaigrette (soy sauce, black garlic, rice wine vinegar, and oil), chopped confit tomato, pickled shallots, and toasted sesame.\n\nAllergens: allium, sesame, soy sauce, nightshade (tomato).\n\nModifications: no sesame, no tomato, no vinaigrette.\n\nMarking: Fork, knife.`,
       },
-   
+
       {
         id: 267,
         lessonId: 20,
@@ -5201,8 +5221,6 @@ const main = async () => {
       { challengeId: 264, imageSrc: "", correct: false, text: `Walnuts.` },
     ]);
 
-  
-
     // { id: 267, lessonId: 20, type: "SELECT", order: 70, question: `Which side dish contains tree nuts?` },
     await db.insert(schema.challengeOptions).values([
       { challengeId: 267, imageSrc: "", correct: false, text: `Dirty Rice.` },
@@ -5215,7 +5233,1017 @@ const main = async () => {
       },
       { challengeId: 267, imageSrc: "", correct: false, text: `Grilled Okra.` },
     ]);
-//TODO: make sure challenge Id is correct.
+    /**
+     * Course id - 4: Dessert Menu
+     * Unit id - 4: Dessert Menu
+     */
+    await db.insert(schema.units).values([
+      {
+        id: 4,
+        courseId: 4,
+        title: "Dessert Menu",
+        description: "Dessert Menu and Suggested Pairings",
+        order: 10,
+      },
+    ]);
+
+    /**
+     * Lessons for Course 4, Unit 4 Dessert Menu
+     */
+    await db.insert(schema.lessons).values([
+      {
+        id: 21,
+        unitId: 4,
+        order: 10,
+        title: "Dessert Menu and Suggested Pairings",
+      },
+    ]);
+
+/**
+     * Course id - 4: Dessert Menu
+     * Unit id - 4: Dessert Menu
+     * Lesson id - 21: Dessert Menu
+     */
+
+    await db.insert(schema.challenges).values([
+      {
+        id: 287,
+        lessonId: 21,
+        type: "CURRICULUM",
+        order: 160,
+        imageSrc: null,
+        question: `All of our desserts, pastries, and breads come from La Boulangerie. Established in 2000, La Boulangerie is the Link Restaurant Group's neighborhood bakery and cafe. Chef Donald Link has operated the bakery since 2015 with Partner/Chef Stephen Stryjewski and Executive Pastry Chef Maggie Scales. Come in for coffee and a sweet or savory breakfast treat. In the afternoon, meet up with neighbors for a homemade ice cream or visit with friends and enjoy a sandwich, patisserie, a slice of cake, or seasonal pie. Don't forget to take home a loaf of bread for dinner.`,
+      },
+      {
+        id: 288,
+        lessonId: 21,
+        type: "CURRICULUM",
+        order: 170,
+        imageSrc: null,
+        question: `It is important to communicate with the guest regarding the severity of any potential food allergies. The bakery upholds the same high standards of food safety that all Link Restaurant groups do, but since our desserts are not made in house we cannot 100% guarantee that they are cross-contamination safe as far as guests allergies are concerned.`,
+      },
+      {
+        id: 289,
+        lessonId: 21,
+        type: "SELECT",
+        order: 180,
+        imageSrc: null,
+        question: `Where are all of our desserts made?`,
+      },
+      {
+        id: 290,
+        lessonId: 21,
+        type: "SELECT",
+        order: 190,
+        imageSrc: null,
+        question: `Who is the executive pastry chef for the Link Restaurant Group?`,
+      },
+      {
+        id: 291,
+        lessonId: 21,
+        type: "SELECT",
+        order: 200,
+        imageSrc: null,
+        question: `What is the correct verbiage regarding allergies and cross-contamination concerning our dessert menu?`,
+      },
+      {
+        id: 292,
+        lessonId: 21,
+        type: "CURRICULUM",
+        order: 210,
+        imageSrc: "/desserts/banana-brown-butter-tart.webp",
+        question: `The Banana Brown Butter Tart:\n\nA shell of pasta frolla dough is filled with slices of banana and a spiced brown butter filling. Pasta frolla is an Italian sweet shortcrust pastry. It's made from flour, butter, sugar, and egg yolks, giving it a rich, sandy, cookie-like texture rather than the flaky layers of a traditional pie crust.`,
+      },
+      {
+        id: 293,
+        lessonId: 21,
+        type: "CURRICULUM",
+        order: 220,
+        imageSrc: "/desserts/banana-brown-butter-tart.webp",
+        question: `The tart is served with: crème fraîche, which is a slightly soured cream, tangier and thicker than regular whipped cream, with a subtle cultured flavor; salted caramel; as well as brûléed bananas. \n\nSliced bananas are topped with sugar and then torched quickly to create a thin, crackly caramelized shell.\n\nThe Banana brown butter tart has been on the Herbsaint menu since day one. It is by far our most well-known and popular dessert.`,
+      },
+      {
+        id: 294,
+        lessonId: 21,
+        type: "CURRICULUM",
+        order: 230,
+        imageSrc: null,
+        question: `The Banana Brown Butter Tart can be served à la mode with either vanilla or the ICDJ. It does not contain nuts. It is also not gluten free, due to the crust containing flour.\n\nMarking: Appetizer Fork, Soup spoon if à la mode.`,
+      },
+      {
+        id: 295,
+        lessonId: 21,
+        type: "SELECT",
+        order: 240,
+        imageSrc: null,
+        question: `What is pasta frolla dough?`,
+      },
+      {
+        id: 296,
+        lessonId: 21,
+        type: "SELECT",
+        order: 250,
+        imageSrc: null,
+        question: `What best describes crème fraîche?`,
+      },
+      {
+        id: 297,
+        lessonId: 21,
+        type: "SELECT",
+        order: 260,
+        imageSrc: null,
+        question: `Can the Banana Brown Butter Tart be served with ice cream?`,
+      },
+      {
+        id: 298,
+        lessonId: 21,
+        type: "SELECT",
+        order: 270,
+        imageSrc: null,
+        question: `Can the Banana Brown Butter Tart be modified to be gluten free?`,
+      },
+      {
+        id: 299,
+        lessonId: 21,
+        type: "CURRICULUM",
+        order: 280,
+        imageSrc: null,
+        question: `The suggested wine pairing for the Banana Brown Butter Tart is Petit Métris "Chaumes" 2015, Coteaux du Layon.\n\nMade from late-harvest, vine-dried Chenin Blanc. Bright and refreshingly balanced with aromas of apples and pears dressed in cinnamon. More tropical and exotic on the palate. Pronounced acidity. Sweet yet balanced. Pairs beautifully with the Banana Brown Butter Tart — its bright acidity cuts through the richness of the brown butter and caramel, while its notes of apple, pear, and cinnamon echo the tart's warm spice and caramelized banana.`,
+      },
+
+      {
+        id: 300,
+        lessonId: 21,
+        type: "SELECT",
+        order: 290,
+        imageSrc: null,
+        question: `What is the suggested wine pairing for the Banana Brown Butter Tart?`,
+      },
+      {
+        id: 301,
+        lessonId: 21,
+        type: "CURRICULUM",
+        order: 300,
+        imageSrc: "/desserts/vanilla-pot-de-creme.svg",
+        question: `The Vanilla Pot de Crème:\n\nA creamy lemon and vanilla custard topped with local berries — blueberries and blackberries. Served with two Fig Newton cookies.`,
+      },
+      {
+        id: 302,
+        lessonId: 21,
+        type: "CURRICULUM",
+        order: 310,
+        imageSrc: null,
+        question: `The Vanilla Pot de Crème contains dairy, citrus, and gluten (from the cookies).\n\nMarking: Teaspoon.`,
+      },
+      {
+        id: 303,
+        lessonId: 21,
+        type: "SELECT",
+        order: 320,
+        imageSrc: null,
+        question: `What is the Vanilla Pot de Crème served with?`,
+      },
+      {
+        id: 304,
+        lessonId: 21,
+        type: "SELECT",
+        order: 330,
+        imageSrc: null,
+        question: `What is the correct marking for the Vanilla Pot de Crème?`,
+      },
+      {
+        id: 305,
+        lessonId: 21,
+        type: "CURRICULUM",
+        order: 340,
+        imageSrc: null,
+        question: `The suggested wine pairing for the Vanilla Pot de Crème is Château Gravas, Sauternes, 2020.\n\nRound and well balanced, offering candied and exotic fruit notes (mango, guava) and white flowers, with notes of ginger and saffron. A late-harvest blend of Sémillon, Sauvignon Blanc, and possibly some Muscadelle, from Bordeaux, France.`,
+      },
+      {
+        id: 306,
+        lessonId: 21,
+        type: "SELECT",
+        order: 350,
+        imageSrc: null,
+        question: `What is the suggested wine pairing for the Vanilla Pot de Crème?`,
+      },
+      {
+        id: 307,
+        lessonId: 21,
+        type: "CURRICULUM",
+        order: 360,
+        imageSrc: "/desserts/fried-peach-hand-pies.webp",
+        question: `The Fried Peach Hand Pies:\n\nPeaches and lemon zest in a crème fraîche pie dough, fried to order in peanut oil and tossed in cinnamon sugar. Served with butter pecan ice cream and ginger cookie crumbs.`,
+      },
+      {
+        id: 308,
+        lessonId: 21,
+        type: "CURRICULUM",
+        order: 370,
+        imageSrc: "/desserts/fried-peach-hand-pies.webp",
+        question: `The Fried Peach Hand Pies contain gluten, dairy, and peanuts (from the frying oil).\n\nMarking: Appetizer Fork, Soup Spoon.`,
+      },
+      {
+        id: 309,
+        lessonId: 21,
+        type: "SELECT",
+        order: 380,
+        imageSrc: null,
+        question: `What oil are the Fried Peach Hand Pies fried in?`,
+      },
+      {
+        id: 310,
+        lessonId: 21,
+        type: "SELECT",
+        order: 390,
+        imageSrc: null,
+        question: `What ice cream is served with the Fried Peach Hand Pies?`,
+      },
+      {
+        id: 311,
+        lessonId: 21,
+        type: "CURRICULUM",
+        order: 400,
+        imageSrc: null,
+        question: `The suggested wine pairing for the Fried Peach Hand Pies is Domaine Durban, Muscat de Beaumes-de-Venise, 2021.\n\nA balance of sweetness, alcohol, and acidity, with notes of honeysuckle, citrus zest, and honey. Fresh and bright. A fortified wine made from Muscat à Petits Grains; Beaumes-de-Venise is the village in the southern Rhône Valley, France, known for this style of sweet wine.`,
+      },
+      {
+        id: 312,
+        lessonId: 21,
+        type: "SELECT",
+        order: 410,
+        imageSrc: null,
+        question: `What is the suggested wine pairing for the Fried Peach Hand Pies?`,
+      },
+      {
+        id: 313,
+        lessonId: 21,
+        type: "CURRICULUM",
+        order: 420,
+        imageSrc: "/desserts/flourless-chocolate-cake.svg",
+        question: `The Flourless Chocolate Cake:\n\nAn intense and moussey flourless chocolate cake, served room temperature and dusted with cocoa powder. Topped with dulce de leche sauce (milk caramel), whipped cream, and Spanish peanut brittle.`,
+      },
+      {
+        id: 314,
+        lessonId: 21,
+        type: "CURRICULUM",
+        order: 430,
+        imageSrc: null,
+        question: `The Flourless Chocolate Cake contains nuts (from the peanut brittle) and dairy.\n\nMarking: Appetizer Fork, Soup Spoon if à la mode.`,
+      },
+      {
+        id: 315,
+        lessonId: 21,
+        type: "SELECT",
+        order: 440,
+        imageSrc: null,
+        question: `What sauce is served with the Flourless Chocolate Cake?`,
+      },
+      {
+        id: 316,
+        lessonId: 21,
+        type: "SELECT",
+        order: 450,
+        imageSrc: null,
+        question: `Does the Flourless Chocolate Cake contain nuts?`,
+      },
+      {
+        id: 317,
+        lessonId: 21,
+        type: "CURRICULUM",
+        order: 460,
+        imageSrc: null,
+        question: `The suggested wine pairing for the Flourless Chocolate Cake is Domaine La Tour Vieille, Banyuls, Réserve, NV.\n\nFull-bodied and sweet, with notes of raspberry, dried fruit, caramel, and chocolate. Fortified in a style similar to Port, made from Grenache in Languedoc-Roussillon (southernmost area of France).`,
+      },
+      {
+        id: 318,
+        lessonId: 21,
+        type: "SELECT",
+        order: 470,
+        imageSrc: null,
+        question: `What is the suggested wine pairing for the Flourless Chocolate Cake?`,
+      },
+      {
+        id: 319,
+        lessonId: 21,
+        type: "CURRICULUM",
+        order: 480,
+        imageSrc: "/desserts/ice-cream.svg",
+        question: `ICDJ & Seasonal Sorbet:\n\nChanges frequently — refer to the current dessert menu for offerings.`,
+      },
+      {
+        id: 320,
+        lessonId: 21,
+        type: "CURRICULUM",
+        order: 490,
+        imageSrc: null,
+        question: `Changes frequently. Sometimes the ice cream can be made gluten free by omitting the cookie. The sorbet is always gluten-free without the cookie.\n\nMarking: Soup Spoon.`,
+      },
+      {
+        id: 321,
+        lessonId: 21,
+        type: "SELECT",
+        order: 500,
+        imageSrc: null,
+        question: `Besides the Flourless Chocolate Cake, what other dessert do we offer that is gluten-free or can be modified to be gluten-free?`,
+      },
+     
+      {
+        id: 322,
+        lessonId: 21,
+        type: "CURRICULUM",
+        order: 510,
+        imageSrc: "/desserts/artisanal-cheese.svg",
+        question: `Artisanal Cheese:\n\nAlways a soft, a firm, and a bleu cheese offering, served with a fruit jam, Marcona almonds or pistachios, and lavash crackers.\n\nOur current offerings are:\n\nSoft — Walden, from Sequatchee Cove, Tennessee (cow, pasteurized)\nFirm — Griffin, from Sweet Grass Dairy, Thomasville, Georgia (cow, raw)\nBleu — Roquefort, France (sheep, raw)`,
+      },
+      {
+        id: 323,
+        lessonId: 21,
+        type: "CURRICULUM",
+        order: 520,
+        imageSrc: null,
+        question: `The Artisanal Cheese contains dairy and nuts.\n\nMarking: Appetizer Fork, Flat Knife.`,
+      },
+      {
+        id: 324,
+        lessonId: 21,
+        type: "SELECT",
+        order: 530,
+        imageSrc: null,
+        question: `What three cheeses are always included in the Artisanal Cheese offering?`,
+      },
+      {
+        id: 325,
+        lessonId: 21,
+        type: "SELECT",
+        order: 540,
+        imageSrc: null,
+        question: `What nuts are served with the Artisanal Cheese?`,
+      },
+      {
+        id: 326,
+        lessonId: 21,
+        type: "CURRICULUM",
+        order: 550,
+        imageSrc: null,
+        question: `The suggested wine pairing for the Artisanal Cheese is Michel Gahier, Macvin du Jura.\n\nMacvin is a traditional Jura vin de liqueur, made from spirit — home-distilled marc du Jura using the domaine's grape pomace — and juice from the Savagnin grape. It has cooked-apple fruit character with some funky, mushroomy notes. Fortified, made from Savagnin, in Arbois (Jura, France, between Burgundy and Switzerland).`,
+      },
+      {
+        id: 327,
+        lessonId: 21,
+        type: "SELECT",
+        order: 560,
+        imageSrc: null,
+        question: `What is the suggested wine pairing for the Artisanal Cheese?`,
+      },
+    ]);
+
+    /**
+     * ChallengeOptions - lessonId : 21
+     */
+    //  {
+    //     id: 289,
+    //     lessonId: 21,
+    //     type: "SELECT",
+    //     order: 3,
+    //     imageSrc: null,
+    //     question: `Where are all of our desserts made?`,
+    //   },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 289,
+        imageSrc: "",
+        correct: false,
+        text: `We make our desserts in house in the back prep kitchen.`,
+      },
+      {
+        challengeId: 289,
+        imageSrc: "",
+        correct: false,
+        text: `Our desserts are all sourced from local farmers.`,
+      },
+      {
+        challengeId: 289,
+        imageSrc: "",
+        correct: true,
+        text: `La Boulangerie - Link Restaurant Group's neighborhood bakery and cafe.`,
+      },
+      {
+        challengeId: 289,
+        imageSrc: "",
+        correct: false,
+        text: `Paul Hollywood from the Great British Bake-off makes all of our desserts.`,
+      },
+    ]);
+    //  {
+    //       id: 290,
+    //       lessonId: 21,
+    //       type: "SELECT",
+    //       order: 4,
+    //       imageSrc: null,
+    //       question: `Who is the executive pastry chef for the Link Restaurant Group?`,
+    //     },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 290,
+        imageSrc: "",
+        correct: false,
+        text: `Donald Link`,
+      },
+      {
+        challengeId: 290,
+        imageSrc: "",
+        correct: false,
+        text: `Stephen Stryjewski`,
+      },
+      {
+        challengeId: 290,
+        imageSrc: "",
+        correct: false,
+        text: `Paul Hollywood from the Great British Bake-off.`,
+      },
+      {
+        challengeId: 290,
+        imageSrc: "",
+        correct: true,
+        text: `Maggie Scales`,
+      },
+    ]);
+    // {
+    //     id: 291,
+    //     lessonId: 21,
+    //     type: "SELECT",
+    //     order: 5,
+    //     imageSrc: null,
+    //     question: `What is the correct verbiage regarding allergies and cross-contamination concerning our dessert menu?`,
+    //   },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 291,
+        imageSrc: "",
+        correct: true,
+        text: `Since our desserts are not made in house we cannot 100% guarantee that they are cross-contamination safe as far as allergies are concerned.`,
+      },
+      {
+        challengeId: 291,
+        imageSrc: "",
+        correct: false,
+        text: `If you have a soy bean allergy you shouldn't even be in the building.`,
+      },
+      {
+        challengeId: 291,
+        imageSrc: "",
+        correct: false,
+        text: `We have epipens on hand just in case anything goes terribly wrong.`,
+      },
+      {
+        challengeId: 291,
+        imageSrc: "",
+        correct: false,
+        text: `We do not need to worry about cross-contamination when it comes to desserts.`,
+      },
+    ]);
+    //  {
+    //         id: 295,
+    //         lessonId: 21,
+    //         type: "SELECT",
+    //         order: 9,
+    //         imageSrc: null,
+    //         question: `What is pasta frolla dough?`,
+    //       },
+
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 295,
+        imageSrc: "",
+        correct: false,
+        text: `A type of pie crust made out of graham crackers and spices.`,
+      },
+      {
+        challengeId: 295,
+        imageSrc: "",
+        correct: true,
+        text: `An Italian sweet shortcrust pastry.`,
+      },
+      {
+        challengeId: 295,
+        imageSrc: "",
+        correct: false,
+        text: `A flourless type of pastry shell.`,
+      },
+      {
+        challengeId: 295,
+        imageSrc: "",
+        correct: false,
+        text: `A rich pastry shell made with equal parts butter and flour.`,
+      },
+    ]);
+    // {
+    //   id: 296,
+    //   lessonId: 21,
+    //   type: "SELECT",
+    //   order: 10,
+    //   imageSrc: null,
+    //   question: `What best describes crème fraîche?`,
+    // },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 296,
+        imageSrc: "",
+        correct: false,
+        text: `It is the same as sour cream just with sugar added to it.`,
+      },
+      {
+        challengeId: 296,
+        imageSrc: "",
+        correct: false,
+        text: `It is a really fresh cream. Fraîche is French for "fresh".`,
+      },
+      {
+        challengeId: 296,
+        imageSrc: "",
+        correct: false,
+        text: `It is a cream made from goats milk and honey.`,
+      },
+      {
+        challengeId: 296,
+        imageSrc: "",
+        correct: true,
+        text: `A slightly soured cream, tangier and thicker than regular whipped cream, with a subtle cultured flavor.`,
+      },
+    ]);
+    //  {
+    //     id: 297,
+    //     lessonId: 21,
+    //     type: "SELECT",
+    //     order: 11,
+    //     imageSrc: null,
+    //     question: `Can the Banana Brown Butter Tart be served with ice cream?`,
+    //   },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 297,
+        imageSrc: "",
+        correct: true,
+        text: `Yes. Either vanilla or the Ice Cream of the Day.`,
+      },
+      {
+        challengeId: 297,
+        imageSrc: "",
+        correct: false,
+        text: `No. It comes as is.`,
+      },
+    ]);
+    // {
+    //   id: 298,
+    //   lessonId: 21,
+    //   type: "SELECT",
+    //   order: 12,
+    //   imageSrc: null,
+    //   question: `Can the Banana Brown Butter Tart be modified to be gluten free?`,
+    // },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 298,
+        imageSrc: "",
+        correct: false,
+        text: `Yes. It can be made with a gluten free crust.`,
+      },
+      {
+        challengeId: 298,
+        imageSrc: "",
+        correct: true,
+        text: `No. The pastry dough contains gluten.`,
+      },
+    ]);
+
+    //  {
+    //     id: 301,
+    //     lessonId: 21,
+    //     type: "SELECT",
+    //     order: 15,
+    //     imageSrc: null,
+    //     question: `What is the suggested wine pairing for the Banana Brown Butter Tart?`,
+    //   },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 300,
+        imageSrc: "",
+        correct: false,
+        text: `Tawny Port, Niepoort 10y`,
+      },
+      {
+        challengeId: 300,
+        imageSrc: "",
+        correct: false,
+        text: `Fernet-Branca Menta`,
+      },
+      {
+        challengeId: 300,
+        imageSrc: "",
+        correct: true,
+        text: `Petit Métris "Chaumes" 2015, Coteaux du Layon.`,
+      },
+      {
+        challengeId: 300,
+        imageSrc: "",
+        correct: false,
+        text: `Moscato d'Asti. Elio Perrone, 'Sourgal' 2024`,
+      },
+    ]);
+
+     //  {
+    //     id: 303,
+    //     type: "SELECT",
+    //     question: `What is the Vanilla Pot de Crème served with?`,
+    //   },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 303,
+        imageSrc: "",
+        correct: false,
+        text: `Crème fraîche, salted caramel, and brûléed bananas.`,
+      },
+      {
+        challengeId: 303,
+        imageSrc: "",
+        correct: true,
+        text: `Local berries (blueberries & blackberries) and two Fig Newton cookies.`,
+      },
+      {
+        challengeId: 303,
+        imageSrc: "",
+        correct: false,
+        text: `Whipped cream and candied ginger.`,
+      },
+      {
+        challengeId: 303,
+        imageSrc: "",
+        correct: false,
+        text: `Teaspoon of high proof rum set on fire right on top.`,
+      },
+    ]);
+    //  {
+    //     id: 304,
+    //     type: "SELECT",
+    //     question: `What is the correct marking for the Vanilla Pot de Crème?`,
+    //   },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 304,
+        imageSrc: "",
+        correct: false,
+        text: `Appetizer Fork.`,
+      },
+      {
+        challengeId: 304,
+        imageSrc: "",
+        correct: false,
+        text: `Steak Knife.`,
+      },
+      {
+        challengeId: 304,
+        imageSrc: "",
+        correct: true,
+        text: `Teaspoon.`,
+      },
+      {
+        challengeId: 304,
+        imageSrc: "",
+        correct: false,
+        text: `Soup Spoon.`,
+      },
+    ]);
+    //  {
+    //     id: 306,
+    //     type: "SELECT",
+    //     question: `What is the suggested wine pairing for the Vanilla Pot de Crème?`,
+    //   },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 306,
+        imageSrc: "",
+        correct: true,
+        text: `Château Gravas, Sauternes, 2020.`,
+      },
+      {
+        challengeId: 306,
+        imageSrc: "",
+        correct: false,
+        text: `A light stout beer, like a Guinness.`,
+      },
+      {
+        challengeId: 306,
+        imageSrc: "",
+        correct: false,
+        text: `Michel Gahier, Macvin du Jura.`,
+      },
+      {
+        challengeId: 306,
+        imageSrc: "",
+        correct: false,
+        text: `Adrien Camut, 6yr Calvados.`,
+      },
+    ]);
+    //  {
+    //     id: 309,
+    //     type: "SELECT",
+    //     question: `What oil are the Fried Peach Hand Pies fried in?`,
+    //   },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 309,
+        imageSrc: "",
+        correct: false,
+        text: `Canola oil.`,
+      },
+      {
+        challengeId: 309,
+        imageSrc: "",
+        correct: false,
+        text: `Vegetable oil.`,
+      },
+      {
+        challengeId: 309,
+        imageSrc: "",
+        correct: true,
+        text: `Peanut oil.`,
+      },
+      {
+        challengeId: 309,
+        imageSrc: "",
+        correct: false,
+        text: `Olive oil.`,
+      },
+    ]);
+    //  {
+    //     id: 310,
+    //     type: "SELECT",
+    //     question: `What ice cream is served with the Fried Peach Hand Pies?`,
+    //   },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 310,
+        imageSrc: "",
+        correct: false,
+        text: `Vanilla ice cream.`,
+      },
+      {
+        challengeId: 310,
+        imageSrc: "",
+        correct: true,
+        text: `Butter pecan ice cream.`,
+      },
+      {
+        challengeId: 310,
+        imageSrc: "",
+        correct: false,
+        text: `Ice Cream of the Day.`,
+      },
+      {
+        challengeId: 310,
+        imageSrc: "",
+        correct: false,
+        text: `It is not served with ice cream.`,
+      },
+    ]);
+    //  {
+    //     id: 312,
+    //     type: "SELECT",
+    //     question: `What is the suggested wine pairing for the Fried Peach Hand Pies?`,
+    //   },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 312,
+        imageSrc: "",
+        correct: false,
+        text: `Château Gravas, Sauternes, 2020.`,
+      },
+      {
+        challengeId: 312,
+        imageSrc: "",
+        correct: true,
+        text: `Domaine Durban, Muscat de Beaumes-de-Venise, 2021.`,
+      },
+      {
+        challengeId: 312,
+        imageSrc: "",
+        correct: false,
+        text: `Domaine La Tour Vieille, Banyuls, Réserve, NV.`,
+      },
+      {
+        challengeId: 312,
+        imageSrc: "",
+        correct: false,
+        text: `Carpano Antica, Sweet Vermouth`,
+      },
+    ]);
+    //  {
+    //     id: 315,
+    //     type: "SELECT",
+    //     question: `What sauce is served with the Flourless Chocolate Cake?`,
+    //   },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 315,
+        imageSrc: "",
+        correct: false,
+        text: `Salted caramel.`,
+      },
+      {
+        challengeId: 315,
+        imageSrc: "",
+        correct: true,
+        text: `Dulce de leche sauce (milk caramel).`,
+      },
+      {
+        challengeId: 315,
+        imageSrc: "",
+        correct: false,
+        text: `A deep and lovely chicken jus.`,
+      },
+      {
+        challengeId: 315,
+        imageSrc: "",
+        correct: false,
+        text: `Chocolate ganache.`,
+      },
+    ]);
+    //  {
+    //     id: 316,
+    //     type: "SELECT",
+    //     question: `Does the Flourless Chocolate Cake contain nuts?`,
+    //   },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 316,
+        imageSrc: "",
+        correct: true,
+        text: `Yes, from the Spanish peanut brittle.`,
+      },
+      {
+        challengeId: 316,
+        imageSrc: "",
+        correct: false,
+        text: `No, it's nut free.`,
+      },
+    ]);
+    //  {
+    //     id: 318,
+    //     type: "SELECT",
+    //     question: `What is the suggested wine pairing for the Flourless Chocolate Cake?`,
+    //   },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 318,
+        imageSrc: "",
+        correct: false,
+        text: `Michel Gahier, Macvin du Jura.`,
+      },
+      {
+        challengeId: 318,
+        imageSrc: "",
+        correct: false,
+        text: `Domaine Durban, Muscat de Beaumes-de-Venise, 2021.`,
+      },
+      {
+        challengeId: 318,
+        imageSrc: "",
+        correct: true,
+        text: `Domaine La Tour Vieille, Banyuls, Réserve, NV.`,
+      },
+      {
+        challengeId: 318,
+        imageSrc: "",
+        correct: false,
+        text: `Gamay, Domain Depeuble, Beaujolais, 2024`,
+      },
+    ]);
+    //  {
+    //     id: 321,
+    //     type: "SELECT",
+    //     question: `Besides the Flourless Chocolate Cake, what other dessert do we offer that is gluten-free or can be modified to be gluten-free?`,
+    //   },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 321,
+        imageSrc: "",
+        correct: false,
+        text: `The Ice Cream of The Day.`,
+      },
+      {
+        challengeId: 321,
+        imageSrc: "",
+        correct: true,
+        text: `The Seasonal Sorbet.`,
+      },
+      {
+        challengeId: 321,
+        imageSrc: "",
+        correct: false,
+        text: `The Fried Pies.`,
+      },
+      {
+        challengeId: 321,
+        imageSrc: "",
+        correct: false,
+        text: `The Flourless Chocolate Cake is the only gluten-free dessert.`,
+      },
+    ]);
+
+    //  {
+    //     id: 324,
+    //     type: "SELECT",
+    //     question: `What three cheeses are always included in the Artisanal Cheese offering?`,
+    //   },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 324,
+        imageSrc: "",
+        correct: false,
+        text: `A soft, a smoked, and a firm cheese.`,
+      },
+      {
+        challengeId: 324,
+        imageSrc: "",
+        correct: true,
+        text: `A soft, a firm, and a bleu cheese.`,
+      },
+      {
+        challengeId: 324,
+        imageSrc: "",
+        correct: false,
+        text: `A goat, a sheep, and a cow.`,
+      },
+      {
+        challengeId: 324,
+        imageSrc: "",
+        correct: false,
+        text: `Cream Cheese, pimento cheese, and Kraft American Singles.`,
+      },
+    ]);
+    //  {
+    //     id: 325,
+    //     type: "SELECT",
+    //     question: `What nuts are served with the Artisanal Cheese?`,
+    //   },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 325,
+        imageSrc: "",
+        correct: false,
+        text: `Walnuts or pecans.`,
+      },
+      {
+        challengeId: 325,
+        imageSrc: "",
+        correct: true,
+        text: `Marcona almonds or pistachios.`,
+      },
+      {
+        challengeId: 325,
+        imageSrc: "",
+        correct: false,
+        text: `Cashews.`,
+      },
+      {
+        challengeId: 325,
+        imageSrc: "",
+        correct: false,
+        text: `Brazil Nuts.`,
+      },
+    ]);
+    //  {
+    //     id: 327,
+    //     type: "SELECT",
+    //     question: `What is the suggested wine pairing for the Artisanal Cheese?`,
+    //   },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 327,
+        imageSrc: "",
+        correct: false,
+        text: `Domaine Durban, Muscat de Beaumes-de-Venise, 2021.`,
+      },
+      {
+        challengeId: 327,
+        imageSrc: "",
+        correct: false,
+        text: `Château Gravas, Sauternes, 2020.`,
+      },
+      {
+        challengeId: 327,
+        imageSrc: "",
+        correct: true,
+        text: `Michel Gahier, Macvin du Jura.`,
+      },
+      {
+        challengeId: 327,
+        imageSrc: "",
+        correct: false,
+        text: `A Double hopped IPA.`,
+      },
+    ]);
     //Syncs react-admin and react-simple-data-rest with existing db
     await db.execute(
       sql`SELECT setval('courses_id_seq', (SELECT MAX(id) FROM courses))`,
