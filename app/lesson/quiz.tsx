@@ -259,7 +259,6 @@ export const Quiz = ({
 
   const title =
     challenge.type === "ASSIST" ? "Select the best option" : challenge.question;
- console.log("challenge: ", challenge)
   return (
     <>
       {finishAudio}
