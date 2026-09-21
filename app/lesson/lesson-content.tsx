@@ -10,8 +10,8 @@ export const LessonContent = async ({ children }: Props) => {
     return redirectToSignIn();
   }
   return (
-    <div className="flex flex-col h-full">
+    // <div className="flex flex-col h-full"> TODO
       <div className="flex flex-col h-full w-full">{children}</div>
-    </div>
+    // </div>
   );
 };

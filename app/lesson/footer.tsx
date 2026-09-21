@@ -27,7 +27,7 @@ export const Footer = ({
   return (
     <footer
       className={cn(
-        "lg:-h[140px] h-[100px] border-t-2 ",
+        "h-[100px] min-h-[75px] lg:-h[140px] border-t-2",
         status === "correct" && "border-transparent bg-green-100",
         status === "wrong" && "border-transparent bg-rose-100",
       )}

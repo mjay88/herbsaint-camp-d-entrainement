@@ -23,7 +23,7 @@ export const Card = ({
     <div
     onClick={() => onClick(id)}
       className={cn(
-        "h-full border-2 rounded-xl border-b-4 hover:bg-black/5 cursor-pointer active:border-b-2 flex flex-col items-center justify-between p-3 pb-6 ",
+        "h-full border-2 rounded-xl border-b-4 hover:bg-black/5 cursor-pointer active:border-b-2 flex flex-col items-center justify-between p-3 pb-6 min-h-[217px] min-w-[150px]",
         disabled && "pointer-events-none opacity-50",
       )}
     >
@@ -36,6 +36,8 @@ export const Card = ({
       </div>
       <Image
         src={imageSrc}
+        placeholder="blur"
+        blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
         alt={title}
         height={70}
         width={93.33}

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useMedia } from "react-use";
 
 type Props = {
   question: string;
@@ -6,8 +7,9 @@ type Props = {
 };
 
 export const CurriculumBubble = ({ question, imageSrc }: Props) => {
+  const isMobile = useMedia("(max-width: 1024px", true);
   return (
-    <div className="flex flex-col lg:flex-row items-center justify-evenly gap-y-10 gap-x-4 mb-6">
+    <div className="h-full flex flex-col lg:flex-row items-center justify-center gap-x-4 gap-y-4 mb-6">
       {imageSrc ? (
         <>
           <Image
@@ -17,14 +19,7 @@ export const CurriculumBubble = ({ question, imageSrc }: Props) => {
             width={300}
             className="hidden lg:block"
             placeholder="blur"
-          />
-          <Image
-            src={imageSrc}
-            alt="Mascot"
-            height={200}
-            width={200}
-            className="block lg:hidden"
-            placeholder="blur"
+            blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
           />
         </>
       ) : (
@@ -39,8 +34,10 @@ export const CurriculumBubble = ({ question, imageSrc }: Props) => {
         </>
       )}
 
-      <div className="relative py-2 px-4 m-3 border-2 rounded-xl text-sm lg:text-base text-left  whitespace-pre-line">
-        {question}
+      <div className="relative py-2 px-4 m-3 border-2 rounded-xl text-base text-left whitespace-pre-line">
+        <div className="overflow-y-auto max-h-72 lg:max-h-full -mx-3 lg:-mx-0">
+          {question}
+        </div>
         {!imageSrc && (
           <>
             <div className="absolute hidden lg:block -left-6 top-1/3 w-3 h-3 border-x-[16px] border-x-transparent border-t-16 transform -translate-y-1/2 rotate-90" />
@@ -48,12 +45,23 @@ export const CurriculumBubble = ({ question, imageSrc }: Props) => {
           </>
         )}
       </div>
-      {!imageSrc && (
+
+      {imageSrc ? (
+        <Image
+          src={imageSrc}
+          alt="Mascot"
+          height={200}
+          width={200}
+          className="block lg:hidden"
+          placeholder="blur"
+          blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+        />
+      ) : (
         <Image
           src="/mascot.svg"
           alt="Mascot"
-          height={150}
-          width={150}
+          height={200}
+          width={200}
           className="block lg:hidden"
         />
       )}

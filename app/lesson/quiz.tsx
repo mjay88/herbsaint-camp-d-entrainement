@@ -253,7 +253,6 @@ export const Quiz = ({
           onCheck={onContinue}
           isCurriculum={isCurriculum}
         />
-        ;
       </>
     );
   }
