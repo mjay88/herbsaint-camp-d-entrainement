@@ -29,7 +29,7 @@ const main = async () => {
         title: "Front Waiter - Steps of Service",
         imageSrc: "/main-courses.svg",
       },
-      //TODO: How to include The Dessert Menu and The Menu as their own stand alone courses. I don't want one single lesson-button for the entire course. Or who cares if its one button.
+      
       {
         id: 3,
         title: "The Menu",
@@ -1033,7 +1033,7 @@ const main = async () => {
         lessonId: 6,
         type: "CURRICULUM",
         order: 70,
-        imageSrc: "/desserts/banana-brown-butter-tart.svg",
+        imageSrc: "/desserts/banana-brown-butter-tart.webp",
         question: `The tart is served with: crème fraîche, which is a slightly soured cream, tangier and thicker than regular whipped cream, with a subtle cultured flavor; salted caramel; as well as brûléed bananas. \n\nSliced bananas are topped with sugar and then torched quickly to create a thin, crackly caramelized shell.\n\nThe Banana brown butter tart has been on the Herbsaint menu since day one. It is by far our most well-known and popular dessert.`,
       },
       {
@@ -4177,7 +4177,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 10,
         imageSrc: null,
-        question: `Soup of the Day — $13\n\n. The Sour du Jour changes frequently. A description will be given during pre-shift, as well as any allergy concerns.`,
+        question: `Soup of the Day — $13\n\nThe Soup du Jour changes frequently. A description will be given during pre-shift, as well as any allergy concerns.`,
       },
       {
         id: 222,
@@ -4240,7 +4240,7 @@ const main = async () => {
         lessonId: 17,
         type: "CURRICULUM",
         order: 60,
-        imageSrc: null,
+        imageSrc: `/menu/lettuces.webp`,
         question: `Farm Lettuces — $16\n\nLittle gem lettuce washed and dressed in an herb-buttermilk vinaigrette — a fancy ranch made with mayonnaise, buttermilk, sour cream, onion, garlic, dill, chives, and tarragon. Seasoned with cayenne, paprika, onion powder, garlic powder, dry thyme, and apple cider vinegar.\n\nTopped with sliced raw radish, fresh dill, and toasted panko breadcrumbs (toasted in soy oil and butter — contains dairy).\n\nMarking: Fork, knife.`,
       },
       {
@@ -4400,7 +4400,7 @@ const main = async () => {
         challengeId: 229,
         imageSrc: "",
         correct: false,
-        text: `Only the Gumbo is dairy free.`,
+        text: `Only the gumbo is dairy free.`,
       },
     ]);
 
@@ -4500,7 +4500,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 51,
         imageSrc: "/menu/house-spaghetti.webp",
-        question: `Guanciale is cured pork jowls like pancetta but more heavily seasoned with garlic, warm spices, lots of black pepper and salt.\n\nGrana Padano cheese is similar at Parmesan but with a younger required age minimum of 9 months and with a milder, sweeter, and creamier taste.\n\nThe Fried poached farm egg is poached just until the whites set, cooled, then panko-breaded and fried to order so the whites are solid but the yolk is still runny.`,
+        question: `Guanciale is cured pork jowls, similar to pancetta but more heavily seasoned with garlic, warm spices, lots of black pepper and salt.\n\nGrana Padano cheese is similar to Parmesan but with a younger required age minimum of 9 months and with a milder, sweeter, and creamier taste.\n\nThe Fried poached farm egg is poached just until the whites set, cooled, then panko-breaded and fried to order so the whites are solid but the yolk is still runny.`,
       },
       {
         id: 276,
@@ -4540,7 +4540,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 81,
         imageSrc: "/menu/crudo.webp",
-        question: `Kanpachi Crudo Allergens  — :\n\nfinfish, chili, citrus, allium, nightshade (serrano and jalapeño).\n\nModifications: no sauce, sauce on the side, no chili, no shallot, no added salt. No modifications that strip the dish entirely.`,
+        question: `Kanpachi Crudo Allergens:\n\nfinfish, chili, citrus, allium, nightshade (serrano and jalapeño).\n\nModifications: no sauce, sauce on the side, no chili, no shallot, no added salt. No modifications that strip the dish entirely.`,
       },
       {
         id: 239,
@@ -4548,7 +4548,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 90,
         imageSrc: "/menu/tuna-tartare.webp",
-        question: `Bluefin Tuna Tartare — $22\n\nTwo ounces of chopped bluefin tuna ranched off the coast of Baja — a mix of leaner and fattier cuts (top loin, chutoro, otoro) for balance. Served on toasted pain blanc (brushed with olive oil, toasted until the outside sets but still fluffy inside).\n\nSmeared with yuzu mayonnaise: house mayo with yuzu juice and yuzu powder — bright acidity to complement the fat of the tuna.\n\nTuna dressed with tare: soy sauce, sake, mirin, green onions, cooked down until alcohol is cooked off.\n\nFinished with Maldon sea salt and togarashi spice (toasted nori, sesame seeds, dried chili, criolla sella chilis — mild heat and nutty).\n\nMarking: Fork, knife.`,
+        question: `Bluefin Tuna Tartare — $22\n\nTwo ounces of chopped bluefin tuna ranched off the coast of Baja — a mix of leaner and fattier cuts (top loin, chutoro, otoro) for balance. Served on toasted pain blanc (brushed with olive oil, toasted on the outside but still fluffy on the inside).\n\nSmeared with yuzu mayonnaise: house mayo with yuzu juice and yuzu powder — bright acidity to complement the fat of the tuna.\n\nTuna is dressed with tare: soy sauce, sake, mirin, green onions, cooked down until alcohol is cooked off.\n\nFinished with Maldon sea salt and togarashi spice (toasted nori, sesame seeds, dried chili, criolla sella chilis — mild heat and nutty).\n\nMarking: Fork, knife.`,
       },
       {
         id: 278,
@@ -4580,7 +4580,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 120,
         imageSrc: "/menu/kofta.webp",
-        question: `Grilled Lamb Kofta — $20\n\nA Turkish-style meatball of 4 oz total ground lamb shoulder with cumin, cinnamon, coriander, Aleppo chili (approachable heat), bulgur wheat (contains gluten — cannot be made gluten-free), chopped parsley, mint, and grated onion. Cured with pink salt — the lamb will always appear slightly rosy even when fully cooked through to medium-well. Grilled to order.\n\nServed on cucumber yogurt: yogurt with grated cucumber folded in, lemon juice, Aleppo chili, and olive oil. Finished with fresh dill and lightly sweet-pickled lima beans which bring a nice acidic balance to the dish.\n\nAllergens: gluten (bulgur wheat), dairy (yogurt), onion, garlic, legume (lima beans), nightshade (Aleppo).\n\nModifications: no yogurt, no limas, no dill. Cannot be made gluten-free.\n\nMarking: Fork, knife.`,
+        question: `Grilled Lamb Kofta — $20\n\nA Turkish-style meatball of 4 oz total ground lamb shoulder with cumin, cinnamon, coriander, Aleppo chili (approachable heat), bulgur wheat (contains gluten — cannot be made gluten-free), chopped parsley, mint, and grated onion. Cured with pink salt — the lamb will always appear slightly rosy even when fully cooked through to medium-well. Grilled to order.\n\nServed on cucumber yogurt: yogurt with grated cucumber folded in, lemon juice, Aleppo chili, and olive oil. Finished with fresh dill and lightly sweet-pickled lima beans which bring a nice acidic balance to the dish.\n\nMarking: Fork, knife.`,
       },
       {
         id: 279,
@@ -4813,7 +4813,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 20,
         imageSrc: null,
-        question: `Grilled Tuna Sandwich — $28\n\n3 oz of gulf yellowfin tuna (sourced from the Gulf of Mexico). Grilled to medium-rare and sliced — served medium-rare unless well done is specified. Dressed with shaved red onions, tomatoes, bibb lettuce, sliced avocado, and preserved lemon-caper aioli (mayo with chopped preserved lemons and capers) on grilled olive bread. Served with house-made potato chips and cucumbers marinated in sherry vinegar and olive oil.\n\nMarking: Fork, dinner knife.`,
+        question: `Grilled Tuna Sandwich — $28\n\n3 oz of gulf yellowfin tuna (sourced from the Gulf of Mexico). Grilled to medium-rare and sliced — served medium-rare unless well done is specified.\n\nDressed with shaved red onions, tomatoes, bibb lettuce, sliced avocado, and preserved lemon-caper aioli (mayo with chopped preserved lemons and capers) on grilled olive bread. Served with house-made potato chips and cucumbers marinated in sherry vinegar and olive oil.\n\nMarking: Fork, dinner knife.`,
       },
       {
         id: 281,
@@ -4845,7 +4845,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 41,
         imageSrc: null,
-        question: `Louisiana Jumbo Shrimp Allergens:\n\nallium, nightshade, butter in the dressing, shellfish, tomato, cilantro. citrus.\n\nModifications: no dressing, no cilantro, no Cajun spice.`,
+        question: `Louisiana Jumbo Shrimp Allergens:\n\nallium, nightshade, butter in the dressing, shellfish, tomato, cilantro, citrus.\n\nModifications: no dressing, no cilantro, no Cajun spice.`,
       },
       {
         id: 250,
@@ -4861,7 +4861,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 60,
         imageSrc: null,
-        question: `Muscovy Duck Leg Confit — $46\n\nChef's Signature entrée. Duck legs dusted with salt, pepper, allspice, and fennel to cure overnight, then confited at a low temperature in duck fat with rosemary, sage, thyme, and whole garlic cloves. The duck leg is crisped in a pan, then placed on top of dirty rice. The dish is served with seasonal vegetables and finished with an orange gastrique (caramelized sugar, reduced orange juice, cane vinegar, lemon juice, and olive oil).\n\nWhen serving, twist the plate so the bone is in the 12 o'clock position.\n\nAllergens: allium, dairy (dirty rice), nightshade. Flag citrus allergies (gastrique).\n\nModifications: no dirty rice, no veg, no sauce.\n\nMarking: Fork, steak knife.`,
+        question: `Muscovy Duck Leg Confit — $46\n\nChef's Signature entrée. Duck legs dusted with salt, pepper, allspice, and fennel to cure overnight, then confited at a low temperature in duck fat with rosemary, sage, thyme, and whole garlic cloves. The duck leg is crisped in a pan, then placed on top of dirty rice. The dish is served with seasonal vegetables and finished with an orange gastrique (caramelized sugar, reduced orange juice, cane vinegar, lemon juice, and olive oil).\n\nWhen serving, twist the plate so the bone is in the 12 o'clock position.\n\nMarking: Fork, steak knife.`,
       },
       {
         id: 283,
@@ -4869,7 +4869,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 61,
         imageSrc: null,
-        question: `Dirty rice — \n\na mixture of ground pork shoulder, chicken livers, garlic, onion, celery, and traditional Cajun seasonings (paprika, cayenne, black and white pepper, chili powder, and oregano). Sautéed with butter, garlic, chicken stock, and a small addition of popcorn rice (1:2 dirty to rice ratio), finished with green onions. `,
+        question: `Dirty rice: \n\na mixture of ground pork shoulder, chicken livers, garlic, onion, celery, and traditional Cajun seasonings (paprika, cayenne, black and white pepper, chili powder, and oregano). Sautéed with butter, garlic, chicken stock, and a small addition of popcorn rice (1:2 dirty to rice ratio), finished with green onions. `,
       },
       {
         id: 284,
@@ -5154,7 +5154,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 10,
         imageSrc: null,
-        question: `Dirty Rice — $9\n\nA mixture of ground pork shoulder, chicken livers, garlic, onion, celery, and traditional Cajun seasonings (paprika, cayenne, black and white pepper, chili powder, and oregano). Finished with a quick sauté of butter, garlic, chicken stock, and a small addition of popcorn rice (1:2 dirty to rice ratio), and topped with green onions.\n\nAllergens: allium, dairy (rice, butter).\n\nModifications: none.\n\nMarking: Fork, knife.`,
+        question: `Dirty Rice: $9\n\nA mixture of ground pork shoulder, chicken livers, garlic, onion, celery, and traditional Cajun seasonings (paprika, cayenne, black and white pepper, chili powder, and oregano). Finished with a quick sauté of butter, garlic, chicken stock, and a small addition of popcorn rice (1:2 dirty to rice ratio), and topped with green onions.\n\nAllergens: allium, dairy (rice, butter).\n\nModifications: none.\n\nMarking: Fork, knife.`,
       },
       {
         id: 262,
@@ -5259,7 +5259,7 @@ const main = async () => {
       },
     ]);
 
-/**
+    /**
      * Course id - 4: Dessert Menu
      * Unit id - 4: Dessert Menu
      * Lesson id - 21: Dessert Menu
@@ -5311,6 +5311,7 @@ const main = async () => {
         lessonId: 21,
         type: "CURRICULUM",
         order: 210,
+
         imageSrc: "/desserts/banana-brown-butter-tart.webp",
         question: `The Banana Brown Butter Tart:\n\nA shell of pasta frolla dough is filled with slices of banana and a spiced brown butter filling. Pasta frolla is an Italian sweet shortcrust pastry. It's made from flour, butter, sugar, and egg yolks, giving it a rich, sandy, cookie-like texture rather than the flaky layers of a traditional pie crust.`,
       },
@@ -5320,14 +5321,14 @@ const main = async () => {
         type: "CURRICULUM",
         order: 220,
         imageSrc: "/desserts/banana-brown-butter-tart.webp",
-        question: `The tart is served with: crème fraîche, which is a slightly soured cream, tangier and thicker than regular whipped cream, with a subtle cultured flavor; salted caramel; as well as brûléed bananas. \n\nSliced bananas are topped with sugar and then torched quickly to create a thin, crackly caramelized shell.\n\nThe Banana brown butter tart has been on the Herbsaint menu since day one. It is by far our most well-known and popular dessert.`,
+        question: `The tart is served with: crème fraîche, which is a slightly soured cream, tangier and thicker than regular whipped cream, with a subtle cultured flavor; salted caramel; as well as brûléed bananas — sliced bananas are topped with sugar and then torched quickly to create a thin, crackly caramelized shell.\n\nThe Banana brown butter tart has been on the Herbsaint menu since day one. It is by far our most well-known and popular dessert.`,
       },
       {
         id: 294,
         lessonId: 21,
         type: "CURRICULUM",
         order: 230,
-        imageSrc: null,
+        imageSrc: "/desserts/banana-brown-butter-tart.webp",
         question: `The Banana Brown Butter Tart can be served à la mode with either vanilla or the ICDJ. It does not contain nuts. It is also not gluten free, due to the crust containing flour.\n\nMarking: Appetizer Fork, Soup spoon if à la mode.`,
       },
       {
@@ -5368,7 +5369,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 280,
         imageSrc: null,
-        question: `The suggested wine pairing for the Banana Brown Butter Tart is Petit Métris "Chaumes" 2015, Coteaux du Layon.\n\nMade from late-harvest, vine-dried Chenin Blanc. Bright and refreshingly balanced with aromas of apples and pears dressed in cinnamon. More tropical and exotic on the palate. Pronounced acidity. Sweet yet balanced. Pairs beautifully with the Banana Brown Butter Tart — its bright acidity cuts through the richness of the brown butter and caramel, while its notes of apple, pear, and cinnamon echo the tart's warm spice and caramelized banana.`,
+        question: `The suggested wine pairing for the Banana Brown Butter Tart is Petit Métris "Chaumes" 2015, Coteaux du Layon.\n\nMade from late-harvest, vine-dried Chenin Blanc. Bright and refreshingly balanced with aromas of apples and pears dressed in cinnamon. More tropical and exotic on the palate. Pronounced acidity. Sweet yet balanced.\n\nPairs beautifully with the Banana Brown Butter Tart — its bright acidity cuts through the richness of the brown butter and caramel, while its notes of apple, pear, and cinnamon echo the tart's warm spice and caramelized banana.`,
       },
 
       {
@@ -5384,7 +5385,7 @@ const main = async () => {
         lessonId: 21,
         type: "CURRICULUM",
         order: 300,
-        imageSrc: "/desserts/vanilla-pot-de-creme.svg",
+        imageSrc: "/desserts/vanilla-pot-de-creme.webp",
         question: `The Vanilla Pot de Crème:\n\nA creamy lemon and vanilla custard topped with local berries — blueberries and blackberries. Served with two Fig Newton cookies.`,
       },
       {
@@ -5480,7 +5481,7 @@ const main = async () => {
         lessonId: 21,
         type: "CURRICULUM",
         order: 420,
-        imageSrc: "/desserts/flourless-chocolate-cake.svg",
+        imageSrc: "/desserts/flourless-chocolate-cake.webp",
         question: `The Flourless Chocolate Cake:\n\nAn intense and moussey flourless chocolate cake, served room temperature and dusted with cocoa powder. Topped with dulce de leche sauce (milk caramel), whipped cream, and Spanish peanut brittle.`,
       },
       {
@@ -5528,7 +5529,7 @@ const main = async () => {
         lessonId: 21,
         type: "CURRICULUM",
         order: 480,
-        imageSrc: "/desserts/ice-cream.svg",
+        imageSrc: "/desserts/ice-cream.webp",
         question: `ICDJ & Seasonal Sorbet:\n\nChanges frequently — refer to the current dessert menu for offerings.`,
       },
       {
@@ -5547,13 +5548,13 @@ const main = async () => {
         imageSrc: null,
         question: `Besides the Flourless Chocolate Cake, what other dessert do we offer that is gluten-free or can be modified to be gluten-free?`,
       },
-     
+
       {
         id: 322,
         lessonId: 21,
         type: "CURRICULUM",
         order: 510,
-        imageSrc: "/desserts/artisanal-cheese.svg",
+        imageSrc: null,
         question: `Artisanal Cheese:\n\nAlways a soft, a firm, and a bleu cheese offering, served with a fruit jam, Marcona almonds or pistachios, and lavash crackers.\n\nOur current offerings are:\n\nSoft — Walden, from Sequatchee Cove, Tennessee (cow, pasteurized)\nFirm — Griffin, from Sweet Grass Dairy, Thomasville, Georgia (cow, raw)\nBleu — Roquefort, France (sheep, raw)`,
       },
       {
@@ -5852,7 +5853,7 @@ const main = async () => {
       },
     ]);
 
-     //  {
+    //  {
     //     id: 303,
     //     type: "SELECT",
     //     question: `What is the Vanilla Pot de Crème served with?`,

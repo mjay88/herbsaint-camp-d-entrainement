@@ -28,10 +28,10 @@ type Props = {
   userProgress: typeof userProgress.$inferSelect | null;
 };
 /**
- * LessonPageClient was created to handle the case where there are no more lessons. 
+ * LessonPageClient was created to handle the case where there are no more lessons.
  * LessonPage was redirecting to /learn if there were no lessons or no userProgress found
- * skipping the Confetti screen. Confetti and hooks could not be called from LessonPage, 
- * so I needed to add a "use client" wrapper  
+ * skipping the Confetti screen. Confetti and hooks could not be called from LessonPage,
+ * so I needed to add a "use client" wrapper
  */
 const LessonPageClient = ({ lesson, userProgress }: Props) => {
   const { width, height } = useWindowSize();
@@ -72,7 +72,7 @@ const LessonPageClient = ({ lesson, userProgress }: Props) => {
             width={50}
           />
           <h1 className="text-xl leg:text-3xl font-bold text-neutral-700">
-            Great job! <br /> You&apos;ve completed all the lessons.
+            Great job! <br /> You&apos;ve completed all the lessons!
           </h1>
           <div className="flex items-center gap-x-4 w-full">
             <ResultCard variant="points" value={userProgress?.points} />

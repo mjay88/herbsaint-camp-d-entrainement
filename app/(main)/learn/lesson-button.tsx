@@ -46,7 +46,7 @@ export const LessonButton = ({
   const isLast = index === totalCount;
   const isCompleted = !current && !locked;
 
-  const Icon = isCompleted ? Check : isLast ? Crown : Star;
+  const Icon = isCompleted ? Check : isLast === isFirst ? Star : isLast ? Crown : Star;
 
   const href = isCompleted ? `/lesson/${id}` : "/lesson";
   //TODO: add mobile tool tips for
