@@ -5,13 +5,13 @@ import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
 type Props = {
-    params: Promise<{ lessonId: number }>
+    params: Promise<{ lessonId: string }>
 }
 
 export const GET = async (
   req: Request,
   { params }: Props,
-) => {
+):Promise<void | Response> => {
   
 const {lessonId} = await params;
 
@@ -21,7 +21,7 @@ const {lessonId} = await params;
   }
 
   const data = await db.query.lessons.findFirst({
-    where: { id: lessonId },
+    where: { id: parseInt(lessonId) },
   });
 
   return NextResponse.json(data);
@@ -45,7 +45,7 @@ const {lessonId} = await params;
     .set({
       ...body,
     })
-    .where(eq(lessons.id, lessonId))
+    .where(eq(lessons.id, parseInt(lessonId)))
     .returning();
 
   return NextResponse.json(data);
@@ -64,7 +64,7 @@ const {lessonId} = await params;
 
   const data = await db
     .delete(lessons)
-    .where(eq(lessons.id, lessonId))
+    .where(eq(lessons.id, parseInt(lessonId)))
     .returning();
 
   return NextResponse.json(data);
