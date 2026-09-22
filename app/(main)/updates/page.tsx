@@ -11,7 +11,7 @@ import { getUserProgress } from "@/db/queries";
 import { quests } from "@/constants";
 import { Progress } from "@/components/ui/progress";
 
-const Quests = async () => {
+const Updates = async () => {
   const { userId } = await auth();
   const userProgress = await getUserProgress(userId);
   if (!userProgress || !userProgress.activeCourse) {
@@ -29,15 +29,15 @@ const Quests = async () => {
       </StickyWrapper>
       <FeedWrapper>
         <div className="w-full flex flex-col items-center">
-          <Image src="/leaderboard.svg" alt="Shop" height={90} width={90} />
+          <Image src="/sparkles.svg" alt="Shop" height={90} width={90} />
           <h1 className="text-center font-bold text-neutral-800 text-2xl my-6">
-            Quests
+            Updates
           </h1>
           <p className="text-muted-foreground text-center text-lg mb-6">
-            Complete quests by earning points.
+            This is where new content could be placed, like the mini summer training curriculum.
           </p>
           <ul className="w-full">
-            {quests.map((quest) => {
+            {/* {quests.map((quest) => {
               const progress = (userProgress.points / quest.value) * 100;
               return (
                 <div
@@ -58,7 +58,7 @@ const Quests = async () => {
                   </div>
                 </div>
               );
-            })}
+            })} */}
           </ul>
         </div>
       </FeedWrapper>
@@ -66,4 +66,4 @@ const Quests = async () => {
   );
 };
 
-export default Quests;
+export default Updates;

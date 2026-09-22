@@ -54,7 +54,6 @@ export const LearnPageContent = async () => {
           hearts={userProgress.hearts}
           points={userProgress.points}
         />
-        <Quests points={userProgress.points} />
       </StickyWrapper>
       <FeedWrapper>
         <Header title={userProgress.activeCourse.title} />

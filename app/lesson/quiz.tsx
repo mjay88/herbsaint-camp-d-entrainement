@@ -146,24 +146,27 @@ export const Quiz = ({
       startTransition(() => {
         upsertChallengeProgress(challenge.id)
           .then((response) => {
-            if (response?.error === "hearts") {
-              openHeartsModal();
-              return;
-            }
+             //TODO: DELETE ON remove-hearts branch after tag
+            // if (response?.error === "hearts") {
+            //   openHeartsModal();
+            //   return;
+            // }
 
             correctControls.play();
             setStatus("correct");
             setPercentage((prev) => prev + 100 / challenges.length);
 
             //For practice
-            if (isPractice) {
-              setHearts((prev) => Math.min(prev + 1, 5));
-            }
+             //TODO: DELETE ON remove-hearts branch after tag
+            // if (isPractice) {
+            //   setHearts((prev) => Math.min(prev + 1, 5));
+            // }
           })
           .catch(() => toast.error("Something went wrong. Please try again."));
       });
     } else {
       startTransition(() => {
+         //TODO: DELETE ON remove-hearts branch after tag
         reduceHearts(challenge.id)
           .then((response) => {
             if (response?.error === "hearts") {
