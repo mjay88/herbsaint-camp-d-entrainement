@@ -128,7 +128,7 @@ const main = async () => {
         order: 20,
         imageSrc: null,
         question:
-          "Service is important. When we are seamless and consistent in our guest interactions, we take all the stress and confusion out of guests' choices. From the appearance of the table when guests are seated to our demeanor as we walk through the dining room, our level of control and professionalism puts guests at ease, even subconsciously. Your energy, whether positive or negative, will be absorbed by both your teammates and guests, so contribute good vibes!",
+          "Service is important. When we are seamless and consistent in our guest interactions, we take all the stress and confusion out of guests' choices.\n\nFrom the appearance of the table when guests are seated to our demeanor as we walk through the dining room, our level of control and professionalism puts guests at ease, even subconsciously. Your energy, whether positive or negative, will be absorbed by both your teammates and guests, so contribute good vibes!",
       },
       {
         id: 3,
