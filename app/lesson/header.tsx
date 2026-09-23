@@ -13,7 +13,7 @@ export const Header = ({
 }: Props) => {
   const {open} = useExitModal();
   return (
-    <header className="max-w-[1140px] min-h-14 lg:pt-[50px] pt-[20px] px-10 flex gap-x-7 items-center justify-between mx-auto w-full">
+    <header className="max-w-[1140px] min-h-14 lg:min-h-24 pt-[10px] px-10 flex gap-x-7 items-center mx-auto w-full">
       <X
         onClick={open} 
         className="text-slate-500 hover:opacity-75 transition cursor-pointer"

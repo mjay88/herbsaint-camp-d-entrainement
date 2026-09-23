@@ -36,6 +36,7 @@ export const Quiz = ({
   initialLessonChallenges,
   initialUserProgress,
 }: Props) => {
+  //TODO: REMOVE WITH HEARTS
   const { open: openHeartsModal } = useHeartsModal();
   const { open: openPracticeModal } = usePracticeModal();
   const isPractice = initialPercentage === 100;
@@ -169,10 +170,10 @@ export const Quiz = ({
          //TODO: DELETE ON remove-hearts branch after tag
         reduceHearts(challenge.id)
           .then((response) => {
-            if (response?.error === "hearts") {
-              openHeartsModal();
-              return;
-            }
+            // if (response?.error === "hearts") {
+            //   openHeartsModal();
+            //   return;
+            // }
             incorrectControls.play();
             setStatus("wrong");
 
@@ -200,23 +201,23 @@ export const Quiz = ({
         />
         <div className="flex flex-col gap-y-4 lg:gap-y-8 max-w-lg mx-auto text-center items-center justify-center h-full">
           <Image
-            src="/finish.svg"
+            src="/mascot-happy.svg"
             alt="Finish"
             className="hidden lg:block"
-            height={100}
-            width={100}
+            height={400}
+            width={400}
           />
           <Image
-            src="/finish.svg"
+            src="/mascot-happy.svg"
             alt="Finish"
             className="block lg:hidden"
-            height={50}
-            width={50}
+            height={300}
+            width={300}
           />
           <h1 className="text-xl leg:text-3xl font-bold text-neutral-700">
             Great job! <br /> You&apos;ve completed the lesson.
           </h1>
-          <div className="flex items-center gap-x-4 w-full">
+          {/* <div className="flex items-center gap-x-4 w-full"> TODO: DELETE ON remove-hearts branch after tag
             {isPractice ? (
               <ResultCard
                 variant="points"
@@ -227,7 +228,7 @@ export const Quiz = ({
             )}
 
             <ResultCard variant="hearts" value={hearts} />
-          </div>
+          </div> */}
         </div>
         <Footer
           lessonId={lessonId}

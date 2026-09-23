@@ -23,10 +23,10 @@ export const Challenge = ({
   return (
     <div
       className={cn(
-        "grid gap-2",
+        "grid gap-4",
         type === "ASSIST" && "grid-cols-1",
         type === "SELECT" &&
-          "grid-cols-2 lg:grid-cols-[repeat(2,minmax(0,1fr))]",
+          "grid-cols-1 lg:grid-cols-[repeat(2,minmax(0,1fr))]",
       )}
     >
       {options.map((option, i) => (

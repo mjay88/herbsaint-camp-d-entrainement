@@ -48,13 +48,13 @@ export const LearnPageContent = async () => {
 
   return (
     <div className="flex flex-row-reverse gap-[48px] px-6">
-      <StickyWrapper>
+      {/* <StickyWrapper>
         <UserProgress
           activeCourse={userProgress.activeCourse}
           hearts={userProgress.hearts}
           points={userProgress.points}
         />
-      </StickyWrapper>
+      </StickyWrapper> */}
       <FeedWrapper>
         <Header title={userProgress.activeCourse.title} />
         {units.map((unit) => (
