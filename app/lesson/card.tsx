@@ -65,7 +65,7 @@ export const Card = ({
 
         <p
           className={cn(
-            "text-neutral-600 text-base text-center px-4 py-5 -mb-5 sm:p-6",
+            "flex items-center justify-center h-full text-neutral-600 text-base text-center px-4 py-5 -mb-5 sm:p-6",
             selected && "text-sky-500",
             selected && status === "correct" && "text-green-500",
             selected && status === "wrong" && "text-rose-500",
@@ -73,7 +73,7 @@ export const Card = ({
         >
           {text}
         </p>
-        <div className="mt-auto w-full">
+        <div className="hidden lg:block mt-auto w-full">
           <div
             className={cn(
               "ml-auto lg:w-[30px] lg:h-[30px] w-[20px] h-[20px] px-4 py-4 sm:px-6 border-2 flex items-center justify-center rounded-lg text-neutral-400 lg:text-[15px] text-xs font-semibold",
