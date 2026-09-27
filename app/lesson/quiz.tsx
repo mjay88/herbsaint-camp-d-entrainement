@@ -246,10 +246,14 @@ export const Quiz = ({
         {correctAudio}
         {incorrectAudio}
         <Header hearts={hearts} percentage={percentage} />
-        <div className="flex gap-y-4 lg:gap-y-4 lg:max-w-4xl mx-auto text-center items-center justify-center h-full">
-         
+        {/* <div className="flex flex-1 gap-y-4 lg:gap-y-4 lg:max-w-4xl mx-auto text-center items-center justify-center h-full"> */}
+         <div className="flex-1 mb-4">
+        <div className="h-full w-full flex items-center justify-center">
+          <div className="lg:min-h[350px] w-full md:w-[700px] lg:min-w-4xl px-6 lg:px-0 flex flex-col gap-y-10">
           <CurriculumBubble question={challenge.question} imageSrc={challenge?.imageSrc} />
           
+        </div>
+        </div>
         </div>
         <Footer
           disabled={!isCurriculum}
