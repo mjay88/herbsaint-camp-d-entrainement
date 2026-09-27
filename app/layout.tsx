@@ -14,7 +14,7 @@ import Skeleton from "@/components/ui/skeleton";
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  title: "Herbsaint",
+  title: "Herbsaint Training",
   description: "New hire training",
 };
 
