@@ -167,6 +167,7 @@ export const getCourseProgress = async (
   };
 };
 
+
 export const getLesson = async (
   authenticatedUserId: string | null,
   activeLessonId: number | null,
