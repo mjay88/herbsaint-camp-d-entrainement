@@ -43,8 +43,8 @@ export const Unit = ({
               index={index}
               totalCount={lessons.length - 1}
               current={isCurrent}
-              locked={isLocked} //TODO: change back
-              // locked={false} //For testing
+              // locked={isLocked} //TODO: change back
+              locked={false} //For testing
               percentage={activeLessonPercentage}
             />
           );
