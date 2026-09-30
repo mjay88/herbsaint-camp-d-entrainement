@@ -18,49 +18,61 @@ const main = async () => {
     await db.delete(schema.challengeOptions);
     await db.delete(schema.challengeProgress);
 
+    // Single course — all units belong to this one course
     await db.insert(schema.courses).values([
       {
         id: 1,
-        title: "Back Waiter - Steps of Service ",
+        title: "Herbsaint New Hire Training",
         imageSrc: "/gumbo-circle.svg",
-      },
-      {
-        id: 2,
-        title: "Front Waiter - Steps of Service",
-        imageSrc: "/main-courses.svg",
-      },
-
-      {
-        id: 3,
-        title: "The Menu",
-        imageSrc: "/menu/house-spaghetti.webp",
-      },
-      {
-        id: 4,
-        title: "Dessert Menu",
-        imageSrc: "/desserts/banana-brown-butter-tart.webp",
-      },
-      {
-        id: 5,
-        title: "Drinks Menu",
-        imageSrc: "/drinks/out-of-office.webp",
-      },
-      {
-        id: 6,
-        title: "Wine Service Standards",
-        imageSrc: "/wine-red.svg",
       },
     ]);
 
+    // All 6 units under courseId: 1, in lesson-map order
     await db.insert(schema.units).values([
       {
         id: 1,
         courseId: 1,
-        title: "Back Waiter",
+        title: "Back Waiter — Steps of Service",
         description: "Steps of Service",
         order: 10,
       },
+      {
+        id: 2,
+        courseId: 1,
+        title: "Dessert Menu",
+        description: "The Dessert Menu",
+        order: 20,
+      },
+      {
+        id: 3,
+        courseId: 1,
+        title: "Front Waiter — Steps of Service",
+        description: "Steps of Service",
+        order: 30,
+      },
+      {
+        id: 4,
+        courseId: 1,
+        title: "Drinks Menu",
+        description: "Coming Soon",
+        order: 40,
+      },
+      {
+        id: 5,
+        courseId: 1,
+        title: "The Menu",
+        description: "The Menu",
+        order: 50,
+      },
+      {
+        id: 6,
+        courseId: 1,
+        title: "Wine Service Standards",
+        description: "Coming Soon",
+        order: 60,
+      },
     ]);
+
     /**
      * Lessons for Course 1, Unit 1 Back waiter steps of service
      */
@@ -1966,72 +1978,77 @@ const main = async () => {
     /**
      * Course id - 2: Front Waiter - Steps of Service
      * Unit id - 2: Front Waiter - Steps of Service
+
+    /**
+     * Unit 2: Dessert Menu
+     * Lesson 21: Dessert Menu and Suggested Pairings
+     * (was courseId: 4, unitId: 4 — now courseId: 1, unitId: 2)
      */
-    await db.insert(schema.units).values([
+    await db.insert(schema.lessons).values([
       {
-        id: 2,
-        courseId: 2,
-        title: "Front Waiter",
-        description: "Steps of Service",
+        id: 21,
+        unitId: 2,
         order: 10,
+        title: "Dessert Menu and Suggested Pairings",
       },
     ]);
 
     /**
-     * Lessons for Course 2, Unit 2 Front Waiter Steps of Service
+     * Unit 3: Front Waiter — Steps of Service
+     * (was courseId: 2, unitId: 2 — now courseId: 1, unitId: 3)
      */
     await db.insert(schema.lessons).values([
       {
         id: 8,
-        unitId: 2,
+        unitId: 3,
         order: 10,
         title: "Greeting the Table and Beverage Service",
       },
       {
         id: 9,
-        unitId: 2,
+        unitId: 3,
         order: 20,
         title: "Taking the Order",
       },
       {
         id: 10,
-        unitId: 2,
+        unitId: 3,
         order: 30,
         title: "Ringing in the Order",
       },
       {
         id: 11,
-        unitId: 2,
+        unitId: 3,
         order: 40,
         title: `The Pass / Expo Window`,
       },
       {
         id: 12,
-        unitId: 2,
+        unitId: 3,
         order: 50,
         title: "Wine Service",
       },
       {
         id: 13,
-        unitId: 2,
+        unitId: 3,
         order: 60,
         title: "First Course",
       },
       {
         id: 14,
-        unitId: 2,
+        unitId: 3,
         order: 70,
         title: "Second Course",
       },
       {
         id: 15,
-        unitId: 2,
+        unitId: 3,
         order: 80,
         title: "Serving Dessert",
       },
       {
         id: 16,
-        unitId: 2,
+        unitId: 3,
         order: 90,
         title: "Critical Points of Service",
       },
@@ -4126,49 +4143,35 @@ const main = async () => {
     ]);
 
     /**
-     * Course id - 3: The Menu
-     * Unit id - 3: The Menu
-     */
-    await db.insert(schema.units).values([
-      {
-        id: 3,
-        courseId: 3,
-        title: "The Menu",
-        description: "Soups, Salads, Small Plates, Mains, and Sides",
-        order: 10,
-      },
-    ]);
-
-    /**
-     * Lessons for Course 3, Unit 3 The Menu
+     * Unit 5: The Menu
+     * (was courseId: 3, unitId: 3 — now courseId: 1, unitId: 5)
      */
     await db.insert(schema.lessons).values([
       {
         id: 17,
-        unitId: 3,
+        unitId: 5,
         order: 10,
         title: "Soups & Salads",
       },
       {
         id: 18,
-        unitId: 3,
+        unitId: 5,
         order: 20,
         title: "Small Plates",
       },
       {
         id: 19,
-        unitId: 3,
+        unitId: 5,
         order: 30,
         title: "Main Courses",
       },
       {
         id: 20,
-        unitId: 3,
+        unitId: 5,
         order: 40,
         title: "Sides",
       },
     ]);
-
     /**
      * Course id - 3: The Menu
      * Unit id - 3: The Menu
@@ -5237,32 +5240,11 @@ const main = async () => {
       },
       { challengeId: 267, imageSrc: "", correct: false, text: `Grilled Okra.` },
     ]);
-    /**
-     * Course id - 4: Dessert Menu
-     * Unit id - 4: Dessert Menu
-     */
-    await db.insert(schema.units).values([
-      {
-        id: 4,
-        courseId: 4,
-        title: "Dessert Menu",
-        description: "Dessert Menu and Suggested Pairings",
-        order: 10,
-      },
-    ]);
 
     /**
-     * Lessons for Course 4, Unit 4 Dessert Menu
+     * Unit 2: Dessert Menu
+     * Lesson 21: Dessert Menu and Suggested Pairings — Challenges & Options
      */
-    await db.insert(schema.lessons).values([
-      {
-        id: 21,
-        unitId: 4,
-        order: 10,
-        title: "Dessert Menu and Suggested Pairings",
-      },
-    ]);
-
     /**
      * Course id - 4: Dessert Menu
      * Unit id - 4: Dessert Menu
@@ -6249,6 +6231,7 @@ const main = async () => {
         text: `A Double hopped IPA.`,
       },
     ]);
+
     //Syncs react-admin and react-simple-data-rest with existing db
     await db.execute(
       sql`SELECT setval('courses_id_seq', (SELECT MAX(id) FROM courses))`,
@@ -6273,11 +6256,3 @@ const main = async () => {
 };
 
 main();
-
-//Skill for prompt
-
-//All challengeOptions should only have one true option
-
-//There should be no duplicate keys for the challenge
-
-//ChallengeOptions should correspond to the correct challenge
