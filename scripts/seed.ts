@@ -18,49 +18,61 @@ const main = async () => {
     await db.delete(schema.challengeOptions);
     await db.delete(schema.challengeProgress);
 
+    // Single course — all units belong to this one course
     await db.insert(schema.courses).values([
       {
         id: 1,
-        title: "Back Waiter - Steps of Service ",
+        title: "Herbsaint Training Program",
         imageSrc: "/gumbo-circle.svg",
-      },
-      {
-        id: 2,
-        title: "Front Waiter - Steps of Service",
-        imageSrc: "/main-courses.svg",
-      },
-      
-      {
-        id: 3,
-        title: "The Menu",
-        imageSrc: "/menu/house-spaghetti.webp",
-      },
-      {
-        id: 4,
-        title: "Dessert Menu",
-        imageSrc: "/desserts/banana-brown-butter-tart.webp",
-      },
-      {
-        id: 5,
-        title: "Drinks Menu",
-        imageSrc: "/drinks/out-of-office.webp",
-      },
-      {
-        id: 6,
-        title: "Wine Service Standards",
-        imageSrc: "/wine-red.svg",
       },
     ]);
 
+    // All 6 units under courseId: 1, in lesson-map order
     await db.insert(schema.units).values([
       {
         id: 1,
         courseId: 1,
-        title: "Back Waiter",
+        title: "Back Waiter — Steps of Service",
         description: "Steps of Service",
         order: 10,
       },
+      {
+        id: 2,
+        courseId: 1,
+        title: "Dessert Menu",
+        description: "The Dessert Menu",
+        order: 20,
+      },
+      {
+        id: 3,
+        courseId: 1,
+        title: "Front Waiter — Steps of Service",
+        description: "Steps of Service",
+        order: 30,
+      },
+      {
+        id: 4,
+        courseId: 1,
+        title: "Drinks Menu",
+        description: "Coming Soon",
+        order: 40,
+      },
+      {
+        id: 5,
+        courseId: 1,
+        title: "The Menu",
+        description: "The Menu",
+        order: 50,
+      },
+      {
+        id: 6,
+        courseId: 1,
+        title: "Wine Service Standards",
+        description: "Coming Soon",
+        order: 60,
+      },
     ]);
+
     /**
      * Lessons for Course 1, Unit 1 Back waiter steps of service
      */
@@ -119,7 +131,7 @@ const main = async () => {
         order: 10,
         imageSrc: null,
         question:
-          "The hospitality we strive to provide is welcoming guests into our own home for a dinner party. Our style is familial but always professional. We greet everyone with a smile and never let anyone walk out without a warm goodbye! Everything we do is aimed at making our guests feel welcome, comfortable, and well cared for.\nWe create the atmosphere with the music we play, how the restaurant is set up and presented, how sharp the team looks, and with decadent smells wafting from the kitchen. Coming to work each day is an opportunity to leave the stress of our personal lives at the door and enter the stage, which is our dining room! We, as hosts, set the tone of the party. It's much easier for everyone to have a good time if it looks like we are.",
+          "The hospitality we strive to provide is welcoming guests into our own home for a dinner party. Our style is familial but always professional. We greet everyone with a smile and never let anyone walk out without a warm goodbye! Everything we do is aimed at making our guests feel welcome, comfortable, and well cared for.\n\nWe create the atmosphere with the music we play, how the restaurant is set up and presented, how sharp the team looks, and with decadent smells wafting from the kitchen.\n\nComing to work each day is an opportunity to leave the stress of our personal lives at the door and enter the stage, which is our dining room! We, as hosts, set the tone of the party. It's much easier for everyone to have a good time if it looks like we are.",
       },
       {
         id: 2,
@@ -128,7 +140,7 @@ const main = async () => {
         order: 20,
         imageSrc: null,
         question:
-          "Service is important. When we are seamless and consistent in our guest interactions, we take all the stress and confusion out of guests' choices. From the appearance of the table when guests are seated to our demeanor as we walk through the dining room, our level of control and professionalism puts guests at ease, even subconsciously. Your energy, whether positive or negative, will be absorbed by both your teammates and guests, so contribute good vibes!",
+          "Service is important. When we are seamless and consistent in our guest interactions, we take all the stress and confusion out of guests' choices.\n\nFrom the appearance of the table when guests are seated to our demeanor as we walk through the dining room, our level of control and professionalism puts guests at ease, even subconsciously. Your energy, whether positive or negative, will be absorbed by both your teammates and guests, so contribute good vibes!",
       },
       {
         id: 3,
@@ -137,7 +149,7 @@ const main = async () => {
         order: 30,
         imageSrc: null,
         question:
-          "Every guest and every table is different. A key skill for any server, bartender, or manager is identifying how guests are feeling and what style of service they want. Do they look tired? Maybe they just drove into town? Maybe a couple has been fighting. Is this an important business lunch, and should we remain in the background? Is this their first time joining us, and they want the full spiel and all the interaction you can give? Don't force engagement if guests want privacy, and be present if they are excited to hear from you. Either way is okay and provides great service, because it is specifically what the guest wants. Be adaptable and stay attentive.",
+          "Every guest and every table is different. A key skill for any server, bartender, or manager is identifying how guests are feeling and what style of service they want. Do they look tired? Maybe they just drove into town? Maybe a couple has been fighting. Is this an important business lunch, and should we remain in the background? Is this their first time joining us, and they want the full spiel and all the interaction you can give?\n\nDon't force engagement if guests want privacy, and be present if they are excited to hear from you. Either way is okay and provides great service, because it is specifically what the guest wants. Be adaptable and stay attentive.",
       },
       {
         id: 4,
@@ -163,8 +175,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 10,
         imageSrc: null,
-        question: `It is your job to support your Front Waiter however possible. The name of the game is communication. \nObserve your station, see which table is being seated, and get the water glasses ready while the Front Waiter greets. \n\nNote: There will be times your Front Waiter is assisting a large or demanding table and is unable to greet a new seating within the 60 second window. Refer to the Front Waiter steps of service to get the table started. As soon as the Front Waiter is free, immediately revert to assigned roles. This avoids miscommunication both with your partner and the guests, and ensures clarity and responsibility of duties.
-        `,
+        question: `**It is your job to support your Front Waiter however possible. The name of the game is communication.** \n\nObserve your station, see which table is being seated, and get the water glasses ready while the Front Waiter greets.\n\n**Note**: There will be times your Front Waiter is assisting a large or demanding table and is unable to greet a new seating within the 60 second window. Refer to the Front Waiter steps of service to get the table started. As soon as the Front Waiter is free, immediately revert to assigned roles. This avoids miscommunication both with your partner and the guests, and ensures clarity and responsibility of duties.`,
       },
       {
         id: 6,
@@ -172,7 +183,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 20,
         imageSrc: null,
-        question: `Check with your Front Waiter for water preferences. Serve water quickly, always using a tray in your left hand, approaching the guest from the right side, and placing glass down with your right hand at the top right hand side of the guest. Never touch a glass close to or at its rim. Never assume a table would like ice water, changing it looks unprofessional and you potentially lose a sale.\n\nHand signals: Holding your hand across and over your chest and tapping your shoulder means tap water, still hand means bottled still, and wiggling fingers means sparkling.`,
+        question: `Check with your Front Waiter for water preferences. Serve water quickly, always using a tray in your left hand, approaching the guest from the right side, and placing glass down with your right hand at the top right hand side of the guest. \n\nNever touch a glass close to or at its rim. Never assume a table would like ice water, changing it looks unprofessional and you potentially lose a sale.\n\n**Hand signals**: Holding your hand across and over your chest and tapping your shoulder means tap water, still hand means bottled still, and wiggling fingers means sparkling.`,
       },
       {
         id: 7,
@@ -180,7 +191,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 30,
         imageSrc: null,
-        question: `Only bring citrus with bottled water if a guest has requested it. Your front waiter will inform you of their choice. Citrus wedges should be clean and fresh, with enough to serve each guest and presented on a small B+B plate (not on the glass).\n\nDo not let the guest’s water glass become empty. If they are having ice water, top off with a water pitcher. If they are having bottled water, offer another bottle and ring it in. Collect bottled water from the service bar and pour.`,
+        question: `Only bring citrus with bottled water if a guest has requested it. Your front waiter will inform you of their choice. Citrus wedges should be clean and fresh, with enough to serve each guest and presented on a small B+B plate (not on the glass).\n\nDo not let the guest's water glass become empty. If they are having ice water, top off with a water pitcher. If they are having bottled water, offer another bottle and ring it in. Collect bottled water from the service bar and pour.`,
       },
       {
         id: 8,
@@ -188,7 +199,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 40,
         imageSrc: null,
-        question: `Screen your section at all times. You’re at your best when you know what’s going on at every table. Where are they at in the meal? What are your next 5 tasks? How can you best consolidate?\n\nIf pouring water for a table, scan the section and top off other tables that also need water. `,
+        question: `Screen your section at all times. You're at your best when you know what's going on at every table. Where are they at in the meal? What are your next 5 tasks? How can you best consolidate?\n\nIf pouring water for a table, scan the section and top off other tables that also need water. `,
       },
       {
         id: 9,
@@ -213,7 +224,7 @@ const main = async () => {
         order: 70,
         imageSrc: null,
         question:
-          "Should citrus wedges be presented on a B + B plate or on the edge of the glass?",
+          "Should citrus wedges be presented on a B & B plate or on the edge of the glass?",
       },
     ]);
     //  {
@@ -322,7 +333,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 10,
         imageSrc: null,
-        question: `Always keep an eye out for food in the window. Help deliver it whether it is your table's order or not. Hot food out is always our first priority. Never ever take food out without a ticket, even if you are certain you know where it goes. Repeat the name of the dish, the table, and the seat number, to the expediter every time. When dropping food, check that the table has proper presets: share plates, steak knife, etc. Food does not get dropped on an unmarked table.\n\nAll food leaves the window on the right/left, depending on the restaurant. Dishes should always be carried away from your body. Never use any area of your torso to balance dishes, whether serving or bussing. If it feels awkward, it looks awkward.`,
+        question: `Always keep an eye out for food in the window. Help deliver it whether it is your table's order or not. **Hot food out is always our first priority**. Never ever take food out without a ticket, even if you are certain you know where it goes. Repeat the name of the dish, the table, and the seat number, to the expediter every time. When dropping food, check that the table has proper presets: share plates, steak knife, etc. Food does not get dropped on an unmarked table.\n\nAll food leaves the window on the right/left, depending on the restaurant. Dishes should always be carried away from your body. Never use any area of your torso to balance dishes, whether serving or bussing. **If it feels awkward, it looks awkward.**`,
       },
       {
         id: 13,
@@ -330,7 +341,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 20,
         imageSrc: null,
-        question: `Always manicure tables in your station as you go. This means if something is unnecessary on a table, it goes. Remove excess debris, empty sugar packets, discarded cocktail garnish. If a guest ever gets up while dining be sure to fold their napkin and place neatly on the table before they return. If the napkin is exceptionally dirty, replace it with a new one. Attention to detail is what sets us apart. This can be done discreetly, no need to interject yourself by asking unnecessary questions which can be answered by reading the table. Do not narrate what you're doing.`,
+        question: `**Always manicure** tables in your station as you go. This means if something is unnecessary on a table, it goes. Remove excess debris, empty sugar packets, discarded cocktail garnish.\n\nIf a guest ever gets up while dining be sure to fold their napkin and place neatly on the table before they return. If the napkin is exceptionally dirty, replace it with a new one.\n\nAttention to detail is what sets us apart. This can be done discreetly, no need to interject yourself by asking unnecessary questions which can be answered by reading the table. **Do not narrate what you're doing.**`,
       },
       {
         id: 14,
@@ -354,7 +365,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 50,
         imageSrc: null,
-        question: `If guests want to order food with a back waiter, let the guest know that you will inform the front waiter that they are ready and immediately make the front waiter aware. Perception is everything and how we communicate this to the guest is critical to maintaining a positive hospitality experience.\n\nNote: If the guest does not want to wait for the front waiter or just starts ordering anyway, write down the order, read it back to the guest to confirm, and then hand it off to the front waiter. Do not ring it in yourself. They will confirm coursing with the guest and ring in the order using proper modifiers.\n\nWhether taking a food or beverage order that is outside our normal steps of service, make sure to find your teammate immediately so we don't ask the table twice about the same thing. Then ring it in.`,
+        question: `If guests want to order food with a back waiter, let the guest know that you will inform the front waiter that they are ready and immediately make the front waiter aware. Perception is everything and how we communicate this to the guest is critical to maintaining a positive hospitality experience.\n\n**Note**: If the guest does not want to wait for the front waiter or just starts ordering anyway, write down the order, read it back to the guest to confirm, and then hand it off to the front waiter. Do not ring it in yourself. They will confirm coursing with the guest and ring in the order using proper modifiers.\n\n**Whether taking a food or beverage order that is outside our normal steps of service, make sure to find your teammate immediately so we don't ask the table twice about the same thing. Then ring it in.**`,
       },
       {
         id: 17,
@@ -370,7 +381,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 70,
         imageSrc: null,
-        question: `Refill beverages throughout your station, keeping your eyes up and moving. When refilling water and iced tea, glasses stay on the table. Walk around the table. Never stand in one place and pour for everyone. Don't ask, just refill. If you have poured out their water, soda, wine, then ask if they would like another or offer the menu if they would like something else.`,
+        question: `Refill beverages throughout your station, keeping your eyes up and moving. When refilling water and iced tea, glasses stay on the table. Walk around the table. Never stand in one place and pour for everyone.\n\nDon't ask, just refill. If you have poured out their water, soda, wine, then ask if they would like another or offer the menu if they would like something else.`,
       },
       {
         id: 19,
@@ -378,7 +389,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 80,
         imageSrc: null,
-        question: `Before food hits the table, make sure they have everything they need to enjoy their course. Share plates, proper utensils, water, drinks, a clean table.`,
+        question: `Before food hits the table, make sure they have everything they need to enjoy their course.\n\nShare plates, proper utensils, water, drinks, a clean table.`,
       },
       {
         id: 20,
@@ -386,7 +397,7 @@ const main = async () => {
         type: "SELECT",
         order: 90,
         imageSrc: null,
-        question: `If the guest does not want to wait for the front waiter or just starts ordering with, what are the steps you should follow?`,
+        question: `If the guest does not want to wait for the front waiter or just starts ordering, what are the steps you should follow?`,
       },
       {
         id: 21,
@@ -403,7 +414,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 110,
         imageSrc: null,
-        question: `Serve the first course: Women first (if possible), placing plates discreetly from the right side with your right hand. Announce the dish you are serving and always place protein toward the guest (6 o'clock position).\n\nKnow where you're going, know your seat numbers, do NOT auction off food at the table. Watch your elbows and use an open arm when serving guests (chest is facing the guest and you are not backhanding them). Do not lean over the table, avoid reaching in front of a guest whenever possible, and excuse your reach if you can't avoid it.\n\nWhen possible, drop entrees and large format items before sides. Not only are these items more impressive visually, it can be difficult to present larger plates with sides scattered around the table.`,
+        question: `Serve the first course: Women first (if possible), placing plates discreetly from the right side with your right hand. Announce the dish you are serving and always place protein toward the guest (6 o'clock position).\n\nKnow where you're going, know your seat numbers, **DO NOT AUCTION OFF FOOD AT THE TABLE.** Watch your elbows and use an open arm when serving guests (chest is facing the guest and you are not backhanding them). Do not lean over the table, avoid reaching in front of a guest whenever possible, and excuse your reach if you can't avoid it.\n\nWhen possible, drop entrees and large format items before sides. Not only are these items more impressive visually, it can be difficult to present larger plates with sides scattered around the table.`,
       },
       {
         id: 23,
@@ -411,7 +422,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 120,
         imageSrc: null,
-        question: `If your Front Waiter is tied up at another table, check back with guests to ensure their satisfaction within 2 bites or 2 minutes. Manicure table as you go, checking beverage levels including wine.\n\nIf you QC a table, be sure to communicate with your Front Waiter. We want to avoid interrupting the guests' meal multiple times unnecessarily. Multiple servers asking the same questions looks unprofessional and incompetent`,
+        question: `If your Front Waiter is tied up at another table, check back with guests to ensure their satisfaction within **2 bites or 2 minutes**. Manicure the table as you go, checking beverage levels including wine.\n\nIf you QC a table, be sure to communicate with your Front Waiter. We want to avoid interrupting the guests' meal multiple times unnecessarily. Multiple servers asking the same questions looks unprofessional and incompetent`,
       },
       {
         id: 24,
@@ -435,7 +446,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 150,
         imageSrc: null,
-        question: `Clear first course as needed. If possible, wait till the last person finishes eating. Remove all used plates and silverware using open arm service, just like when serving food or drinks.\n\nAsk: "May I take your plate?" Once you've asked one guest, it's unnecessary to continue to ask the others. A guest will let you know if they're not ready.\n\nIf a guest has placed their fork and knife parallel to one another on the right-hand side of the plate, there is no need to ask: "May I take your plate?" This is the guest signaling they are finished. Avoid clearing a table when other people are still eating. Exceptions: stacked plates, napkin on plate, guest is asking for it to be taken or pushes dish away - clear these immediately.`,
+        question: `Clear first course as needed. If possible, wait till the last person finishes eating. Remove all used plates and silverware using open arm service, just like when serving food or drinks.\n\nAsk: *"May I take your plate?"* Once you've asked one guest, it's unnecessary to continue to ask the others. A guest will let you know if they're not ready.\n\nIf a guest has placed their fork and knife parallel to one another on the right-hand side of the plate, there is no need to ask: *"May I take your plate?"* This is the guest signaling they are finished. \n\n**Avoid clearing a table when other people are still eating.** Exceptions: stacked plates, napkin on plate, guest is asking for it to be taken or pushes dish away - clear these immediately.`,
       },
       {
         id: 27,
@@ -477,7 +488,7 @@ const main = async () => {
         challengeId: 14,
         imageSrc: "",
         correct: false,
-        text: "Cold food",
+        text: "Cat food",
       },
       {
         challengeId: 14,
@@ -599,7 +610,7 @@ const main = async () => {
         challengeId: 24,
         imageSrc: "",
         correct: false,
-        text: `Action off food to figure out what guests ordered what item.`,
+        text: `Auction off food to figure out what guests ordered what item.`,
       },
       {
         challengeId: 24,
@@ -666,7 +677,12 @@ const main = async () => {
         type: "CURRICULUM",
         order: 10,
         imageSrc: null,
-        question: `Whenever moving through the dining room, keep your eyes up, and smile. Be aware of tight spaces and corners. If another server has a wine glass or tray behind their back, surreptitiously take it. Your eyes should be constantly moving between:\\n • Expo Window\\n • Cocktails/wine at the bar\\n • Your Front/Back Waiter\\n • Other Servers' or Customers' eyes\\n • Tables in your section`,
+        question: `Whenever moving through the dining room, keep your eyes up, and smile. Be aware of tight spaces and corners. If another server has a wine glass or tray behind their back, surreptitiously take it. Your eyes should be constantly moving between:
+• Expo Window
+• Cocktails/wine at the bar
+• Your Front/Back Waiter
+• Other Servers' or Customers' eyes
+• Tables in your section`,
       },
       {
         id: 29,
@@ -674,7 +690,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 20,
         imageSrc: null,
-        question: `Communicate with your Front Waiter, look on the POS for second course share plates, marking, etc. Properly mark the table for the second course. A table should be marked before the second course arrives. Communicate with the expo if your tables food is in the window and the table hasn't been properly marked yet.\\nCheck beverage and wine levels at all tables, always manicuring as you go. Again, if something is unnecessary on the table, it should be removed.`,
+        question: `Communicate with your Front Waiter, look on the POS for second course share plates, marking, etc. Properly mark the table for the second course. A table should be marked before the second course arrives. Communicate with the expo if your tables food is in the window and the table hasn't been properly marked yet.\n\nCheck beverage and wine levels at all tables, always manicuring as you go. Again, if something is unnecessary on the table, it should be removed.`,
       },
       {
         id: 30,
@@ -690,7 +706,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 40,
         imageSrc: null,
-        question: `Serve second course: Women first (if possible), placing plates discreetly from the left side with your left hand. Always announce the dish you are presenting.\\nScan your section; know what's going on at all times`,
+        question: `Serve second course: Women first (if possible), placing plates discreetly from the left side with your left hand. Always announce the dish you are presenting.\n\n**Scan your section; know what's going on at all times.**`,
       },
       {
         id: 32,
@@ -698,7 +714,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 50,
         imageSrc: null,
-        question: `Guests should be cleared from their right-hand side with your right hand. Place the first plate in the left hand. This plate will act as your tray for off-sized dishes and silver. The second plate is balanced on your left wrist and palm. Subsequent plates are stacked on the second. Do not hover your left arm above a guest when clearing, hold it behind them and be mindful of personal space. Never stack plates on the table before picking them up and don't clear more than you're comfortable with. Again, if it feels awkward, it looks awkward.\\nIf you need help, ask your partner before approaching the table, or make eye contact with a passing server. Take the dirty dishes directly to the kitchen. Never approach another table with full hands, only clear one table at a time.`,
+        question: `Guests should be cleared from their right-hand side with your right hand. Place the first plate in the left hand. This plate will act as your tray for off-sized dishes and silver. The second plate is balanced on your left wrist and palm. Subsequent plates are stacked on the second.\n\nDo not hover your left arm above a guest when clearing, hold it behind them and be mindful of personal space. Never stack plates on the table before picking them up and don't clear more than you're comfortable with. Again, **if it feels awkward, it looks awkward.**\n\nIf you need help, ask your partner before approaching the table, or make eye contact with a passing server. Take the dirty dishes directly to the kitchen. Never approach another table with full hands, only clear one table at a time.`,
       },
       {
         id: 33,
@@ -800,7 +816,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 10,
         imageSrc: null,
-        question: `Present dessert menus: "If anyone would like something sweet to finish, we have some great options. Dessert wine and after-dinner drink pairings are listed just below each dessert. We also have whiskeys/after-dinner drinks listed on the back of the menu."\n\nSave yourself a trip and offer coffee or tea now. When you return with the coffee, take the dessert order, ladies first, recording everything in your captain's pad with proper seat numbers. Remove dessert menus from the table. Remove Salt & Pepper shakers at this time. Communicate with your Front Waiter that a dessert order has been taken, in addition to the non-verbal cue.`,
+        question: `Present dessert menus: *"If anyone would like something sweet to finish, we have some great options. Dessert wine and after-dinner drink pairings are listed just below each dessert. We also have whiskeys and other after-dinner drinks listed on the back of the menu."*\n\nSave yourself a trip and offer coffee or tea now. When you return with the coffee, take the dessert order, ladies first, recording everything in your captain's pad with proper seat numbers. Remove dessert menus from the table. **Remove Salt & Pepper shakers at this time.** Communicate with your Front Waiter that a dessert order has been taken, in addition to the non-verbal cue.`,
       },
       {
         id: 36,
@@ -824,7 +840,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 40,
         imageSrc: null,
-        question: `Serve dessert from the guest's left with your left hand, announcing it when dropping. Check back with your guest within 2 bites or 2 minutes. Are the guests involved in conversation? Can this QC should be accomplished by simply topping off drinks and making eye contact with each guest?.`,
+        question: `Serve dessert from the guest's left with your left hand, announcing it when dropping. Check back with your guest within **2 bites or 2 minutes**.\n\nAre the guests involved in conversation? Can this QC should be accomplished by simply topping off drinks and making eye contact with each guest?`,
       },
 
       {
@@ -833,7 +849,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 50,
         imageSrc: null,
-        question: `Clear desserts, removing all dishes, unused glasses, and napkins placed on the table. Do not let half-finished desserts sit for 5 min. Good eye contact with the guest will let you know when they're ready for the check, if they need more coffee, or if they're ready for the dessert to be cleared. Clearing as much as possible now makes for an easier and quicker reset once the guests leave.`,
+        question: `Clear desserts, removing all dishes, unused glasses, and napkins placed on the table. Do not let half-finished desserts sit for 5 min. Good eye contact with the guest will let you know when they're ready for the check, if they need more coffee, or if they're ready for the dessert to be cleared.\n\nClearing as much as possible now makes for an easier and quicker reset once the guests leave.`,
       },
       {
         id: 40,
@@ -849,7 +865,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 70,
         imageSrc: null,
-        question: `Once guests leave, inform and assist the floaters to immediately clear the empty table. Clean it properly, and reset it within 3 minutes. Trays are never set on the table or on a chair and use proper form as you would if guests were still seated. The tables nearby can see you.`,
+        question: `Once guests leave, inform and assist the floaters to immediately clear the empty table. Clean it properly, and reset it **within 3 minutes**.\n\n**Trays are never set on the table or on a chair** and use proper form as you would if guests were still seated. The tables nearby can see you.`,
       },
       {
         id: 42,
@@ -857,7 +873,7 @@ const main = async () => {
         type: "SELECT",
         order: 80,
         imageSrc: null,
-        question: `How long should you keep guests' water?`,
+        question: `How long should you keep refilling guests' water?`,
       },
       {
         id: 43,
@@ -903,7 +919,7 @@ const main = async () => {
         challengeId: 37,
         imageSrc: "",
         correct: true,
-        text: `Removing salt and pepper shakers form the table.`,
+        text: `Removing salt and pepper shakers from the table.`,
       },
     ]);
     //  {
@@ -969,7 +985,7 @@ const main = async () => {
         challengeId: 43,
         imageSrc: "",
         correct: true,
-        text: `3 minutes.`,
+        text: `3 minutes`,
       },
     ]);
 
@@ -986,7 +1002,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 10,
         imageSrc: null,
-        question: `All of our desserts, pastries, and breads come from La Boulangerie. Established in 2000, La Boulangerie is the Link Restaurant Group's neighborhood bakery and cafe. Chef Donald Link has operated the bakery since 2015 with Partner/Chef Stephen Stryjewski and Executive Pastry Chef Maggie Scales. Come in for coffee and a sweet or savory breakfast treat. In the afternoon, meet up with neighbors for a homemade ice cream or visit with friends and enjoy a sandwich, patisserie, a slice of cake, or seasonal pie. Don't forget to take home a loaf of bread for dinner.`,
+        question: `All of our desserts, pastries, and breads come from La Boulangerie. Established in 2000, La Boulangerie is the Link Restaurant Group's neighborhood bakery and cafe. Chef Donald Link has operated the bakery since 2015 with Partner/Chef Stephen Stryjewski and Executive Pastry Chef Maggie Scales.\n\nCome in for coffee and a sweet or savory breakfast treat. In the afternoon, meet up with neighbors for a homemade ice cream or visit with friends and enjoy a sandwich, patisserie, a slice of cake, or seasonal pie. Don't forget to take home a loaf of bread for dinner.`,
       },
       {
         id: 45,
@@ -994,7 +1010,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 20,
         imageSrc: null,
-        question: `It is important to communicate with the guest regarding the severity of any potential food allergies. The bakery upholds the same high standards of food safety that all Link Restaurant groups do, but since our desserts are not made in house we cannot 100% guarantee that they are cross-contamination safe as far as guests allergies are concerned.`,
+        question: `It is important to communicate with the guest regarding the severity of any potential food allergies.\n\nThe bakery upholds the same high standards of food safety that all Link Restaurant groups do, but since our desserts are not made in house we cannot 100% guarantee that they are cross-contamination safe as far as guests allergies are concerned.`,
       },
       {
         id: 46,
@@ -1026,7 +1042,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 60,
         imageSrc: "/desserts/banana-brown-butter-tart.webp",
-        question: `The Banana Brown Butter Tart:\n\nA shell of pasta frolla dough is filled with slices of banana and a spiced brown butter filling. Pasta frolla is an Italian sweet shortcrust pastry. It's made from flour, butter, sugar, and egg yolks, giving it a rich, sandy, cookie-like texture rather than the flaky layers of a traditional pie crust.`,
+        question: `The Banana Brown Butter Tart:\n\nA shell of pasta frolla dough is filled with slices of banana and a spiced brown butter filling. \n\nPasta frolla is an Italian sweet shortcrust pastry. It's made from flour, butter, sugar, and egg yolks, giving it a rich, sandy, cookie-like texture rather than the flaky layers of a traditional pie crust.`,
       },
       {
         id: 50,
@@ -1082,7 +1098,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 130,
         imageSrc: null,
-        question: `The suggested wine pairing for the Banana Brown Butter Tart is Petit Métris "Chaumes" 2015, Coteaux du Layon.\n\nMade from late-harvest, vine-dried Chenin Blanc. Bright and refreshingly balanced with aromas of apples and pears dressed in cinnamon. More tropical and exotic on the palate. Pronounced acidity. Sweet yet balanced. Pairs beautifully with the Banana Brown Butter Tart — its bright acidity cuts through the richness of the brown butter and caramel, while its notes of apple, pear, and cinnamon echo the tart's warm spice and caramelized banana.`,
+        question: `The suggested wine pairing for the Banana Brown Butter Tart is ***Petit Métris "Chaumes" 2015, Coteaux du Layon***.\n\nMade from late-harvest, vine-dried Chenin Blanc. Bright and refreshingly balanced with aromas of apples and pears dressed in cinnamon. More tropical and exotic on the palate. Pronounced acidity. Sweet yet balanced.\n\nPairs beautifully with the Banana Brown Butter Tart — its bright acidity cuts through the richness of the brown butter and caramel, while its notes of apple, pear, and cinnamon echo the tart's warm spice and caramelized banana.`,
       },
 
       {
@@ -1131,7 +1147,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 190,
         imageSrc: null,
-        question: `The suggested wine pairing for the Vanilla Pot de Crème is Château Gravas, Sauternes, 2020.\n\nRound and well balanced, offering candied and exotic fruit notes (mango, guava) and white flowers, with notes of ginger and saffron. A late-harvest blend of Sémillon, Sauvignon Blanc, and possibly some Muscadelle, from Bordeaux, France.`,
+        question: `The suggested wine pairing for the Vanilla Pot de Crème is ***Château Gravas, Sauternes, 2020***.\n\nRound and well balanced, offering candied and exotic fruit notes (mango, guava) and white flowers, with notes of ginger and saffron. A late-harvest blend of Sémillon, Sauvignon Blanc, and possibly some Muscadelle, from Bordeaux, France.`,
       },
       {
         id: 63,
@@ -1179,7 +1195,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 250,
         imageSrc: null,
-        question: `The suggested wine pairing for the Fried Peach Hand Pies is Domaine Durban, Muscat de Beaumes-de-Venise, 2021.\n\nA balance of sweetness, alcohol, and acidity, with notes of honeysuckle, citrus zest, and honey. Fresh and bright. A fortified wine made from Muscat à Petits Grains; Beaumes-de-Venise is the village in the southern Rhône Valley, France, known for this style of sweet wine.`,
+        question: `The suggested wine pairing for the Fried Peach Hand Pies is ***Domaine Durban, Muscat de Beaumes-de-Venise, 2021***.\n\nA balance of sweetness, alcohol, and acidity, with notes of honeysuckle, citrus zest, and honey. Fresh and bright. A fortified wine made from Muscat à Petits Grains; Beaumes-de-Venise is the village in the southern Rhône Valley, France, known for this style of sweet wine.`,
       },
       {
         id: 69,
@@ -1227,7 +1243,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 310,
         imageSrc: null,
-        question: `The suggested wine pairing for the Flourless Chocolate Cake is Domaine La Tour Vieille, Banyuls, Réserve, NV.\n\nFull-bodied and sweet, with notes of raspberry, dried fruit, caramel, and chocolate. Fortified in a style similar to Port, made from Grenache in Languedoc-Roussillon (southernmost area of France).`,
+        question: `The suggested wine pairing for the Flourless Chocolate Cake is ***Domaine La Tour Vieille, Banyuls, Réserve, NV***.\n\nFull-bodied and sweet, with notes of raspberry, dried fruit, caramel, and chocolate. Fortified in a style similar to Port, made from Grenache in Languedoc-Roussillon (southernmost area of France).`,
       },
       {
         id: 75,
@@ -1300,7 +1316,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 420,
         imageSrc: null,
-        question: `The suggested wine pairing for the Artisanal Cheese is Michel Gahier, Macvin du Jura.\n\nMacvin is a traditional Jura vin de liqueur, made from spirit — home-distilled marc du Jura using the domaine's grape pomace — and juice from the Savagnin grape. It has cooked-apple fruit character with some funky, mushroomy notes. Fortified, made from Savagnin, in Arbois (Jura, France, between Burgundy and Switzerland).`,
+        question: `The suggested wine pairing for the Artisanal Cheese is ***Michel Gahier, Macvin du Jura***.\n\nMacvin is a traditional Jura vin de liqueur, made from spirit — home-distilled marc du Jura using the domaine's grape pomace — and juice from the Savagnin grape. It has cooked-apple fruit character with some funky, mushroomy notes. Fortified, made from Savagnin, in Arbois (Jura, France, between Burgundy and Switzerland).`,
       },
       {
         id: 86,
@@ -1962,72 +1978,77 @@ const main = async () => {
     /**
      * Course id - 2: Front Waiter - Steps of Service
      * Unit id - 2: Front Waiter - Steps of Service
+
+    /**
+     * Unit 2: Dessert Menu
+     * Lesson 21: Dessert Menu and Suggested Pairings
+     * (was courseId: 4, unitId: 4 — now courseId: 1, unitId: 2)
      */
-    await db.insert(schema.units).values([
+    await db.insert(schema.lessons).values([
       {
-        id: 2,
-        courseId: 2,
-        title: "Front Waiter",
-        description: "Steps of Service",
+        id: 21,
+        unitId: 2,
         order: 10,
+        title: "Dessert Menu and Suggested Pairings",
       },
     ]);
 
     /**
-     * Lessons for Course 2, Unit 2 Front Waiter Steps of Service
+     * Unit 3: Front Waiter — Steps of Service
+     * (was courseId: 2, unitId: 2 — now courseId: 1, unitId: 3)
      */
     await db.insert(schema.lessons).values([
       {
         id: 8,
-        unitId: 2,
+        unitId: 3,
         order: 10,
         title: "Greeting the Table and Beverage Service",
       },
       {
         id: 9,
-        unitId: 2,
+        unitId: 3,
         order: 20,
         title: "Taking the Order",
       },
       {
         id: 10,
-        unitId: 2,
+        unitId: 3,
         order: 30,
         title: "Ringing in the Order",
       },
       {
         id: 11,
-        unitId: 2,
+        unitId: 3,
         order: 40,
         title: `The Pass / Expo Window`,
       },
       {
         id: 12,
-        unitId: 2,
+        unitId: 3,
         order: 50,
         title: "Wine Service",
       },
       {
         id: 13,
-        unitId: 2,
+        unitId: 3,
         order: 60,
         title: "First Course",
       },
       {
         id: 14,
-        unitId: 2,
+        unitId: 3,
         order: 70,
         title: "Second Course",
       },
       {
         id: 15,
-        unitId: 2,
+        unitId: 3,
         order: 80,
         title: "Serving Dessert",
       },
       {
         id: 16,
-        unitId: 2,
+        unitId: 3,
         order: 90,
         title: "Critical Points of Service",
       },
@@ -2053,7 +2074,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 20,
         imageSrc: null,
-        question: `Greet the table within 60 seconds of seating. Introduce yourself and your partner, and smile and make eye contact. This greeting will set the tone of the guests' entire meal. You are always knowledgeable and confident.\n\nThis initial interaction is when you make the guest really feel like you know everything about the restaurant, that they can relax, and let you guide them through their dining experience. We're here to create a warm and welcoming environment. The guests should feel like they are in good hands.\n\n"Hi, welcome to Herbsaint. My name is ____."\n"My partner ____ and I will be serving you this afternoon/evening."\n\nOften, this is your table's first time dining with us. Introducing yourself and your partner helps set the expectation of team service, for those not familiar with this style of service.`,
+        question: `**Greet the table within 60 seconds of seating**. Introduce yourself and your partner, and **smile and make eye contact**. This greeting will set the tone of the guests' entire meal. You are always knowledgeable and confident.\n\nThis initial interaction is when you make the guest really feel like you know everything about the restaurant, that they can relax, and let you guide them through their dining experience. We're here to create a warm and welcoming environment. The guests should feel like they are in good hands.\n\n"Hi, welcome to Herbsaint. My name is _______."\n"My partner ______ and I will be serving you this afternoon/evening."\n\nOften, this is your table's first time dining with us. Introducing yourself and your partner helps set the expectation of team service, for those not familiar with this style of service.`,
       },
       {
         id: 109,
@@ -2061,7 +2082,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 30,
         imageSrc: null,
-        question: `Take this time to make your initial read of the table. This is the most important step in determining how you'll treat the table, from diction and posture, to level of engagement.\n\nIs this an LRG Regular or XXP? Who is the host? Is this a business meeting, a celebration, or a first date? Are the guests already looking at the wine list? Do the guests want to be engaged and guided, or left with minimal interruptions? As you approach the table, are you interrupting, or rescuing?`,
+        question: `Take this time to make your initial read of the table. This is the **most** important step in determining how you'll treat the table, from diction and posture, to level of engagement.\n\nIs this an **LRG Regular** or **XXP**? Who is the host? Is this a business meeting, a celebration, or a first date? Are the guests already looking at the wine list? Do the guests want to be engaged and guided, or left with minimal interruptions? As you approach the table, are you interrupting, or rescuing?`,
       },
       {
         id: 110,
@@ -2085,7 +2106,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 60,
         imageSrc: null,
-        question: `While greeting the guests, reach to the center of the table and push the Salt and Pepper shakers together. For patio tables, greet with a Herbsaint logo coaster.\n\nThis is a non-verbal cue, signaling to your partner that the table, inside or outside, has been greeted.`,
+        question: `While greeting the guests, reach to the center of the table and **push the Salt and Pepper shakers together**. For patio tables, greet with a Herbsaint logo coaster.\n\nThis is a non-verbal cue, signaling to your partner that the table, inside or outside, has been greeted.`,
       },
       {
         id: 113,
@@ -2093,7 +2114,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 70,
         imageSrc: null,
-        question: `Ask for the guests' preferred water service. Never say: "bottled, or just tap?"\n\n"Would you prefer bottled still, sparkling, or ice water this afternoon/evening."\n\nThis is also the time to mention our cocktails, wines by the glass, and beers on the back of the menu.\n\nCommunicate the guests' water preference to your Back Waiter. Never automatically bring ice water. It sets a tone of being rushed and the table's needs being ignored from the beginning.\n\nHand signals are the fastest way to communicate, silently and from across the floor: tap on your shoulder means tap water, "bubble" fingers means sparkling bottled water, and swiping your hand from left to right means still bottled water.`,
+        question: `Ask for the guests' preferred water service. Never say: *"bottled, or just tap?"*\n\n*"Would you prefer bottled still, sparkling, or ice water this afternoon/evening."*\n\nThis is also the time to mention our cocktails, wines by the glass, and beers on the back of the menu.\n\nCommunicate the guests' water preference to your Back Waiter. Never automatically bring ice water. It sets a tone of being rushed and the table's needs being ignored from the beginning.\n\n**Hand signals** are the fastest way to communicate, silently and from across the floor: **tap on your shoulder means tap water, "bubble" fingers means sparkling bottled water, and swiping your hand from left to right means still bottled water.**`,
       },
       {
         id: 114,
@@ -2117,7 +2138,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 99,
         imageSrc: null,
-        question: `Once your back waiter delivers water service, approach the table to ask if they're ready to order beverages. Use your knowledge of the spirit list to ask for a spirit preference and any qualifying questions for classic cocktails (vermouth, twist, olives, up/rocks, etc). If guests would like to start with a bottle of wine, guide them through the list or suggest to send over a manager if they have more detailed questions.`,
+        question: `Once your back waiter delivers water service, approach the table to ask if they're ready to order beverages. Use your knowledge of the spirit list to ask for a spirit preference and any qualifying questions for classic cocktails (vermouth, twist, olives, up/rocks, etc).\n\nIf guests would like to start with a bottle of wine, guide them through the list or suggest to send over a manager if they have more detailed questions.`,
       },
       {
         id: 116,
@@ -2125,7 +2146,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 100,
         imageSrc: null,
-        question: `Deliver the drinks from the bar to the table within 3-4 minutes of ordering.\n\nAlways use a tray in your left hand. Announce the beverage as it is served with your right hand, to the guest's right. Hold glasses at the stem or as close to the base as possible. Never touch or get even close to the rim.`,
+        question: `Deliver the drinks from the bar to the table within 3-4 minutes of ordering.\n\n**Always use a tray** in your left hand. Announce the beverage as it is served with your right hand, to the guest's right. Hold glasses at the stem or as close to the base as possible. Never touch or get even close to the rim.`,
       },
       {
         id: 117,
@@ -2133,7 +2154,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 110,
         imageSrc: null,
-        question: `Do not stand at the bar waiting for drinks. If drinks are taking longer than 5 minutes, alert a manager.\n\nInstead of waiting and staring run another sections drinks, run some food, or check on your section.\n\n.If other drinks are ready when yours are, add them to your tray and deliver multiple tables. Teamwork goes beyond your section!`,
+        question: `Do not stand at the bar waiting for drinks. If drinks are taking longer than 5 minutes, alert a manager.\n\nInstead of waiting and staring, run another sections drinks, run some food, or check on your section.\n\nIf other drinks are ready when yours are, add them to your tray and deliver multiple tables. Teamwork goes beyond your section!`,
       },
       {
         id: 118,
@@ -2149,7 +2170,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 130,
         imageSrc: null,
-        question: `As drinks are delivered, this is the opportune time to recite the daily off-menu specials without further interrupting the table. Maintain eye contact with guests and continue smiling.\n\nWhen special cards are printed, do not read the specials. Elaborate on the preparation and ingredients, while highlighting the card and our signature items.\n\nInform the guests of any 86'd items: "Unfortunately, we are out of _____ tonight."\n\nOffer to answer any questions. Be sure of the facts. Never make things up.\n\nPoint out the wine list and offer to suggest wine. If a guest has specific questions about the wine list you're not comfortable answering, offer to send a manager or sommelier to the table.`,
+        question: `As drinks are delivered, this is the opportune time to recite the daily off-menu specials without further interrupting the table. Maintain eye contact with guests and continue **SMILING!**\n\n**When special cards are printed, do not read the specials**. Elaborate on the preparation and ingredients, while highlighting the card and our signature items.\n\nInform the guests of any 86'd items: *"Unfortunately, we are out of _____ tonight."*\n\nOffer to answer any questions. Be sure of the facts. **Never make things up.**\n\nPoint out the wine list and offer to suggest wine. If a guest has specific questions about the wine list you're not comfortable answering, offer to send a manager or sommelier to the table.`,
       },
       {
         id: 120,
@@ -2359,7 +2380,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 10,
         imageSrc: null,
-        question: `Return to the table within 3-5 minutes to take the order. We encourage each table to provide a full order. Women's orders should be taken first if at all possible.\n\nWrite down each order with the corresponding seat number in your server book. Note all special requests, and repeat the order back to the guests. Always write down the order. Don't rely on memory.`,
+        question: `Return to the table within 3-5 minutes to take the order. **We encourage each table to provide a full order.** Women's orders should be taken first if at all possible.\n\nWrite down each order with the corresponding seat number in your server book. Note all special requests, and repeat the order back to the guests. Always write down the order. Don't rely on memory.`,
       },
       {
         id: 124,
@@ -2399,7 +2420,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 50,
         imageSrc: null,
-        question: `Handling special requests is part of guiding the guest's experience. If a guest asks if we have anything for vegetarians, let them know we have several vegetarian-friendly items and point them out, communicating any additional dietary restrictions to the kitchen via kitchen modifiers. The chef prepares a vegetarian and vegan friendly entrée daily. It should be posted in the server alley.`,
+        question: `Handling special requests is part of guiding the guest's experience.\n\nIf a guest asks if we have anything for vegetarians, let them know we have several vegetarian-friendly items and point them out, communicating any additional dietary restrictions to the kitchen via kitchen modifiers. The chef prepares a vegetarian and vegan friendly entrée daily. It should be posted in the server alley.`,
       },
       {
         id: 217,
@@ -2407,7 +2428,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 51,
         imageSrc: null,
-        question: `If asked what we have for kids, point out the child-friendly items on the menu and mention other items the kitchen regularly prepares for children. Ask parents if they'd like the child's order to come out as soon as possible, with the first course, or with the rest of the table's meal. Children's dishes are not available for adults.`,
+        question: `If asked what we have for kids, point out the child-friendly items on the menu and mention other items the kitchen regularly prepares for children.\n\nAsk parents if they'd like the child's order to come out as soon as possible, with the first course, or with the rest of the table's meal. \n\nChildren's dishes are not available for adults.`,
       },
       {
         id: 128,
@@ -2415,7 +2436,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 60,
         imageSrc: null,
-        question: `As a rule of thumb, you can subtract from a dish rather than add to it, unless the item is cooked into the dish. For example: a guest can order the Duck Leg Confit without the Yellow Squash, with a side of Green Beans instead.`,
+        question: `As a rule of thumb, you can **subtract** from a dish rather than add to it, unless the item is cooked into the dish.\n\nFor example: a guest can order the Duck Leg Confit without the yellow squash, and a side dish separately. The side dish is not "substituted" for the yellow squash.`,
       },
       {
         id: 218,
@@ -2423,7 +2444,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 61,
         imageSrc: null,
-        question: `If a guest mentions an allergy, say "Pardon me for just a moment, and I'll check with the Chef". Use the allergy matrix posted in the server alley as your guide, but always double check with the kitchen expo. Guide them through the approved items on the menu according to their specific sensitivities. Never assume, guess, or try to figure it out on your own. Allergies are a serious liability for which the Chef is solely responsible.`,
+        question: `If a guest mentions an allergy, say *"Pardon me for just a moment, and I'll check with the Chef"*.\n\nUse the allergy matrix posted in the server alley as your guide, but always double check with the kitchen expo. Guide them through the approved items on the menu according to their specific sensitivities. Never assume, guess, or try to figure it out on your own. **Allergies are a serious liability for which the Chef is solely responsible.**`,
       },
       {
         id: 129,
@@ -2447,7 +2468,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 90,
         imageSrc: null,
-        question: `If a guest requests a swap, like the Blueberry Fried Pie with Vanilla Ice Cream, simply say "Certainly," ring in the substitution, and inform the Expo window of the change.\n\nAny guest may order food to go, with a few exceptions: raw or undercooked food, or food that does not travel well. See the Chef or a manager with any questions. Desserts may be ordered to go as long as they don't include frozen items or items served in a ramekin.`,
+        question: `If a guest requests a swap, like the Blueberry Fried Pie with Vanilla Ice Cream, simply say *"Certainly"*, ring in the substitution, and inform the Expo window of the change.\n\nAny guest may order food to go, with a few exceptions: raw or undercooked food, or food that does not travel well. See the Chef or a manager with any questions. Desserts may be ordered to go as long as they don't include frozen items or items served in a ramekin.`,
       },
       {
         id: 132,
@@ -2455,7 +2476,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 100,
         imageSrc: null,
-        question: `Our goal is to always make guests feel comfortable and welcome, even when we can't accommodate a particular request. Rather than telling a guest "No substitutions," try a positive redirection: "I'm happy to order you a side of ______."\n\nThis lets the guest know you'll get them something they'll enjoy, while also letting them know to expect the item on the bill, avoiding awkward situations later.`,
+        question: `Our goal is to always make guests feel comfortable and welcome, even when we can't accommodate a particular request. Rather than telling a guest *"No substitutions,"* try a positive redirection: *"I'm happy to order you a side of ______."*\n\nThis lets the guest know you'll get them something they'll enjoy, while also letting them know to expect the item on the bill, avoiding awkward situations later.`,
       },
       {
         id: 133,
@@ -2471,7 +2492,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 120,
         imageSrc: null,
-        question: `The Front Waiter is responsible for pre-setting share plates and share spoons for the first course, before the order goes into Toast. This is the time to make room in the center of the table for those shared items to be dropped. Communicate with your Back Waiter, mentioning share plates, marking, and any special needs.`,
+        question: `The Front Waiter is responsible for pre-setting share plates and share spoons for the first course, **before the order goes into Toast.**\n\nThis is the time to make room in the center of the table for those shared items to be dropped. Communicate with your Back Waiter, mentioning share plates, marking, and any special needs.`,
       },
       {
         id: 135,
@@ -2479,7 +2500,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 130,
         imageSrc: null,
-        question: `Remove menus and bring them to the host stand or wait station. Menus should never be tucked under your arm while you take another order. Looking in control, even when we're on the hustle, makes the dining room appear under control and puts guests at ease.\n\nAfter the order is taken, scan the table and remove excess or unnecessary silver, debris, and glasses that will not be needed.`,
+        question: `Remove menus and bring them to the host stand or wait station. Menus should **never** be tucked under your arm while you take another order. Looking in control, even when we're on the hustle, makes the dining room appear under control and puts guests at ease.\n\nAfter the order is taken, scan the table and remove excess or unnecessary silver, debris, and glasses that will not be needed.`,
       },
       {
         id: 136,
@@ -2678,7 +2699,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 10,
         imageSrc: null,
-        question: `When entering the order in Toast, group like items within each course by quantity, note seat numbers for every guest, and place course lines appropriately. Take your time and check the ticket once more before sending it to the kitchen.`,
+        question: `When entering the order in Toast, group like items within each course by quantity, note seat numbers for every guest, and place course lines appropriately\n\nTake your time and check the ticket once more before sending it to the kitchen.`,
       },
       {
         id: 139,
@@ -2686,7 +2707,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 20,
         imageSrc: null,
-        question: `Before sending the ticket, verify: the ticket name if there's an XXP or allergy; any relevant modifiers, such as share, more to come, only, or drop on top; the correct number of entrées, course lines, seat numbers, and steak temps; and any allergies along with the item removed or altered to comply with them.`,
+        question: `Before sending the ticket, verify: the **ticket name** if there's an XXP or allergy; any relevant modifiers, such as share, more to come, only, or drop on top; the correct number of entrées, course lines, seat numbers, and steak temps; and any **allergies** along with the item removed or altered to comply with them.`,
       },
       {
         id: 140,
@@ -2702,7 +2723,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 40,
         imageSrc: null,
-        question: `Modifiers communicate coursing intent to the kitchen.\n"More to Come" is used when only apps are ordered but more will be ordered shortly.\n"Apps in" is used when ordering entrées while apps are already ordered but not yet on the table. \n"Drop on top" is used when apps are on the table and the guests want the next course to arrive while they still have apps, or when it's an add-on the table wants right away.\n"Only" marks the only course ordered, with no further food or courses to follow.\n"Add as Entrée" is used when adding an item for an entrée, or for a joiner at the table.`,
+        question: `Modifiers communicate coursing intent to the kitchen.\n\n**"More to Come"** is used when only apps are ordered but more will be ordered shortly.\n\n**"Apps in"** is used when ordering entrées while apps are already ordered but not yet on the table.\n\n**"Drop on top"** is used when apps are on the table and the guests want the next course to arrive while they still have apps, or when it's an add-on the table wants right away.\n\n**"Only"** marks the only course ordered, with no further food or courses to follow.\n**"Add as Entrée"** is used when adding an item for an entrée, or for a joiner at the table.`,
       },
       {
         id: 142,
@@ -2726,7 +2747,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 70,
         imageSrc: null,
-        question: `When several guests at one table order the same thing and one has a special request, press the quantity on the ordered item and list every seat number, then use "type prep" to add the specific seat number and modification. For example: \n\n3 Gem Lettuce\n\n  seat 1\n\n  seat 2\n\n    "type prep"\\n  seat 3 dressing on side.\n\nWhen a guest orders a specific liquor in a specific cocktail, order the liquor first, then use the modifier to indicate the cocktail it goes in.`,
+        question: `When several guests at one table order the same thing and one has a special request, press the quantity on the ordered item and list every seat number, then use "type prep" to add the specific seat number and modification. For example: \n\n3 Gem Lettuce\n\n  seat 1\n\n  seat 2\n\n    **type prep**\n\n  seat 3 dressing on side.\n\nWhen a guest orders a specific liquor in a specific cocktail, order the liquor first, then use the modifier to indicate the cocktail it goes in.`,
       },
       {
         id: 145,
@@ -2734,7 +2755,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 80,
         imageSrc: null,
-        question: `To ring in an allergy modifier, name the ticket for the allergy itself, for example "Gluten Allergy," then use "type prep" on the affected seat's item to note the modification, such as no bread`,
+        question: `To ring in an allergy modifier, name the ticket for the allergy itself, for example "Gluten Allergy," then use "type prep" on the affected seat's item to note the modification, such as no bread.`,
       },
       {
         id: 146,
@@ -2874,7 +2895,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 10,
         imageSrc: null,
-        question: `The Pass, or expo window, is the most important area of the restaurant. It is both the Front and Back Waiters' number one responsibility: Run Hot Food. Always keep an eye out for food in the window and help deliver it, whether it's your table's order or not.`,
+        question: `**The Pass, or expo window, is the most important area of the restaurant.** It is **both** the Front and Back Waiters' number one responsibility: **Run Hot Food.** \n\nAlways keep an eye out for food in the window and help deliver it, whether it's your table's order or not.`,
       },
       {
         id: 219,
@@ -2882,7 +2903,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 11,
         imageSrc: null,
-        question: `Never take food out without a ticket, even if you're certain you know where it goes. Repeat the name of the dish, the table, and the seat number to the expediter every time. When dropping food, check that the table has proper presets, like share plates or a steak knife. Food does not get dropped on an unmarked table.`,
+        question: `**Never** take food out without a ticket, even if you're certain you know where it goes. Repeat the name of the dish, the table, and the seat number to the expediter every time. When dropping food, check that the table has proper presets, like share plates or a steak knife. **Food does not get dropped on an unmarked table.**`,
       },
       {
         id: 148,
@@ -2890,7 +2911,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 20,
         imageSrc: null,
-        question: `If food must come back to the window because a table isn't ready, communicate a reason and timeline to the Expo. "Not marked" or "Marking now" means about 30 seconds. "Need to be cleared and marked" means 1-2 minutes.\n\n"Still working on the first course" requires a time estimate before the table will be clear and marked. The kitchen may need to refire the entire order. That will need to be communicated to a manager in case there is a long lag between courses.`,
+        question: `If food must come back to the window because a table isn't ready, communicate a reason and timeline to the Expo. ***"Not marked"*** or ***"Marking now"*** means about 30 seconds.\n\n***"Need to be cleared and marked"*** means 1-2 minutes.\n\n***"Still working on the first course"*** requires a time estimate before the table will be clear and marked. The kitchen may need to refire the entire order. That will need to be communicated to a manager in case there is a long lag between courses.`,
       },
       {
         id: 149,
@@ -2914,7 +2935,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 50,
         imageSrc: null,
-        question: `All food leaves the window on the left side. Dishes should always be carried away from your body. Never use any area of your torso to balance dishes, whether serving or bussing.\n\nIf it feels awkward, it looks awkward.`,
+        question: `All food leaves the window on the left side.\n\nDishes should always be carried away from your body. Never use any area of your torso to balance dishes, whether serving or bussing.\n\n**If it feels awkward, it looks awkward.**`,
       },
       {
         id: 152,
@@ -3021,7 +3042,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 10,
         imageSrc: null,
-        question: `The Front Waiter should open the wine. If the Front Waiter is busy, it's acceptable for the Back Waiter to open it. This should be discussed within the team as soon as the order has been placed.\n\nType prep the seat number of the host or guest ordering the bottle. When the order is placed, the glasses should go down immediately, thinking of them as share plates. Double check that glasses are thoroughly polished, and only touch and carry them at the stem. Remember managers are always available to answer questions and open wine. An experienced server always knows when to ask for help.`,
+        question: `The Front Waiter should open the wine. If the Front Waiter is busy, it's acceptable for the Back Waiter to open it. This should be discussed within the team as soon as the order has been placed.\n\n**Type prep the seat number of the host or guest ordering the bottle.** When the order is placed, the glasses should go down immediately, thinking of them as share plates. Double check that glasses are thoroughly polished, and only touch and carry them at the stem. Remember managers are always available to answer questions and open wine. An experienced server always knows when to ask for help.`,
       },
       {
         id: 154,
@@ -3061,7 +3082,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 60,
         imageSrc: null,
-        question: `Pour 1.5 to 2 ounces for the guest who ordered the bottle to taste. This taste is to ensure the wine is sound. If a guest refuses a wine simply because they don't like it, never question them: "Very good. I'll have a manager or sommelier right over to help find something you'll enjoy a bit more." Remove the bottle and let your manager know.\n\nWine can be esoteric and intimidating. It's our job to take all pretense out of the process and make the guest feel at ease.`,
+        question: `Pour 1.5 to 2 ounces for the guest who ordered the bottle to taste. This taste is to ensure the wine is sound.\n\nIf a guest refuses a wine simply because they don't like it, never question them: *"Very good. I'll have a manager or sommelier right over to help find something you'll enjoy a bit more."* Remove the bottle and let your manager know.\n\nWine can be esoteric and intimidating. It's our job to take all pretense out of the process and make the guest feel at ease.`,
       },
       {
         id: 159,
@@ -3093,7 +3114,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 100,
         imageSrc: null,
-        question: `Place the bottle on the table, or in a wine bucket for sparkling and white wines. Offer to remove the cork from the table and place it in your pocket.\n\nWine levels should be kept at 4 ounces full, unless the host or guest requests to pour themselves. If they'd like to pour, communicate this to your Back Waiter and all managers on the floor.`,
+        question: `Place the bottle on the table, or in a wine bucket for sparkling and white wines. Offer to remove the cork from the table and place it in your pocket.\n\nWine levels should be kept at 4 ounces full, unless the host or guest requests to pour themselves. **If they'd like to pour, communicate this to your Back Waiter and all managers on the floor.**`,
       },
       {
         id: 163,
@@ -3109,7 +3130,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 120,
         imageSrc: null,
-        question: `Wine ordered with apps should be poured before the entrées arrive. If one guest is low on wine, fill their glass regardless of the others. Whenever possible, pour from the guest's right side.\n\nDon't ask if a guest wants more wine, just pour. The guest will let you know when they're finished drinking. Communicate this to your Back Waiter.`,
+        question: `Wine ordered with apps should be poured before the entrées arrive. If one guest is low on wine, fill their glass regardless of the others. Whenever possible, pour from the guest's right side.\n\nDon't ask if a guest wants more wine, just pour. The guest will let you know when they're finished drinking. **Communicate this to your Back Waiter.**`,
       },
       {
         id: 165,
@@ -3293,7 +3314,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 20,
         imageSrc: null,
-        question: `Refrain from using common house terms for our signature dishes, like calling something a "spag app." Instead: "This is the housemade spaghetti with guanciale and a fried poached egg to share."`,
+        question: `Refrain from using common house terms for our signature dishes, like calling something a *"spag app."*\n\nInstead: *"This is the housemade spaghetti with guanciale and a fried poached egg to share."*`,
       },
       {
         id: 169,
@@ -3301,7 +3322,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 30,
         imageSrc: null,
-        question: `Check back with guests and make yourself available within 2 bites or 2 minutes. Always manicure the table while doing so, checking beverage levels. This is another opportunity to read the table: is someone picking at or not eating their food? Making eye contact is an effective way to judge a guest's needs and give them an opportunity to communicate.\n\nNever ask, "Are we enjoying everything?"`,
+        question: `Check back with guests and make yourself available within **2 bites or 2 minutes**. Always manicure the table while doing so, checking beverage levels.\n\nThis is another opportunity to read the table: is someone picking at or not eating their food? Making eye contact is an effective way to judge a guest's needs and give them an opportunity to communicate.\n\nNever ask, *"Are we enjoying everything?"*`,
       },
       {
         id: 170,
@@ -3325,7 +3346,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 60,
         imageSrc: null,
-        question: `If a guest isn't enjoying their dish, take it away. Offer to have it remade or bring a different dish entirely. It's imperative to find out exactly what the guest didn't enjoy about the dish, since Chef will need this information.\n\nBring the dish to the right side of the expo so the information can be relayed. Chef may want to check the quality of the item. Always alert a manager as well.`,
+        question: `If a guest isn't enjoying their dish, take it away. Offer to have it remade or bring a different dish entirely. It's imperative to find out exactly what the guest didn't enjoy about the dish, since Chef will need this information.\n\nBring the dish to the right side of the expo so the information can be relayed. Chef may want to check the quality of the item. **Always alert a manager as well.**`,
       },
       {
         id: 173,
@@ -3333,7 +3354,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 70,
         imageSrc: null,
-        question: `Communicate to the kitchen the new dish or refire needed, along with the table and seat number. Re-ring the new item or refire, modifying it with DON'T MAKE.`,
+        question: `Communicate to the kitchen the new dish or refire needed, along with the table and seat number.\n\nRe-ring the new item or refire, modifying it with DON'T MAKE.`,
       },
       {
         id: 174,
@@ -3349,7 +3370,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 90,
         imageSrc: null,
-        question: `Clear the first course as needed. If possible, wait until the last person has finished eating. Remove all used plates and silverware. Ask "May I take your plate?" Once you've asked one guest, it's unnecessary to continue asking the others; a guest will let you know if they're not ready.\n\nIf a guest has placed their fork and knife parallel to one another on the right-hand side of the plate, there's no need to ask; this is the guest signaling they're finished. Avoid clearing a table while other people are still eating. Exceptions: stacked plates, a napkin on the plate, or a guest asking for it to be taken.`,
+        question: `Clear the first course as needed. If possible, wait until the last person has finished eating. Remove all used plates and silverware. Ask *"May I take your plate?"* Once you've asked one guest, it's unnecessary to continue asking the others; a guest will let you know if they're not ready.\n\nIf a guest has placed their fork and knife parallel to one another on the right-hand side of the plate, there's no need to ask; this is the guest signaling they're finished. **Avoid clearing a table while other people are still eating.**\n\nExceptions: stacked plates, a napkin on the plate, or a guest asking for it to be taken.`,
       },
       {
         id: 176,
@@ -3357,7 +3378,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 100,
         imageSrc: null,
-        question: `Guests should be cleared from their right-hand side with your right hand. Place the first plate in your left hand; it will act as your tray for off-sized dishes and silver. The second plate is balanced on your left wrist and palm, and subsequent plates are stacked on the second. Never clear more than you're comfortable with. If it feels awkward, it looks awkward.\n\nIf you need help, ask your partner before approaching the table, or make eye contact with a passing server. Take dirty dishes directly to the kitchen. Never approach another table with full hands.`,
+        question: `Guests should be cleared from their right-hand side with your right hand. Place the first plate in your left hand; it will act as your tray for off-sized dishes and silver. The second plate is balanced on your left wrist and palm, and subsequent plates are stacked on the second. Never clear more than you're comfortable with. **If it feels awkward, it looks awkward.**\n\nIf you need help, ask your partner before approaching the table, or make eye contact with a passing server. Take dirty dishes directly to the kitchen. Never approach another table with full hands.`,
       },
       {
         id: 177,
@@ -3381,7 +3402,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 130,
         imageSrc: null,
-        question: `Because we all work together as teams in the tip pool, help each other at all times. Offer to assist in resetting a neighboring team's table, clear plates, run drinks, or polish bar glassware.\n\nCommunicate to your Back Waiter any needs for the second course, like share plates, marking, water service, or another round of drinks.`,
+        question: `Because we **all work together as teams in the tip pool**, help each other at all times. Offer to assist in resetting a neighboring team's table, clear plates, run drinks, or polish bar glassware.\n\n**Communicate to your Back Waiter any needs for the second course, like share plates, marking, water service, or another round of drinks.**`,
       },
       {
         id: 180,
@@ -3529,7 +3550,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 10,
         imageSrc: null,
-        question: `Check beverage levels, refill waters and iced tea, pour wine, and offer more drinks. Confirm the table is marked and ready for the next course. This is also the time to offer the next round or bottle of wine before the entrées hit the table. Manicure the table, removing anything unnecessary.`,
+        question: `Check beverage levels, refill waters and iced tea, pour wine, and offer more drinks. Confirm the table is marked and ready for the next course.\n\nThis is also the time to offer the next round or bottle of wine before the entrées hit the table. Manicure the table, removing anything unnecessary.`,
       },
       {
         id: 182,
@@ -3537,7 +3558,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 20,
         imageSrc: null,
-        question: `Throughout the meal, let guests know what's happening. Being proactive when addressing a guest's discomfort is always best. Often, simply acknowledging a problem or letting the guest know steps are being taken to resolve it is all it takes. People want to feel taken care of, not overlooked.`,
+        question: `Throughout the meal, let guests know what's happening. Being proactive when addressing a guest's discomfort is always best.\n\nOften, simply acknowledging a problem or letting the guest know steps are being taken to resolve it is all it takes. People want to feel taken care of, not overlooked.`,
       },
       {
         id: 183,
@@ -3545,7 +3566,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 30,
         imageSrc: null,
-        question: `If a guest seems stressed or upset at any time, let a manager know immediately. Moments matter when guests' perceptions are involved; this may be the difference between recovery or failure in service.`,
+        question: `If a guest seems stressed or upset at any time, let a manager know immediately.\n\nMoments matter when guests' perceptions are involved; this may be the difference between recovery or failure in service.`,
       },
       {
         id: 184,
@@ -3561,7 +3582,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 50,
         imageSrc: null,
-        question: `Serve the second course: women first if possible, placing plates discreetly from the left side with your left hand. Always announce the dish you're presenting. Know where you're going, know your seat numbers, and do NOT auction off food at the table.\n\nWatch your elbows. Do not lean over the table, avoid reaching in front of a guest whenever possible, and excuse your reach if you can't avoid it. When possible, drop entrées and large format items before sides.`,
+        question: `Serve the second course: women first if possible, placing plates discreetly from the left side with your left hand. Always announce the dish you're presenting. Know where you're going, know your seat numbers, and do **NOT** auction off food at the table.\n\nWatch your elbows. Do not lean over the table, avoid reaching in front of a guest whenever possible, and excuse your reach if you can't avoid it. When possible, drop entrées and large format items before sides.`,
       },
       {
         id: 186,
@@ -3569,7 +3590,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 60,
         imageSrc: null,
-        question: `When dropping food, always place the protein toward the guest and say the name of the dish. For example, if a Duck Confit is ordered, twist the plate so the bone is in the 12 o'clock position.`,
+        question: `When dropping food, always place the protein toward the guest and say the name of the dish.\n\nFor example, if a Duck Confit is ordered, twist the plate so the bone is in the 12 o'clock position.\n\nManicure the table after putting plates down, keeping everything as neat as possible.`,
       },
       {
         id: 187,
@@ -3579,21 +3600,21 @@ const main = async () => {
         imageSrc: null,
         question: `Where should the bone be positioned when serving the Duck Confit?`,
       },
-      {
-        id: 188,
-        lessonId: 14,
-        type: "CURRICULUM",
-        order: 80,
-        imageSrc: null,
-        question: `Manicure the table after putting plates down, keeping everything as neat as possible.`,
-      },
+      // {
+      //   id: 188,
+      //   lessonId: 14,
+      //   type: "CURRICULUM",
+      //   order: 80,
+      //   imageSrc: null,
+      //   question: `Manicure the table after putting plates down, keeping everything as neat as possible.`,
+      // },
       {
         id: 189,
         lessonId: 14,
         type: "CURRICULUM",
         order: 90,
         imageSrc: null,
-        question: `Check back with guests within 2 bites or 2 minutes to make sure they're satisfied. What is your reading of the table? Are the guests involved in conversation? Can this QC be accomplished by simply topping off drinks and making eye contact with each guest? Do they want engagement?`,
+        question: `Check back with guests within **2 bites or 2 minutes** to make sure they're satisfied.\n\nWhat is your reading of the table? Are the guests involved in conversation? Can this QC be accomplished by simply topping off drinks and making eye contact with each guest? Do they want engagement?`,
       },
       {
         id: 190,
@@ -3603,21 +3624,21 @@ const main = async () => {
         imageSrc: null,
         question: `How can a QC check sometimes be accomplished without directly interrupting the table?`,
       },
-      {
-        id: 191,
-        lessonId: 14,
-        type: "CURRICULUM",
-        order: 110,
-        imageSrc: null,
-        question: `Clear the second course, removing everything but unfinished drinks.`,
-      },
+      // {
+      //   id: 191,
+      //   lessonId: 14,
+      //   type: "CURRICULUM",
+      //   order: 110,
+      //   imageSrc: null,
+      //   question: `Clear the second course, removing everything but unfinished drinks.`,
+      // },
       {
         id: 192,
         lessonId: 14,
         type: "CURRICULUM",
         order: 120,
         imageSrc: null,
-        question: `The table should be crumbed and cleaned. Just like at the start of the meal, we never drop menus on a dirty table. Communicate to your Back Waiter that the table is ready for dessert menus.`,
+        question: `Clear the second course, removing everything but unfinished drinks.\n\nThe table should be crumbed and cleaned. Just like at the start of the meal, we never drop menus on a dirty table. Communicate to your Back Waiter that the table is ready for dessert menus.`,
       },
       {
         id: 193,
@@ -3757,7 +3778,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 10,
         imageSrc: null,
-        question: `A dessert order being taken is communicated non-verbally, through several cues: the Salt and Pepper shakers have been removed from the table, dessert menus are no longer on the table, and silverware is pre-set on the table. Talk to each other on the team, and verify that a dessert order is in Toast.`,
+        question: `A dessert order being taken is communicated non-verbally, through several cues: the Salt and Pepper shakers have been removed from the table, dessert menus are no longer on the table, and silverware is pre-set on the table.\n\nTalk to each other on the team, and verify that a dessert order is in Toast.`,
       },
       {
         id: 195,
@@ -3767,30 +3788,30 @@ const main = async () => {
         imageSrc: null,
         question: `Which of the following is a non-verbal cue that a dessert order has been taken?`,
       },
-      {
-        id: 196,
-        lessonId: 15,
-        type: "CURRICULUM",
-        order: 30,
-        imageSrc: null,
-        question: `The Front or Back Waiter can take the coffee or dessert order, and should prepare the table for dessert or coffee with the proper silverware, share plates, and/or sugar caddy.`,
-      },
+      // {
+      //   id: 196,
+      //   lessonId: 15,
+      //   type: "CURRICULUM",
+      //   order: 30,
+      //   imageSrc: null,
+      //   question: `The Front or Back Waiter can take the coffee or dessert order, and should prepare the table for dessert or coffee with the proper silverware, share plates, and/or sugar caddy.`,
+      // },
       {
         id: 197,
         lessonId: 15,
         type: "CURRICULUM",
         order: 40,
         imageSrc: null,
-        question: `Serve dessert from the guest's left with your left hand, announcing it when dropping. Check back with your guest within 2 bites or 2 minutes.`,
+        question: `The Front or Back Waiter can take the coffee or dessert order, and should prepare the table for dessert or coffee with the proper silverware, share plates, and/or sugar caddy.\n\nServe dessert from the guest's left with your left hand, announcing it when dropping. Check back with your guest within **2 bites or 2 minutes.**`,
       },
-      {
-        id: 198,
-        lessonId: 15,
-        type: "CURRICULUM",
-        order: 50,
-        imageSrc: null,
-        question: `Print the check. Have it ready, and carry it on you.`,
-      },
+      // {
+      //   id: 198,
+      //   lessonId: 15,
+      //   type: "CURRICULUM",
+      //   order: 50,
+      //   imageSrc: null,
+      //   question: `Print the check. Have it ready, and carry it on you.`,
+      // },
       {
         id: 199,
         lessonId: 15,
@@ -3805,7 +3826,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 70,
         imageSrc: null,
-        question: `Help your Back Waiter clear desserts, removing all dishes, unused glasses, and napkins placed on the table. Do not let half-finished desserts sit for 5 minutes. Good eye contact will let you know when they're ready for the check, if they need more coffee, or if they're ready for the dessert to be cleared.`,
+        question: `Print the check. Have it ready, and carry it on you.\n\nHelp your Back Waiter clear desserts, removing all dishes, unused glasses, and napkins placed on the table. Do not let half-finished desserts sit for 5 minutes.\n\nGood eye contact will let you know when they're ready for the check, if they need more coffee, or if they're ready for the dessert to be cleared.`,
       },
       {
         id: 201,
@@ -3813,7 +3834,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 80,
         imageSrc: null,
-        question: `Present the check: "Please let me know if there's anything else I can do for you."`,
+        question: `Present the check: *"Please let me know if there's anything else I can do for you."*`,
       },
       {
         id: 202,
@@ -3821,7 +3842,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 90,
         imageSrc: null,
-        question: `Process credit cards immediately after collecting, bringing the check straight back to the table. Thank your guest and smile. Always make eye contact with the guest when picking up and dropping off payment. Thanking them by last name is the best way to personalize the close of their dining experience.`,
+        question: `Process credit cards immediately after collecting, bringing the check straight back to the table. Thank your guest and **SMILE**. \n\nAlways make eye contact with the guest when picking up and dropping off payment. Thanking them by last name is the best way to personalize the close of their dining experience.`,
       },
       {
         id: 203,
@@ -3837,7 +3858,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 110,
         imageSrc: null,
-        question: `Collect the check presenter before the guests leave the table. It is your responsibility to obtain correct and full payment for every table.`,
+        question: `Collect the check presenter before the guests leave the table.\n\nIt is your responsibility to obtain correct and full payment for every table.`,
       },
       {
         id: 205,
@@ -3845,7 +3866,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 120,
         imageSrc: null,
-        question: `Never question a guest's tip amount, such as "Was service okay, because you only left 10%?" This is grounds for immediate dismissal. We all know how difficult it can be to get stiffed on a big table, but we have to take the 10% along with the 30% tips. It's the nature of the business we're in.`,
+        question: `**Never question a guest's tip amount**, such as *"Was service okay, because you only left 10%?"* This is grounds for immediate dismissal.\n\nWe all know how difficult it can be to get stiffed on a big table, but we have to take the 10% along with the 30% tips. It's the nature of the business we're in.`,
       },
       {
         id: 206,
@@ -3861,7 +3882,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 140,
         imageSrc: null,
-        question: `Keep refilling water as long as guests are still seated. If they refuse water service, remove the empty glasses.`,
+        question: `Keep refilling water as long as guests are still seated.\n\nIf they refuse water service, remove the empty glasses.`,
       },
       {
         id: 208,
@@ -3869,7 +3890,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 150,
         imageSrc: null,
-        question: `Thank guests as they are leaving. Let the floater know and immediately clean the table properly and reset it within 3 minutes. Trays are never set on the table or on a chair. The Back Waiter should continue performing all side-work while tables remain in your section.\n\nThe Front Waiter should stay on the floor until all tables in their section are finished.`,
+        question: `Thank guests as they are leaving. Let the floater know and immediately clean the table properly and **reset it within 3 minutes**.\n\n**Trays are never set on the table or on a chair.** The Back Waiter should continue performing all side-work while tables remain in your section.\n\nThe Front Waiter should stay on the floor until all tables in their section are finished.`,
       },
       {
         id: 209,
@@ -4017,7 +4038,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 10,
         imageSrc: null,
-        question: `Perception of time is not linear. It is very subjective, and dependent on mood. What may feel like a painful twenty minutes waiting for a movie line, a lecture, or a glass of water may have only actually been three minutes.\n\nThere are regular moments during a meal where the server's sensitivity to a guest's subjective sense of time is crucial. People who happily spend three hours at a table will grow impatient and seemingly irrational having to wait three minutes for water they requested.`,
+        question: `Every one of us has, at some time or another, stared at our watch wondering why a movie line, or lecture, or glass of water was taking so long. What we may have thought of as a painful twenty minutes was only actually three.\n\nPerception of time is not linear. It is very subjective, and dependent on mood.`,
       },
       {
         id: 220,
@@ -4033,7 +4054,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 20,
         imageSrc: null,
-        question: `These are some critical points of service where skewed perceptions of time most commonly occur:\n\nAs soon as the guest has been seated\nWhen a course is finished and they have dirty dishes in front of them\nWhen beverage levels are low; when food is taking an inordinate amount of time\nWhen a guest is alone\nAfter a guest has requested something in particular\nWhen guests have their kids with them\nWhen a guest is waiting for their check and change.`,
+        question: `These are some critical points of service where skewed perceptions of time most commonly occur:\n\n• As soon as the guest has been seated\n\n• When a course is finished and they have dirty dishes in front of them\n\n• When beverage levels are low; when food is taking an inordinate amount of time\n\n• When a guest is alone\n\n• After a guest has requested something in particular\n\n• When guests have their kids with them\n\n• When a guest is waiting for their check and change.`,
       },
       {
         id: 212,
@@ -4057,7 +4078,7 @@ const main = async () => {
         type: "CURRICULUM",
         order: 50,
         imageSrc: null,
-        question: `Because these are times when the guest is particularly sensitive to their needs, it is important for the server to be aware of these critical points and read body language. Service that might otherwise be excellent may be perceived as slow, inattentive, or even incompetent if we do not pay extra attention at these critical times.`,
+        question: `Because these are times when the guest is particularly sensitive to their needs, it is important for the server to be aware of these critical points and **read body language.**\n\nService that might otherwise be excellent may be perceived as slow, inattentive, or even incompetent if we do not pay extra attention at these critical times.`,
       },
     ]);
 
@@ -4122,49 +4143,35 @@ const main = async () => {
     ]);
 
     /**
-     * Course id - 3: The Menu
-     * Unit id - 3: The Menu
-     */
-    await db.insert(schema.units).values([
-      {
-        id: 3,
-        courseId: 3,
-        title: "The Menu",
-        description: "Soups, Salads, Small Plates, Mains, and Sides",
-        order: 10,
-      },
-    ]);
-
-    /**
-     * Lessons for Course 3, Unit 3 The Menu
+     * Unit 5: The Menu
+     * (was courseId: 3, unitId: 3 — now courseId: 1, unitId: 5)
      */
     await db.insert(schema.lessons).values([
       {
         id: 17,
-        unitId: 3,
+        unitId: 5,
         order: 10,
         title: "Soups & Salads",
       },
       {
         id: 18,
-        unitId: 3,
+        unitId: 5,
         order: 20,
         title: "Small Plates",
       },
       {
         id: 19,
-        unitId: 3,
+        unitId: 5,
         order: 30,
         title: "Main Courses",
       },
       {
         id: 20,
-        unitId: 3,
+        unitId: 5,
         order: 40,
         title: "Sides",
       },
     ]);
-
     /**
      * Course id - 3: The Menu
      * Unit id - 3: The Menu
@@ -5233,32 +5240,11 @@ const main = async () => {
       },
       { challengeId: 267, imageSrc: "", correct: false, text: `Grilled Okra.` },
     ]);
-    /**
-     * Course id - 4: Dessert Menu
-     * Unit id - 4: Dessert Menu
-     */
-    await db.insert(schema.units).values([
-      {
-        id: 4,
-        courseId: 4,
-        title: "Dessert Menu",
-        description: "Dessert Menu and Suggested Pairings",
-        order: 10,
-      },
-    ]);
 
     /**
-     * Lessons for Course 4, Unit 4 Dessert Menu
+     * Unit 2: Dessert Menu
+     * Lesson 21: Dessert Menu and Suggested Pairings — Challenges & Options
      */
-    await db.insert(schema.lessons).values([
-      {
-        id: 21,
-        unitId: 4,
-        order: 10,
-        title: "Dessert Menu and Suggested Pairings",
-      },
-    ]);
-
     /**
      * Course id - 4: Dessert Menu
      * Unit id - 4: Dessert Menu
@@ -6245,6 +6231,7 @@ const main = async () => {
         text: `A Double hopped IPA.`,
       },
     ]);
+
     //Syncs react-admin and react-simple-data-rest with existing db
     await db.execute(
       sql`SELECT setval('courses_id_seq', (SELECT MAX(id) FROM courses))`,
@@ -6269,11 +6256,3 @@ const main = async () => {
 };
 
 main();
-
-//Skill for prompt
-
-//All challengeOptions should only have one true option
-
-//There should be no duplicate keys for the challenge
-
-//ChallengeOptions should correspond to the correct challenge

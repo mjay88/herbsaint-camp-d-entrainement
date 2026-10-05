@@ -67,7 +67,7 @@ export const getUnits = async (
 
   const data = await db.query.units.findMany({
     orderBy: (units, { asc }) => [asc(units.order)],
-    where: { id: activeCourseId },
+    where: { courseId: activeCourseId },
     with: {
       lessons: {
         orderBy: (lessons, { asc }) => [asc(lessons.order)],

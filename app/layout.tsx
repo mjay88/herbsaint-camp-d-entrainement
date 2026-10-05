@@ -14,8 +14,11 @@ import Skeleton from "@/components/ui/skeleton";
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  title: "Herbsaint",
+  title: "Herbsaint Training",
   description: "New hire training",
+  icons: {
+    icon: "/mascot/mascot-with-background.webp",
+  },
 };
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
@@ -25,14 +28,13 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
     <html className={cn("font-sans", inter.variable)}>
       <body className="min-h-full flex flex-col">
         <Suspense fallback={<Skeleton />}>
-
-        <ClerkProvider afterSignOutUrl="/">
-          <Toaster />
-          <ExitModal />
-          <HeartsModal />
-          <PracticeModal />
-          {children}
-        </ClerkProvider>
+          <ClerkProvider afterSignOutUrl="/">
+            <Toaster />
+            <ExitModal />
+            <HeartsModal />
+            <PracticeModal />
+            {children}
+          </ClerkProvider>
         </Suspense>
       </body>
     </html>

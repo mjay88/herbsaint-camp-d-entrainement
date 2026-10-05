@@ -13,7 +13,13 @@ export const ChallengeEdit = () => {
     <Edit>
       <SimpleForm>
         <NumberInput source="id" validate={[required()]} label="Id" />
-        <TextInput source="question" label="Question" validate={[required()]} />
+        <TextInput
+          source="question"
+          label="Question"
+          multiline
+          rows={10}
+          validate={[required()]}
+        />
         <SelectInput
           source="type"
           choices={[

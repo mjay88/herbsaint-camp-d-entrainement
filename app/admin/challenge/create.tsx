@@ -12,7 +12,13 @@ export const ChallengeCreate = () => {
   return (
     <Create>
       <SimpleForm>
-        <TextInput source="question" label="Question" validate={[required()]} />
+        <TextInput
+          source="question"
+          label="Question"
+          multiline
+          rows={10}
+          validate={[required()]}
+        />
         <SelectInput
           source="type"
           choices={[
