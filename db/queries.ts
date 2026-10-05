@@ -67,7 +67,7 @@ export const getUnits = async (
 
   const data = await db.query.units.findMany({
     orderBy: (units, { asc }) => [asc(units.order)],
-    where: { id: activeCourseId },
+    where: { courseId: activeCourseId },
     with: {
       lessons: {
         orderBy: (lessons, { asc }) => [asc(lessons.order)],
@@ -86,7 +86,7 @@ export const getUnits = async (
       },
     },
   });
-
+ console.log("data, ", data);
   const normalizedData = data.map((unit) => {
     const lessonsWithCompletedStatus = unit.lessons.map((lesson) => {
       if (lesson.challenges.length === 0) {
@@ -108,6 +108,14 @@ export const getUnits = async (
   });
   return normalizedData;
 };
+
+
+/**
+ * 
+ * @param authenticatedUserId 
+ * @param activeCourseId 
+ * @returns the first uncompleted lesson.
+ */
 
 export const getCourseProgress = async (
   authenticatedUserId: string | null,

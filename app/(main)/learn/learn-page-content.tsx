@@ -20,20 +20,20 @@ export const LearnPageContent = async () => {
   if (!isAuthenticated) {
     return redirectToSignIn();
   }
-//TODO: When the first lesson is completed. Navigating back to learn from the lesson/footer does and then navigating to the next lesson does not refresh state in the Quiz component so if(!challenge) logic fires. May have something to do with updateTags. Current work around is using window.location.href in footer
-  const userProgress = await getUserProgress(userId); 
+  //TODO: When the first lesson is completed. Navigating back to learn from the lesson/footer does and then navigating to the next lesson does not refresh state in the Quiz component so if(!challenge) logic fires. May have something to do with updateTags. Current work around is using window.location.href in footer
+  const userProgress = await getUserProgress(userId);
   //New pattern do to cacheComponents no cookies and headers in functions flagged with "use cache"
   const units = await getUnits(userProgress?.activeCourseId ?? null, userId);
-
+  console.log("units, ", units);
   const courseProgress = await getCourseProgress(
     userId,
     userProgress?.activeCourseId ?? null,
   );
 
-  const lesson = (await getLesson(
+  const lesson = await getLesson(
     userId,
     courseProgress?.activeLessonId ?? null,
-  )) 
+  );
   const lessonPercentage = await getLessonPercentage(
     courseProgress?.activeLessonId ?? null,
     lesson ?? null,
@@ -48,13 +48,13 @@ export const LearnPageContent = async () => {
 
   return (
     <div className="flex flex-row-reverse gap-[48px] px-6">
-      {/* <StickyWrapper>
+      <StickyWrapper>
         <UserProgress
           activeCourse={userProgress.activeCourse}
           hearts={userProgress.hearts}
           points={userProgress.points}
         />
-      </StickyWrapper> */}
+      </StickyWrapper>
       <FeedWrapper>
         <Header title={userProgress.activeCourse.title} />
         {units.map((unit) => (
@@ -80,5 +80,3 @@ export const LearnPageContent = async () => {
     </div>
   );
 };
-
-
