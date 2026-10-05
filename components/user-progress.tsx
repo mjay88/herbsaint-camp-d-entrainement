@@ -38,8 +38,7 @@ export const UserProgress = ({ activeCourse, points, hearts }: Props) => {
           {points}
         </Button>
       </Link>
-       {/* TODO: DELETE ON remove-hearts branch after tag */}
-      {/* <Link href="/shop">
+      <Link href="/shop">
         <Button variant="ghost" className="text-rose-500">
           <Image
             src="/heart.svg"
@@ -50,7 +49,7 @@ export const UserProgress = ({ activeCourse, points, hearts }: Props) => {
           />
           {hearts}
         </Button>
-      </Link> */}
+      </Link>
     </div>
   );
 };

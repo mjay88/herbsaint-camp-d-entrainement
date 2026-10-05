@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { useMedia } from "react-use";
-import Markdown from "react-markdown";
 
 type Props = {
   question: string;
@@ -10,7 +9,7 @@ type Props = {
 export const CurriculumBubble = ({ question, imageSrc }: Props) => {
   const isMobile = useMedia("(max-width: 1024px", true);
   return (
-    <div className="h-full flex flex-col lg:flex-row items-center justify-evenly gap-x-4 gap-y-4 mb-6">
+    <div className="h-full flex flex-col lg:flex-row items-center justify-center gap-x-4 gap-y-4 mb-6">
       {imageSrc ? (
         <>
           <Image
@@ -34,23 +33,20 @@ export const CurriculumBubble = ({ question, imageSrc }: Props) => {
           />
         </>
       )}
-    
-      <div className="relative py-2 px-4 m-3 lg:border-2 rounded-xl text-base text-left whitespace-pre-line">
-          <div className="overflow-y-auto max-h-full">
-            <Markdown>
+
+      <div className="relative py-2 px-4 m-3 border-2 rounded-xl text-base text-left whitespace-pre-line">
+        <div className="overflow-y-auto max-h-72 lg:max-h-full -mx-3 lg:-mx-0">
           {question}
-            </Markdown>
         </div>
-      {!imageSrc && (
-        <>
-          <div className="absolute hidden lg:block top-1/3 -left-6 w-3 h-3 border-x-[16px] border-x-transparent border-t-16 transform -translate-y-1/2 rotate-90" />
-          {/* <div className="absolute block lg:hidden -bottom-4 right-1/3 w-3 h-3 border-x-[16px] border-x-transparent border-t-16 transform -translate-x-1/2" /> */}
-        </>
-      )}
+        {!imageSrc && (
+          <>
+            <div className="absolute hidden lg:block -left-6 top-1/3 w-3 h-3 border-x-[16px] border-x-transparent border-t-16 transform -translate-y-1/2 rotate-90" />
+            <div className="absolute block lg:hidden -bottom-4 right-1/3 w-3 h-3 border-x-[16px] border-x-transparent border-t-16 transform -translate-x-1/2" />
+          </>
+        )}
       </div>
-      {/* For layout on mobile */}
-      <div className="lg:hidden"/>
-      {imageSrc && (
+
+      {imageSrc ? (
         <Image
           src={imageSrc}
           alt="Mascot"
@@ -59,6 +55,14 @@ export const CurriculumBubble = ({ question, imageSrc }: Props) => {
           className="block lg:hidden"
           placeholder="blur"
           blurDataURL="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+        />
+      ) : (
+        <Image
+          src="/mascot.svg"
+          alt="Mascot"
+          height={200}
+          width={200}
+          className="block lg:hidden"
         />
       )}
     </div>

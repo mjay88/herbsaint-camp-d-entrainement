@@ -40,10 +40,10 @@ export const upsertChallengeProgress = async (activeChallengeId: number) => {
   });
 
   const isPractice = !!existingChallengeProgress;
- //TODO: DELETE ON remove-hearts branch after tag
-  // if (currentUserProgress.hearts === 0 && !isPractice) {
-  //   return { error: "hearts" };
-  // }
+
+  if (currentUserProgress.hearts === 0 && !isPractice) {
+    return { error: "hearts" };
+  }
 
   if (isPractice) {
     //Do not save progress if practicing
@@ -57,8 +57,7 @@ export const upsertChallengeProgress = async (activeChallengeId: number) => {
     await db
       .update(userProgress)
       .set({
-         //TODO: DELETE ON remove-hearts branch after tag
-        // hearts: Math.min(currentUserProgress.hearts + 1, 5),
+        hearts: Math.min(currentUserProgress.hearts + 1, 5),
         points: currentUserProgress.points + 10,
       })
       .where(eq(userProgress.userId, activeUserId));

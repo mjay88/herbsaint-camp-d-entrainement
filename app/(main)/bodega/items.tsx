@@ -1,5 +1,5 @@
 "use client";
- //TODO: DELETE ON remove-hearts branch after tag
+
 import { refillHearts } from "@/actions/user-progress";
 import { Button } from "@/components/ui/button";
 import { POINTS_TO_REFILL } from "@/constants";

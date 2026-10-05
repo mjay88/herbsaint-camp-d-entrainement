@@ -11,33 +11,33 @@ import { getUserProgress } from "@/db/queries";
 import { quests } from "@/constants";
 import { Progress } from "@/components/ui/progress";
 
-const Updates = async () => {
+const Quests = async () => {
   const { userId } = await auth();
   const userProgress = await getUserProgress(userId);
-  // if (!userProgress || !userProgress.activeCourse) {
-  //   redirect("/courses");
-  // }
+  if (!userProgress || !userProgress.activeCourse) {
+    redirect("/courses");
+  }
 
   return (
     <div className="flex flex-row-reverse gap-[48px] px-6">
-      {/* <StickyWrapper>
+      <StickyWrapper>
         <UserProgress
           activeCourse={userProgress.activeCourse}
           hearts={userProgress.hearts}
           points={userProgress.points}
         />
-      </StickyWrapper> */}
+      </StickyWrapper>
       <FeedWrapper>
         <div className="w-full flex flex-col items-center">
-          <Image src="/sparkles.svg" alt="Shop" height={90} width={90} />
+          <Image src="/leaderboard.svg" alt="Shop" height={90} width={90} />
           <h1 className="text-center font-bold text-neutral-800 text-2xl my-6">
-            Updates
+            Quests
           </h1>
           <p className="text-muted-foreground text-center text-lg mb-6">
-            This is where new content could be placed, like the mini summer training curriculum.
+            Complete quests by earning points.
           </p>
           <ul className="w-full">
-            {/* {quests.map((quest) => {
+            {quests.map((quest) => {
               const progress = (userProgress.points / quest.value) * 100;
               return (
                 <div
@@ -58,7 +58,7 @@ const Updates = async () => {
                   </div>
                 </div>
               );
-            })} */}
+            })}
           </ul>
         </div>
       </FeedWrapper>
@@ -66,4 +66,4 @@ const Updates = async () => {
   );
 };
 
-export default Updates;
+export default Quests;

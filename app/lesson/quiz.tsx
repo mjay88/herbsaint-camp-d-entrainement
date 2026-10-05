@@ -36,7 +36,6 @@ export const Quiz = ({
   initialLessonChallenges,
   initialUserProgress,
 }: Props) => {
-  //TODO: REMOVE WITH HEARTS
   const { open: openHeartsModal } = useHeartsModal();
   const { open: openPracticeModal } = usePracticeModal();
   const isPractice = initialPercentage === 100;
@@ -147,33 +146,30 @@ export const Quiz = ({
       startTransition(() => {
         upsertChallengeProgress(challenge.id)
           .then((response) => {
-             //TODO: DELETE ON remove-hearts branch after tag
-            // if (response?.error === "hearts") {
-            //   openHeartsModal();
-            //   return;
-            // }
+            if (response?.error === "hearts") {
+              openHeartsModal();
+              return;
+            }
 
             correctControls.play();
             setStatus("correct");
             setPercentage((prev) => prev + 100 / challenges.length);
 
             //For practice
-             //TODO: DELETE ON remove-hearts branch after tag
-            // if (isPractice) {
-            //   setHearts((prev) => Math.min(prev + 1, 5));
-            // }
+            if (isPractice) {
+              setHearts((prev) => Math.min(prev + 1, 5));
+            }
           })
           .catch(() => toast.error("Something went wrong. Please try again."));
       });
     } else {
       startTransition(() => {
-         //TODO: DELETE ON remove-hearts branch after tag
         reduceHearts(challenge.id)
           .then((response) => {
-            // if (response?.error === "hearts") {
-            //   openHeartsModal();
-            //   return;
-            // }
+            if (response?.error === "hearts") {
+              openHeartsModal();
+              return;
+            }
             incorrectControls.play();
             setStatus("wrong");
 
@@ -201,23 +197,23 @@ export const Quiz = ({
         />
         <div className="flex flex-col gap-y-4 lg:gap-y-8 max-w-lg mx-auto text-center items-center justify-center h-full">
           <Image
-            src="/mascot-happy.svg"
+            src="/finish.svg"
             alt="Finish"
             className="hidden lg:block"
-            height={400}
-            width={400}
+            height={100}
+            width={100}
           />
           <Image
-            src="/mascot-happy.svg"
+            src="/finish.svg"
             alt="Finish"
             className="block lg:hidden"
-            height={300}
-            width={300}
+            height={50}
+            width={50}
           />
           <h1 className="text-xl leg:text-3xl font-bold text-neutral-700">
             Great job! <br /> You&apos;ve completed the lesson.
           </h1>
-          {/* <div className="flex items-center gap-x-4 w-full"> TODO: DELETE ON remove-hearts branch after tag
+          <div className="flex items-center gap-x-4 w-full">
             {isPractice ? (
               <ResultCard
                 variant="points"
@@ -228,7 +224,7 @@ export const Quiz = ({
             )}
 
             <ResultCard variant="hearts" value={hearts} />
-          </div> */}
+          </div>
         </div>
         <Footer
           lessonId={lessonId}
@@ -246,14 +242,10 @@ export const Quiz = ({
         {correctAudio}
         {incorrectAudio}
         <Header hearts={hearts} percentage={percentage} />
-        {/* <div className="flex flex-1 gap-y-4 lg:gap-y-4 lg:max-w-4xl mx-auto text-center items-center justify-center h-full"> */}
-         <div className="flex-1 mb-4">
-        <div className="h-full w-full flex items-center justify-center">
-          <div className="lg:min-h[350px] w-full md:w-[700px] lg:min-w-4xl px-6 lg:px-0 flex flex-col gap-y-10">
+        <div className="flex gap-y-4 lg:gap-y-4 lg:max-w-4xl mx-auto text-center items-center justify-center h-full">
+         
           <CurriculumBubble question={challenge.question} imageSrc={challenge?.imageSrc} />
           
-        </div>
-        </div>
         </div>
         <Footer
           disabled={!isCurriculum}
