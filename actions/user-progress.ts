@@ -72,6 +72,9 @@ export const upsertUserProgress = async (courseId: number) => {
   updateTag(
     `course-progress-userId-${userId ?? "none"}-activeCourseId-${courseId ?? "none"}`,
   );
+  updateTag(
+    `course-percentage-userId-${userId ?? "none"}-activeCourseId-${courseId ?? "none"}`,
+  );
   revalidatePath("/lesson");
   revalidatePath("/learn");
 

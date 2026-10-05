@@ -1,10 +1,11 @@
 import { db } from "@/db/drizzle";
 import { cacheLife, cacheTag } from "next/cache";
+import { challengeOptions } from "./schema";
 
 //get all courses
 export const getCourses = async () => {
   "use cache";
-  cacheTag("courses:all"); 
+  cacheTag("courses:all");
   cacheLife("days");
 
   const data = await db.query.courses.findMany();
@@ -14,7 +15,7 @@ export const getCourses = async () => {
 //getUserProgress accepts userId, which is passed in from CoursesPage and LearnPage after calling await auth()
 export const getUserProgress = async (userId: string | null) => {
   "use cache";
-  
+
   cacheTag(`user-progress-${userId ?? "none"}`);
   cacheLife("seconds");
 
@@ -77,7 +78,7 @@ export const getUnits = async (
             with: {
               challengeProgress: {
                 where: {
-                  userId: authenticatedUserId, 
+                  userId: authenticatedUserId,
                 },
               },
             },
@@ -108,6 +109,12 @@ export const getUnits = async (
   });
   return normalizedData;
 };
+/**
+ *
+ * @param authenticatedUserId
+ * @param activeCourseId
+ * @returns current lesson object, current lesson objects id
+ */
 
 export const getCourseProgress = async (
   authenticatedUserId: string | null,
@@ -124,7 +131,6 @@ export const getCourseProgress = async (
   }
 
   const unitsInActiveCourse = await db.query.units.findMany({
-    
     orderBy: (units, { asc }) => [asc(units.order)],
     where: { courseId: activeCourseId },
     with: {
@@ -166,6 +172,73 @@ export const getCourseProgress = async (
     activeLessonId: firstUncompletedLesson?.id,
   };
 };
+/**
+ *
+ * @param authenticatedUserId
+ * @param activeCourseId
+ * @returns percentage of course completed
+ */
+export const getCoursePercentage = async (
+  authenticatedUserId: string | null,
+  activeCourseId: number | null,
+) => {
+  "use cache";
+  cacheTag(
+    `course-percentage-userId-${authenticatedUserId ?? "none"}-activeCourseId-${activeCourseId ?? "none"}`,
+  );
+  cacheLife("seconds");
+
+  if (!authenticatedUserId || !activeCourseId) {
+    return null;
+  }
+  //get all units for active course
+  const unitsInActiveCourse = await db.query.units.findMany({
+    orderBy: (units, { asc }) => [asc(units.order)],
+    where: { courseId: activeCourseId },
+    with: {
+      lessons: {
+        orderBy: (lessons, { asc }) => [asc(lessons.order)],
+        with: {
+          unit: true,
+          challenges: {
+            with: {
+              challengeProgress: {
+                where: { userId: authenticatedUserId },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+  // console.log("unitsInAciveCourse: ", unitsInActiveCourse)
+  //get all the challenges from lessons from units in activeCourse
+  const allChallenges = unitsInActiveCourse
+    .flatMap((unit) => unit.lessons)
+    .flatMap((lesson) => {
+      return lesson.challenges;
+    });
+
+  // console.log("allChallenges: ", allChallenges)
+
+  //get all completed challenges from course/unit/lesson specific challenges. New challenges in the future may not be associated with course resulting in incorrect percentage otherwise
+  const allCompletedChallenges = unitsInActiveCourse
+    .flatMap((unit) => unit.lessons)
+    .flatMap((lesson) => lesson.challenges)
+    .flatMap((challenge) => challenge.challengeProgress)
+    .filter((progress) => progress.completed === true);
+
+  // console.log("totalCompleteChallenges: ", allCompletedChallenges)
+  //divide by total challenges from the course
+  const totalChallengesInCourse = allChallenges.length;
+  const totalCompletedChallenges = allCompletedChallenges.length;
+  // console.log("completedChallenges: ", completedChallenges.length);
+  const percentage = Math.round(
+    (totalCompletedChallenges / totalChallengesInCourse) * 100,
+  );
+
+  return percentage;
+};
 
 export const getLesson = async (
   authenticatedUserId: string | null,
@@ -179,7 +252,7 @@ export const getLesson = async (
   if (!authenticatedUserId) {
     return null;
   }
-  
+
   const lessonId = activeLessonId ?? null;
   if (!lessonId) return null;
   const data = await db.query.lessons.findFirst({
@@ -213,13 +286,18 @@ export const getLesson = async (
 };
 
 export type Lesson = NonNullable<Awaited<ReturnType<typeof getLesson>>>; //TODO: might need to remove NonNullable
-
+/**
+ *
+ * @param activeLessonId
+ * @param lesson
+ * @returns completed percentage for current lesson.
+ */
 export const getLessonPercentage = async (
   activeLessonId: number | null,
   lesson: Lesson | null,
 ) => {
   "use cache";
-  cacheTag(`lesson-percentage-${activeLessonId ?? "none"}`)
+  cacheTag(`lesson-percentage-${activeLessonId ?? "none"}`);
   cacheLife("seconds");
   if (!activeLessonId) {
     return 0;
@@ -241,8 +319,8 @@ export const getLessonPercentage = async (
 
 export const getTopTenUsers = async (userId: string | null) => {
   "use cache";
-   cacheTag("leaderboard");
-   cacheLife("seconds");
+  cacheTag("leaderboard");
+  cacheLife("seconds");
   if (!userId) {
     return [];
   }

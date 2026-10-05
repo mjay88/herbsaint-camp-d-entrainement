@@ -70,6 +70,9 @@ export const upsertChallengeProgress = async (activeChallengeId: number) => {
     updateTag(
       `course-progress-userId-${activeUserId ?? "none"}-activeCourseId-${currentUserProgress.activeCourseId ?? "none"}`,
     );
+    updateTag(
+      `course-percentage-userId-${activeUserId ?? "none"}-activeCourseId-${currentUserProgress.activeCourseId ?? "none"}`,
+    );
     updateTag("leaderboard");
 
     /**
@@ -103,5 +106,8 @@ export const upsertChallengeProgress = async (activeChallengeId: number) => {
   updateTag(
     `course-progress-userId-${activeUserId ?? "none"}-activeCourseId-${currentUserProgress.activeCourseId ?? "none"}`,
   ); //getCourseProgress
+  updateTag(
+    `course-percentage-userId-${activeUserId ?? "none"}-activeCourseId-${currentUserProgress.activeCourseId ?? "none"}`,
+  ); //getCoursePercentage
   updateTag("leaderboard");
 };

@@ -10,6 +10,7 @@ import {
   getUserProgress,
   getLesson,
   getLessonPercentage,
+  getCoursePercentage,
 } from "@/db/queries";
 import { redirect } from "next/navigation";
 import { lessons, units as unitsSchema } from "@/db/schema";
@@ -29,7 +30,10 @@ export const LearnPageContent = async () => {
     userId,
     userProgress?.activeCourseId ?? null,
   );
-
+  const coursePercentage = await getCoursePercentage(
+    userId,
+    userProgress?.activeCourseId ?? null,
+  );
   const lesson = (await getLesson(
     userId,
     courseProgress?.activeLessonId ?? null,
@@ -38,6 +42,7 @@ export const LearnPageContent = async () => {
     courseProgress?.activeLessonId ?? null,
     lesson ?? null,
   );
+  
   if (!userProgress || !userProgress.activeCourse) {
     redirect("/courses");
   }
