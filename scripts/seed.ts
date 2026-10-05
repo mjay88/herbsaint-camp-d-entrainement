@@ -32,7 +32,7 @@ const main = async () => {
       {
         id: 1,
         courseId: 1,
-        title: "Back Waiter",
+        title: "Back Waiter — Steps of Service",
         description: "Steps of Service",
         order: 10,
       },
@@ -46,7 +46,7 @@ const main = async () => {
       {
         id: 3,
         courseId: 1,
-        title: "Front Waiter",
+        title: "Front Waiter — Steps of Service",
         description: "Steps of Service",
         order: 30,
       },

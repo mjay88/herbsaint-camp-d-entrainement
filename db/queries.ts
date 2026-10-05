@@ -176,25 +176,6 @@ export const getCourseProgress = async (
 };
 
 
-//get all lessons
-export const getLessons = async () => {
-  "use cache";
-  cacheTag("lessons:all"); 
-  cacheLife("days");
-
-  const data = await db.query.lessons.findMany();
-  return data;
-};
-
-
-/**
- * 
- * @param authenticatedUserId - Id of the active user
- * @param activeLessonId -
- * @returns the normalized data of the current lesson, including all of the challenges and challengeOptions and challengeProgress.
- * If there is no activeLessonId returns null. Marks a challenge as completed by iteraterating through challenge_progress table.
- */
-
 export const getLesson = async (
   authenticatedUserId: string | null,
   activeLessonId: number | null,
