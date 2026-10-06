@@ -5,7 +5,6 @@ import { Button } from "./ui/button";
 import { Progress } from "./ui/progress";
 
 type Props = {
-  
   points: number;
   percentage?: number | null;
 };
