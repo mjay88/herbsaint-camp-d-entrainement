@@ -7,7 +7,7 @@ import { UserProgress } from "@/components/user-progress";
 import { getUserProgress } from "@/db/queries";
 import { auth } from "@clerk/nextjs/server";
 
-import { Items } from "./items";
+// import { Items } from "./items";
 import { Quests } from "@/components/quests";
 
 const BodegaPage = async () => {
@@ -38,7 +38,6 @@ const BodegaPage = async () => {
           <p className="text-muted-foreground text-center text-lg mb-6">
             You can use your points to buy more hearts.
           </p>
-          <Items hearts={userProgress.hearts} points={userProgress.points} />
         </div>
       </FeedWrapper>
     </div>

@@ -10,18 +10,10 @@ type Props = {
   points: number;
 };
 
-export const Items = ({ hearts, points }: Props) => {
+export const Items = ({ points }: Props) => {
   const [pending, startTransition] = useTransition();
 
-  const onRefillHearts = () => {
-    if (pending || hearts === 5 || points < POINTS_TO_REFILL) {
-      return;
-    }
 
-    startTransition(() => {
-      refillHearts().catch(() => toast.error("Something went wrong"));
-    });
-  };
 
   return (
     <ul className="w-full">
@@ -29,22 +21,10 @@ export const Items = ({ hearts, points }: Props) => {
         <Image src="/heart.svg" alt="Heart" height={60} width={60} />
         <div className="flex-1">
           <p className="text-neutral-700 text-base lg:text-xl font-bold">
-            Refill Hearts
+          Something else here.
           </p>
         </div>
-        <Button
-          onClick={onRefillHearts}
-          disabled={pending || hearts === 5 || points < POINTS_TO_REFILL}
-        >
-          {hearts === 5 ? (
-            "full"
-          ) : (
-            <div className="flex items-center">
-              <Image src="/points.svg" alt="Points" height={20} width={20} />
-              <p>{POINTS_TO_REFILL}</p>
-            </div>
-          )}
-        </Button>
+    
       </div>
     </ul>
   );
