@@ -4,15 +4,20 @@ import { Progress as ProgressPrimitive } from "@base-ui/react/progress"
 
 import { cn } from "@/lib/utils"
 
+type ProgressRootProps = Omit<ProgressPrimitive.Root.Props, "value"> & {
+  value?: number | null
+}
+
 function Progress({
   className,
   children,
   value,
   ...props
-}: ProgressPrimitive.Root.Props) {
+}: ProgressRootProps) {
   return (
     <ProgressPrimitive.Root
-      value={value}
+    // value ?? null on the ProgressPrimitive.Root call converts undefined back to null before it hits the underlying Base UI component, which satisfies its internal type expectation.
+      value={value ?? null}
       data-slot="progress"
       className={cn("flex flex-wrap gap-3", className)}
       {...props}

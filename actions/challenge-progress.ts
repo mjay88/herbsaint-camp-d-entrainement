@@ -9,7 +9,7 @@ import { updateTag } from "next/cache";
 
 /**
  * updates challenge completed to true.
- * In practice mode updates hearts but not points,
+ * 
  */
 
 export const upsertChallengeProgress = async (activeChallengeId: number) => {
@@ -41,9 +41,7 @@ export const upsertChallengeProgress = async (activeChallengeId: number) => {
 
   const isPractice = !!existingChallengeProgress;
 
-  if (currentUserProgress.hearts === 0 && !isPractice) {
-    return { error: "hearts" };
-  }
+  
 
   if (isPractice) {
     //Do not save progress if practicing
@@ -57,7 +55,7 @@ export const upsertChallengeProgress = async (activeChallengeId: number) => {
     await db
       .update(userProgress)
       .set({
-        hearts: Math.min(currentUserProgress.hearts + 1, 5),
+       
         points: currentUserProgress.points + 10,
       })
       .where(eq(userProgress.userId, activeUserId));

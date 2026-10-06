@@ -40,8 +40,7 @@ export const PracticeModal = () => {
             Practice Lesson
           </DialogTitle>
           <DialogDescription className="text-center text-base">
-            Use practice lessons to regain hearts and points. You cannot loose
-            hearts or points in practice lessons.
+            Use practice lessons to gain points!
           </DialogDescription>
         </DialogHeader>
 

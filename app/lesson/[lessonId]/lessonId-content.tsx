@@ -37,7 +37,7 @@ export const LessonIdContent = async ({ params }: Props) => {
       key="practice-quiz"
       initialLessonId={lesson.id}
       initialLessonChallenges={lesson.challenges}
-      initialHearts={userProgress.hearts}
+      initialPoints={userProgress.points}
       initialPercentage={initialPercentage}
       initialUserProgress={userProgress}
     />

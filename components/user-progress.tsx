@@ -1,15 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
-import { InfinityIcon } from "lucide-react";
 
-import { courses } from "@/db/schema";
 import { Button } from "./ui/button";
 import { Progress } from "./ui/progress";
 
 type Props = {
   
   points: number;
-  percentage: number | null;
+  percentage?: number | null;
 };
 
 export const UserProgress = ({  points, percentage }: Props) => {

@@ -82,96 +82,10 @@ export const upsertUserProgress = async (courseId: number) => {
 };
 
 /**
- * Updates the users hearts.
- * Revalidates tags associated with getUserProgress, getLesson. getTopTenUsers
- */
-
-export const refillHearts = async () => {
-  const { userId } = await auth();
-  const user = await currentUser();
-
-  if (!userId || !user) {
-    throw new Error("Unauthorized");
-  }
-
-  const currentUserProgress = await getUserProgress(userId);
-
-  if (!currentUserProgress) {
-    throw new Error("User progress not found");
-  }
-
-  if (currentUserProgress.hearts === 5) {
-    throw new Error("Hearts are already full");
-  }
-
-  if (currentUserProgress.points < POINTS_TO_REFILL) {
-    throw new Error("Not enough points");
-  }
-
-  await db
-    .update(userProgress)
-    .set({
-      hearts: 5,
-      points: currentUserProgress.points - POINTS_TO_REFILL,
-    })
-    .where(eq(userProgress.userId, currentUserProgress.userId));
-  updateTag(`user-progress-${userId ?? "none"}`);
-  updateTag("leaderboard");
-};
-
-/**
- * Decrements the user hearts.
- * Revalidates tags associated with getUserProgress, getLesson. getTopTenUsers
  * 
+ * Revalidates tags associated with getUserProgress, getLesson. getTopTenUsers
  */
 
-export const reduceHearts = async (activeChallengeId: number) => {
-  const { userId: activeUserId } = await auth();
 
-  if (!activeUserId) {
-    throw new Error("Unauthorized");
-  }
 
-  const currentUserProgress = await getUserProgress(activeUserId);
 
-  const challenge = await db.query.challenges.findFirst({
-    where: { id: activeChallengeId },
-  });
-
-  if (!challenge) {
-    throw new Error("Challenge not found");
-  }
-
-  const lessonId = challenge.lessonId;
-
-  const existingChallengeProgress = await db.query.challengeProgress.findFirst({
-    where: {
-      userId: activeUserId,
-      challengeId: activeChallengeId,
-    },
-  });
-
-  const isPractice = !!existingChallengeProgress;
-
-  if (isPractice) {
-    return { error: "practice" };
-  }
-
-  if (!currentUserProgress) {
-    throw new Error("User progress not found");
-  }
-
-  if (currentUserProgress.hearts === 0) {
-    return { error: "hearts" };
-  }
-
-  await db
-    .update(userProgress)
-    .set({
-      hearts: Math.max(currentUserProgress.hearts - 1, 0),
-    })
-    .where(eq(userProgress.userId, activeUserId));
-  updateTag(`user-progress-${activeUserId ?? "none"}`);
-  updateTag("leaderboard");
-  updateTag(`lesson-${lessonId ?? "none"}-user-${activeUserId ?? "none"}`);
-};

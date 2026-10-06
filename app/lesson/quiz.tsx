@@ -9,18 +9,16 @@ import { Challenge } from "./challenge";
 import { QuestionBubble } from "./question-bubble";
 import { upsertChallengeProgress } from "@/actions/challenge-progress";
 import { toast } from "sonner";
-import { reduceHearts } from "@/actions/user-progress";
 import { useAudio, useWindowSize, useMount } from "react-use";
 import { useRouter } from "next/navigation";
 import Confetti from "react-confetti";
 import Image from "next/image";
-import { useHeartsModal } from "@/store/use-hearts-modal";
 import { usePracticeModal } from "@/store/use-practice-modal";
 import { CurriculumBubble } from "./curriculum-bubble";
 
 type Props = {
   initialPercentage: number;
-  initialHearts: number;
+  initialPoints: number;
   initialLessonId: number;
   initialLessonChallenges: (typeof challenges.$inferSelect & {
     completed: boolean;
@@ -31,12 +29,11 @@ type Props = {
 
 export const Quiz = ({
   initialPercentage,
-  initialHearts,
+  initialPoints,
   initialLessonId,
   initialLessonChallenges,
   initialUserProgress,
 }: Props) => {
-  const { open: openHeartsModal } = useHeartsModal();
   const { open: openPracticeModal } = usePracticeModal();
   const isPractice = initialPercentage === 100;
   useMount(() => {
@@ -58,7 +55,7 @@ export const Quiz = ({
   const [pending, startTransition] = useTransition();
   const [lessonId] = useState(initialLessonId);
   const [userProgress] = useState(initialUserProgress);
-  const [hearts, setHearts] = useState(initialHearts);
+  const [points, setPoints] = useState(initialPoints);
 
   const [percentage, setPercentage] = useState(() => {
     return isPractice ? 0 : initialPercentage;
@@ -146,38 +143,23 @@ export const Quiz = ({
       startTransition(() => {
         upsertChallengeProgress(challenge.id)
           .then((response) => {
-            if (response?.error === "hearts") {
-              openHeartsModal();
-              return;
-            }
+          
 
             correctControls.play();
             setStatus("correct");
             setPercentage((prev) => prev + 100 / challenges.length);
 
-            //For practice
-            if (isPractice) {
-              setHearts((prev) => Math.min(prev + 1, 5));
-            }
+           
           })
           .catch(() => toast.error("Something went wrong. Please try again."));
       });
     } else {
       startTransition(() => {
-        reduceHearts(challenge.id)
-          .then((response) => {
-            if (response?.error === "hearts") {
-              openHeartsModal();
-              return;
-            }
+       
             incorrectControls.play();
             setStatus("wrong");
 
-            if (!response?.error) {
-              setHearts((prev) => Math.max(prev - 1, 0));
-            }
-          })
-          .catch(() => toast.error("Something went wrong. Please try again"));
+          
       });
     }
   };
@@ -223,7 +205,7 @@ export const Quiz = ({
               <ResultCard variant="points" value={challenges.length * 10} />
             )}
 
-            <ResultCard variant="hearts" value={hearts} />
+            <ResultCard variant="percentage" value={percentage} />
           </div>
         </div>
         <Footer
@@ -241,7 +223,7 @@ export const Quiz = ({
         {finishAudio}
         {correctAudio}
         {incorrectAudio}
-        <Header hearts={hearts} percentage={percentage} />
+        <Header points={points} percentage={percentage} />
         <div className="flex-1 mb-4">
           <div className="h-full w-full flex items-center justify-center">
             <div className="lg:min-h[350px] w-full md:w-[700px] lg:min-w-4xl px-6 lg:px-0 flex flex-col gap-y-10">
@@ -269,7 +251,7 @@ export const Quiz = ({
       {finishAudio}
       {incorrectAudio}
       {correctAudio}
-      <Header hearts={hearts} percentage={percentage} />
+      <Header points={points} percentage={percentage} />
       <div className="flex-1 mb-4">
         <div className="h-full flex items-center justify-center">
           <div className="lg:min-h[350px] md:w-[700px] w-full px-6 lg:px-0 flex flex-col gap-y-10">

@@ -1,4 +1,4 @@
-import { getCourseProgress, getLesson, getUserProgress } from "@/db/queries";
+import { getCoursePercentage, getCourseProgress, getLesson, getUserProgress } from "@/db/queries";
 import { auth } from "@clerk/nextjs/server";
 import LessonPageClient from "./lesson-page-client";
 export const LessonPageContent = async () => {
@@ -11,12 +11,18 @@ export const LessonPageContent = async () => {
     userId,
     userProgress?.activeCourseId ?? null,
   );
+   const coursePercentage = await getCoursePercentage(
+      userId,
+      userProgress?.activeCourseId ?? null,
+    );
   const lesson = await getLesson(
     userId,
     courseProgress?.activeLessonId ?? null,
   );
   return (
-    <LessonPageClient lesson={lesson} userProgress={userProgress ?? null} />
+    <LessonPageClient lesson={lesson} userProgress={userProgress ?? null} 
+    percentage={coursePercentage}
+    />
   );
 };
 

@@ -17,6 +17,7 @@ const LeaderBoardPage = async () => {
     return redirectToSignIn();
   }
   const userProgress = await getUserProgress(userId);
+
   const leaderboard = await getTopTenUsers(userId);
   if (!userProgress || !userProgress.activeCourse) {
     redirect("/courses");
@@ -25,11 +26,7 @@ const LeaderBoardPage = async () => {
   return (
     <div className="flex flex-row-reverse gap-[48px] px-6">
       <StickyWrapper>
-        <UserProgress
-          activeCourse={userProgress.activeCourse}
-          hearts={userProgress.hearts}
-          points={userProgress.points}
-        />
+        <UserProgress points={userProgress.points} />
         <Quests points={userProgress.points} />
       </StickyWrapper>
       <FeedWrapper>
