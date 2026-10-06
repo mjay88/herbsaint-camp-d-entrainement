@@ -4,30 +4,24 @@ import { InfinityIcon } from "lucide-react";
 
 import { courses } from "@/db/schema";
 import { Button } from "./ui/button";
+import { Progress } from "./ui/progress";
 
 type Props = {
-  activeCourse: typeof courses.$inferSelect;
-  hearts: number;
+  
   points: number;
+  percentage: number | null;
 };
 
-export const UserProgress = ({ activeCourse, points, hearts }: Props) => {
+export const UserProgress = ({  points, percentage }: Props) => {
   return (
     <div className="flex items-center justify-between gap-x-2 w-full">
-      <Link href="/courses">
-        <Button variant="ghost">
-          <Image
-            src={activeCourse.imageSrc}
-            alt={activeCourse.title}
-            className="rounded-md"
-            height={42}
-            width={42}
-          />
-        </Button>
-      </Link>
+      <div className="flex flex-col justify-evenly gap-y-2 w-full">
+        <p className="text-neutral-700 text-sm font-bold">Course Progress</p>
+        <Progress value={percentage} className="h-2" />
+      </div>
 
       <Link href="/shop">
-        <Button variant="ghost" className="text-orange-500">
+        <Button variant="ghost" className="text-orange-500 flex items-end">
           <Image
             src="/points.svg"
             height={28}
@@ -36,18 +30,6 @@ export const UserProgress = ({ activeCourse, points, hearts }: Props) => {
             className="mr-2"
           />
           {points}
-        </Button>
-      </Link>
-      <Link href="/shop">
-        <Button variant="ghost" className="text-rose-500">
-          <Image
-            src="/heart.svg"
-            height={22}
-            width={22}
-            alt="Hearts"
-            className="mr-2"
-          />
-          {hearts}
         </Button>
       </Link>
     </div>

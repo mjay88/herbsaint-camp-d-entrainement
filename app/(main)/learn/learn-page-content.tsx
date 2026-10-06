@@ -55,9 +55,8 @@ export const LearnPageContent = async () => {
     <div className="flex flex-row-reverse gap-[48px] px-6">
       <StickyWrapper>
         <UserProgress
-          activeCourse={userProgress.activeCourse}
-          hearts={userProgress.hearts}
           points={userProgress.points}
+          percentage={coursePercentage}
         />
         <Quests points={userProgress.points} />
       </StickyWrapper>
