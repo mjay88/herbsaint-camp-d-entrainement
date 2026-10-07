@@ -9,7 +9,7 @@ type Props = {
   className?: string;
 };
 
-export const Sidebar = ({ className }: Props) => {
+export const Sidebar = async ({ className }: Props) => {
   return (
     <div
       className={cn(
@@ -33,7 +33,7 @@ export const Sidebar = ({ className }: Props) => {
           iconSrc="/leaderboard.svg"
         />
         <SidebarItem label="Quests" href="/quests" iconSrc="/quests.svg" />
-          <SidebarItem label="Bodega" href="/bodega" iconSrc="/shop.svg" />
+        <SidebarItem label="Bodega" href="/bodega" iconSrc="/shop.svg" />
       </div>
       <div className="p-4">
         <ClerkLoading>

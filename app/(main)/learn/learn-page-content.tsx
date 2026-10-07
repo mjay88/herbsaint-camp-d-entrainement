@@ -21,8 +21,8 @@ export const LearnPageContent = async () => {
   if (!isAuthenticated) {
     return redirectToSignIn();
   }
-//TODO: When the first lesson is completed. Navigating back to learn from the lesson/footer does and then navigating to the next lesson does not refresh state in the Quiz component so if(!challenge) logic fires. May have something to do with updateTags. Current work around is using window.location.href in footer
-  const userProgress = await getUserProgress(userId); 
+  //TODO: When the first lesson is completed. Navigating back to learn from the lesson/footer does and then navigating to the next lesson does not refresh state in the Quiz component so if(!challenge) logic fires. May have something to do with updateTags. Current work around is using window.location.href in footer
+  const userProgress = await getUserProgress(userId);
   //New pattern do to cacheComponents no cookies and headers in functions flagged with "use cache"
   const units = await getUnits(userProgress?.activeCourseId ?? null, userId);
 
@@ -34,15 +34,15 @@ export const LearnPageContent = async () => {
     userId,
     userProgress?.activeCourseId ?? null,
   );
-  const lesson = (await getLesson(
+  const lesson = await getLesson(
     userId,
     courseProgress?.activeLessonId ?? null,
-  )) 
+  );
   const lessonPercentage = await getLessonPercentage(
     courseProgress?.activeLessonId ?? null,
     lesson ?? null,
   );
-  
+
   if (!userProgress || !userProgress.activeCourse) {
     redirect("/courses");
   }
@@ -61,9 +61,13 @@ export const LearnPageContent = async () => {
         <Quests points={userProgress.points} />
       </StickyWrapper>
       <FeedWrapper>
-        <Header title={userProgress.activeCourse.title} />
+        <div className="sticky top-9 lg:top-0 border-t-white border-t-[20px] border-white rounded-t-xl z-10">
+          <Header title={userProgress.activeCourse.title} />
+        </div>
+        {/* Header needs to display the unit title,
+        each time a unit scroll to the header, it needs to update */}
         {units.map((unit) => (
-          <div key={unit.id} className="mb-10">
+          <div key={unit.id}>
             <Unit
               id={unit.id}
               order={unit.order}
@@ -85,5 +89,3 @@ export const LearnPageContent = async () => {
     </div>
   );
 };
-
-

@@ -20,7 +20,7 @@ export const MobileUserProgress = ({  points, percentage }: Props) => {
             height={25}
             width={25}
             alt="Points"
-            className="-ml-2"
+            className="-ml-1.5"
           />
         
         </Button>
@@ -33,7 +33,7 @@ export const MobileUserProgress = ({  points, percentage }: Props) => {
             height={25}
             width={25}
             alt="Points"
-            className="-ml-2"
+            className="-ml-1.5"
           />
        
         </Button>
