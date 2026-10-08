@@ -9,7 +9,6 @@ import { userProgress } from "@/db/schema";
 import { getCourseById, getUserProgress } from "@/db/queries";
 import { isRedirectError } from "next/dist/client/components/redirect-error";
 import { eq } from "drizzle-orm";
-import { POINTS_TO_REFILL } from "@/constants";
 
 
 /**

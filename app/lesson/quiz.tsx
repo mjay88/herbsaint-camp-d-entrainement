@@ -17,7 +17,7 @@ import { usePracticeModal } from "@/store/use-practice-modal";
 import { CurriculumBubble } from "./curriculum-bubble";
 
 type Props = {
-  initialPercentage: number;
+  initialLessonPercentage: number;
   initialPoints: number;
   initialLessonId: number;
   initialLessonChallenges: (typeof challenges.$inferSelect & {
@@ -25,17 +25,19 @@ type Props = {
     challengeOptions: (typeof challengeOptions.$inferSelect)[];
   })[];
   initialUserProgress: typeof userProgress.$inferSelect;
+  initialCoursePercentage?: number | null;
 };
 
 export const Quiz = ({
-  initialPercentage,
+  initialLessonPercentage,
   initialPoints,
   initialLessonId,
   initialLessonChallenges,
   initialUserProgress,
+  initialCoursePercentage
 }: Props) => {
   const { open: openPracticeModal } = usePracticeModal();
-  const isPractice = initialPercentage === 100;
+  const isPractice = initialLessonPercentage === 100;
   useMount(() => {
     if (isPractice) {
       openPracticeModal();
@@ -58,8 +60,9 @@ export const Quiz = ({
   const [points, setPoints] = useState(initialPoints);
 
   const [percentage, setPercentage] = useState(() => {
-    return isPractice ? 0 : initialPercentage;
+    return isPractice ? 0 : initialLessonPercentage;
   });
+  const [coursePercentage, setCoursePercentage] = useState(initialCoursePercentage)
   //TODO: If I don't want to track challenges in practice mode, i'll need to find a way of resetting challenges. I can possible pass !challenges boolean and setChallenges to Header and then to ExitModal, or use a seperate Context to track pracitce mode
   const [challenges] = useState(initialLessonChallenges);
   const [activeIndex, setActiveIndex] = useState(() => {
@@ -105,6 +108,9 @@ export const Quiz = ({
 
     if (isCurriculum) {
       startTransition(() => {
+        //update points locally
+        setPoints((prevPoints) => prevPoints + 10);
+        //update points in db
         upsertChallengeProgress(challenge.id)
           .then((response) => {
             onNext();
@@ -141,25 +147,19 @@ export const Quiz = ({
     //handle status actions
     if (correctOption.id === selectedOption) {
       startTransition(() => {
+        setPoints((prevPoints) => prevPoints + 10);
         upsertChallengeProgress(challenge.id)
           .then((response) => {
-          
-
             correctControls.play();
             setStatus("correct");
             setPercentage((prev) => prev + 100 / challenges.length);
-
-           
           })
           .catch(() => toast.error("Something went wrong. Please try again."));
       });
     } else {
       startTransition(() => {
-       
-            incorrectControls.play();
-            setStatus("wrong");
-
-          
+        incorrectControls.play();
+        setStatus("wrong");
       });
     }
   };
@@ -205,7 +205,7 @@ export const Quiz = ({
               <ResultCard variant="points" value={challenges.length * 10} />
             )}
 
-            <ResultCard variant="percentage" value={percentage} />
+            <ResultCard variant="percentage" value={coursePercentage} />
           </div>
         </div>
         <Footer

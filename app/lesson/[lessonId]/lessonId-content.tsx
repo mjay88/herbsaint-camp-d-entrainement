@@ -27,7 +27,7 @@ export const LessonIdContent = async ({ params }: Props) => {
     redirect("/learn");
   }
 
-  const initialPercentage =
+  const initialLessonPercentage =
     (lesson.challenges.filter((challenge) => challenge.completed).length /
       lesson.challenges.length) *
     100;
@@ -38,7 +38,7 @@ export const LessonIdContent = async ({ params }: Props) => {
       initialLessonId={lesson.id}
       initialLessonChallenges={lesson.challenges}
       initialPoints={userProgress.points}
-      initialPercentage={initialPercentage}
+      initialLessonPercentage={initialLessonPercentage}
       initialUserProgress={userProgress}
     />
   );

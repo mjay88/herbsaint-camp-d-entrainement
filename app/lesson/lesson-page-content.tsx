@@ -21,7 +21,7 @@ export const LessonPageContent = async () => {
   );
   return (
     <LessonPageClient lesson={lesson} userProgress={userProgress ?? null} 
-    percentage={coursePercentage}
+    coursePercentage={coursePercentage}
     />
   );
 };

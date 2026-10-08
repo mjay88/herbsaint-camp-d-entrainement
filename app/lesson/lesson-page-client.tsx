@@ -26,7 +26,7 @@ type Props = {
       })
     | null;
   userProgress: typeof userProgress.$inferSelect | null;
-  percentage?: number | null;
+  coursePercentage?: number | null;
 };
 /**
  * LessonPageClient was created to handle the case where there are no more lessons.
@@ -34,7 +34,7 @@ type Props = {
  * skipping the Confetti screen. Confetti and hooks could not be called from LessonPage,
  * so I needed to add a "use client" wrapper
  */
-const LessonPageClient = ({ lesson, userProgress, percentage }: Props) => {
+const LessonPageClient = ({ lesson, userProgress, coursePercentage }: Props) => {
   
   const { width, height } = useWindowSize();
   const [finishAudio, _f, finishControls] = useAudio({ src: "/finish.mp3" });
@@ -78,7 +78,7 @@ const LessonPageClient = ({ lesson, userProgress, percentage }: Props) => {
           </h1>
           <div className="flex items-center gap-x-4 w-full">
             <ResultCard variant="points" value={userProgress?.points} />
-            <ResultCard variant="percentage" value={percentage} />
+            <ResultCard variant="percentage" value={coursePercentage} />
           </div>
         </div>
         <Footer status="completed" onCheck={() => redirect("/learn")} />
@@ -86,7 +86,7 @@ const LessonPageClient = ({ lesson, userProgress, percentage }: Props) => {
     );
   }
 
-  const initialPercentage =
+  const initialLessonPercentage =
     (lesson.challenges.filter((challenge) => challenge.completed).length /
       lesson.challenges.length) *
     100;
@@ -98,8 +98,9 @@ const LessonPageClient = ({ lesson, userProgress, percentage }: Props) => {
         initialLessonId={lesson.id}
         initialLessonChallenges={lesson?.challenges}
         initialPoints={userProgress?.points}
-        initialPercentage={initialPercentage}
+        initialLessonPercentage={initialLessonPercentage}
         initialUserProgress={userProgress}
+        initialCoursePercentage={coursePercentage}
       />
     </>
   );

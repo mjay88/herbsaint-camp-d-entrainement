@@ -5,11 +5,12 @@ import { getUserProgress } from "@/db/queries";
 import { challengeProgress, userProgress } from "@/db/schema";
 import { auth } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
-import { updateTag } from "next/cache";
+import { revalidatePath, updateTag } from "next/cache";
 
 /**
- * updates challenge completed to true.
- * 
+ *
+ * @param activeChallengeId
+ * @returns updates challenge completed to true, increments user points
  */
 
 export const upsertChallengeProgress = async (activeChallengeId: number) => {
@@ -41,8 +42,6 @@ export const upsertChallengeProgress = async (activeChallengeId: number) => {
 
   const isPractice = !!existingChallengeProgress;
 
-  
-
   if (isPractice) {
     //Do not save progress if practicing
     // await db
@@ -55,7 +54,6 @@ export const upsertChallengeProgress = async (activeChallengeId: number) => {
     await db
       .update(userProgress)
       .set({
-       
         points: currentUserProgress.points + 10,
       })
       .where(eq(userProgress.userId, activeUserId));
@@ -72,7 +70,6 @@ export const upsertChallengeProgress = async (activeChallengeId: number) => {
       `course-percentage-userId-${activeUserId ?? "none"}-activeCourseId-${currentUserProgress.activeCourseId ?? "none"}`,
     );
     updateTag("leaderboard");
-
     /**
      * Was using these a catch all cache revalidations for everything on /learn and /lesson pages, but everything seems to be working now with updateTags
      * revalidatePath(`/lesson/${lessonId}`);
