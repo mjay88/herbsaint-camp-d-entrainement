@@ -15,6 +15,7 @@ import {
 import { redirect } from "next/navigation";
 import { lessons, units as unitsSchema } from "@/db/schema";
 import { Quests } from "@/components/quests";
+import { ScrollingHeader } from "./scrolling-header";
 
 export const LearnPageContent = async () => {
   const { userId, isAuthenticated, redirectToSignIn } = await auth();
@@ -50,7 +51,7 @@ export const LearnPageContent = async () => {
   if (!courseProgress) {
     redirect("/courses");
   }
-
+ 
   return (
     <div className="flex flex-row-reverse gap-[48px] px-6">
       <StickyWrapper>
@@ -61,9 +62,8 @@ export const LearnPageContent = async () => {
         <Quests points={userProgress.points} />
       </StickyWrapper>
       <FeedWrapper>
-        <div className="sticky top-9 lg:top-0 border-t-white border-t-[20px] border-white rounded-t-xl z-10">
-          <Header title={userProgress.activeCourse.title} />
-        </div>
+      
+ <ScrollingHeader courseTitle={userProgress.activeCourse.title} units={units}>
         {/* Header needs to display the unit title,
         each time a unit scroll to the header, it needs to update */}
         {units.map((unit) => (
@@ -85,6 +85,7 @@ export const LearnPageContent = async () => {
             />
           </div>
         ))}
+       </ScrollingHeader>
       </FeedWrapper>
     </div>
   );
