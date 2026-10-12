@@ -7,7 +7,6 @@ import { StickyWrapper } from "@/components/sticky-wrapper";
 import { UserProgress } from "@/components/user-progress";
 import { getUserProgress } from "@/db/queries";
 
-
 import { updates } from "@/constants";
 
 
@@ -35,7 +34,6 @@ const UpdatesPage = async () => {
           <ul className="w-full">
             {[...updates].reverse().map((update) => {
               return (
-                <>
                  <div key={update.date} className="flex flex-col items-center w-full m-4 border-2 rounded-xl">
                       {/* Header */}
                       <div className="relative w-full flex items-center border-b-2 p-3">
@@ -51,7 +49,6 @@ const UpdatesPage = async () => {
                         </div>
                       </div>
                     </div>
-                </>
               )
             })}
           </ul>
