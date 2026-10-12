@@ -38,7 +38,7 @@ export const WineItem = ({
     <div className="flex flex-col items-center w-full gap-x-4 border-2 rounded-xl">
       {/* Header */}
       <div className="relative w-full flex items-center border-b-2 p-3">
-        <div className="absolute text-xs top-0 right-0 p-1 lg:p-2">{date}</div>
+        <div className="absolute text-xs top-0 right-0 p-1">{date}</div>
         <Image src={Icon} alt="Bottle of Wine" height={60} width={60}  />
         <div className="flex-1 p-3 ">
           <span className="font-semibold">{grape}</span> {producer} <span className="underline">{region}</span> {price}
@@ -46,7 +46,7 @@ export const WineItem = ({
       </div>
       <div className="flex p-3">
         <div className="flex-1 mt-3">
-          <p className="text-neutral-700 text-base">{description}</p>
+          <p className="text-neutral-700 text-base leading-relaxed text-muted-foreground">{description}</p>
         </div>
       </div>
     </div>

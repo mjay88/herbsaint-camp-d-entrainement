@@ -16,6 +16,7 @@ import { redirect } from "next/navigation";
 import { lessons, units as unitsSchema } from "@/db/schema";
 import { Quests } from "@/components/quests";
 import { ScrollingHeader } from "./scrolling-header";
+import { Updates } from "@/components/updates";
 
 export const LearnPageContent = async () => {
   const { userId, isAuthenticated, redirectToSignIn } = await auth();
@@ -59,7 +60,7 @@ export const LearnPageContent = async () => {
           points={userProgress.points}
           percentage={coursePercentage}
         />
-        <Quests points={userProgress.points} />
+       <Updates />
       </StickyWrapper>
       <FeedWrapper>
       

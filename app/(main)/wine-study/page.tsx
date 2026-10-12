@@ -10,6 +10,7 @@ import { wineSchedule } from "@/constants";
 // import { Items } from "./items";
 import { Quests } from "@/components/quests";
 import { WineItem } from "./wineItem";
+import { Updates } from "@/components/updates";
 const WineStudyPage = async () => {
   const { userId, isAuthenticated, redirectToSignIn } = await auth();
   if (!isAuthenticated) {
@@ -27,7 +28,7 @@ const WineStudyPage = async () => {
         <UserProgress
           points={userProgress.points}
         ></UserProgress>
-       <Quests points={userProgress.points}/>
+    <Updates />
       </StickyWrapper>
       <FeedWrapper>
         <div className="w-full flex flex-col items-center">

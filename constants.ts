@@ -155,3 +155,48 @@ export const wineSchedule = [
       "Priorat in Catalonia produces dense, mineral-driven reds, usually from old-vine Garnacha and Cariñena on steep slate slopes, with ripe fruit, firm structure and often generous alcohol. Álvaro Palacios, who helped revive the region beginning in the late 1980s, makes Camins del Priorat as an introduction to his style, blending Garnacha with Cariñena, Syrah, Cabernet Sauvignon and Merlot from about 90 plots across eight villages. It is more approachable and fruit-forward than his single-vineyard wines while keeping Priorat's stony backbone. Expect black cherry, blackberry and boysenberry, licorice and herbs such as marjoram, and a long, spicy, mineral finish.",
   },
 ];
+
+export const updates = [
+  {
+    date: "10/17/2026",
+    title: "Gumbo Update",
+    description:
+      "The Gumbo is no longer made with tasso. It will now include chicken, andouille, and Gulf shrimp. The base, the roux, and the rice served alongside are unchanged.",
+  },
+  {
+    date: "10/24/2026",
+    title: "Housemade Spaghetti Price Change",
+    description:
+      "The Housemade Spaghetti is moving from $20 to $22 to reflect the rising cost of guanciale. The dish is prepared the same way, with guanciale and a fried-poached farm egg.",
+  },
+  {
+    date: "10/31/2026",
+    title: "Chicken Set Update",
+    description:
+      "The Credo Farms Chicken is no longer being served with creamed corn, mushrooms, and pickled chilies. The set will now include pureed Kennebec potatoes, asparagus, and au jus. The chicken is prepared the same way it has been.",
+  },
+  {
+    date: "11/07/2026",
+    title: "Rabbit Leg Schnitzel Sauce Swap",
+    description:
+      "The Rabbit Leg Schnitzel is no longer served with crawfish Americaine. It will now come with brown butter, capers, and lemon alongside the celeriac remoulade. The schnitzel is breaded and fried the same way as before.",
+  },
+  {
+    date: "11/14/2026",
+    title: "Grilled Tuna Sandwich Bread Change",
+    description:
+      "The Grilled Tuna Sandwich will now be served on a toasted brioche bun instead of olive bread. The lemon pickle aioli stays, and the price remains $28.",
+  },
+  {
+    date: "11/21/2026",
+    title: "New Chardonnay on the BTG List",
+    description:
+      "We are adding the 2023 Domaine des Marnes Blanches Chablis to the by-the-glass list for $14, with the bottle at $56. It is fermented and aged in stainless steel, so expect crisp lemon, green apple, and oyster shell with a chalky, saline finish. It pairs well with the Cornmeal Fried Oysters and the Grilled Tuna Sandwich. It replaces the Mâcon la Roche Vineuse Chardonnay on the glass pour.",
+  },
+    {
+    date: "11/28/2026",
+    title: "Mai Tai On the Cocktail Menu",
+    description:
+      "We are adding a Mai Tai to the cocktail list for $15. It is made with aged Jamaican and Martinique rums, fresh lime, orange curaçao, and housemade orgeat, shaken over crushed ice and finished with a mint sprig and a float of dark rum. It is bright and nutty, with a toasty rum backbone, and pairs nicely with the Louisiana Jumbo Shrimp.",
+  },
+];

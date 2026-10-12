@@ -34,9 +34,9 @@ export const Sidebar = async ({ className }: Props) => {
         />
 
         <SidebarItem
-          label="What's New"
-          href="/whats-new"
-          iconSrc="/quests.svg"
+          label="Updates"
+          href="/updates"
+          iconSrc="/megaphone.svg"
         />
         <SidebarItem label="Wine Study" href="/wine-study" iconSrc="/red-wine-bottle.webp" />
         <SidebarItem label="Bodega" href="/bodega" iconSrc="/shop.svg" />
