@@ -1,7 +1,7 @@
 import { db } from "@/db/drizzle";
 import { cacheLife, cacheTag } from "next/cache";
 import { challengeOptions } from "./schema";
-
+import { list } from "@vercel/blob";
 //get all courses
 export const getCourses = async () => {
   "use cache";
@@ -338,3 +338,10 @@ export const getTopTenUsers = async (userId: string | null) => {
 
   return data;
 };
+
+export async function getBlobDocs() {
+  const { blobs } = await list({
+    token: process.env.BLOB_READ_WRITE_TOKEN,
+  })
+  return blobs; // array of { url, pathname, size, uploadedAt, ... }
+}

@@ -64,13 +64,13 @@ const main = async () => {
         description: "The Menu",
         order: 50,
       },
-      {
-        id: 6,
-        courseId: 1,
-        title: "Wine Service Standards",
-        description: "Coming Soon",
-        order: 60,
-      },
+      // {
+      //   id: 6,
+      //   courseId: 1,
+      //   title: "Wine Service Standards",
+      //   description: "Coming Soon",
+      //   order: 60,
+      // },
     ]);
 
     /**
@@ -6229,6 +6229,2017 @@ const main = async () => {
         imageSrc: "",
         correct: false,
         text: `A Double hopped IPA.`,
+      },
+    ]);
+
+    /**
+     * Unit 4: Drinks Menu
+     * Lessons: Cocktails, Wines By The Glass, Beer & Cider
+     */
+    await db.insert(schema.lessons).values([
+      {
+        id: 22,
+        unitId: 4,
+        order: 10,
+        title: "Cocktails",
+      },
+      {
+        id: 23,
+        unitId: 4,
+        order: 20,
+        title: "Wines By The Glass",
+      },
+      {
+        id: 24,
+        unitId: 4,
+        order: 30,
+        title: "Beer & Cider",
+      },
+    ]);
+
+    /**
+     * Course id - 1: Herbsaint Training Program
+     * Unit id - 4: Drinks Menu
+     * Lesson id - 22: Cocktails
+     */
+    await db.insert(schema.challenges).values([
+      {
+        id: 328,
+        lessonId: 22,
+        type: "CURRICULUM",
+        order: 10,
+        imageSrc: null,
+        question: `The Fall 2026 cocktail list has seven drinks, priced from $15 to $18. A few house ingredients show up again and again, so learn them first:\n\n**Pinhook Cochon Blend bourbon** — a private, 8-barrel blend exclusive to Link Restaurant Group (LRG) restaurants. It is the base of the Herbsaint Old-Fashioned and the Naples Underground.\n\n**Oxbow Barrel Aged rum** — the base of the Alma Daiquiri, our seasonal daiquiri.\n\n**Herbsaint Legendre** — a local absinthe substitute with a slight anise flavor, used to line the glass for the Sazerac.\n\nKnow what is in every drink so you can describe it simply and steer guests toward what they like.`,
+      },
+      {
+        id: 329,
+        lessonId: 22,
+        type: "SELECT",
+        order: 20,
+        imageSrc: null,
+        question: `Which house bourbon is a private, 8-barrel blend exclusive to LRG restaurants?`,
+      },
+      {
+        id: 330,
+        lessonId: 22,
+        type: "CURRICULUM",
+        order: 30,
+        imageSrc: null,
+        question: `Sazerac — $16\n\nThe original New Orleans boozy cocktail. Rye whiskey is dashed with Peychaud's Bitters and a touch of sugar, chilled, and poured into a rocks glass lined with Herbsaint Legendre, a local absinthe substitute that lends a slight anise flavor.\n\nFinished with a lemon twist. Served neat.`,
+      },
+      {
+        id: 331,
+        lessonId: 22,
+        type: "SELECT",
+        order: 40,
+        imageSrc: null,
+        question: `What is used to line the rocks glass for a Sazerac?`,
+      },
+      {
+        id: 332,
+        lessonId: 22,
+        type: "SELECT",
+        order: 50,
+        imageSrc: null,
+        question: `How is the Sazerac finished and served?`,
+      },
+      {
+        id: 333,
+        lessonId: 22,
+        type: "CURRICULUM",
+        order: 60,
+        imageSrc: null,
+        question: `Alma Daiquiri — $16\n\nThe fall iteration of our seasonal Oxbow rum daiquiri, a twist on the classic made with Oxbow Barrel Aged rum. Fresh lemon and lime juices provide the sour component, and it is sweetened with a house-made citrus and cardamom oleo saccharum.\n\nOleo saccharum is a syrup made by steeping citrus peels in sugar to extract their oils. This one is unique because it also uses raw sugar from the Oxbow sugar cane farm, making the drink an essentially single-estate cocktail. Orange and grapefruit peels provide an array of citrus flavors, complemented by green cardamom for a hint of spice.`,
+      },
+      {
+        id: 334,
+        lessonId: 22,
+        type: "SELECT",
+        order: 70,
+        imageSrc: null,
+        question: `What is an oleo saccharum?`,
+      },
+      {
+        id: 335,
+        lessonId: 22,
+        type: "SELECT",
+        order: 80,
+        imageSrc: null,
+        question: `What makes the Alma Daiquiri an essentially single-estate cocktail?`,
+      },
+      {
+        id: 336,
+        lessonId: 22,
+        type: "CURRICULUM",
+        order: 90,
+        imageSrc: null,
+        question: `Out of Office — $15\n\nA tiki-inspired tequila punch made with Cimarron blanco tequila, golden falernum, agua de Jamaica (a hibiscus infusion), grapefruit, lime, and CioCiaro amaro to round things out.\n\nThe flavor profile is tangy and layered, with warm spices from the golden falernum and the amaro. Garnished with a grapefruit peel and mint for aroma.`,
+      },
+      {
+        id: 337,
+        lessonId: 22,
+        type: "SELECT",
+        order: 100,
+        imageSrc: null,
+        question: `What is the base spirit of the Out of Office?`,
+      },
+      {
+        id: 338,
+        lessonId: 22,
+        type: "SELECT",
+        order: 110,
+        imageSrc: null,
+        question: `What is agua de Jamaica?`,
+      },
+      {
+        id: 339,
+        lessonId: 22,
+        type: "CURRICULUM",
+        order: 120,
+        imageSrc: null,
+        question: `Herbsaint Old-Fashioned — $16\n\nA classic Old-Fashioned made with Pinhook Cochon Blend bourbon, demerara sugar, and a dash each of Angostura and Regan's Orange Bitters. Served over a big ice cube with an orange swath and a cherry. **No muddling!**\n\nThe bourbon is a private, 8-barrel blend that is exclusive to LRG restaurants.`,
+      },
+      {
+        id: 340,
+        lessonId: 22,
+        type: "SELECT",
+        order: 130,
+        imageSrc: null,
+        question: `Which bitters go into the Herbsaint Old-Fashioned?`,
+      },
+      {
+        id: 341,
+        lessonId: 22,
+        type: "SELECT",
+        order: 140,
+        imageSrc: null,
+        question: `How is the Herbsaint Old-Fashioned built?`,
+      },
+      {
+        id: 342,
+        lessonId: 22,
+        type: "CURRICULUM",
+        order: 150,
+        imageSrc: null,
+        question: `Naples Underground — $18\n\nAn Italian bitter, but a light and clean Boulevardier variation. This spirit-forward cocktail uses Pinhook Cochon Blend bourbon with Amaro CioCiaro and two different vermouths: Carpano Antica brings a deep herbaceousness, while blanc vermouth lends a light sweetness to bring it all together.\n\nStirred and strained into a rocks glass over a big cube, then garnished with an orange peel. At $18, it is the most expensive cocktail on the list.`,
+      },
+      {
+        id: 343,
+        lessonId: 22,
+        type: "SELECT",
+        order: 160,
+        imageSrc: null,
+        question: `Which classic cocktail is the Naples Underground a variation of?`,
+      },
+      {
+        id: 344,
+        lessonId: 22,
+        type: "SELECT",
+        order: 170,
+        imageSrc: null,
+        question: `Which two vermouths are in the Naples Underground?`,
+      },
+      {
+        id: 345,
+        lessonId: 22,
+        type: "CURRICULUM",
+        order: 180,
+        imageSrc: null,
+        question: `Louisa Spritz — $16\n\nA light, but complex, bitter Italian-style spritz. Cardamaro gives a warmer, richer, and more floral alternative to Aperol, while grapefruit liqueur and Meletti amaro balance fruit and bitterness.\n\nFinished with bubbly prosecco and garnished with grapefruit and a sprig of fresh rosemary.`,
+      },
+      {
+        id: 346,
+        lessonId: 22,
+        type: "SELECT",
+        order: 190,
+        imageSrc: null,
+        question: `Which ingredient gives the Louisa Spritz a warmer, richer, more floral alternative to Aperol?`,
+      },
+      {
+        id: 347,
+        lessonId: 22,
+        type: "SELECT",
+        order: 200,
+        imageSrc: null,
+        question: `How is the Louisa Spritz finished?`,
+      },
+      {
+        id: 348,
+        lessonId: 22,
+        type: "CURRICULUM",
+        order: 210,
+        imageSrc: null,
+        question: `Maxime #2 — $16\n\nA spirit-forward, gin-based sipper in the style of a Bijou cocktail. London Dry gin provides the backbone, and calvados adds depth and sweetness. It is balanced with Cocchi Torino, an Italian vermouth that brings warm notes of fall spices, and a dash of orange bitters rounds out the drink.\n\nStirred and served up, with an orange peel expression and a Luxardo cherry.`,
+      },
+      {
+        id: 349,
+        lessonId: 22,
+        type: "SELECT",
+        order: 220,
+        imageSrc: null,
+        question: `Which spirit provides the backbone of the Maxime #2?`,
+      },
+      {
+        id: 350,
+        lessonId: 22,
+        type: "SELECT",
+        order: 230,
+        imageSrc: null,
+        question: `How is the Maxime #2 served?`,
+      },
+      {
+        id: 351,
+        lessonId: 22,
+        type: "SELECT",
+        order: 240,
+        imageSrc: null,
+        question: `Which cocktail is the most expensive on the list at $18?`,
+      },
+    ]);
+
+    /**
+     * ChallengeOptions - lessonId : 22
+     */
+
+    // { id: 329, lessonId: 22, type: "SELECT", order: 20, question: `Which house bourbon is a private, 8-barrel blend exclusive to LRG restaurants?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 329,
+        imageSrc: "",
+        correct: false,
+        text: `Oxbow Barrel Aged.`,
+      },
+      {
+        challengeId: 329,
+        imageSrc: "",
+        correct: true,
+        text: `Pinhook Cochon Blend.`,
+      },
+      {
+        challengeId: 329,
+        imageSrc: "",
+        correct: false,
+        text: `Herbsaint Legendre.`,
+      },
+      {
+        challengeId: 329,
+        imageSrc: "",
+        correct: false,
+        text: `Cimarron Blanco.`,
+      },
+    ]);
+
+    // { id: 331, lessonId: 22, type: "SELECT", order: 40, question: `What is used to line the rocks glass for a Sazerac?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 331,
+        imageSrc: "",
+        correct: false,
+        text: `Peychaud's Bitters.`,
+      },
+      {
+        challengeId: 331,
+        imageSrc: "",
+        correct: false,
+        text: `Angostura bitters.`,
+      },
+      {
+        challengeId: 331,
+        imageSrc: "",
+        correct: true,
+        text: `Herbsaint Legendre.`,
+      },
+      {
+        challengeId: 331,
+        imageSrc: "",
+        correct: false,
+        text: `Simple syrup.`,
+      },
+    ]);
+
+    // { id: 332, lessonId: 22, type: "SELECT", order: 50, question: `How is the Sazerac finished and served?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 332,
+        imageSrc: "",
+        correct: false,
+        text: `Over a big ice cube with an orange peel.`,
+      },
+      {
+        challengeId: 332,
+        imageSrc: "",
+        correct: false,
+        text: `Shaken and served up with a Luxardo cherry.`,
+      },
+      {
+        challengeId: 332,
+        imageSrc: "",
+        correct: false,
+        text: `Topped with prosecco and a sprig of rosemary.`,
+      },
+      {
+        challengeId: 332,
+        imageSrc: "",
+        correct: true,
+        text: `With a lemon twist, served neat in a rocks glass.`,
+      },
+    ]);
+
+    // { id: 334, lessonId: 22, type: "SELECT", order: 70, question: `What is an oleo saccharum?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 334,
+        imageSrc: "",
+        correct: true,
+        text: `A syrup made by steeping citrus peels in sugar to extract their oils.`,
+      },
+      {
+        challengeId: 334,
+        imageSrc: "",
+        correct: false,
+        text: `A bitter liqueur made from citrus peel and herbs.`,
+      },
+      {
+        challengeId: 334,
+        imageSrc: "",
+        correct: false,
+        text: `A cordial made from cooked citrus juice and honey.`,
+      },
+      {
+        challengeId: 334,
+        imageSrc: "",
+        correct: false,
+        text: `A spiced rum infused with orange peel.`,
+      },
+    ]);
+
+    // { id: 335, lessonId: 22, type: "SELECT", order: 80, question: `What makes the Alma Daiquiri an essentially single-estate cocktail?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 335,
+        imageSrc: "",
+        correct: false,
+        text: `It is made with rum from a single barrel.`,
+      },
+      {
+        challengeId: 335,
+        imageSrc: "",
+        correct: true,
+        text: `Both the Oxbow rum and the Oxbow raw cane sugar in the syrup.`,
+      },
+      {
+        challengeId: 335,
+        imageSrc: "",
+        correct: false,
+        text: `All of the citrus is grown on one farm in Louisiana.`,
+      },
+      {
+        challengeId: 335,
+        imageSrc: "",
+        correct: false,
+        text: `It uses only one type of citrus.`,
+      },
+    ]);
+
+    // { id: 337, lessonId: 22, type: "SELECT", order: 100, question: `What is the base spirit of the Out of Office?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 337,
+        imageSrc: "",
+        correct: false,
+        text: `Oxbow Barrel Aged rum.`,
+      },
+      {
+        challengeId: 337,
+        imageSrc: "",
+        correct: false,
+        text: `London Dry gin.`,
+      },
+      {
+        challengeId: 337,
+        imageSrc: "",
+        correct: true,
+        text: `Cimarron blanco tequila.`,
+      },
+      {
+        challengeId: 337,
+        imageSrc: "",
+        correct: false,
+        text: `Pinhook Cochon Blend bourbon.`,
+      },
+    ]);
+
+    // { id: 338, lessonId: 22, type: "SELECT", order: 110, question: `What is agua de Jamaica?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 338,
+        imageSrc: "",
+        correct: false,
+        text: `A jalapeño-infused syrup.`,
+      },
+      {
+        challengeId: 338,
+        imageSrc: "",
+        correct: false,
+        text: `A spiced rum.`,
+      },
+      {
+        challengeId: 338,
+        imageSrc: "",
+        correct: false,
+        text: `A tamarind soda.`,
+      },
+      {
+        challengeId: 338,
+        imageSrc: "",
+        correct: true,
+        text: `A hibiscus infusion.`,
+      },
+    ]);
+
+    // { id: 340, lessonId: 22, type: "SELECT", order: 130, question: `Which bitters go into the Herbsaint Old-Fashioned?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 340,
+        imageSrc: "",
+        correct: true,
+        text: `A dash each of Angostura and Regan's Orange Bitters.`,
+      },
+      {
+        challengeId: 340,
+        imageSrc: "",
+        correct: false,
+        text: `Peychaud's Bitters only.`,
+      },
+      {
+        challengeId: 340,
+        imageSrc: "",
+        correct: false,
+        text: `A dash each of Peychaud's and Angostura.`,
+      },
+      {
+        challengeId: 340,
+        imageSrc: "",
+        correct: false,
+        text: `Regan's Orange Bitters only.`,
+      },
+    ]);
+
+    // { id: 341, lessonId: 22, type: "SELECT", order: 140, question: `How is the Herbsaint Old-Fashioned built?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 341,
+        imageSrc: "",
+        correct: false,
+        text: `Muddled orange and cherry, served over crushed ice.`,
+      },
+      {
+        challengeId: 341,
+        imageSrc: "",
+        correct: true,
+        text: `No muddling, served over a big ice cube with an orange swath and a cherry.`,
+      },
+      {
+        challengeId: 341,
+        imageSrc: "",
+        correct: false,
+        text: `Shaken and served up in a coupe.`,
+      },
+      {
+        challengeId: 341,
+        imageSrc: "",
+        correct: false,
+        text: `Stirred with a sugar cube and topped with soda.`,
+      },
+    ]);
+
+    // { id: 343, lessonId: 22, type: "SELECT", order: 160, question: `Which classic cocktail is the Naples Underground a variation of?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 343,
+        imageSrc: "",
+        correct: false,
+        text: `The Manhattan.`,
+      },
+      {
+        challengeId: 343,
+        imageSrc: "",
+        correct: false,
+        text: `The Sazerac.`,
+      },
+      {
+        challengeId: 343,
+        imageSrc: "",
+        correct: true,
+        text: `The Boulevardier.`,
+      },
+      {
+        challengeId: 343,
+        imageSrc: "",
+        correct: false,
+        text: `The Old-Fashioned.`,
+      },
+    ]);
+
+    // { id: 344, lessonId: 22, type: "SELECT", order: 170, question: `Which two vermouths are in the Naples Underground?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 344,
+        imageSrc: "",
+        correct: false,
+        text: `Dry vermouth and Cocchi Torino.`,
+      },
+      {
+        challengeId: 344,
+        imageSrc: "",
+        correct: false,
+        text: `Carpano Antica and Cocchi Torino.`,
+      },
+      {
+        challengeId: 344,
+        imageSrc: "",
+        correct: false,
+        text: `Blanc vermouth and dry vermouth.`,
+      },
+      {
+        challengeId: 344,
+        imageSrc: "",
+        correct: true,
+        text: `Carpano Antica and blanc vermouth.`,
+      },
+    ]);
+
+    // { id: 346, lessonId: 22, type: "SELECT", order: 190, question: `Which ingredient gives the Louisa Spritz a warmer, richer, more floral alternative to Aperol?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 346,
+        imageSrc: "",
+        correct: true,
+        text: `Cardamaro.`,
+      },
+      {
+        challengeId: 346,
+        imageSrc: "",
+        correct: false,
+        text: `Carpano Antica.`,
+      },
+      {
+        challengeId: 346,
+        imageSrc: "",
+        correct: false,
+        text: `Cocchi Torino.`,
+      },
+      {
+        challengeId: 346,
+        imageSrc: "",
+        correct: false,
+        text: `Amaro CioCiaro.`,
+      },
+    ]);
+
+    // { id: 347, lessonId: 22, type: "SELECT", order: 200, question: `How is the Louisa Spritz finished?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 347,
+        imageSrc: "",
+        correct: false,
+        text: `Topped with soda and garnished with an orange slice.`,
+      },
+      {
+        challengeId: 347,
+        imageSrc: "",
+        correct: true,
+        text: `Topped with prosecco and garnished with grapefruit and a sprig of fresh rosemary.`,
+      },
+      {
+        challengeId: 347,
+        imageSrc: "",
+        correct: false,
+        text: `Shaken and served up with a lemon twist.`,
+      },
+      {
+        challengeId: 347,
+        imageSrc: "",
+        correct: false,
+        text: `Topped with Champagne and a sprig of mint.`,
+      },
+    ]);
+
+    // { id: 349, lessonId: 22, type: "SELECT", order: 220, question: `Which spirit provides the backbone of the Maxime #2?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 349,
+        imageSrc: "",
+        correct: false,
+        text: `Calvados.`,
+      },
+      {
+        challengeId: 349,
+        imageSrc: "",
+        correct: false,
+        text: `Rye whiskey.`,
+      },
+      {
+        challengeId: 349,
+        imageSrc: "",
+        correct: true,
+        text: `London Dry gin.`,
+      },
+      {
+        challengeId: 349,
+        imageSrc: "",
+        correct: false,
+        text: `Blanco tequila.`,
+      },
+    ]);
+
+    // { id: 350, lessonId: 22, type: "SELECT", order: 230, question: `How is the Maxime #2 served?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 350,
+        imageSrc: "",
+        correct: false,
+        text: `Shaken and served over crushed ice with mint.`,
+      },
+      {
+        challengeId: 350,
+        imageSrc: "",
+        correct: false,
+        text: `Over a big ice cube with an orange peel.`,
+      },
+      {
+        challengeId: 350,
+        imageSrc: "",
+        correct: false,
+        text: `Neat in a rocks glass with a lemon twist.`,
+      },
+      {
+        challengeId: 350,
+        imageSrc: "",
+        correct: true,
+        text: `Stirred and served up, with an orange peel expression and a Luxardo cherry.`,
+      },
+    ]);
+
+    // { id: 351, lessonId: 22, type: "SELECT", order: 240, question: `Which cocktail is the most expensive on the list at $18?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 351,
+        imageSrc: "",
+        correct: true,
+        text: `Naples Underground.`,
+      },
+      {
+        challengeId: 351,
+        imageSrc: "",
+        correct: false,
+        text: `Sazerac.`,
+      },
+      {
+        challengeId: 351,
+        imageSrc: "",
+        correct: false,
+        text: `Alma Daiquiri.`,
+      },
+      {
+        challengeId: 351,
+        imageSrc: "",
+        correct: false,
+        text: `Maxime #2.`,
+      },
+    ]);
+
+    /**
+     * Course id - 1: Herbsaint Training Program
+     * Unit id - 4: Drinks Menu
+     * Lesson id - 23: Wines By The Glass
+     */
+    await db.insert(schema.challenges).values([
+      {
+        id: 352,
+        lessonId: 23,
+        type: "CURRICULUM",
+        order: 10,
+        imageSrc: null,
+        question: `Our by-the-glass list is organized by style: Sparkling, White, Rosé & Orange, and Red, followed by a sake. Each line gives the **grape, producer, vintage, and region**, then the price per glass.\n\nLearn the grape and the region first. Together they tell you most of what a guest needs to know about the style: how light or rich it is, how dry it is, and what it tastes like.`,
+      },
+      {
+        id: 353,
+        lessonId: 23,
+        type: "CURRICULUM",
+        order: 20,
+        imageSrc: null,
+        question: `Prosecco Superiore, Sommariva, NV Brut — $13\n\nProsecco is made from the Glera grape. "Superiore" means it comes from the Conegliano Valdobbiadene DOCG in the Veneto, Italy's historic hillside heart of Prosecco country. Sommariva is a family estate in Valdobbiadene, founded in 1973 by Abramo Sommariva.\n\nProsecco is typically made by the tank (Charmat) method, which preserves fresh fruit and floral aromas. Expect grapefruit and lime, acacia and linden flowers, and a touch of bread crust, with a creamy mousse and a mineral finish. About 11.5% ABV.`,
+      },
+      {
+        id: 354,
+        lessonId: 23,
+        type: "SELECT",
+        order: 30,
+        imageSrc: null,
+        question: `Which grape is Prosecco made from?`,
+      },
+      {
+        id: 355,
+        lessonId: 23,
+        type: "CURRICULUM",
+        order: 40,
+        imageSrc: null,
+        question: `Champagne, Paul Berthelot 'Cuvée de Réserve', NV Brut — $26\n\nThe Berthelot family has made Champagne in Dizy, a Premier Cru village in the Vallée de la Marne, since 1884 — five generations. The Cuvée de Réserve is a non-vintage Brut blending the three Champagne grapes, Pinot Noir, Pinot Meunier, and Chardonnay, with the Pinots leading.\n\nIt is generous and round, with the ripeness of the dark grapes balanced by classic Champagne freshness: white flowers, ripe orchard fruit, and a lively finish.`,
+      },
+      {
+        id: 356,
+        lessonId: 23,
+        type: "SELECT",
+        order: 50,
+        imageSrc: null,
+        question: `Which three grapes are blended in the Paul Berthelot Champagne?`,
+      },
+      {
+        id: 357,
+        lessonId: 23,
+        type: "CURRICULUM",
+        order: 60,
+        imageSrc: null,
+        question: `Zero Proof, Unified Ferments 'Jasmine Green' — $12\n\nA non-alcoholic fermented tea from Unified Ferments in New York. It is a kombucha-style drink made from green tea scented with jasmine blossoms, fermented to build aromatic complexity. Serve it chilled, at sparkling-wine temperature.\n\nExpect eucalyptus, tuberose, and green peach, with a lifted jasmine character that shifts as it warms in the glass. Retailer listings put it at about 0.5% ABV, so it contains trace alcohol. Be upfront with guests who must avoid alcohol entirely.`,
+      },
+      {
+        id: 358,
+        lessonId: 23,
+        type: "SELECT",
+        order: 70,
+        imageSrc: null,
+        question: `What is the Unified Ferments 'Jasmine Green'?`,
+      },
+      {
+        id: 359,
+        lessonId: 23,
+        type: "CURRICULUM",
+        order: 80,
+        imageSrc: null,
+        question: `Riesling, Karl Schaefer feinherb, 2023, Pfalz — $17\n\nRiesling from Weingut Karl Schaefer in Bad Dürkheim, in Germany's Pfalz region. **Feinherb** is a German style term for off-dry: a touch of residual sugar that sits between dry (trocken) and sweet, balanced by Riesling's bright acidity.\n\nThe Pfalz is warmer and drier than the Mosel, so its Rieslings tend to be riper and rounder. The estate's wines are often described as smoky and stony, with graphite, savory herbs, and a saline finish. Expect peach and citrus, a stony edge, and a juicy finish.`,
+      },
+      {
+        id: 360,
+        lessonId: 23,
+        type: "SELECT",
+        order: 90,
+        imageSrc: null,
+        question: `What does "feinherb" mean on a German Riesling?`,
+      },
+      {
+        id: 361,
+        lessonId: 23,
+        type: "CURRICULUM",
+        order: 100,
+        imageSrc: null,
+        question: `Sauvignon Blanc, Domaine de la Pauline, 2025, Sancerre — $22\n\nSancerre is the Loire Valley's benchmark for Sauvignon Blanc: dry, high in acid, and typically unoaked, with citrus and green notes over a flinty, stony backbone from the region's limestone and flint soils.\n\nDomaine de la Pauline leans toward the riper, more generous side of the style. Tasters describe melon, honeysuckle, passion fruit, and lemongrass, with bright acidity and a dry finish.`,
+      },
+      {
+        id: 362,
+        lessonId: 23,
+        type: "SELECT",
+        order: 110,
+        imageSrc: null,
+        question: `Sancerre is made from which grape?`,
+      },
+      {
+        id: 363,
+        lessonId: 23,
+        type: "CURRICULUM",
+        order: 120,
+        imageSrc: null,
+        question: `Jacquère, Maison des Ardoisières 'Silice Blanc', 2024, Savoie — $17\n\nJacquère is the workhorse white grape of Savoie, in the French Alps, and typically makes light, crisp, low-alcohol wines. Maison des Ardoisières is the négociant side of Domaine des Ardoisières, led by Brice Omont, meaning the grapes are purchased, here from organic growers, rather than estate-grown.\n\n"Silice" is 100% Jacquère from old vines, aged several months in tank, at around 10.5% ABV. Expect citrus and Comice pear, white flowers, a flinty and stony freshness, and a gentle bitterness on the finish.`,
+      },
+      {
+        id: 364,
+        lessonId: 23,
+        type: "SELECT",
+        order: 130,
+        imageSrc: null,
+        question: `What are the grape and region of the Silice Blanc?`,
+      },
+      {
+        id: 365,
+        lessonId: 23,
+        type: "SELECT",
+        order: 140,
+        imageSrc: null,
+        question: `What does it mean that Maison des Ardoisières is a négociant label?`,
+      },
+      {
+        id: 366,
+        lessonId: 23,
+        type: "CURRICULUM",
+        order: 150,
+        imageSrc: null,
+        question: `Chardonnay, Sylvaine & Alain Normand, 2022, Mâcon la Roche Vineuse — $15\n\nChardonnay from the Mâconnais in southern Burgundy, grown around La Roche-Vineuse on clay-limestone soils. Mâconnais Chardonnay is typically warmer and rounder than the Côte d'Or style, with ripe orchard fruit and chalky freshness.\n\nAlain Normand created the estate in 1993, and Sylvaine joined in 2010. They ferment with native yeasts over a long fermentation and age the wine on its lees in tank. Expect lemon and white peach with a hint of pineapple, acacia blossom, a chalky texture, and a taut, fresh finish.`,
+      },
+      {
+        id: 367,
+        lessonId: 23,
+        type: "SELECT",
+        order: 160,
+        imageSrc: null,
+        question: `Where is the Normand Chardonnay grown?`,
+      },
+      {
+        id: 368,
+        lessonId: 23,
+        type: "CURRICULUM",
+        order: 170,
+        imageSrc: null,
+        question: `Chardonnay, Thierry Pillot, 2023, Bourgogne Côte d'Or — $26\n\nA regional Burgundy white from Thierry Pillot, who also runs his family's Domaine Paul Pillot in Chassagne-Montrachet. The fruit comes from vines more than 35 years old in Chassagne-Montrachet and Remigny, in the southern Côte de Beaune.\n\nPillot is a thoughtful winemaker who favors tension and crystalline purity, with organic farming for his négociant wines and little reliance on interventionist techniques or new oak, so the wines stay transparent. Expect citrus, green apple, and mineral notes in a structured, focused profile.`,
+      },
+      {
+        id: 369,
+        lessonId: 23,
+        type: "SELECT",
+        order: 180,
+        imageSrc: null,
+        question: `Which two villages supply the fruit for the Thierry Pillot Bourgogne?`,
+      },
+      {
+        id: 370,
+        lessonId: 23,
+        type: "CURRICULUM",
+        order: 190,
+        imageSrc: null,
+        question: `Mourvèdre / Cinsault, Domaine des Trois Filles, 2023, Bandol — $18\n\nBandol rosé from Provence is built on Mourvèdre, which brings more structure, body, and savory depth than the pale, delicate rosés of the surrounding region. Domaine des Trois Filles has been run since 2013 by the three Arlon sisters, Audrey, Léonie, and Justine, in La Cadière-d'Azur.\n\nThe blend is roughly 60% Mourvèdre with Grenache and Cinsault, giving a peach-skin color. Expect white peach and ripe strawberry, floral and flinty notes, and a creamy yet crisp finish with a touch of nuttiness.`,
+      },
+      {
+        id: 371,
+        lessonId: 23,
+        type: "SELECT",
+        order: 200,
+        imageSrc: null,
+        question: `Which grape leads the blend in a Bandol rosé?`,
+      },
+      {
+        id: 372,
+        lessonId: 23,
+        type: "CURRICULUM",
+        order: 210,
+        imageSrc: null,
+        question: `Chenin Blanc, Jacky Preys 'Vin Orange', 2023, Loire Valley — $16\n\nAn orange wine is a white wine made like a red: the grape juice ferments in contact with the skins, which adds color, texture, grip, and savory flavors.\n\nJacky Preys makes this one from 100% Chenin Blanc, from roughly 50-year-old vines on flint (silex) and chalk soils around Meusnes in Touraine. The grapes are hand-harvested and macerated as whole clusters on their skins for five days, fermented with native yeasts and no added sulfites, then aged about six months in terracotta jars and amphora. Expect mirabelle plum, orange peel, acacia honey, white flowers, and herbs, with Chenin's lively acidity.`,
+      },
+      {
+        id: 373,
+        lessonId: 23,
+        type: "SELECT",
+        order: 220,
+        imageSrc: null,
+        question: `What makes an orange wine orange?`,
+      },
+      {
+        id: 374,
+        lessonId: 23,
+        type: "SELECT",
+        order: 230,
+        imageSrc: null,
+        question: `How long does the Jacky Preys Vin Orange macerate on its skins?`,
+      },
+      {
+        id: 375,
+        lessonId: 23,
+        type: "CURRICULUM",
+        order: 240,
+        imageSrc: null,
+        question: `Gamay, Domaine Dupeuble, 2024, Beaujolais — $15\n\nBeaujolais is made from the Gamay grape and produces light to medium-bodied reds that are bright and juicy, with low tannin. Domaine Dupeuble is a family estate in Le Breuil, in southern Beaujolais, that has been farmed since 1512.\n\nThis Beaujolais AOC comes from vines on granite, clay, and limestone soils, and retail notes describe carbonic maceration (whole-cluster fermentation that emphasizes fresh fruit) and bottling unfiltered. Expect raspberry and strawberry, violets, and a touch of licorice, with a tangy, lively finish.`,
+      },
+      {
+        id: 376,
+        lessonId: 23,
+        type: "SELECT",
+        order: 250,
+        imageSrc: null,
+        question: `Red Beaujolais is made from which grape?`,
+      },
+      {
+        id: 377,
+        lessonId: 23,
+        type: "CURRICULUM",
+        order: 260,
+        imageSrc: null,
+        question: `Pinot Noir, Division Wine Company 'Yama', 2023, Willamette — $16\n\nPinot Noir from the Yama Vineyard in Oregon's Willamette Valley, a single-vineyard bottling from Division Winemaking Company in Portland. Kate Norris and Thomas Monroe founded Division in 2010, looking as much to Burgundy and Beaujolais as to Oregon, with a restrained, finesse-driven house style.\n\nExpect red cherry and raspberry, forest floor, and gentle baking spice, with a lifted, perfumed nose and a stony minerality from the region's volcanic soils.`,
+      },
+      {
+        id: 378,
+        lessonId: 23,
+        type: "SELECT",
+        order: 270,
+        imageSrc: null,
+        question: `What does 'Yama' refer to on the Division Pinot Noir?`,
+      },
+      {
+        id: 379,
+        lessonId: 23,
+        type: "CURRICULUM",
+        order: 280,
+        imageSrc: null,
+        question: `Pinot Noir, Domaine Tollot-Beaut, 2023, Bourgogne Côte d'Or — $26\n\nRed Burgundy from Domaine Tollot-Beaut, a family domaine in Chorey-lès-Beaune dating to the late 1880s and one of the best-known growers in the village. The Bourgogne Rouge is 100% Pinot Noir from vines planted between 1963 and 1984, aged with about 25% new oak.\n\nTollot-Beaut is known for a serious but pleasing style, more fruit-forward and juicy than some Burgundy purists prefer. Expect raspberry and cherry with warm vanilla and spice, a touch of earth, soft tannins, and lively acidity.`,
+      },
+      {
+        id: 380,
+        lessonId: 23,
+        type: "SELECT",
+        order: 290,
+        imageSrc: null,
+        question: `Where is Domaine Tollot-Beaut based?`,
+      },
+      {
+        id: 381,
+        lessonId: 23,
+        type: "CURRICULUM",
+        order: 300,
+        imageSrc: null,
+        question: `Cabernet Franc / Merlot, Maison Blanche 'le Colombier de la Métairie', 2022, Bordeaux — $17\n\nA Right Bank blend of Cabernet Franc and Merlot from Montagne Saint-Émilion, on clay-limestone soils. Maison Blanche farms biodynamically and pursues freshness and finesse over power.\n\n"Le Colombier de la Métairie" is the estate's fresher, more supple bottling from younger vines, aged in a mix of concrete vat and barrel, and it can be enjoyed young. A high share of Cabernet Franc, often about half, lends floral violet aromatics and structural tension. Expect red and black berries, violets, and a touch of spice.`,
+      },
+      {
+        id: 382,
+        lessonId: 23,
+        type: "SELECT",
+        order: 310,
+        imageSrc: null,
+        question: `Which two grapes make up the Maison Blanche Bordeaux?`,
+      },
+      {
+        id: 383,
+        lessonId: 23,
+        type: "CURRICULUM",
+        order: 320,
+        imageSrc: null,
+        question: `Nebbiolo, Fantino 'Rosso dei Dardi', 2022, Piedmont — $16\n\nNebbiolo is the grape of Barolo and Barbaresco, usually high in tannin and acid and built to age. Rosso dei Dardi is its playful side: Nebbiolo from young vines in Monforte d'Alba, handled gently with short tank aging and bottled young.\n\nBrothers Alessandro and Gian Natale Fantino are better known for their serious Bussia Barolo, and this wine shows the grape's perfume without the heavy structure. Expect purple berries and black fruit, rose and peony aromas, zesty acidity, and tender tannins. Importers note it takes a light chill well.`,
+      },
+      {
+        id: 384,
+        lessonId: 23,
+        type: "SELECT",
+        order: 330,
+        imageSrc: null,
+        question: `Nebbiolo is the grape behind which Piedmont wines?`,
+      },
+      {
+        id: 385,
+        lessonId: 23,
+        type: "CURRICULUM",
+        order: 340,
+        imageSrc: null,
+        question: `Garnacha / Cabernet Sauvignon, Palacios 'Camins del Priorat', 2023, Priorat — $20\n\nPriorat, in Catalonia, makes dense, mineral-driven reds, usually from old-vine Garnacha and Cariñena on steep slate soils. Álvaro Palacios, who helped revive the region beginning in the late 1980s, makes Camins del Priorat as an introduction to his wines.\n\nIt blends Garnacha, Cariñena, Syrah, Cabernet Sauvignon, and Merlot from plots across eight villages. Expect black cherry, blackberry, and boysenberry, licorice and herbs, and a long, spicy, mineral finish.`,
+      },
+      {
+        id: 386,
+        lessonId: 23,
+        type: "SELECT",
+        order: 350,
+        imageSrc: null,
+        question: `Which soil is Priorat best known for?`,
+      },
+      {
+        id: 387,
+        lessonId: 23,
+        type: "SELECT",
+        order: 360,
+        imageSrc: null,
+        question: `Which two Pinot Noirs are on the by-the-glass list?`,
+      },
+      {
+        id: 388,
+        lessonId: 23,
+        type: "CURRICULUM",
+        order: 370,
+        imageSrc: null,
+        question: `Nama Daiginjo, Tedorigawa 'Gold Blossom' — $15 (3 oz pour)\n\nSake is brewed from rice rather than grapes. Daiginjo is a premium tier in which the rice is polished to remove at least half of each grain. This one comes from Tedorigawa (Yoshida Brewery) in Ishikawa Prefecture, made with Yamadanishiki and Gohyakumangoku rice polished to 45%.\n\n**Nama** means unpasteurized, so the sake keeps a fresh, lively character and needs to stay cold. Expect jasmine, Fuji apple, and slate on the nose, then juicy white peach, mango, and light floral honey, finishing with fresh cream and vanilla. About 16–17% ABV.`,
+      },
+      {
+        id: 389,
+        lessonId: 23,
+        type: "SELECT",
+        order: 380,
+        imageSrc: null,
+        question: `What does "nama" mean on a sake label?`,
+      },
+      {
+        id: 390,
+        lessonId: 23,
+        type: "SELECT",
+        order: 390,
+        imageSrc: null,
+        question: `How large is the sake pour?`,
+      },
+    ]);
+
+    /**
+     * ChallengeOptions - lessonId : 23
+     */
+
+    // { id: 354, lessonId: 23, type: "SELECT", order: 30, question: `Which grape is Prosecco made from?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 354,
+        imageSrc: "",
+        correct: false,
+        text: `Chardonnay.`,
+      },
+      {
+        challengeId: 354,
+        imageSrc: "",
+        correct: true,
+        text: `Glera.`,
+      },
+      {
+        challengeId: 354,
+        imageSrc: "",
+        correct: false,
+        text: `Pinot Noir.`,
+      },
+      {
+        challengeId: 354,
+        imageSrc: "",
+        correct: false,
+        text: `Garganega.`,
+      },
+    ]);
+
+    // { id: 356, lessonId: 23, type: "SELECT", order: 50, question: `Which three grapes are blended in the Paul Berthelot Champagne?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 356,
+        imageSrc: "",
+        correct: false,
+        text: `Chardonnay, Sauvignon Blanc, and Chenin Blanc.`,
+      },
+      {
+        challengeId: 356,
+        imageSrc: "",
+        correct: false,
+        text: `Pinot Noir, Gamay, and Chardonnay.`,
+      },
+      {
+        challengeId: 356,
+        imageSrc: "",
+        correct: true,
+        text: `Pinot Noir, Pinot Meunier, and Chardonnay.`,
+      },
+      {
+        challengeId: 356,
+        imageSrc: "",
+        correct: false,
+        text: `Glera, Chardonnay, and Pinot Blanc.`,
+      },
+    ]);
+
+    // { id: 358, lessonId: 23, type: "SELECT", order: 70, question: `What is the Unified Ferments 'Jasmine Green'?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 358,
+        imageSrc: "",
+        correct: false,
+        text: `A dealcoholized sparkling wine.`,
+      },
+      {
+        challengeId: 358,
+        imageSrc: "",
+        correct: false,
+        text: `A sparkling Japanese sake.`,
+      },
+      {
+        challengeId: 358,
+        imageSrc: "",
+        correct: false,
+        text: `A jasmine-infused sparkling cider.`,
+      },
+      {
+        challengeId: 358,
+        imageSrc: "",
+        correct: true,
+        text: `A non-alcoholic fermented tea scented with jasmine.`,
+      },
+    ]);
+
+    // { id: 360, lessonId: 23, type: "SELECT", order: 90, question: `What does "feinherb" mean on a German Riesling?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 360,
+        imageSrc: "",
+        correct: true,
+        text: `Off-dry: a touch of residual sugar between dry and sweet.`,
+      },
+      {
+        challengeId: 360,
+        imageSrc: "",
+        correct: false,
+        text: `Bone dry with no residual sugar.`,
+      },
+      {
+        challengeId: 360,
+        imageSrc: "",
+        correct: false,
+        text: `A late-harvest dessert wine.`,
+      },
+      {
+        challengeId: 360,
+        imageSrc: "",
+        correct: false,
+        text: `A sparkling Riesling.`,
+      },
+    ]);
+
+    // { id: 362, lessonId: 23, type: "SELECT", order: 110, question: `Sancerre is made from which grape?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 362,
+        imageSrc: "",
+        correct: false,
+        text: `Chenin Blanc.`,
+      },
+      {
+        challengeId: 362,
+        imageSrc: "",
+        correct: true,
+        text: `Sauvignon Blanc.`,
+      },
+      {
+        challengeId: 362,
+        imageSrc: "",
+        correct: false,
+        text: `Chardonnay.`,
+      },
+      {
+        challengeId: 362,
+        imageSrc: "",
+        correct: false,
+        text: `Melon de Bourgogne.`,
+      },
+    ]);
+
+    // { id: 364, lessonId: 23, type: "SELECT", order: 130, question: `What are the grape and region of the Silice Blanc?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 364,
+        imageSrc: "",
+        correct: false,
+        text: `Altesse from Savoie.`,
+      },
+      {
+        challengeId: 364,
+        imageSrc: "",
+        correct: false,
+        text: `Jacquère from the Jura.`,
+      },
+      {
+        challengeId: 364,
+        imageSrc: "",
+        correct: true,
+        text: `Jacquère from Savoie, in the French Alps.`,
+      },
+      {
+        challengeId: 364,
+        imageSrc: "",
+        correct: false,
+        text: `Aligoté from Burgundy.`,
+      },
+    ]);
+
+    // { id: 365, lessonId: 23, type: "SELECT", order: 140, question: `What does it mean that Maison des Ardoisières is a négociant label?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 365,
+        imageSrc: "",
+        correct: false,
+        text: `The wine is a blend of many grape varieties.`,
+      },
+      {
+        challengeId: 365,
+        imageSrc: "",
+        correct: false,
+        text: `The wine is aged in barrel for years before release.`,
+      },
+      {
+        challengeId: 365,
+        imageSrc: "",
+        correct: false,
+        text: `The wine is made by a cooperative of growers.`,
+      },
+      {
+        challengeId: 365,
+        imageSrc: "",
+        correct: true,
+        text: `The grapes are purchased from growers rather than estate-grown.`,
+      },
+    ]);
+
+    // { id: 367, lessonId: 23, type: "SELECT", order: 160, question: `Where is the Normand Chardonnay grown?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 367,
+        imageSrc: "",
+        correct: true,
+        text: `The Mâconnais, in southern Burgundy.`,
+      },
+      {
+        challengeId: 367,
+        imageSrc: "",
+        correct: false,
+        text: `Chablis, in northern Burgundy.`,
+      },
+      {
+        challengeId: 367,
+        imageSrc: "",
+        correct: false,
+        text: `The Côte de Nuits.`,
+      },
+      {
+        challengeId: 367,
+        imageSrc: "",
+        correct: false,
+        text: `The Côte Chalonnaise.`,
+      },
+    ]);
+
+    // { id: 369, lessonId: 23, type: "SELECT", order: 180, question: `Which two villages supply the fruit for the Thierry Pillot Bourgogne?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 369,
+        imageSrc: "",
+        correct: false,
+        text: `Meursault and Puligny-Montrachet.`,
+      },
+      {
+        challengeId: 369,
+        imageSrc: "",
+        correct: true,
+        text: `Chassagne-Montrachet and Remigny.`,
+      },
+      {
+        challengeId: 369,
+        imageSrc: "",
+        correct: false,
+        text: `Pouilly-Fuissé and Saint-Véran.`,
+      },
+      {
+        challengeId: 369,
+        imageSrc: "",
+        correct: false,
+        text: `Chablis and Irancy.`,
+      },
+    ]);
+
+    // { id: 371, lessonId: 23, type: "SELECT", order: 200, question: `Which grape leads the blend in a Bandol rosé?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 371,
+        imageSrc: "",
+        correct: false,
+        text: `Grenache.`,
+      },
+      {
+        challengeId: 371,
+        imageSrc: "",
+        correct: false,
+        text: `Cinsault.`,
+      },
+      {
+        challengeId: 371,
+        imageSrc: "",
+        correct: true,
+        text: `Mourvèdre.`,
+      },
+      {
+        challengeId: 371,
+        imageSrc: "",
+        correct: false,
+        text: `Syrah.`,
+      },
+    ]);
+
+    // { id: 373, lessonId: 23, type: "SELECT", order: 220, question: `What makes an orange wine orange?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 373,
+        imageSrc: "",
+        correct: false,
+        text: `It is made from orange-skinned grapes.`,
+      },
+      {
+        challengeId: 373,
+        imageSrc: "",
+        correct: false,
+        text: `It is aged with orange peel.`,
+      },
+      {
+        challengeId: 373,
+        imageSrc: "",
+        correct: false,
+        text: `It is blended with a small amount of red wine.`,
+      },
+      {
+        challengeId: 373,
+        imageSrc: "",
+        correct: true,
+        text: `White grapes are fermented in contact with their skins.`,
+      },
+    ]);
+
+    // { id: 374, lessonId: 23, type: "SELECT", order: 230, question: `How long does the Jacky Preys Vin Orange macerate on its skins?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 374,
+        imageSrc: "",
+        correct: true,
+        text: `Five days.`,
+      },
+      {
+        challengeId: 374,
+        imageSrc: "",
+        correct: false,
+        text: `Twelve hours.`,
+      },
+      {
+        challengeId: 374,
+        imageSrc: "",
+        correct: false,
+        text: `Three weeks.`,
+      },
+      {
+        challengeId: 374,
+        imageSrc: "",
+        correct: false,
+        text: `Six months.`,
+      },
+    ]);
+
+    // { id: 376, lessonId: 23, type: "SELECT", order: 250, question: `Red Beaujolais is made from which grape?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 376,
+        imageSrc: "",
+        correct: false,
+        text: `Pinot Noir.`,
+      },
+      {
+        challengeId: 376,
+        imageSrc: "",
+        correct: true,
+        text: `Gamay.`,
+      },
+      {
+        challengeId: 376,
+        imageSrc: "",
+        correct: false,
+        text: `Syrah.`,
+      },
+      {
+        challengeId: 376,
+        imageSrc: "",
+        correct: false,
+        text: `Grenache.`,
+      },
+    ]);
+
+    // { id: 378, lessonId: 23, type: "SELECT", order: 270, question: `What does 'Yama' refer to on the Division Pinot Noir?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 378,
+        imageSrc: "",
+        correct: false,
+        text: `A blend of several Willamette vineyards.`,
+      },
+      {
+        challengeId: 378,
+        imageSrc: "",
+        correct: false,
+        text: `The winemaker's family name.`,
+      },
+      {
+        challengeId: 378,
+        imageSrc: "",
+        correct: true,
+        text: `The single vineyard the grapes come from.`,
+      },
+      {
+        challengeId: 378,
+        imageSrc: "",
+        correct: false,
+        text: `A special barrel selection.`,
+      },
+    ]);
+
+    // { id: 380, lessonId: 23, type: "SELECT", order: 290, question: `Where is Domaine Tollot-Beaut based?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 380,
+        imageSrc: "",
+        correct: false,
+        text: `Gevrey-Chambertin.`,
+      },
+      {
+        challengeId: 380,
+        imageSrc: "",
+        correct: false,
+        text: `Chassagne-Montrachet.`,
+      },
+      {
+        challengeId: 380,
+        imageSrc: "",
+        correct: false,
+        text: `Pouilly-Fuissé.`,
+      },
+      {
+        challengeId: 380,
+        imageSrc: "",
+        correct: true,
+        text: `Chorey-lès-Beaune.`,
+      },
+    ]);
+
+    // { id: 382, lessonId: 23, type: "SELECT", order: 310, question: `Which two grapes make up the Maison Blanche Bordeaux?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 382,
+        imageSrc: "",
+        correct: true,
+        text: `Cabernet Franc and Merlot.`,
+      },
+      {
+        challengeId: 382,
+        imageSrc: "",
+        correct: false,
+        text: `Cabernet Sauvignon and Petit Verdot.`,
+      },
+      {
+        challengeId: 382,
+        imageSrc: "",
+        correct: false,
+        text: `Merlot and Malbec.`,
+      },
+      {
+        challengeId: 382,
+        imageSrc: "",
+        correct: false,
+        text: `Cabernet Sauvignon and Merlot.`,
+      },
+    ]);
+
+    // { id: 384, lessonId: 23, type: "SELECT", order: 330, question: `Nebbiolo is the grape behind which Piedmont wines?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 384,
+        imageSrc: "",
+        correct: false,
+        text: `Chianti and Brunello.`,
+      },
+      {
+        challengeId: 384,
+        imageSrc: "",
+        correct: true,
+        text: `Barolo and Barbaresco.`,
+      },
+      {
+        challengeId: 384,
+        imageSrc: "",
+        correct: false,
+        text: `Amarone and Valpolicella.`,
+      },
+      {
+        challengeId: 384,
+        imageSrc: "",
+        correct: false,
+        text: `Barbera d'Asti and Dolcetto.`,
+      },
+    ]);
+
+    // { id: 386, lessonId: 23, type: "SELECT", order: 350, question: `Which soil is Priorat best known for?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 386,
+        imageSrc: "",
+        correct: false,
+        text: `Chalk.`,
+      },
+      {
+        challengeId: 386,
+        imageSrc: "",
+        correct: false,
+        text: `Granite.`,
+      },
+      {
+        challengeId: 386,
+        imageSrc: "",
+        correct: true,
+        text: `Slate.`,
+      },
+      {
+        challengeId: 386,
+        imageSrc: "",
+        correct: false,
+        text: `Sandy clay.`,
+      },
+    ]);
+
+    // { id: 387, lessonId: 23, type: "SELECT", order: 360, question: `Which two Pinot Noirs are on the by-the-glass list?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 387,
+        imageSrc: "",
+        correct: false,
+        text: `Division 'Yama' from Willamette and Dupeuble from Beaujolais.`,
+      },
+      {
+        challengeId: 387,
+        imageSrc: "",
+        correct: false,
+        text: `Tollot-Beaut from Bourgogne Côte d'Or and Fantino from Piedmont.`,
+      },
+      {
+        challengeId: 387,
+        imageSrc: "",
+        correct: false,
+        text: `Dupeuble from Beaujolais and Palacios from Priorat.`,
+      },
+      {
+        challengeId: 387,
+        imageSrc: "",
+        correct: true,
+        text: `Division 'Yama' from Willamette and Tollot-Beaut from Bourgogne Côte d'Or.`,
+      },
+    ]);
+
+    // { id: 389, lessonId: 23, type: "SELECT", order: 380, question: `What does "nama" mean on a sake label?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 389,
+        imageSrc: "",
+        correct: true,
+        text: `Unpasteurized.`,
+      },
+      {
+        challengeId: 389,
+        imageSrc: "",
+        correct: false,
+        text: `Aged for several years.`,
+      },
+      {
+        challengeId: 389,
+        imageSrc: "",
+        correct: false,
+        text: `Cloudy and unfiltered.`,
+      },
+      {
+        challengeId: 389,
+        imageSrc: "",
+        correct: false,
+        text: `Served warm.`,
+      },
+    ]);
+
+    // { id: 390, lessonId: 23, type: "SELECT", order: 390, question: `How large is the sake pour?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 390,
+        imageSrc: "",
+        correct: false,
+        text: `2 oz.`,
+      },
+      {
+        challengeId: 390,
+        imageSrc: "",
+        correct: true,
+        text: `3 oz.`,
+      },
+      {
+        challengeId: 390,
+        imageSrc: "",
+        correct: false,
+        text: `5 oz.`,
+      },
+      {
+        challengeId: 390,
+        imageSrc: "",
+        correct: false,
+        text: `6 oz.`,
+      },
+    ]);
+
+    /**
+     * Course id - 1: Herbsaint Training Program
+     * Unit id - 4: Drinks Menu
+     * Lesson id - 24: Beer & Cider
+     */
+    await db.insert(schema.challenges).values([
+      {
+        id: 391,
+        lessonId: 24,
+        type: "CURRICULUM",
+        order: 10,
+        imageSrc: null,
+        question: `Our beer and cider list is short and covers the styles guests ask for most: a lager, a pilsner, an IPA, a hefeweizen, a rosé cider, and a non-alcoholic option. Prices run from $5 to $9.`,
+      },
+      {
+        id: 392,
+        lessonId: 24,
+        type: "CURRICULUM",
+        order: 20,
+        imageSrc: null,
+        question: `Lager, Miller High Life — $5\n\nA light, crisp, easy-drinking American lager from Milwaukee, long nicknamed "The Champagne of Beers." It is the most affordable item on the beer and cider list.`,
+      },
+      {
+        id: 393,
+        lessonId: 24,
+        type: "SELECT",
+        order: 30,
+        imageSrc: null,
+        question: `What is Miller High Life's nickname?`,
+      },
+      {
+        id: 394,
+        lessonId: 24,
+        type: "CURRICULUM",
+        order: 40,
+        imageSrc: null,
+        question: `Pilsner, Einbecker — $9\n\nBrewed in Einbeck, in Germany's Lower Saxony, by a brewery that dates to at least 1378. In the 14th century, Einbeck's bock beers were traded across Northern Europe by the Hanseatic League, and the brewery still takes pride in that bock heritage.\n\nA German pilsner is typically crisp, dry, and hoppy. The brewery's pilsners are about 4.8–4.9% ABV.`,
+      },
+      {
+        id: 395,
+        lessonId: 24,
+        type: "SELECT",
+        order: 50,
+        imageSrc: null,
+        question: `Where is Einbecker brewed?`,
+      },
+      {
+        id: 396,
+        lessonId: 24,
+        type: "CURRICULUM",
+        order: 60,
+        imageSrc: null,
+        question: `IPA, Chandeleur Island 'Lil Smack' — $8\n\nChandeleur Island Brewing is in downtown Gulfport, Mississippi, less than a quarter mile from the Gulf of Mexico. It is named for the Chandeleur Islands, a 50-mile stretch of uninhabited barrier islands along the Mississippi Gulf Coast. **Chandeleur** is pronounced "shan-duh-leer."\n\nLil Smack is a Gulf IPA at about 6.5% ABV, and it was one of the brewery's four flagship beers when it opened in 2014.`,
+      },
+      {
+        id: 397,
+        lessonId: 24,
+        type: "SELECT",
+        order: 70,
+        imageSrc: null,
+        question: `Where is Chandeleur Island Brewing based?`,
+      },
+      {
+        id: 398,
+        lessonId: 24,
+        type: "SELECT",
+        order: 80,
+        imageSrc: null,
+        question: `How is "Chandeleur" pronounced?`,
+      },
+      {
+        id: 399,
+        lessonId: 24,
+        type: "CURRICULUM",
+        order: 90,
+        imageSrc: null,
+        question: `Hefeweizen, Weihenstephaner — $7\n\nA Bavarian wheat beer (Hefeweissbier) from Weihenstephaner in Freising, a brewery that bills itself as the world's oldest, brewing since 1040. "Hefe" means yeast: the beer is unfiltered, leaving yeast in suspension, which gives it a cloudy look and its fruity character.\n\nExpect banana and clove. About 5.4% ABV.`,
+      },
+      {
+        id: 400,
+        lessonId: 24,
+        type: "SELECT",
+        order: 100,
+        imageSrc: null,
+        question: `What does "hefe" mean in hefeweizen?`,
+      },
+      {
+        id: 401,
+        lessonId: 24,
+        type: "SELECT",
+        order: 110,
+        imageSrc: null,
+        question: `Which flavors are classic in a hefeweizen?`,
+      },
+      {
+        id: 402,
+        lessonId: 24,
+        type: "CURRICULUM",
+        order: 120,
+        imageSrc: null,
+        question: `Rosé Cidre, Celliers de l'Odet 'Aval' — $9\n\nA rosé cider from Brittany, in northwestern France ("cidre" is French for cider). Aval is made from a blend of six apple varieties grown in Brittany and gets its pink color from red-fleshed apples.\n\nIt is dry, about 6% ABV, with citrus and tropical-fruit notes.`,
+      },
+      {
+        id: 403,
+        lessonId: 24,
+        type: "SELECT",
+        order: 130,
+        imageSrc: null,
+        question: `What gives the Aval rosé cidre its pink color?`,
+      },
+      {
+        id: 404,
+        lessonId: 24,
+        type: "SELECT",
+        order: 140,
+        imageSrc: null,
+        question: `Which French region is Aval from?`,
+      },
+      {
+        id: 405,
+        lessonId: 24,
+        type: "CURRICULUM",
+        order: 150,
+        imageSrc: null,
+        question: `Non-Alcoholic, Athletic Brewing Co. — $7\n\nAthletic Brewing Co. describes itself as the first brewery in the US devoted entirely to non-alcoholic craft beer. Its beers are made with real beer ingredients (malt, hops, and yeast) using a proprietary process, and they are listed at well under 0.5% ABV.\n\nCurrently we have the IPA available, hop forward and refreshing.`,
+      },
+      {
+        id: 406,
+        lessonId: 24,
+        type: "SELECT",
+        order: 160,
+        imageSrc: null,
+        question: `What is notable about Athletic Brewing Co.?`,
+      },
+      {
+        id: 407,
+        lessonId: 24,
+        type: "SELECT",
+        order: 170,
+        imageSrc: null,
+        question: `Which two items on the beer and cider list are priced at $9?`,
+      },
+    ]);
+
+    /**
+     * ChallengeOptions - lessonId : 24
+     */
+
+    // { id: 393, lessonId: 24, type: "SELECT", order: 30, question: `What is Miller High Life's nickname?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 393,
+        imageSrc: "",
+        correct: true,
+        text: `The Champagne of Beers.`,
+      },
+      {
+        challengeId: 393,
+        imageSrc: "",
+        correct: false,
+        text: `The King of Beers.`,
+      },
+      {
+        challengeId: 393,
+        imageSrc: "",
+        correct: false,
+        text: `The Beer That Made Milwaukee Famous.`,
+      },
+    ]);
+
+    // { id: 395, lessonId: 24, type: "SELECT", order: 50, question: `Where is Einbecker brewed?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 395,
+        imageSrc: "",
+        correct: false,
+        text: `Munich, Bavaria.`,
+      },
+      {
+        challengeId: 395,
+        imageSrc: "",
+        correct: false,
+        text: `Pilsen, Czech Republic.`,
+      },
+      {
+        challengeId: 395,
+        imageSrc: "",
+        correct: false,
+        text: `Cologne, North Rhine-Westphalia.`,
+      },
+      {
+        challengeId: 395,
+        imageSrc: "",
+        correct: true,
+        text: `Einbeck, in Lower Saxony, Germany.`,
+      },
+    ]);
+
+    // { id: 397, lessonId: 24, type: "SELECT", order: 70, question: `Where is Chandeleur Island Brewing based?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 397,
+        imageSrc: "",
+        correct: true,
+        text: `Gulfport, Mississippi.`,
+      },
+      {
+        challengeId: 397,
+        imageSrc: "",
+        correct: false,
+        text: `Mobile, Alabama.`,
+      },
+      {
+        challengeId: 397,
+        imageSrc: "",
+        correct: false,
+        text: `New Orleans, Louisiana.`,
+      },
+      {
+        challengeId: 397,
+        imageSrc: "",
+        correct: false,
+        text: `Pensacola, Florida.`,
+      },
+    ]);
+
+    // { id: 398, lessonId: 24, type: "SELECT", order: 80, question: `How is "Chandeleur" pronounced?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 398,
+        imageSrc: "",
+        correct: false,
+        text: `Chan-del-ur.`,
+      },
+      {
+        challengeId: 398,
+        imageSrc: "",
+        correct: true,
+        text: `Shan-duh-leer.`,
+      },
+      {
+        challengeId: 398,
+        imageSrc: "",
+        correct: false,
+        text: `Shan-del-ay.`,
+      },
+      {
+        challengeId: 398,
+        imageSrc: "",
+        correct: false,
+        text: `Chand-lur.`,
+      },
+    ]);
+
+    // { id: 400, lessonId: 24, type: "SELECT", order: 100, question: `What does "hefe" mean in hefeweizen?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 400,
+        imageSrc: "",
+        correct: false,
+        text: `Wheat.`,
+      },
+      {
+        challengeId: 400,
+        imageSrc: "",
+        correct: false,
+        text: `Hops.`,
+      },
+      {
+        challengeId: 400,
+        imageSrc: "",
+        correct: true,
+        text: `Yeast.`,
+      },
+      {
+        challengeId: 400,
+        imageSrc: "",
+        correct: false,
+        text: `Golden.`,
+      },
+    ]);
+
+    // { id: 401, lessonId: 24, type: "SELECT", order: 110, question: `Which flavors are classic in a hefeweizen?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 401,
+        imageSrc: "",
+        correct: false,
+        text: `Roasted coffee and chocolate.`,
+      },
+      {
+        challengeId: 401,
+        imageSrc: "",
+        correct: false,
+        text: `Grapefruit and pine.`,
+      },
+      {
+        challengeId: 401,
+        imageSrc: "",
+        correct: false,
+        text: `Honey and toasted bread.`,
+      },
+      {
+        challengeId: 401,
+        imageSrc: "",
+        correct: true,
+        text: `Banana and clove.`,
+      },
+    ]);
+
+    // { id: 403, lessonId: 24, type: "SELECT", order: 130, question: `What gives the Aval rosé cidre its pink color?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 403,
+        imageSrc: "",
+        correct: true,
+        text: `Red-fleshed apples.`,
+      },
+      {
+        challengeId: 403,
+        imageSrc: "",
+        correct: false,
+        text: `Red grape skins.`,
+      },
+      {
+        challengeId: 403,
+        imageSrc: "",
+        correct: false,
+        text: `A splash of red wine.`,
+      },
+      {
+        challengeId: 403,
+        imageSrc: "",
+        correct: false,
+        text: `Hibiscus flowers.`,
+      },
+    ]);
+
+    // { id: 404, lessonId: 24, type: "SELECT", order: 140, question: `Which French region is Aval from?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 404,
+        imageSrc: "",
+        correct: false,
+        text: `Normandy.`,
+      },
+      {
+        challengeId: 404,
+        imageSrc: "",
+        correct: true,
+        text: `Brittany.`,
+      },
+      {
+        challengeId: 404,
+        imageSrc: "",
+        correct: false,
+        text: `Champagne.`,
+      },
+      {
+        challengeId: 404,
+        imageSrc: "",
+        correct: false,
+        text: `Alsace.`,
+      },
+    ]);
+
+    // { id: 406, lessonId: 24, type: "SELECT", order: 160, question: `What is notable about Athletic Brewing Co.?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 406,
+        imageSrc: "",
+        correct: false,
+        text: `It is a Belgian abbey brewery.`,
+      },
+      {
+        challengeId: 406,
+        imageSrc: "",
+        correct: false,
+        text: `It brews only gluten-free beer.`,
+      },
+      {
+        challengeId: 406,
+        imageSrc: "",
+        correct: true,
+        text: `It brews only non-alcoholic craft beer.`,
+      },
+      {
+        challengeId: 406,
+        imageSrc: "",
+        correct: false,
+        text: `It makes hard seltzer.`,
+      },
+    ]);
+
+    // { id: 407, lessonId: 24, type: "SELECT", order: 170, question: `Which two items on the beer and cider list are priced at $9?` },
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 407,
+        imageSrc: "",
+        correct: false,
+        text: `Miller High Life and Weihenstephaner.`,
+      },
+      {
+        challengeId: 407,
+        imageSrc: "",
+        correct: false,
+        text: `Chandeleur Island and Athletic Brewing Co.`,
+      },
+      {
+        challengeId: 407,
+        imageSrc: "",
+        correct: false,
+        text: `Weihenstephaner and Einbecker.`,
+      },
+      {
+        challengeId: 407,
+        imageSrc: "",
+        correct: true,
+        text: `Einbecker and the Aval rosé cidre.`,
       },
     ]);
 

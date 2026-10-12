@@ -4,14 +4,18 @@ import { redirect } from "next/navigation";
 import { FeedWrapper } from "@/components/feed-wrapper";
 import { StickyWrapper } from "@/components/sticky-wrapper";
 import { UserProgress } from "@/components/user-progress";
-import { getUserProgress } from "@/db/queries";
+import { getBlobDocs, getUserProgress } from "@/db/queries";
 import { auth } from "@clerk/nextjs/server";
 
 // import { Items } from "./items";
 import { Quests } from "@/components/quests";
+import { Updates } from "@/components/updates";
+import Link from "next/link";
 
 const BodegaPage = async () => {
   const { userId, isAuthenticated, redirectToSignIn } = await auth();
+  const blobs = await getBlobDocs();
+
   if (!isAuthenticated) {
     return redirectToSignIn();
   }
@@ -24,10 +28,8 @@ const BodegaPage = async () => {
   return (
     <div className="flex flex-row-reverse gap-[48px] px-6">
       <StickyWrapper>
-        <UserProgress
-          points={userProgress.points}
-        ></UserProgress>
-        <Quests points={userProgress.points} />
+        <UserProgress points={userProgress.points}></UserProgress>
+        <Updates />
       </StickyWrapper>
       <FeedWrapper>
         <div className="w-full flex flex-col items-center">
@@ -36,8 +38,32 @@ const BodegaPage = async () => {
             Bodega
           </h1>
           <p className="text-muted-foreground text-center text-lg mb-6">
-          Here can be additional resources?
+            Additional Resources
           </p>
+          <ul className="w-full">
+            {blobs.map((blob) => {
+              return (
+                <Link key={blob.url} href={blob.url}>
+                  <div
+                  
+                    className="flex items-center w-full p-4 gap-x-4 border-t-2"
+                  >
+                    <Image
+                      src="/points.svg"
+                      alt="Points"
+                      width={60}
+                      height={60}
+                    />
+                    <div className="flex flex-col gap-y-2 w-full">
+                      <p className="text-neutral-700 text-xl font-bold">
+                        {blob.pathname}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </ul>
         </div>
       </FeedWrapper>
     </div>
