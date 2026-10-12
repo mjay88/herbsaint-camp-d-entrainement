@@ -32,7 +32,13 @@ export const Sidebar = async ({ className }: Props) => {
           href="/leaderboard"
           iconSrc="/leaderboard.svg"
         />
-        <SidebarItem label="Quests" href="/quests" iconSrc="/quests.svg" />
+
+        <SidebarItem
+          label="What's New"
+          href="/whats-new"
+          iconSrc="/quests.svg"
+        />
+        <SidebarItem label="Wine Study" href="/wine-study" iconSrc="/red-wine-bottle.webp" />
         <SidebarItem label="Bodega" href="/bodega" iconSrc="/shop.svg" />
       </div>
       <div className="p-4">

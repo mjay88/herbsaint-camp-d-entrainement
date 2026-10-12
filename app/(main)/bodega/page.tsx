@@ -36,7 +36,7 @@ const BodegaPage = async () => {
             Bodega
           </h1>
           <p className="text-muted-foreground text-center text-lg mb-6">
-            You can use your points to buy more hearts.
+          Here can be additional resources?
           </p>
         </div>
       </FeedWrapper>

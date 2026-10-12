@@ -9,26 +9,29 @@ type Props = {
   percentage?: number | null;
 };
 
-export const UserProgress = ({  points, percentage }: Props) => {
+export const UserProgress = ({ points, percentage }: Props) => {
   return (
     <div className="flex items-center justify-between gap-x-2 w-full">
       <div className="flex flex-col justify-evenly gap-y-2 w-full">
         <p className="text-neutral-700 text-sm font-bold">Course Progress</p>
         <Progress value={percentage} className="h-2" />
       </div>
-
-      <Link href="/shop">
-        <Button variant="ghost" className="text-orange-500 flex items-end">
-          <Image
-            src="/points.svg"
-            height={28}
-            width={28}
-            alt="Points"
-            className="mr-2"
-          />
-          {points}
-        </Button>
-      </Link>
+      <div>
+        <Link href="/shop">
+          <Button variant="ghost" className="text-orange-500 flex items-end">
+            <div className="flex">
+              <Image
+                src="/points.svg"
+                height={28}
+                width={28}
+                alt="Points"
+                className="mr-2"
+              />
+              <div className="self-center">{points}</div>
+            </div>
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 };
