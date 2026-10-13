@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Check, Crown, Star } from "lucide-react";
+import { Check, Crown, Star, Shrimp, Fish, Drumstick, Salad, Beef, BottleWine, Wine, Martini, Beer, CakeSlice, IceCreamBowl} from "lucide-react";
 import Link from "next/link";
 import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 
@@ -14,6 +14,8 @@ type Props = {
   current?: boolean;
   percentage: number;
   lessonTitle: string;
+  iconIndex: number;
+  currentIndex: number;
 };
 
 export const LessonButton = ({
@@ -24,7 +26,13 @@ export const LessonButton = ({
   current,
   percentage,
   lessonTitle,
+  iconIndex,
+  currentIndex
 }: Props) => {
+
+ 
+ 
+
   const cycleLength = 8;
   const cycleIndex = index % cycleLength;
 
@@ -44,9 +52,12 @@ export const LessonButton = ({
 
   const isFirst = index === 0;
   const isLast = index === totalCount;
-  const isCompleted = !current && !locked;
+  
+  const isCompleted = index < currentIndex && !current;
 
-  const Icon = isCompleted ? Check : isLast === isFirst ? Star : isLast ? Crown : Star;
+  const icons = [Shrimp, Fish, Drumstick, Salad, Beef, BottleWine, Wine, CakeSlice, IceCreamBowl]
+  const Icon = isCompleted ? Check : current ? Star : lessonTitle.includes("Cocktails") ?  Martini : lessonTitle.includes("Wine") ? Wine : lessonTitle.includes("Beer") ? Beer : icons[iconIndex % icons.length];
+   
 
   const href = isCompleted ? `/lesson/${id}` : "/lesson";
   //TODO: add mobile tool tips for
@@ -95,7 +106,7 @@ export const LessonButton = ({
                     locked
                       ? "fill-neutral-400 text-neutral-400 stroke-neutral-400"
                       : "fill-primary-foreground text-primary-foreground",
-                    isCompleted && "fill-none stroke-[4]",
+                    isCompleted && Icon === Check && "fill-none stroke-[4]",
                   )}
                 />
               </Button>
@@ -118,7 +129,7 @@ export const LessonButton = ({
                   className={cn(
                     "size-8",
                     locked
-                      ? "fill-neutral-400 text-neutral-400 stroke-neutral-400"
+                      ? "text-neutral-400 stroke-[2]"
                       : "fill-primary-foreground text-primary-foreground",
                     isCompleted && "fill-none stroke-[4]",
                   )}

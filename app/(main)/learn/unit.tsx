@@ -1,6 +1,7 @@
 import { lessons, units } from "@/db/schema";
 import { LessonButton } from "./lesson-button";
 import { UnitBanner } from "./unit-banner";
+import {Shrimp, Fish, Drumstick, Salad, Beef, BottleWine, Wine, CakeSlice, IceCreamBowl} from "lucide-react";
 
 type Props = {
   id: number;
@@ -27,6 +28,7 @@ export const Unit = ({
   activeLesson,
   activeLessonPercentage,
 }: Props) => {
+ const icons = [Shrimp, Fish, Drumstick, Salad, Beef, BottleWine, Wine, CakeSlice, IceCreamBowl]
   return (
     <>
       <UnitBanner title={title} description={description} />
@@ -34,7 +36,7 @@ export const Unit = ({
         {lessons.map((lesson, index) => {
           const isCurrent = lesson.id === activeLesson?.id;
           const isLocked = !lesson.completed && !isCurrent;
-
+          const currentIndex = lessons.findIndex(l => l.id === activeLesson?.id)
           return (
             <LessonButton
               key={lesson.id}
@@ -43,9 +45,11 @@ export const Unit = ({
               index={index}
               totalCount={lessons.length - 1}
               current={isCurrent}
-              // locked={isLocked} //TODO: change back
-              locked={false} //For testing
+              locked={isLocked} //TODO: change back
+              // locked={false} //For testing
               percentage={activeLessonPercentage}
+              iconIndex={index % icons.length}
+              currentIndex={currentIndex}
             />
           );
         })}
