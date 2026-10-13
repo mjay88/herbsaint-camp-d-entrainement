@@ -38,7 +38,7 @@ export const ExitModal = () => {
         <DialogHeader>
           <div className="flex items-center w-full justify-center mb-5">
             <Image
-              src="/mascot-begging.svg"
+              src="/mascot/mascot-begging.svg"
               alt="Mascot"
               height={100}
               width={100}

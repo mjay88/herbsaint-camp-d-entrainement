@@ -34,7 +34,7 @@ export const Quiz = ({
   initialLessonId,
   initialLessonChallenges,
   initialUserProgress,
-  initialCoursePercentage
+  initialCoursePercentage,
 }: Props) => {
   const { open: openPracticeModal } = usePracticeModal();
   const isPractice = initialLessonPercentage === 100;
@@ -62,7 +62,9 @@ export const Quiz = ({
   const [percentage, setPercentage] = useState(() => {
     return isPractice ? 0 : initialLessonPercentage;
   });
-  const [coursePercentage, setCoursePercentage] = useState(initialCoursePercentage)
+  const [coursePercentage, setCoursePercentage] = useState(
+    initialCoursePercentage,
+  );
   //TODO: If I don't want to track challenges in practice mode, i'll need to find a way of resetting challenges. I can possible pass !challenges boolean and setChallenges to Header and then to ExitModal, or use a seperate Context to track pracitce mode
   const [challenges] = useState(initialLessonChallenges);
   const [activeIndex, setActiveIndex] = useState(() => {
@@ -177,20 +179,20 @@ export const Quiz = ({
           numberOfPieces={500}
           tweenDuration={10000}
         />
-        <div className="flex flex-col gap-y-4 lg:gap-y-8 max-w-lg mx-auto text-center items-center justify-center h-full">
+        <div className="flex flex-col gap-y-2 lg:gap-y-8 max-w-lg mx-auto text-center items-center justify-center h-full">
           <Image
-            src="/finish.svg"
+            src="/mascot/mascot-thumbs-up.webp"
             alt="Finish"
             className="hidden lg:block"
-            height={100}
-            width={100}
+            height={300}
+            width={300}
           />
           <Image
-            src="/finish.svg"
+            src="/mascot/mascot-thumbs-up.webp"
             alt="Finish"
             className="block lg:hidden"
-            height={50}
-            width={50}
+            height={200}
+            width={200}
           />
           <h1 className="text-xl leg:text-3xl font-bold text-neutral-700">
             Great job! <br /> You&apos;ve completed the lesson.
@@ -252,7 +254,7 @@ export const Quiz = ({
       {incorrectAudio}
       {correctAudio}
       <Header points={points} percentage={percentage} />
-      <div className="flex-1 mb-4">
+      <div className="flex-1 my-4">
         <div className="h-full flex items-center justify-center">
           <div className="lg:min-h[350px] md:w-[700px] w-full px-6 lg:px-0 flex flex-col gap-y-10">
             <h1 className="text-lg lg:text-3xl text-center lg:text-start font-bold text-neutral-700">

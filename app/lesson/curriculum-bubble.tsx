@@ -26,7 +26,7 @@ export const CurriculumBubble = ({ question, imageSrc }: Props) => {
       ) : (
         <>
           <Image
-            src="/mascot.svg"
+            src="/mascot/mascot.svg"
             alt="Mascot"
             height={300}
             width={300}
@@ -36,8 +36,12 @@ export const CurriculumBubble = ({ question, imageSrc }: Props) => {
       )}
 
       <div className="relative py-2 px-4 m-3 lg:border-2 rounded-xl text-base text-left whitespace-pre-line">
-        <div className="overflow-y-auto max-h-full prose prose-base">
-          <Markdown>{question}</Markdown>
+        <div className="overflow-y-auto max-h-full prose prose-base prose-p:mb-0.5 leading-6">
+          <Markdown
+            
+          >
+            {question}
+          </Markdown>
         </div>
         {!imageSrc && (
           <>
