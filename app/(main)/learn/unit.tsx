@@ -1,7 +1,7 @@
 import { lessons, units } from "@/db/schema";
 import { LessonButton } from "./lesson-button";
 import { UnitBanner } from "./unit-banner";
-import {Shrimp, Fish, Drumstick, Salad, Beef, BottleWine, Wine, CakeSlice, IceCreamBowl} from "lucide-react";
+import {Shrimp, Fish, Drumstick, Salad, Beef, BottleWine, Wine} from "lucide-react";
 
 type Props = {
   id: number;
@@ -28,7 +28,7 @@ export const Unit = ({
   activeLesson,
   activeLessonPercentage,
 }: Props) => {
- const icons = [Shrimp, Fish, Drumstick, Salad, Beef, BottleWine, Wine, CakeSlice, IceCreamBowl]
+ const icons = [Shrimp, Fish, Drumstick, Salad, Beef, BottleWine, Wine]
   return (
     <>
       <UnitBanner title={title} description={description} />

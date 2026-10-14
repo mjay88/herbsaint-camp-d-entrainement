@@ -28,7 +28,7 @@ export const UnitBanner = ({ title, description }: Props) => {
     //     }
     //   ></Button>
     // </div>
-    <div className="bg-white p-.5 pt-4 flex items-center justify-evenly mb-7 text-neutral-400 z-10">
+    <div className="bg-transparent p-.5 pt-4 flex items-center justify-evenly mb-7 text-neutral-400 z-10">
       {/* <Link href="/courses">
         <Button variant="ghost" size="sm">
           <ArrowLeft className="h-5 w-5 stroke-2 text-neutral-400" />
