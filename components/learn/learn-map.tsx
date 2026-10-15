@@ -12,8 +12,10 @@ import {
   Wine,
 } from "lucide-react";
 import { lessons, units } from "@/db/schema";
+
 import { LessonButton } from "@/app/(main)/learn/lesson-button";
 import { UnitBanner } from "@/app/(main)/learn/unit-banner";
+import { index } from "drizzle-orm/pg-core";
 
 type Lesson = typeof lessons.$inferSelect & { completed: boolean };
 type Unit = typeof units.$inferSelect & { lessons: Lesson[] };
@@ -38,42 +40,50 @@ export const LearnMap = ({
   const pathRef = useRef<SVGPathElement>(null);
   const [points, setPoints] = useState<Point[]>([]);
 
+  //Flatten all points, lessons and unit
+  const allPoints = units.flatMap((unit) => [unit, ...unit.lessons]).map((item, i) => {
+    return {
+      key: i,
+      ...item
+    }
+  })
+  // console.log(allPoints);
   // Flatten all lessons across all units in order
   const allLessons = units.flatMap((unit) => unit.lessons);
-  const currentIndex = allLessons.findIndex((l) => l.id === activeLesson?.id);
+  const currentIndex = allPoints.findIndex((l) => l.id === activeLesson?.id);
 
   useEffect(() => {
     const path = pathRef.current;
-    if (!path || allLessons.length === 0) return;
+    if (!path || allPoints.length === 0) return;
 
     const totalLength = path.getTotalLength();
     const computed: Point[] = [];
 
-    for (let i = 0; i < allLessons.length; i++) {
+    for (let i = 0; i < allPoints.length; i++) {
       //  t is a fraction from 0 to 1. First lesson is t = 0 (mapped to the top of the path), last lesson is t = 1 (bottom).
       //  0.05 addresses the edge case of a single lesson avoiding placing it at the very top edge
-      const t = allLessons.length === 1 ? 0.05 : i / (allLessons.length - 1);
+      const t = allPoints.length === 1 ? 0.05 : i / (allPoints.length - 1);
       const pt = path.getPointAtLength(t * totalLength);
       computed.push({ x: pt.x, y: pt.y });
     }
 
     setPoints(computed);
-  }, [allLessons.length]);
+  }, [allPoints.length]);
 
-  // Used to place banners just above their first lesson button. 
+  // Used to place banners just above their first lesson button.
   // Unit 1 starts at 0, Unit 2 starts at however many lessons Unit 1 has, etc.
-  let globalIndex = 0;
-  const unitStartIndices: { unit: Unit; startIndex: number }[] = units.map(
-    (unit) => {
-      const startIndex = globalIndex;
-      globalIndex += unit.lessons.length;
-      return { unit, startIndex };
-    },
-  );
+  // let globalIndex = 0;
+  // const unitStartIndices: { unit: Unit; startIndex: number }[] = units.map(
+  //   (unit) => {
+  //     const startIndex = globalIndex;
+  //     globalIndex += unit.lessons.length;
+  //     return { unit, startIndex };
+  //   },
+  // );
 
   return (
     <div className="relative w-full z-10 lg:-top-4">
-       {/* <img src="/map-path-only.svg" alt="" className="w-full h-auto block" /> */}
+      {/* <img src="/map-path-only.svg" alt="" className="w-full h-auto block" /> */}
       <svg
         viewBox="0 0 416 2928"
         className="w-full h-auto block"
@@ -344,37 +354,56 @@ export const LearnMap = ({
       {/* Lesson buttons */}
       {/* points.length > 0 guards against rendering before the effect runs. */}
       {/* Converting SVG coords to percentages (x / 416 * 100) makes positions scale correctly at any screen width — the SVG image scales with w-full, and percentage-based left/top scale with it. -translate-x-1/2 -translate-y-1/2 centers each button on its point rather than placing its top-left corner there. */}
+
       {points.length > 0 &&
-        allLessons.map((lesson, index) => {
+        allPoints.map((item, index) => {
+          function isLesson(item: unknown): item is Lesson {
+            return (
+              typeof item === "object" && item !== null && "completed" in item
+            );
+          }
+
           const point = points[index];
           const xPct = (point.x / 416) * 100;
           const yPct = (point.y / 2928) * 100;
-          const isCurrent = lesson.id === activeLesson?.id;
-          const isLocked = !lesson.completed && !isCurrent;
+          if (isLesson(item)) {
+            const isCurrent = item.id === activeLesson?.id;
+            const isLocked = !item.completed && !isCurrent;
 
-          return (
-            <div
-              key={lesson.id}
-              className="absolute -translate-x-1/2 -translate-y-1/2"
-              style={{ left: `${xPct}%`, top: `${yPct}%` }}
-            >
-              <LessonButton
-                id={lesson.id}
-                lessonTitle={lesson.title}
-                index={index}
-                totalCount={allLessons.length - 1}
-                current={isCurrent}
-                locked={isLocked}
-                percentage={activeLessonPercentage}
-                iconIndex={index % icons.length}
-                currentIndex={currentIndex}
-              />
-            </div>
-          );
+            return (
+              <div
+                key={item.key}
+                className="absolute -translate-x-1/2"
+                style={{ left: `${xPct}%`, top: `${yPct}%` }}
+              >
+                <LessonButton
+                  id={item.id}
+                  lessonTitle={item.title}
+                  index={index}
+                  totalCount={allPoints.length - 1}
+                  current={isCurrent}
+                  locked={isLocked}
+                  percentage={activeLessonPercentage}
+                  iconIndex={index % icons.length}
+                  currentIndex={currentIndex}
+                />
+              </div>
+            );
+          } else {
+            return (
+              <div
+                key={item.key}
+                className="absolute w-full -translate-y-1/2"
+                style={{ top: `${yPct}%`, left: 0 }}
+              >
+                <UnitBanner title={item.title} description={item.description} />
+              </div>
+            );
+          }
         })}
 
       {/* Unit banners — positioned just above each unit's first lesson */}
-      {points.length > 0 &&
+      {/* {points.length > 0 &&
         unitStartIndices.map(({ unit, startIndex }) => {
           const point = points[startIndex];
           if (!point) return null;
@@ -384,13 +413,13 @@ export const LearnMap = ({
           return (
             <div
               key={unit.id}
-              className="absolute w-full -translate-y-[200px]"
+              className="absolute w-full -translate-y-[160px]"
               style={{ top: `${yPct}%`, left: 0 }}
             >
               <UnitBanner title={unit.title} description={unit.description} />
             </div>
           );
-        })}
+        })} */}
     </div>
   );
 };

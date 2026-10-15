@@ -54,7 +54,7 @@ const main = async () => {
         id: 4,
         courseId: 1,
         title: "Drinks Menu",
-        description: "Coming Soon",
+        description: "Cocktails, Wines By The Glass & Beer",
         order: 40,
       },
       {
