@@ -18,6 +18,7 @@ import { Quests } from "@/components/quests";
 import { ScrollingHeader } from "./scrolling-header";
 import { Updates } from "@/components/updates";
 import { LearnFeedWrapper } from "@/components/learn-feed-wrapper";
+import { LearnMap } from "@/components/learn/learn-map";
 
 export const LearnPageContent = async () => {
   const { userId, isAuthenticated, redirectToSignIn } = await auth();
@@ -68,27 +69,15 @@ export const LearnPageContent = async () => {
           courseTitle={userProgress.activeCourse.title}
           units={units}
         >
-          {/* Header needs to display the unit title,
-        each time a unit scroll to the header, it needs to update */}
-          {units.map((unit) => (
-            <div key={unit.id}>
-              <Unit
-                id={unit.id}
-                order={unit.order}
-                description={unit.description}
-                title={unit.title}
-                lessons={unit.lessons}
-                activeLesson={
-                  courseProgress.activeLesson as
-                    | (typeof lessons.$inferSelect & {
-                        unit: typeof unitsSchema.$inferSelect;
-                      })
-                    | undefined
-                }
-                activeLessonPercentage={lessonPercentage}
-              />
-            </div>
-          ))}
+        <LearnMap
+      units={units}
+      activeLesson={
+        courseProgress.activeLesson as
+          | (typeof lessons.$inferSelect & { unit: typeof unitsSchema.$inferSelect })
+          | undefined
+      }
+      activeLessonPercentage={lessonPercentage}
+    />
         </ScrollingHeader>
       </LearnFeedWrapper>
     </div>

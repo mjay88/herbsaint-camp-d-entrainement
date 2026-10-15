@@ -8,7 +8,7 @@ type Props = {
   lessonCount: number;
   render: (points: Point[]) => React.ReactNode;
 };
-
+//TODO: Delete Component not in use
 export const MapPath = ({ lessonCount, render }: Props) => {
   const pathRef = useRef<SVGPathElement>(null);
   const [points, setPoints] = useState<Point[]>([]);

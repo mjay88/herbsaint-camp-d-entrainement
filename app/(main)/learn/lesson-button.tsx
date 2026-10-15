@@ -45,22 +45,22 @@ export const LessonButton = ({
   iconIndex,
   currentIndex,
 }: Props) => {
-  const cycleLength = 8;
-  const cycleIndex = index % cycleLength;
+  // const cycleLength = 8;
+  // const cycleIndex = index % cycleLength;
 
-  let indentationLevel;
+  // let indentationLevel;
 
-  if (cycleIndex <= 2) {
-    indentationLevel = cycleIndex;
-  } else if (cycleIndex <= 4) {
-    indentationLevel = 4 - cycleIndex;
-  } else if (cycleIndex <= 6) {
-    indentationLevel = 4 - cycleIndex;
-  } else {
-    indentationLevel = cycleIndex - 8;
-  }
+  // if (cycleIndex <= 2) {
+  //   indentationLevel = cycleIndex;
+  // } else if (cycleIndex <= 4) {
+  //   indentationLevel = 4 - cycleIndex;
+  // } else if (cycleIndex <= 6) {
+  //   indentationLevel = 4 - cycleIndex;
+  // } else {
+  //   indentationLevel = cycleIndex - 8;
+  // }
 
-  const rightPosition = indentationLevel * 40;
+  // const rightPosition = indentationLevel * 40;
 
   const isFirst = index === 0;
   const isLast = index === totalCount;
@@ -97,8 +97,8 @@ export const LessonButton = ({
       <div
         className="relative z-9"
         style={{
-          right: `${rightPosition}px`,
-          marginTop: 24,
+          // right: `${rightPosition}px`,
+          // marginTop: 24,
         }}
       >
         {current ? (

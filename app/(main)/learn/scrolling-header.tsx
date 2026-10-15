@@ -48,24 +48,21 @@ export const ScrollingHeader = ({ courseTitle, units, children }: Props) => {
     <>
       <div
         ref={headerRef}
-        className="sticky top-5 lg:top-0 border-t-white border-t-[20px] border-white rounded-t-xl z-10"
+        className="sticky top-10 lg:top-0 border-t-white border-t-[20px] border-white rounded-t-xl z-25"
       >
         <Header title={activeTitle} />
       </div>
-      <div className="">
 
       {React.Children.map(children, (child, i) => (
         <div
-        key={units[i]?.id}
-        ref={(el) => {
-          if (el && units[i]) unitRefs.current.set(units[i].id, el);
-        }}
-        className=""
+          key={units[i]?.id}
+          ref={(el) => {
+            if (el && units[i]) unitRefs.current.set(units[i].id, el);
+          }}
         >
           {child}
         </div>
       ))}
-      </div>
     </>
   );
 };
