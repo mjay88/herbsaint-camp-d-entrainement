@@ -28,7 +28,10 @@ export const LearnPageContent = async () => {
   //TODO: When the first lesson is completed. Navigating back to learn from the lesson/footer does and then navigating to the next lesson does not refresh state in the Quiz component so if(!challenge) logic fires. May have something to do with updateTags. Current work around is using window.location.href in footer
   const userProgress = await getUserProgress(userId);
   //New pattern do to cacheComponents no cookies and headers in functions flagged with "use cache"
-  const units = await getUnits(userProgress?.activeCourseId ?? null, userId);
+
+
+  //filter out Dessert Menu Unit. I didn't want to remove it from the seed file so it can be accessed later as a stand alone file. 
+  const units = (await getUnits(userProgress?.activeCourseId ?? null, userId)).filter(unit => unit.id !== 2);
 
   const courseProgress = await getCourseProgress(
     userId,

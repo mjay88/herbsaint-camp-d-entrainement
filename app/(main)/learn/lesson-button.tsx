@@ -64,7 +64,9 @@ export const LessonButton = ({
 
   const isFirst = index === 0;
   const isLast = index === totalCount;
-
+  //For testing
+   
+  // const isCompleted = !current && !locked;
   const isCompleted = index < currentIndex && !current;
 
   const icons = [Shrimp, Fish, Drumstick, Salad, Beef, BottleWine, Wine];
@@ -85,9 +87,9 @@ export const LessonButton = ({
                 : lessonTitle.includes("Dessert Menu and Suggested Pairings")
                   ? IceCreamBowl
                   : icons[iconIndex % icons.length];
-
   const href = isCompleted ? `/lesson/${id}` : "/lesson";
   //TODO: add mobile tool tips for
+ 
   return (
     <Link
       href={locked ? "#" : href}
@@ -96,10 +98,12 @@ export const LessonButton = ({
     >
       <div
         className="relative z-9"
-        style={{
-          // right: `${rightPosition}px`,
-          // marginTop: 24,
-        }}
+        style={
+          {
+            // right: `${rightPosition}px`,
+            // marginTop: 24,
+          }
+        }
       >
         {current ? (
           <div className="relative h-[102px] w-[102px] mb-12">
@@ -122,7 +126,7 @@ export const LessonButton = ({
               <Button
                 size="rounded"
                 variant={locked ? "locked" : "secondary"}
-                className="h-[70px] w-[70px] border-b-8"
+                className="h-[70px] w-[70px] border-b-8 active:border-b-4"
               >
                 <Icon
                   className={cn(
