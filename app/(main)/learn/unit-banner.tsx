@@ -28,14 +28,14 @@ export const UnitBanner = ({ title, description }: Props) => {
     //     }
     //   ></Button>
     // </div>
-    <div className="bg-transparent p-.5 pt-4 flex items-center justify-evenly mb-7 text-neutral-400 z-10">
+    <div className="bg-transparent p-.5 pt-4 flex items-center justify-evenly mb-10 text-neutral-400 z-10">
       {/* <Link href="/courses">
         <Button variant="ghost" size="sm">
           <ArrowLeft className="h-5 w-5 stroke-2 text-neutral-400" />
         </Button>
       </Link> */}
       <div className="border-2 flex-1 mx-3" />
-      <h1 className="font-bold text-base">{title}</h1>
+      <h1 className="font-bold text-base text-center">{title}</h1>
        <div className="border-2 flex-1 mx-3" />
       {/* since we are using justify between, add an empty div to split the space evenly 3 ways and put the h1 perfectly centered */}
       {/* <div /> */}

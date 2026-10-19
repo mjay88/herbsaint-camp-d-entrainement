@@ -18,13 +18,13 @@ export const Header = ({ title }: Props) => {
     //   {/* since we are using justify between, add an empty div to split the space evenly 3 ways and put the h1 perfectly centered */}
     //   <div />
     // </div>
-    <div className="relative">
+    <div className="relative lg:my-7">
       <div className="absolute block -top-20 w-full h-30 z-49 bg-white"></div>
-      <div className="relative w-full rounded-xl bg-orange-500 p-5 text-white flex items-center justify-between z-50">
+      <div className="relative w-full h-22 rounded-xl bg-orange-500 p-5 text-white flex items-center justify-center z-50">
         <div className="space-y-2.5">
-          <h3 className="text-2xl font-bold">{title}</h3>
+          <h3 className="text-xl lg:text-2xl font-bold">{title}</h3>
         </div>
-
+{/* 
         <Button
           nativeButton={false}
           size="xxl"
@@ -36,7 +36,7 @@ export const Header = ({ title }: Props) => {
               <NotebookText className="size-10" />
             </Link>
           }
-        ></Button>
+        ></Button> */}
       </div>
     </div>
   );

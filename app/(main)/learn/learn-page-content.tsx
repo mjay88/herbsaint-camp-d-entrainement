@@ -14,7 +14,6 @@ import {
 } from "@/db/queries";
 import { redirect } from "next/navigation";
 import { lessons, units as unitsSchema } from "@/db/schema";
-import { Quests } from "@/components/quests";
 import { ScrollingHeader } from "./scrolling-header";
 import { Updates } from "@/components/updates";
 import { LearnFeedWrapper } from "@/components/learn-feed-wrapper";
@@ -72,15 +71,25 @@ export const LearnPageContent = async () => {
           courseTitle={userProgress.activeCourse.title}
           units={units}
         >
-        <LearnMap
-      units={units}
-      activeLesson={
-        courseProgress.activeLesson as
-          | (typeof lessons.$inferSelect & { unit: typeof unitsSchema.$inferSelect })
-          | undefined
-      }
-      activeLessonPercentage={lessonPercentage}
-    />
+       {units.map((unit) => (
+          <div key={unit.id}>
+            <Unit
+              id={unit.id}
+              order={unit.order}
+              description={unit.description}
+              title={unit.title}
+              lessons={unit.lessons}
+              activeLesson={
+                courseProgress.activeLesson as
+                  | (typeof lessons.$inferSelect & {
+                      unit: typeof unitsSchema.$inferSelect;
+                    })
+                  | undefined
+              }
+              activeLessonPercentage={lessonPercentage}
+            />
+          </div>
+        ))}
         </ScrollingHeader>
       </LearnFeedWrapper>
     </div>
