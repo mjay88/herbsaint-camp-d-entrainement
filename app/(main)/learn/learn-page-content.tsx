@@ -59,7 +59,7 @@ export const LearnPageContent = async () => {
   }
 
   return (
-    <div className="flex flex-row-reverse gap-[48px] px-6">
+    <div className="flex flex-row-reverse gap-[48px] px-3 lg:px-6">
       <StickyWrapper>
         <UserProgress
           points={userProgress.points}

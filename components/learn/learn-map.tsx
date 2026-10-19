@@ -400,6 +400,8 @@ export const LearnMap = ({
             return (
               <div
                 key={item.key}
+                //attribute so scrolling header works
+                data-unit-id={item.id}
                 className="absolute w-full -translate-y-1/2"
                 style={{ top: `${yPct}%`, left: 0 }}
               >

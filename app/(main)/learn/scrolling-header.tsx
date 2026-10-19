@@ -26,7 +26,7 @@ export const ScrollingHeader = ({ courseTitle, units, children }: Props) => {
 
       let currentTitle = courseTitle;
       units.forEach((unit) => {
-        const el = unitRefs.current.get(unit.id);
+        const el = document.querySelector(`[data-unit-id="${unit.id}"]`);
         if (!el) return;
         const top = el.getBoundingClientRect().top;
         if (top <= headerBottom) {
@@ -36,7 +36,7 @@ export const ScrollingHeader = ({ courseTitle, units, children }: Props) => {
           currentTitle = courseTitle;
         }
       });
-
+      console.log("currentTitle: ", currentTitle);
       setActiveTitle(currentTitle);
     };
 
@@ -48,21 +48,12 @@ export const ScrollingHeader = ({ courseTitle, units, children }: Props) => {
     <>
       <div
         ref={headerRef}
-        className="sticky top-10 lg:top-0 border-t-white border-t-[20px] border-white rounded-t-xl z-25"
+        className="sticky top-10 lg:top-5 z-25"
       >
         <Header title={activeTitle} />
       </div>
 
-      {React.Children.map(children, (child, i) => (
-        <div
-          key={units[i]?.id}
-          ref={(el) => {
-            if (el && units[i]) unitRefs.current.set(units[i].id, el);
-          }}
-        >
-          {child}
-        </div>
-      ))}
+      <div>{children}</div>
     </>
   );
 };
