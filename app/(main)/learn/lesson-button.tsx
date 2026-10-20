@@ -60,7 +60,7 @@ export const LessonButton = ({
     indentationLevel = cycleIndex - 8;
   }
 
-  const rightPosition = indentationLevel * 40;
+  const rightPosition = indentationLevel * 30;
 
   const isFirst = index === 0;
   const isLast = index === totalCount;

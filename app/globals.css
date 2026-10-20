@@ -11,13 +11,47 @@ body,
   @apply h-full;
 }
 @keyframes bounce-limited {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
     transform: translateY(-8px); /* adjust this value for range */
   }
 }
+@keyframes alt-bounce-limited {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px); /* adjust this value for range */
+  }
+}
+@keyframes back-and-forth {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-6px); /* adjust this value for range */
+  }
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg) translateX(50px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(50px) rotate(-360deg);
+  }
+}
+
+@keyframes spin-top {
+  0%   { transform: rotateX(5deg) rotateY(0deg); }
+  100% { transform: rotateX(5deg) rotateY(360deg); }
+}
+
 
 @theme inline {
   --font-heading: var(--font-sans);
@@ -60,7 +94,11 @@ body,
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
-  --animate-bounce-slow: bounce-limited 1.5s infinite;
+  --animate-bounce-slow: bounce-limited 3s infinite;
+  --animate-bounce-slow-alt: alt-bounce-limited 3s infinite 0.75s;
+  --animate-orbit: orbit 4s linear infinite;
+  --animate-spin-top: spin-top 1.5s linear infinite;
+  --animate-back-and-forth: back-and-forth 3s infinite;
 }
 
 :root {

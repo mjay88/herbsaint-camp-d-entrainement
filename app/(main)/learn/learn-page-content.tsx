@@ -18,9 +18,11 @@ import { ScrollingHeader } from "./scrolling-header";
 import { Updates } from "@/components/updates";
 import { LearnFeedWrapper } from "@/components/learn-feed-wrapper";
 import { LearnMap } from "@/components/learn/learn-map";
+import Image from "next/image";
 
 export const LearnPageContent = async () => {
   const { userId, isAuthenticated, redirectToSignIn } = await auth();
+  
   if (!isAuthenticated) {
     return redirectToSignIn();
   }
@@ -67,6 +69,7 @@ export const LearnPageContent = async () => {
         <Updates />
       </StickyWrapper>
       <LearnFeedWrapper>
+       
         <ScrollingHeader
           courseTitle={userProgress.activeCourse.title}
           units={units}
