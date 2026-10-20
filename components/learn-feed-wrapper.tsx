@@ -10,7 +10,7 @@ type Props = {
 export const LearnFeedWrapper = ({ children }: Props) => {
   const isMobile = useMedia("(max-width: 425px", true);
   return (
-    <div className="flex-1 relative lg:top-0 pb-10"
+    <div className="flex-1 relative lg:top-0 mb-40"
    
     >
       <Image
@@ -73,7 +73,7 @@ export const LearnFeedWrapper = ({ children }: Props) => {
         height={isMobile ? 115 : 165}
         width={isMobile ? 115 : 165}
         alt="Gumbo"
-        className="absolute animate-back-and-forth"
+        className="absolute animate-bounce-slow-alt"
         style={{
           right: isMobile ? "62%" : "70%",
           top: isMobile ? "68.5%" : "68.9%",
@@ -81,23 +81,23 @@ export const LearnFeedWrapper = ({ children }: Props) => {
       />
        <Image
         src="/menu-drawings/table-square.webp"
-        height={isMobile ? 100 : 165}
-        width={isMobile ? 100 : 165}
+        height={isMobile ? 125 : 175}
+        width={isMobile ? 125 : 175}
         alt="Gumbo"
         className="absolute animate-back-and-forth"
         style={{
-          left: isMobile ? "67%" : "70%",
+             right: isMobile ? "2%" : "2%",
           top: isMobile ? "64.5%" : "63.5%",
         }}
       />
        <Image
         src="/menu-drawings/wine-bottles.webp"
-        height={isMobile ? 100 : 165}
-        width={isMobile ? 100 : 165}
+       height={isMobile ? 125 : 175}
+        width={isMobile ? 125 : 175}
         alt="Gumbo"
         className="absolute animate-back-and-forth"
         style={{
-          left: isMobile ? "62%" : "64%",
+          right: isMobile ? "9%" : "2%",
           top: isMobile ? "77.5%" : "75.5%",
         }}
       />
@@ -110,6 +110,17 @@ export const LearnFeedWrapper = ({ children }: Props) => {
         style={{
           right: isMobile ? "10%" : "12%",
           top: isMobile ? "90.5%" : "87.9%",
+        }}
+      />
+       <Image
+        src="/menu-drawings/bar-and-bottle-shelf.webp"
+        height={isMobile ? 200 : 300}
+        width={isMobile ? 200 : 300}
+        alt="Gumbo"
+        className="absolute animate-back-and-forth"
+        style={{
+          left: isMobile ? "5%" : "5%",
+          top: isMobile ? "99.5%" : "98.9%",
         }}
       />
       {children}
