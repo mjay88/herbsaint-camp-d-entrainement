@@ -5,11 +5,12 @@ import { redirect } from "next/navigation";
 import { FeedWrapper } from "@/components/feed-wrapper";
 import { StickyWrapper } from "@/components/sticky-wrapper";
 import { UserProgress } from "@/components/user-progress";
-import { getTopTenUsers, getUserProgress } from "@/db/queries";
+import { getCoursePercentage, getTopTenUsers, getUserProgress } from "@/db/queries";
 
 import { Separator } from "@/components/ui/separator";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Quests } from "@/components/quests";
+import { Updates } from "@/components/updates";
 
 const LeaderBoardPage = async () => {
   const { userId, isAuthenticated, redirectToSignIn } = await auth();
@@ -23,11 +24,17 @@ const LeaderBoardPage = async () => {
     redirect("/courses");
   }
 
+  const coursePercentage = await getCoursePercentage(
+    userId,
+    userProgress?.activeCourseId ?? null,
+  );
+
   return (
     <div className="flex flex-row-reverse gap-[48px] px-6">
       <StickyWrapper>
-        <UserProgress points={userProgress.points} />
-        <Quests points={userProgress.points} />
+        <UserProgress points={userProgress.points} percentage={coursePercentage} />
+        {/* <Quests points={userProgress.points} /> */}
+         <Updates />
       </StickyWrapper>
       <FeedWrapper>
         <div className="w-full flex flex-col items-center">

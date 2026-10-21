@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { FeedWrapper } from "@/components/feed-wrapper";
 import { StickyWrapper } from "@/components/sticky-wrapper";
 import { UserProgress } from "@/components/user-progress";
-import { getUserProgress } from "@/db/queries";
+import { getCoursePercentage, getUserProgress } from "@/db/queries";
 import { auth } from "@clerk/nextjs/server";
 import { wineSchedule } from "@/constants";
 // import { Items } from "./items";
@@ -22,10 +22,15 @@ const WineStudyPage = async () => {
     redirect("/courses");
   }
 
+   const coursePercentage = await getCoursePercentage(
+      userId,
+      userProgress?.activeCourseId ?? null,
+    );
+
   return (
     <div className="flex flex-row-reverse gap-[48px] px-6">
       <StickyWrapper>
-        <UserProgress points={userProgress.points}></UserProgress>
+        <UserProgress points={userProgress.points} percentage={coursePercentage}></UserProgress>
         <div>
           <Updates />
         </div>

@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { FeedWrapper } from "@/components/feed-wrapper";
 import { StickyWrapper } from "@/components/sticky-wrapper";
 import { UserProgress } from "@/components/user-progress";
-import { getBlobDocs, getUserProgress } from "@/db/queries";
+import { getBlobDocs, getCoursePercentage, getUserProgress } from "@/db/queries";
 import { auth } from "@clerk/nextjs/server";
 
 // import { Items } from "./items";
@@ -25,10 +25,15 @@ const BodegaPage = async () => {
     redirect("/courses");
   }
 
+   const coursePercentage = await getCoursePercentage(
+        userId,
+        userProgress?.activeCourseId ?? null,
+      );
+
   return (
     <div className="flex flex-row-reverse gap-[48px] px-6">
       <StickyWrapper>
-        <UserProgress points={userProgress.points}></UserProgress>
+        <UserProgress points={userProgress.points} percentage={coursePercentage}></UserProgress>
         <Updates />
       </StickyWrapper>
       <FeedWrapper>
