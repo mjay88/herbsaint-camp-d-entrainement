@@ -33,7 +33,7 @@ export const MobileUserProgress = ({  points, percentage }: Props) => {
             height={25}
             width={25}
             alt="Points"
-            className="-ml-1.5"
+            className="ml-.5"
           />
        
         </Button>

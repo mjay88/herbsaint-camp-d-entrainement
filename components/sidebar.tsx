@@ -4,12 +4,16 @@ import Link from "next/link";
 import { SidebarItem } from "./sidebar-item";
 import { ClerkLoaded, ClerkLoading, UserButton } from "@clerk/nextjs";
 import { Loader } from "lucide-react";
+import { currentUser } from "@clerk/nextjs/server";
 
 type Props = {
   className?: string;
 };
 
 export const Sidebar = async ({ className }: Props) => {
+   const user = await currentUser();
+   const isAdmin = user?.publicMetadata?.role === "admin";
+
   return (
     <div
       className={cn(
@@ -40,6 +44,7 @@ export const Sidebar = async ({ className }: Props) => {
         />
         <SidebarItem label="Wine Study" href="/wine-study" iconSrc="/wine/red-wine-bottle.webp" />
         <SidebarItem label="Bodega" href="/bodega" iconSrc="/shop.svg" />
+        {isAdmin && <SidebarItem label="User Progress" href="/user-progress" iconSrc="/percent.svg" height={24} width={24}/>}
       </div>
       <div className="p-4">
         <ClerkLoading>

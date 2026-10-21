@@ -9,9 +9,11 @@ type Props = {
   label: string;
   iconSrc: string;
   href: string;
+  height?: number;
+  width?: number;
 };
 
-export const SidebarItem = ({ label, iconSrc, href }: Props) => {
+export const SidebarItem = ({ label, iconSrc, href, height, width }: Props) => {
   const pathname = usePathname();
   const active = pathname === href;
 
@@ -26,8 +28,8 @@ export const SidebarItem = ({ label, iconSrc, href }: Props) => {
             src={iconSrc}
             alt={label}
             className="mr-5"
-            height={32}
-            width={32}
+            height={height ?? 32}
+            width={width ?? 32}
           />
           {label}
         </Link>

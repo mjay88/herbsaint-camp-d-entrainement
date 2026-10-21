@@ -1,6 +1,6 @@
 import { db } from "@/db/drizzle";
 import { cacheLife, cacheTag } from "next/cache";
-import { challengeOptions } from "./schema";
+import { challengeOptions, challengeProgress } from "./schema";
 import { list } from "@vercel/blob";
 //get all courses
 export const getCourses = async () => {
@@ -173,6 +173,47 @@ export const getCourseProgress = async (
   };
 };
 /**
+ * returns user object for training course with 
+ * 
+ */
+export const getAllUsersCourseCompletedPercentage = async () => {
+  "use cache"
+   cacheTag(`users-completed-course-percentage:all`)
+   cacheLife("hours");
+
+  //get all users in the course with their challenge progress
+  const users = await db.query.userProgress.findMany({
+    where: { activeCourseId: 1 },
+  });
+  //get challenge_progress data
+  const challengeProgress = await db.query.challengeProgress.findMany();
+
+  // {
+  //   user: {completedChallenges: [allCompletedHere].length}
+  // }
+  //get total challenges length first then I can return a percentage as a new user property.
+  const totalChallenges = (await db.query.challenges.findMany()).length;
+  // user.course.unit.lessons.challenges.challengeProgress
+
+  const data = users.map((user) => {
+    return {
+      ...user,
+      courseCompletedPercentage: Math.round(
+        (challengeProgress.filter((challenge) => {
+          if (user.userId === challenge.userId) {
+            return challenge.completed;
+          }
+          //calculate percentage from completed challenges and total challenges length
+        }).length /
+          totalChallenges) *
+          100,
+      ),
+    };
+  });
+  return data.sort((a, b) => b.courseCompletedPercentage - a.courseCompletedPercentage);
+};
+
+/**
  *
  * @param authenticatedUserId
  * @param activeCourseId
@@ -342,6 +383,6 @@ export const getTopTenUsers = async (userId: string | null) => {
 export async function getBlobDocs() {
   const { blobs } = await list({
     token: process.env.BLOB_READ_WRITE_TOKEN,
-  })
+  });
   return blobs; // array of { url, pathname, size, uploadedAt, ... }
 }

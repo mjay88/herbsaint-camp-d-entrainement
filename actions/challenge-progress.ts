@@ -69,6 +69,7 @@ export const upsertChallengeProgress = async (activeChallengeId: number) => {
     updateTag(
       `course-percentage-userId-${activeUserId ?? "none"}-activeCourseId-${currentUserProgress.activeCourseId ?? "none"}`,
     );
+    updateTag(`users-completed-course-percentage:all`)
     updateTag("leaderboard");
     /**
      * Was using these a catch all cache revalidations for everything on /learn and /lesson pages, but everything seems to be working now with updateTags
