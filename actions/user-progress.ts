@@ -19,7 +19,7 @@ import { eq } from "drizzle-orm";
  * 
  */
 
-export const upsertUserProgress = async (courseId: number) => {
+export const upsertUserProgress = async (courseId: number, newUserId?: number) => {
   
   const { userId } = await auth();
   const user = await currentUser();

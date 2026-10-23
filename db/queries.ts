@@ -13,6 +13,13 @@ export const getCourses = async () => {
 };
 //Had to update pattern because you cannot await auth from inside "use cache". https://nextjs.org/docs/messages/next-request-in-use-cache
 //getUserProgress accepts userId, which is passed in from CoursesPage and LearnPage after calling await auth()
+
+
+/**
+ * 
+ * @param userId 
+ * @returns user_progress for given userId from DB
+ */
 export const getUserProgress = async (userId: string | null) => {
   "use cache";
 

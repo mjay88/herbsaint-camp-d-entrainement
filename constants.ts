@@ -1,3 +1,5 @@
+export const HERBSAINT_TRAINING_COURSE_ID = 1;
+
 export const POINTS_TO_REFILL = 10;
 
 export const quests = [
