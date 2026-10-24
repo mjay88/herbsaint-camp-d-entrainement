@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 import { ExitModal } from "@/components/modals/exit-modal";
 import { PracticeModal } from "@/components/modals/practice-modal";
+import { TutorialModal } from "@/components/modals/tutorial-modal";
 import { Suspense } from "react";
 import Skeleton from "@/components/ui/skeleton";
 
@@ -31,6 +32,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
             <Toaster />
             <ExitModal />
             <PracticeModal />
+            <TutorialModal />
             {children}
           </ClerkProvider>
         </Suspense>
