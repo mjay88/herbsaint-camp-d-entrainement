@@ -39,11 +39,11 @@ export const TutorialModal = () => {
 
   return (
     <Dialog open={isOpen} onOpenChange={close}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="w-[80vw] max-w-[80vw]" >
         <DialogHeader>
           <Carousel>
             <CarouselContent>
-              <CarouselItem>1</CarouselItem>
+              <CarouselItem className="h-[80vh]">1</CarouselItem>
               <CarouselItem>2</CarouselItem>
               <CarouselItem>3</CarouselItem>
             </CarouselContent>
@@ -60,7 +60,7 @@ export const TutorialModal = () => {
               size="lg"
               onClick={close}
             >
-              I understand
+              Exit Tutorial
             </Button>
           </div>
         </DialogFooter>

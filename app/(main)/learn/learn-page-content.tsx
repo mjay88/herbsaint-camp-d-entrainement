@@ -20,16 +20,15 @@ import LearnPageClient from "./learn-page-client";
 
 type Props = {
   showTutorial: boolean;
-} 
+};
 
-export const LearnPageContent = async ({showTutorial}: Props) => {
-  await connection()
+export const LearnPageContent = async ({ showTutorial }: Props) => {
+  await connection();
   const { userId, isAuthenticated, redirectToSignIn } = await auth();
   if (!isAuthenticated) {
     return redirectToSignIn();
   }
-  
- 
+
   const userProgress = await getUserProgress(userId);
 
   //filter out Dessert Menu Unit. I didn't want to remove it from the seed file so it can be accessed later as a stand alone file.
@@ -62,6 +61,13 @@ export const LearnPageContent = async ({showTutorial}: Props) => {
   }
 
   return (
-  <LearnPageClient units={units} courseProgress={courseProgress} coursePercentage={coursePercentage} lesson={lesson} lessonPercentage={lessonPercentage} userProgress={userProgress}/>
+    <LearnPageClient
+      units={units}
+      courseProgress={courseProgress}
+      coursePercentage={coursePercentage}
+      lessonPercentage={lessonPercentage}
+      userProgress={userProgress}
+      showTutorial={showTutorial}
+    />
   );
 };

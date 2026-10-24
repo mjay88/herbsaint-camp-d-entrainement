@@ -14,6 +14,8 @@ import { Updates } from "@/components/updates";
 import { LearnFeedWrapper } from "@/components/learn-feed-wrapper";
 import { ScrollingHeader } from "./scrolling-header";
 import { useRouter } from "next/navigation";
+import { useTutorialModal } from "@/store/use-tutorial-modal";
+import { useMount } from "react-use";
 
 type Props = {
   units: (typeof unitsSchema.$inferSelect & {
@@ -38,14 +40,6 @@ type Props = {
   } | null;
   coursePercentage: number | null;
 
-  lesson:
-    | (typeof lessons.$inferSelect & {
-        challenges: (typeof challenges.$inferSelect & {
-          challengeOptions: (typeof challengeOptions.$inferSelect)[];
-          completed: boolean;
-        })[];
-      })
-    | null;
   lessonPercentage: number;
   userProgress:
     | (typeof userProgress.$inferSelect & {
@@ -57,16 +51,25 @@ type Props = {
       })
     | null
     | undefined;
+  showTutorial: boolean;
 };
 
 const LearnPageClient = ({
   units,
   courseProgress,
   coursePercentage,
-  lesson,
   lessonPercentage,
   userProgress,
+  showTutorial,
 }: Props) => {
+  const { open: openTutorialModal } = useTutorialModal();
+  
+  useMount(() => {
+    if (true || showTutorial) {
+      openTutorialModal();
+    }
+  });
+
   const router = useRouter();
   if (!userProgress || !userProgress.activeCourse) {
     router.push("/learn");
