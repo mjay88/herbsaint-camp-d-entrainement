@@ -5,12 +5,15 @@ import { SidebarItem } from "./sidebar-item";
 import { ClerkLoaded, ClerkLoading, UserButton } from "@clerk/nextjs";
 import { Loader } from "lucide-react";
 import { currentUser } from "@clerk/nextjs/server";
+import { connection } from "next/server";
 
 type Props = {
   className?: string;
 };
 
 export const Sidebar = async ({ className }: Props) => {
+   //connection stops prerendering. Subsequent code only runs at request time instead of trying to prerender.
+   await connection()
    const user = await currentUser();
    const isAdmin = user?.publicMetadata?.role === "admin";
 

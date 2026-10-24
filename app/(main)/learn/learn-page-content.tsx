@@ -15,14 +15,15 @@ import { lessons, units as unitsSchema } from "@/db/schema";
 import { ScrollingHeader } from "./scrolling-header";
 import { Updates } from "@/components/updates";
 import { LearnFeedWrapper } from "@/components/learn-feed-wrapper";
+import { connection } from "next/server";
 
 type Props = {
   showTutorial: boolean;
 } 
 
 export const LearnPageContent = async ({showTutorial}: Props) => {
+  await connection()
   const { userId, isAuthenticated, redirectToSignIn } = await auth();
-
   if (!isAuthenticated) {
     return redirectToSignIn();
   }
@@ -51,13 +52,12 @@ export const LearnPageContent = async ({showTutorial}: Props) => {
     courseProgress?.activeLessonId ?? null,
     lesson ?? null,
   );
-
   if (!userProgress || !userProgress.activeCourse) {
-    redirect("/courses");
+    redirect("/learn");
   }
 
   if (!courseProgress) {
-    redirect("/courses");
+    redirect("/learn");
   }
 
   return (
@@ -83,7 +83,7 @@ export const LearnPageContent = async ({showTutorial}: Props) => {
                 title={unit.title}
                 lessons={unit.lessons}
                 activeLesson={
-                  courseProgress.activeLesson as
+                  courseProgress?.activeLesson as
                     | (typeof lessons.$inferSelect & {
                         unit: typeof unitsSchema.$inferSelect;
                       })

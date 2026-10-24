@@ -5,18 +5,15 @@ import { LearnPageContent } from "./learn-page-content";
 import Skeleton from "@/components/ui/skeleton";
 import { currentUser, auth } from "@clerk/nextjs/server";
 import { enrollNewUser } from "@/actions/onboarding";
-import { redirect } from "next/navigation";
 
 const LearnPage = async () => {
   const { isAuthenticated, redirectToSignIn } = await auth();
-
   if (!isAuthenticated) {
     return redirectToSignIn();
   }
   const user = await currentUser();
   const isFirstTimeLoggingIn = !user?.publicMetadata?.onboarded;
-
-  if (isFirstTimeLoggingIn) {
+  if (!isFirstTimeLoggingIn) {
     await enrollNewUser();
   }
 

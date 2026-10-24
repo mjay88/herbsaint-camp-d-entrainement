@@ -24,6 +24,9 @@ export const enrollNewUser = async () => {
   if (!course) throw new Error("Course not found");
 
   // Insert directly — no revalidateTag, no redirect
+  try {
+
+  
   await db
     .insert(userProgress)
     .values({
@@ -37,6 +40,9 @@ export const enrollNewUser = async () => {
   // Mark as onboarded in Clerk
   const client = await clerkClient();
   await client.users.updateUserMetadata(userId, {
-    publicMetadata: { onboardingComplete: true },
+    publicMetadata: { onboarded: true },
   });
+} catch(error){
+  return {error: "There was an error in enrollNewUser"}
+}
 };
