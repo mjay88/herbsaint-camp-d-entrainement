@@ -40,11 +40,11 @@ export const Sidebar = async ({ className }: Props) => {
           iconSrc="/leaderboard.svg"
         />
 
-        <SidebarItem
+        {/* <SidebarItem
           label="Updates"
           href="/updates"
           iconSrc="/megaphone.svg"
-        />
+        /> */}
         <SidebarItem label="Wine Study" href="/wine-study" iconSrc="/wine/red-wine-bottle.webp" />
         <SidebarItem label="Bodega" href="/bodega" iconSrc="/shop.svg" />
         {isAdmin && <SidebarItem label="User Progress" href="/user-progress" iconSrc="/percent.svg" height={24} width={24}/>}

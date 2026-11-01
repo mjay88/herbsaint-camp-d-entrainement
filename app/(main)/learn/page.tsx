@@ -12,6 +12,7 @@ const LearnPage = async () => {
     return redirectToSignIn();
   }
   const user = await currentUser();
+  //TODO: ADD tutorial after flash card module
   const isFirstTimeLoggingIn = !user?.publicMetadata?.onboarded;
   if (!isFirstTimeLoggingIn) {
     await enrollNewUser();

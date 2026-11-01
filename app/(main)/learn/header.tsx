@@ -1,12 +1,18 @@
 import { Button } from "@/components/ui/button";
+import { UserProgress } from "@/components/user-progress";
+import { useAuth } from "@clerk/nextjs";
 import { ArrowLeft, NotebookText } from "lucide-react";
 import Link from "next/link";
 
 type Props = {
   title: string;
+   points: number;
+  coursePercentage?: number | null;
 };
 
-export const Header = ({ title }: Props) => {
+export const Header = ({ title, points, coursePercentage }: Props) => {
+
+   
   return (
     // <div className="sticky bg-white pb-3 lg:pt-[28px] lg:mt-[-28px] flex items-center justify-between border-b-2 mb-5 text-neutral-400 lg:z-50">
     //   <Link href="/courses">
@@ -24,6 +30,14 @@ export const Header = ({ title }: Props) => {
         <div className="space-y-2.5">
           <h3 className="text-xl lg:text-2xl font-bold">{title}</h3>
         </div>
+        {/* TODO: Looks dumb */}
+        {/* <div className="hidden w-1/2 md:flex bg-white p-3 rounded-xl">
+
+           <UserProgress
+          points={points}
+          percentage={coursePercentage}
+          />
+        </div> */}
 {/* 
         <Button
           nativeButton={false}

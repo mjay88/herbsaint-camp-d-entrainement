@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { CircularProgressbarWithChildren } from "react-circular-progressbar";
+import { useMedia } from "react-use";
 
 type Props = {
   id: number;
@@ -45,6 +46,8 @@ export const LessonButton = ({
   iconIndex,
   currentIndex,
 }: Props) => {
+    const isMobile = useMedia("(max-width: 1024px", true);
+
   const cycleLength = 8;
   const cycleIndex = index % cycleLength;
 
@@ -60,7 +63,7 @@ export const LessonButton = ({
     indentationLevel = cycleIndex - 8;
   }
 
-  const rightPosition = indentationLevel * 30;
+  const rightPosition = (isMobile ? 30 :  90) * indentationLevel;
 
   const isFirst = index === 0;
   const isLast = index === totalCount;

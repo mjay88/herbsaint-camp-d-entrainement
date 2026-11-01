@@ -65,7 +65,7 @@ const LearnPageClient = ({
   const { open: openTutorialModal } = useTutorialModal();
   
   useMount(() => {
-    if (true || showTutorial) {
+    if (showTutorial) {
       openTutorialModal();
     }
   });
@@ -82,17 +82,20 @@ const LearnPageClient = ({
   }
   return (
     <div className="flex flex-row-reverse gap-[48px] px-3 lg:px-6">
-      <StickyWrapper>
+      {/* <StickyWrapper>
         <UserProgress
           points={userProgress.points}
           percentage={coursePercentage}
         />
+       TODO: Remove permantely, out of scope
         <Updates />
-      </StickyWrapper>
+      </StickyWrapper> */}
       <LearnFeedWrapper>
         <ScrollingHeader
           courseTitle={userProgress.activeCourse.title}
           units={units}
+          points={userProgress.points}
+          coursePercentage={coursePercentage}
         >
           {units.map((unit) => (
             <div key={unit.id}>

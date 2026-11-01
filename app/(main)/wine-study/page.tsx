@@ -32,7 +32,8 @@ const WineStudyPage = async () => {
       <StickyWrapper>
         <UserProgress points={userProgress.points} percentage={coursePercentage}></UserProgress>
         <div>
-          <Updates />
+         {/* TODO: Remove permantely, out of scope */}
+        {/* <Updates /> */}
         </div>
       </StickyWrapper>
       <FeedWrapper>

@@ -34,7 +34,8 @@ const BodegaPage = async () => {
     <div className="flex flex-row-reverse gap-[48px] px-6">
       <StickyWrapper>
         <UserProgress points={userProgress.points} percentage={coursePercentage}></UserProgress>
-        <Updates />
+        {/* TODO: Remove permantely, out of scope */}
+        {/* <Updates /> */}
       </StickyWrapper>
       <FeedWrapper>
         <div className="w-full flex flex-col items-center">

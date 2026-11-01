@@ -5,7 +5,11 @@ import { redirect } from "next/navigation";
 import { FeedWrapper } from "@/components/feed-wrapper";
 import { StickyWrapper } from "@/components/sticky-wrapper";
 import { UserProgress } from "@/components/user-progress";
-import { getCoursePercentage, getTopTenUsers, getUserProgress } from "@/db/queries";
+import {
+  getCoursePercentage,
+  getTopTenUsers,
+  getUserProgress,
+} from "@/db/queries";
 
 import { Separator } from "@/components/ui/separator";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
@@ -32,9 +36,13 @@ const LeaderBoardPage = async () => {
   return (
     <div className="flex flex-row-reverse gap-[48px] px-6">
       <StickyWrapper>
-        <UserProgress points={userProgress.points} percentage={coursePercentage} />
+        <UserProgress
+          points={userProgress.points}
+          percentage={coursePercentage}
+        />
         {/* <Quests points={userProgress.points} /> */}
-         <Updates />
+        {/* TODO: Remove permantely, out of scope */}
+        {/* <Updates /> */}
       </StickyWrapper>
       <FeedWrapper>
         <div className="w-full flex flex-col items-center">

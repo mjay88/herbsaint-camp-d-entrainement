@@ -12,9 +12,11 @@ type Props = {
   courseTitle: string;
   units: Unit[];
   children: React.ReactNode;
+  points: number;
+  coursePercentage?: number | null;
 };
 
-export const ScrollingHeader = ({ courseTitle, units, children }: Props) => {
+export const ScrollingHeader = ({ courseTitle, units, children, points, coursePercentage }: Props) => {
   const [activeTitle, setActiveTitle] = useState(courseTitle);
   const unitRefs = useRef<Map<number, HTMLDivElement>>(new Map());
   const headerRef = useRef<HTMLDivElement>(null);
@@ -50,7 +52,7 @@ export const ScrollingHeader = ({ courseTitle, units, children }: Props) => {
         ref={headerRef}
         className="sticky top-14 lg:top-5 z-25"
       >
-        <Header title={activeTitle} />
+        <Header title={activeTitle} points={points} coursePercentage={coursePercentage} />
       </div>
 
         {React.Children.map(children, (child, i) => (
