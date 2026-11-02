@@ -1,4 +1,13 @@
-import { integer, pgEnum, pgTable, serial, text, boolean } from "drizzle-orm/pg-core";
+import { table } from "console";
+import {
+  integer,
+  pgEnum,
+  pgTable,
+  serial,
+  text,
+  boolean,
+  unique,
+} from "drizzle-orm/pg-core";
 export const courses = pgTable("courses", {
   id: serial("id").primaryKey(),
   title: text("title").notNull(),
@@ -35,7 +44,11 @@ export const lessons = pgTable("lessons", {
   order: integer("order").notNull(),
 });
 
-export const challengesEnum = pgEnum("type", ["SELECT", "ASSIST", "CURRICULUM"]);
+export const challengesEnum = pgEnum("type", [
+  "SELECT",
+  "ASSIST",
+  "CURRICULUM",
+]);
 
 export const challenges = pgTable("challenges", {
   id: serial("id").primaryKey(),
@@ -60,9 +73,40 @@ export const challengeOptions = pgTable("challenge_options", {
 
 export const challengeProgress = pgTable("challenge_progress", {
   id: serial("id").primaryKey(),
-  userId: text("user_id").notNull(), 
+  userId: text("user_id").notNull(),
   challengeId: integer("challenge_id")
     .references(() => challenges.id, { onDelete: "cascade" })
     .notNull(),
   completed: boolean("completed").notNull().default(false),
 });
+
+export const cardsEnum = pgEnum("category", [
+  "SOUPS & SALADS",
+  "SIDES",
+  "SMALL PLATES",
+  "MAIN COURSES",
+  "DESSERTS",
+  "COCKTAILS",
+  "WINES BY THE GLASS",
+  "BEER & CIDER",
+]);
+
+export const cards = pgTable("cards", {
+  id: serial("id").primaryKey(),
+  category: cardsEnum("category").notNull(),
+  title: text("title").notNull(),
+  description: text("description").notNull(),
+  imageSrc: text("image_src"),
+});
+
+export const userSavedCards = pgTable(
+  "userSavedCards",
+  {
+    id: serial("id").primaryKey(),
+    userId: text("user_id").notNull(),
+    cardId: integer("card_id")
+      .references(() => cards.id, { onDelete: "cascade" })
+      .notNull(),
+  },
+  (t) => [unique().on(t.userId, t.cardId)],
+);

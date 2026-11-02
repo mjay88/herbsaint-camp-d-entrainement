@@ -57,4 +57,12 @@ export const relations = defineRelations(schema, (r) => ({
       to: r.challenges.id,
     }),
   },
+
+
+  userSavedCards: {
+    cards: r.one.cards({//each userSavedCard row belongs to one card in the card table
+      from: r.userSavedCards.cardId,
+      to: r.cards.id,
+    }),
+  },
 }));

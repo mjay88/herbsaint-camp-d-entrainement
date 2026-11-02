@@ -1,7 +1,8 @@
 import { db } from "@/db/drizzle";
 import { cacheLife, cacheTag } from "next/cache";
-import { challengeOptions, challengeProgress } from "./schema";
 import { list } from "@vercel/blob";
+import { CARD_CATEGORIES } from "@/constants";
+import { cards } from "./schema";
 //get all courses
 export const getCourses = async () => {
   "use cache";
@@ -14,10 +15,9 @@ export const getCourses = async () => {
 //Had to update pattern because you cannot await auth from inside "use cache". https://nextjs.org/docs/messages/next-request-in-use-cache
 //getUserProgress accepts userId, which is passed in from CoursesPage and LearnPage after calling await auth()
 
-
 /**
- * 
- * @param userId 
+ *
+ * @param userId
  * @returns user_progress for given userId from DB
  */
 export const getUserProgress = async (userId: string | null) => {
@@ -180,13 +180,13 @@ export const getCourseProgress = async (
   };
 };
 /**
- * returns user object for training course with 
- * 
+ * returns user object for training course with
+ *
  */
 export const getAllUsersCourseCompletedPercentage = async () => {
-  "use cache"
-   cacheTag(`users-completed-course-percentage:all`)
-   cacheLife("hours");
+  "use cache";
+  cacheTag(`users-completed-course-percentage:all`);
+  cacheLife("hours");
 
   //get all users in the course with their challenge progress
   const users = await db.query.userProgress.findMany({
@@ -217,7 +217,9 @@ export const getAllUsersCourseCompletedPercentage = async () => {
       ),
     };
   });
-  return data.sort((a, b) => b.courseCompletedPercentage - a.courseCompletedPercentage);
+  return data.sort(
+    (a, b) => b.courseCompletedPercentage - a.courseCompletedPercentage,
+  );
 };
 
 /**
@@ -387,6 +389,48 @@ export const getTopTenUsers = async (userId: string | null) => {
   return data;
 };
 
+//TODO: revalidate all card query tags in actions
+export const getAllCards = async () => {
+  "use cache";
+  cacheTag("all-flash-cards");
+  cacheLife("days");
+
+  const data = await db.query.cards.findMany();
+  return data;
+};
+
+export const getCardsByCategory = async (
+  cardCategory: (typeof CARD_CATEGORIES)[number],
+) => {
+  "use cache";
+  cacheTag(`flashcard-by-category:${cardCategory}`);
+  cacheLife("days");
+
+  const data = await db.query.cards.findMany({
+    where: { category: cardCategory },
+  });
+
+  return data;
+};
+
+export const getUserSavedCards = async (loggedInUserId: string | null) => {
+  "use cache";
+  cacheTag(`user-saved-cards-${loggedInUserId ?? "none"}`);
+  cacheLife("days");
+
+  if (!loggedInUserId) return null;
+
+  const data = await db.query.userSavedCards.findMany({
+    where: {
+      userId: loggedInUserId,
+    },
+    with: {
+      cards: true,
+    },
+  });
+};
+
+//For additional resouces on bodega page
 export async function getBlobDocs() {
   const { blobs } = await list({
     token: process.env.BLOB_READ_WRITE_TOKEN,

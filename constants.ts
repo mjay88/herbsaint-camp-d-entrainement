@@ -1,3 +1,5 @@
+import { cardsEnum } from "./db/schema";
+
 export const HERBSAINT_TRAINING_COURSE_ID = 1;
 
 export const POINTS_TO_REFILL = 10;
@@ -24,6 +26,8 @@ export const quests = [
     value: 100000,
   },
 ];
+
+export const CARD_CATEGORIES = cardsEnum.enumValues;
 
 export const wineSchedule = [
   {
