@@ -15,7 +15,7 @@ import { lessons, units as unitsSchema } from "@/db/schema";
 import { ScrollingHeader } from "./scrolling-header";
 import { Updates } from "@/components/updates";
 import { LearnFeedWrapper } from "@/components/learn-feed-wrapper";
-import { connection } from "next/server";
+
 import LearnPageClient from "./learn-page-client";
 
 type Props = {
@@ -23,7 +23,7 @@ type Props = {
 };
 
 export const LearnPageContent = async ({ showTutorial }: Props) => {
-  await connection();
+ 
   const { userId, isAuthenticated, redirectToSignIn } = await auth();
   if (!isAuthenticated) {
     return redirectToSignIn();

@@ -7,9 +7,7 @@ import { UserProgress } from "@/components/user-progress";
 import { getBlobDocs, getCoursePercentage, getUserProgress } from "@/db/queries";
 import { auth } from "@clerk/nextjs/server";
 
-// import { Items } from "./items";
-import { Quests } from "@/components/quests";
-import { Updates } from "@/components/updates";
+
 import Link from "next/link";
 
 const BodegaPage = async () => {

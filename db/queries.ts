@@ -425,9 +425,13 @@ export const getUserSavedCards = async (loggedInUserId: string | null) => {
       userId: loggedInUserId,
     },
     with: {
+      //matches the key name cards defined in relationship
       cards: true,
     },
   });
+
+  const normalizedData = data.map((savedCard) => savedCard.cards);
+  return normalizedData;
 };
 
 //For additional resouces on bodega page

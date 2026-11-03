@@ -5,8 +5,10 @@ import { LearnPageContent } from "./learn-page-content";
 import Skeleton from "@/components/ui/skeleton";
 import { currentUser, auth } from "@clerk/nextjs/server";
 import { enrollNewUser } from "@/actions/onboarding";
+import { connection } from "next/server";
 
 const LearnPage = async () => {
+  await connection();
   const { isAuthenticated, redirectToSignIn } = await auth();
   if (!isAuthenticated) {
     return redirectToSignIn();
@@ -14,7 +16,7 @@ const LearnPage = async () => {
   const user = await currentUser();
   //TODO: ADD tutorial after flash card module
   const isFirstTimeLoggingIn = !user?.publicMetadata?.onboarded;
-  if (!isFirstTimeLoggingIn) {
+  if (isFirstTimeLoggingIn) {
     await enrollNewUser();
   }
 
