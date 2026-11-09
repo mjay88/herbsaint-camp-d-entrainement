@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "db:seed": "tsx ./scripts/seed.ts",
+    "db:seed-flashcards": "tsx ./scripts/seed-flashcards.ts",
     "db:reset-user-progress": "tsx ./scripts/seed.ts"
   },
   "dependencies": {

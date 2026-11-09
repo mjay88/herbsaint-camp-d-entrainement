@@ -58,6 +58,8 @@ export const relations = defineRelations(schema, (r) => ({
     }),
   },
 
+  //TODO: ADD WINES RELATION
+
 
   userSavedCards: {
     cards: r.one.cards({//each userSavedCard row belongs to one card in the card table

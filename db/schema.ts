@@ -96,6 +96,22 @@ export const cards = pgTable("cards", {
   category: cardsEnum("category").notNull(),
   title: text("title").notNull(),
   description: text("description").notNull(),
+  allergies: text("allergies"),
+  modifications: text("modifications"),
+  imageSrc: text("image_src"),
+});
+
+export const wineCards = pgTable("wine_cards", {
+  id: serial("id").primaryKey(),
+  category: cardsEnum("category").notNull(), // Category for all wines will be "WINES BY THE GLASS"
+  title: text("title").notNull(),
+  description: text("description").notNull(),
+  country: text("country"),
+  grapes: text("grapes"),
+  characteristics: text("characteristics"),
+  tastingNotes: text("tasting_notes"),
+  suggestedPairings: text("suggested_pairings"),
+  producerInfo: text("producer_info"),
   imageSrc: text("image_src"),
 });
 
@@ -105,6 +121,7 @@ export const userSavedCards = pgTable(
     id: serial("id").primaryKey(),
     userId: text("user_id").notNull(),
     cardId: integer("card_id")
+    //TODO: UPDATE FOR WINES
       .references(() => cards.id, { onDelete: "cascade" })
       .notNull(),
   },

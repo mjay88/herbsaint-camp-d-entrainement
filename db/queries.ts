@@ -434,6 +434,8 @@ export const getUserSavedCards = async (loggedInUserId: string | null) => {
   return normalizedData;
 };
 
+//TODO: ADD QUERY FOR WINES
+
 //For additional resouces on bodega page
 export async function getBlobDocs() {
   const { blobs } = await list({
