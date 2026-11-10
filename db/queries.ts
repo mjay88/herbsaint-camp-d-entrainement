@@ -2,7 +2,7 @@ import { db } from "@/db/drizzle";
 import { cacheLife, cacheTag } from "next/cache";
 import { list } from "@vercel/blob";
 import { CARD_CATEGORIES } from "@/constants";
-import { cards } from "./schema";
+import { cards, cardsEnum, wineCards } from "./schema";
 //get all courses
 export const getCourses = async () => {
   "use cache";
@@ -413,6 +413,18 @@ export const getCardsByCategory = async (
   return data;
 };
 
+export const getWineCards = async (
+  cardCategory: (typeof CARD_CATEGORIES)[number],
+) => {
+  "use cache";
+  cacheTag(`flashcard-by-category:${cardCategory}`);
+  cacheLife("days");
+
+  const data = await db.query.wineCards.findMany();
+
+  return data;
+};
+
 export const getUserSavedCards = async (loggedInUserId: string | null) => {
   "use cache";
   cacheTag(`user-saved-cards-${loggedInUserId ?? "none"}`);
@@ -430,8 +442,74 @@ export const getUserSavedCards = async (loggedInUserId: string | null) => {
     },
   });
 
-  const normalizedData = data.map((savedCard) => savedCard.cards);
+  const normalizedData = data
+    .map((savedCard) => savedCard.cards)
+    .filter((card) => card != null);
   return normalizedData;
+};
+
+export const getCustomCardsByCategory = async (
+  category: string,
+  loggedInUserId: string | null,
+): Promise<
+  (typeof cards.$inferSelect | typeof wineCards.$inferSelect)[] | []
+> => {
+  "use cache";
+  cacheTag(`flashcard-by-category:${category}`);
+  cacheLife("days");
+
+  let filteredCards: (
+    | typeof cards.$inferSelect
+    | typeof wineCards.$inferSelect
+  )[] = [];
+
+  switch (category) {
+    case "ALL CARDS":
+      filteredCards = await getAllCards();
+      break;
+    case "THE FOOD MENU":
+      filteredCards = (
+        await Promise.all([
+          getCardsByCategory("SOUPS & SALADS"),
+          getCardsByCategory("SIDES"),
+          getCardsByCategory("SMALL PLATES"),
+          getCardsByCategory("MAIN COURSES"),
+          getCardsByCategory("DESSERTS"),
+        ])
+      ).flat();
+      break;
+    case "THE DRINKS MENU":
+      filteredCards = (
+        await Promise.all([
+          getCardsByCategory("COCKTAILS"),
+          getWineCards("WINES BY THE GLASS"),
+          getCardsByCategory("BEER & CIDER"),
+        ])
+      ).flat();
+      break;
+    case "WINES BY THE GLASS":
+      filteredCards = await getWineCards(
+        category as (typeof CARD_CATEGORIES)[number],
+      );
+      break;
+    case "SAVED":
+      filteredCards = (await getUserSavedCards(loggedInUserId)) ?? [];
+      break;
+    default:
+      if (
+        CARD_CATEGORIES.includes(
+          category as (typeof cardsEnum.enumValues)[number],
+        )
+      ) {
+        filteredCards = await getCardsByCategory(
+          category as (typeof CARD_CATEGORIES)[number],
+        );
+      } else {
+        filteredCards = [];
+      }
+  }
+
+  return filteredCards;
 };
 
 //TODO: ADD QUERY FOR WINES

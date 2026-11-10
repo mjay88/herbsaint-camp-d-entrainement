@@ -29,6 +29,14 @@ export const quests = [
 
 export const CARD_CATEGORIES = cardsEnum.enumValues;
 
+export const ALL_CARD_CATEGORIES = [
+  ...cardsEnum.enumValues,
+  "THE FOOD MENU",
+  "THE DRINKS MENU",
+  "SAVED",
+  "ALL CARDS",
+] as const;
+
 export const wineSchedule = [
   {
     date: "10/12/2026",
@@ -199,7 +207,7 @@ export const updates = [
     description:
       "We are adding the 2023 Domaine des Marnes Blanches Chablis to the by-the-glass list for $14, with the bottle at $56. It is fermented and aged in stainless steel, so expect crisp lemon, green apple, and oyster shell with a chalky, saline finish. It pairs well with the Cornmeal Fried Oysters and the Grilled Tuna Sandwich. It replaces the Mâcon la Roche Vineuse Chardonnay on the glass pour.",
   },
-    {
+  {
     date: "11/28/2026",
     title: "Mai Tai On the Cocktail Menu",
     description:
