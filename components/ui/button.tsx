@@ -20,7 +20,8 @@ const buttonVariants = cva(
         ghost: "bg-transparent text-slate-500 border-transparent border-0 hover:bg-slate-100",
         sidebar: "bg-transparent text-slate-500 border-2 border-transparent hover:bg-slate-100 transition-none",
         sidebarOutline: "bg-sky-500/15 text-sky-500 border-sky-300 border-2 hover:bg-sky-500/20 transition-none",
-        locked: "bg-neutral-200 text-primary-foreground hover:bg-neutral-100 hover:-translate-y-[2px] border-neutral-400 border-b-4 active:translate-y-[1px] active:border-b-[2px] transition-all duration-100 ease-out"
+        locked: "bg-neutral-200 text-primary-foreground hover:bg-neutral-100 hover:-translate-y-[2px] border-neutral-400 border-b-4 active:translate-y-[1px] active:border-b-[2px] transition-all duration-100 ease-out",
+        inherit: "hover:-translate-y-[2px]  active:translate-y-[1px] active:border-b-[2px] transition-all duration-100 ease-out"
       },
       size: {
         default:

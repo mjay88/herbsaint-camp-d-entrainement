@@ -6,6 +6,7 @@ import Confetti from "react-confetti";
 import Image from "next/image";
 import { useAudio, useWindowSize } from "react-use";
 import { cn } from "@/lib/utils";
+import { Header } from "./header";
 type Props = {
   cards: (typeof cards.$inferSelect | typeof wineCards.$inferSelect)[] | [];
 };
@@ -101,6 +102,7 @@ export const Deck = ({ cards }: Props) => {
       {finishAudio}
       {correctAudio}
       {incorrectAudio}
+        <Header />
       <div className="flex-1 my-4 overflow-hidden">
         <div
           className={cn(
