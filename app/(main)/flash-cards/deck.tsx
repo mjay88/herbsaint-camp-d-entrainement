@@ -33,14 +33,14 @@ export const Deck = ({ cards }: Props) => {
   });
   const onNext = () => {
     if (deckCompleted) {
-      window.location.href = `/flash-cards`;
+        setSwipe(null);
+        setCurrentIndex(0);
       //TODO: opted to go with with window.location.href = `/flash-cards`) because I couldn't get it to refresh when navigating to the previous deck
       //Is this possibly development only behavior?
-      //   setCurrentIndex(0);
+      window.location.href = `/flash-cards`;
       //   router.push("/flash-cards");
       return;
     }
-    // setCurrentIndex(() => currentIndex + 1);
     setSwipe({ dir: "left", phase: "out" });
   };
 
@@ -50,7 +50,6 @@ export const Deck = ({ cards }: Props) => {
     if (deckCompleted) {
       setCurrentIndex(0);
     } else {
-    //   setCurrentIndex(() => currentIndex - 1);
       setSwipe({ dir: "right", phase: "out" });
     }
   };
@@ -109,6 +108,7 @@ export const Deck = ({ cards }: Props) => {
             swipe &&
               `swipe-${swipe.phase}-${swipe.phase === "out" ? swipe.dir : swipe.dir === "left" ? "right" : "left"}`,
           )}
+          //fires whenever an animation finishes
           onAnimationEnd={(e) => {
             if (e.target !== e.currentTarget || !swipe) return; // ignore bubbled child animations
             if (swipe.phase === "out") {
@@ -128,7 +128,7 @@ export const Deck = ({ cards }: Props) => {
           />
         </div>
       </div>
-      <Footer onNext={onNext} onPrevious={onPrevious} />
+      <Footer onNext={onNext} onPrevious={onPrevious} disabled={swipe !== null} />
     </>
   );
 };
