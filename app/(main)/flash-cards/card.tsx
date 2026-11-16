@@ -5,6 +5,7 @@ import Image from "next/image";
 type Props = {
   category: string;
   onClick: (category: string) => void;
+ 
 };
 
 export const Card = ({ category, onClick }: Props) => {
@@ -12,12 +13,14 @@ export const Card = ({ category, onClick }: Props) => {
     <div
       onClick={() => onClick(category)}
       className={cn(
-        "h-full border-2 rounded-xl border-b-4 hover:bg-black/5 cursor-pointer active:border-b-2 flex flex-col items-center justify-between p-3 pb-6 min-h-[217px] min-w-[150px]",
+        "h-full border-2 rounded-3xl border-b-4 hover:bg-black/5 cursor-pointer active:border-b-2 flex flex-col items-center p-3 pb-6",
+        "aspect-[5/7]",
+        "bg-[url(/orange-card.webp)] bg-cover"
       )}
     >
-      <div className="min-[24px] w-full flex items-center justify-end"></div>
+   
 
-      <p className="text-neutral-700 text-center font-bold mt-3">{category}</p>
+      <p className="text-neutral-800 text-xl text-center font-extrabold mt-1 bg-white p-2.5 rounded-3xl w-7/8">{category}</p>
     </div>
   );
 };

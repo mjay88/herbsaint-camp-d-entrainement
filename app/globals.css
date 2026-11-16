@@ -48,10 +48,13 @@ body,
 }
 
 @keyframes spin-top {
-  0%   { transform: rotateX(5deg) rotateY(0deg); }
-  100% { transform: rotateX(5deg) rotateY(360deg); }
+  0% {
+    transform: rotateX(5deg) rotateY(0deg);
+  }
+  100% {
+    transform: rotateX(5deg) rotateY(360deg);
+  }
 }
-
 
 @theme inline {
   --font-heading: var(--font-sans);
@@ -180,4 +183,23 @@ body,
   html {
     @apply font-sans;
   }
+}
+
+/* Card Flip Effect */
+.card-flip {
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+.card-flip.flipped {
+  transform: rotateX(180deg);
+}
+
+.card-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.card-face-back {
+  transform: rotateX(180deg);
 }
