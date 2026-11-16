@@ -29,13 +29,13 @@ const WineStudyPage = async () => {
 
   return (
     <div className="flex flex-row-reverse gap-[48px] px-6">
-      <StickyWrapper>
+      {/* <StickyWrapper>
         <UserProgress points={userProgress.points} percentage={coursePercentage}></UserProgress>
-        <div>
+        <div> */}
          {/* TODO: Remove permantely, out of scope */}
         {/* <Updates /> */}
-        </div>
-      </StickyWrapper>
+        {/* </div>
+      </StickyWrapper> */}
       <FeedWrapper>
         <div className="w-full flex flex-col items-center">
           <Image

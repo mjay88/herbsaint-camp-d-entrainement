@@ -35,15 +35,15 @@ const LeaderBoardPage = async () => {
 
   return (
     <div className="flex flex-row-reverse gap-[48px] px-6">
-      <StickyWrapper>
+      {/* <StickyWrapper>
         <UserProgress
           points={userProgress.points}
           percentage={coursePercentage}
-        />
+        /> */}
         {/* <Quests points={userProgress.points} /> */}
         {/* TODO: Remove permantely, out of scope */}
         {/* <Updates /> */}
-      </StickyWrapper>
+      {/* </StickyWrapper> */}
       <FeedWrapper>
         <div className="w-full flex flex-col items-center">
           <Image src="/leaderboard.svg" alt="Shop" height={90} width={90} />
