@@ -5,6 +5,7 @@ import { Footer } from "./footer";
 import Confetti from "react-confetti";
 import Image from "next/image";
 import { useAudio, useWindowSize } from "react-use";
+import { cn } from "@/lib/utils";
 type Props = {
   cards: (typeof cards.$inferSelect | typeof wineCards.$inferSelect)[] | [];
 };
@@ -16,7 +17,10 @@ export const Deck = ({ cards }: Props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDescriptionShowing, setIsDescriptionShowing] =
     useState<boolean>(false);
-  //   const router = useRouter();
+  const [swipe, setSwipe] = useState<{
+    dir: "left" | "right";
+    phase: "out" | "in";
+  } | null>(null);
 
   const isFirstCard = currentIndex === 0;
   const currentCard = cards[currentIndex];
@@ -34,8 +38,10 @@ export const Deck = ({ cards }: Props) => {
       //Is this possibly development only behavior?
       //   setCurrentIndex(0);
       //   router.push("/flash-cards");
+      return;
     }
-    setCurrentIndex(() => currentIndex + 1);
+    // setCurrentIndex(() => currentIndex + 1);
+    setSwipe({ dir: "left", phase: "out" });
   };
 
   const onPrevious = () => {
@@ -44,7 +50,8 @@ export const Deck = ({ cards }: Props) => {
     if (deckCompleted) {
       setCurrentIndex(0);
     } else {
-      setCurrentIndex(() => currentIndex - 1);
+    //   setCurrentIndex(() => currentIndex - 1);
+      setSwipe({ dir: "right", phase: "out" });
     }
   };
 
@@ -95,12 +102,31 @@ export const Deck = ({ cards }: Props) => {
       {finishAudio}
       {correctAudio}
       {incorrectAudio}
-      <div className="flex-1 my-4">
-        <ActiveCard
-          card={currentCard}
-          isDescriptionShowing={isDescriptionShowing}
-          setIsDescriptionShowing={setIsDescriptionShowing}
-        />
+      <div className="flex-1 my-4 overflow-hidden">
+        <div
+          className={cn(
+            "h-full",
+            swipe &&
+              `swipe-${swipe.phase}-${swipe.phase === "out" ? swipe.dir : swipe.dir === "left" ? "right" : "left"}`,
+          )}
+          onAnimationEnd={(e) => {
+            if (e.target !== e.currentTarget || !swipe) return; // ignore bubbled child animations
+            if (swipe.phase === "out") {
+              setCurrentIndex((i) => i + (swipe.dir === "left" ? 1 : -1));
+              setIsDescriptionShowing(false);
+              setSwipe({ dir: swipe.dir, phase: "in" });
+            } else {
+              setSwipe(null);
+            }
+          }}
+        >
+          <ActiveCard
+            key={currentCard.id}
+            card={currentCard}
+            isDescriptionShowing={isDescriptionShowing}
+            setIsDescriptionShowing={setIsDescriptionShowing}
+          />
+        </div>
       </div>
       <Footer onNext={onNext} onPrevious={onPrevious} />
     </>

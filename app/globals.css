@@ -56,6 +56,51 @@ body,
   }
 }
 
+/* Swiping flashcard left and right */
+
+@keyframes swipe-out-left {
+  to {
+    transform: translateX(-120%) rotate(-10deg);
+  }
+}
+@keyframes swipe-out-right {
+  to {
+    transform: translateX(120%) rotate(10deg);
+  }
+}
+@keyframes swipe-in-right {
+  from {
+    transform: translateX(120%) rotate(10deg);
+  }
+}
+@keyframes swipe-in-left {
+  from {
+    transform: translateX(-120%) rotate(-10deg);
+  }
+}
+
+.swipe-out-left {
+  animation: swipe-out-left 250ms ease-in forwards;
+}
+.swipe-out-right {
+  animation: swipe-out-right 250ms ease-in forwards;
+}
+.swipe-in-right {
+  animation: swipe-in-right 250ms ease-out;
+}
+.swipe-in-left {
+  animation: swipe-in-left 250ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .swipe-out-left,
+  .swipe-out-right,
+  .swipe-in-right,
+  .swipe-in-left {
+    animation-duration: 1ms;
+  }
+}
+
 @theme inline {
   --font-heading: var(--font-sans);
   --font-sans: var(--font-sans);
