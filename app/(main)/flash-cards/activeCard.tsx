@@ -1,6 +1,7 @@
 import { cards, wineCards } from "@/db/schema";
 import { cn } from "@/lib/utils";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useCallback } from "react";
+import { useKey } from "react-use";
 
 type Props = {
   card: typeof cards.$inferSelect | typeof wineCards.$inferSelect;
@@ -13,11 +14,18 @@ export const ActiveCard = ({
   isDescriptionShowing,
   setIsDescriptionShowing,
 }: Props) => {
+  // TODO: See everywhere I can add useCallBack
+  const handleClick = useCallback(() => {
+    setIsDescriptionShowing((prevState) => !prevState);
+  }, [setIsDescriptionShowing]);
+
+  useKey(" ", handleClick , {}, [handleClick]);
+
+  if (!card) {
+    return null;
+  }
   const isWineCard = "grapes" in card;
 
-  const handleClick = () => {
-    setIsDescriptionShowing((prevState) => !prevState);
-  };
 
   return (
     <div
