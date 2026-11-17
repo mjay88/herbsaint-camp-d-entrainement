@@ -1,5 +1,5 @@
 import { cards, wineCards } from "@/db/schema";
-import { useCallback, useState, useTransition } from "react";
+import { useState, useTransition } from "react";
 import { ActiveCard } from "./activeCard";
 import { Footer } from "./footer";
 import Confetti from "react-confetti";
@@ -8,7 +8,6 @@ import { useAudio, useWindowSize } from "react-use";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { Header } from "./header";
-import { ALL_CARD_CATEGORIES } from "@/constants";
 import { toggleUserSavedCard } from "@/actions/save-flashcards";
 type Props = {
   initialCards:
@@ -18,7 +17,7 @@ type Props = {
     | (typeof cards.$inferSelect | typeof wineCards.$inferSelect)[]
     | []
     | null;
-  //   category: typeof ALL_CARD_CATEGORIES;
+
 };
 
 export const Deck = ({ initialCards, savedCards }: Props) => {
@@ -78,11 +77,8 @@ export const Deck = ({ initialCards, savedCards }: Props) => {
   const deckCompleted = !currentCard;
 
   const { width, height } = useWindowSize();
-  const [finishAudio, _f, finishControls] = useAudio({ src: "/finish.mp3" });
-  const [correctAudio, _c, correctControls] = useAudio({ src: "/correct.wav" });
-  const [incorrectAudio, _i, incorrectControls] = useAudio({
-    src: "/incorrect.wav",
-  });
+  const [finishAudio] = useAudio({ src: "/finish.mp3" });
+
 
   const onNext = () => {
     if (deckCompleted) {
@@ -144,8 +140,7 @@ export const Deck = ({ initialCards, savedCards }: Props) => {
     return (
       <>
         {finishAudio}
-        {correctAudio}
-        {incorrectAudio}
+    
         <div className="flex flex-col gap-y-2 lg:gap-y-8 max-w-lg mx-auto text-center items-center justify-center h-full">
           <Image
             src="/mascot/mascot-thumbs-up.webp"
@@ -181,8 +176,7 @@ export const Deck = ({ initialCards, savedCards }: Props) => {
     return (
       <>
         {finishAudio}
-        {correctAudio}
-        {incorrectAudio}
+     
         <Confetti
           width={width}
           height={height}
@@ -222,8 +216,7 @@ export const Deck = ({ initialCards, savedCards }: Props) => {
   return (
     <>
       {finishAudio}
-      {correctAudio}
-      {incorrectAudio}
+     
       <Header
         isCardSaved={isCardSaved}
         toggleSavedCard={toggleSavedCard}

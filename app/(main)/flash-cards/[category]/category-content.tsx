@@ -22,9 +22,6 @@ export const CategoryContent = async ({ params }: Props) => {
 
   const userSavedCards = await getUserSavedCards(userId);
 
-  // console.log("cards", cards);
-  console.log("userSavedCard", userSavedCards);
-  //add the header, footer, deck component here.
 
   return (
     <div className="flex flex-col h-full w-full">

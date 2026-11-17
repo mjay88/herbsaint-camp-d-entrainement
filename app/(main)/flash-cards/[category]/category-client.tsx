@@ -1,6 +1,6 @@
 "use client";
 import { Deck } from "../deck";
-import { cards, userSavedCards, userSavedWineCards, wineCards } from "@/db/schema";
+import { cards, wineCards } from "@/db/schema";
 
 type Props = {
     cards:  (typeof cards.$inferSelect | typeof wineCards.$inferSelect)[] | [];

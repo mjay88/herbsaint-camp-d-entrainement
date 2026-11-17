@@ -2,7 +2,7 @@ import { db } from "@/db/drizzle";
 import { cacheLife, cacheTag } from "next/cache";
 import { list } from "@vercel/blob";
 import { CARD_CATEGORIES } from "@/constants";
-import { cards, cardsEnum, userSavedCards, userSavedWineCards, wineCards } from "./schema";
+import { cards, cardsEnum,  wineCards } from "./schema";
 //get all courses
 export const getCourses = async () => {
   "use cache";
