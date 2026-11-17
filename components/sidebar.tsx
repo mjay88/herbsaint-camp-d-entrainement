@@ -12,10 +12,10 @@ type Props = {
 };
 
 export const Sidebar = async ({ className }: Props) => {
-   //connection stops prerendering. Subsequent code only runs at request time instead of trying to prerender.
-   await connection()
-   const user = await currentUser();
-   const isAdmin = user?.publicMetadata?.role === "admin";
+  //connection stops prerendering. Subsequent code only runs at request time instead of trying to prerender.
+  await connection();
+  const user = await currentUser();
+  const isAdmin = user?.publicMetadata?.role === "admin";
 
   return (
     <div
@@ -34,21 +34,39 @@ export const Sidebar = async ({ className }: Props) => {
       </Link>
       <div className="flex flex-col gap-y-2 flex-1">
         <SidebarItem label="Learn" href="/learn" iconSrc="/learn.svg" />
-        <SidebarItem
-          label="Leaderboard"
-          href="/leaderboard"
-          iconSrc="/leaderboard.svg"
-        />
 
         {/* <SidebarItem
           label="Updates"
           href="/updates"
           iconSrc="/megaphone.svg"
         /> */}
-        <SidebarItem label="Wine Study" href="/wine-study" iconSrc="/wine/red-wine-bottle.webp" />
+        <SidebarItem
+          label="Wine Study"
+          href="/wine-study"
+          iconSrc="/wine/red-wine-bottle.webp"
+        />
+        <SidebarItem
+          label="Flash Cards"
+          href="/flash-cards"
+          iconSrc="/cards-transparent.webp"
+          height={34}
+          width={34}
+        />
+        <SidebarItem
+          label="Leaderboard"
+          href="/leaderboard"
+          iconSrc="/leaderboard.svg"
+        />
         <SidebarItem label="Bodega" href="/bodega" iconSrc="/shop.svg" />
-        <SidebarItem label="Flash Cards" href="/flash-cards" iconSrc="/shop.svg" />
-        {isAdmin && <SidebarItem label="User Progress" href="/user-progress" iconSrc="/percent.svg" height={24} width={24}/>}
+        {isAdmin && (
+          <SidebarItem
+            label="User Progress"
+            href="/user-progress"
+            iconSrc="/percent.svg"
+            height={24}
+            width={24}
+          />
+        )}
       </div>
       <div className="p-4">
         <ClerkLoading>

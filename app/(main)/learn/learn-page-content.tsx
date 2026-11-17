@@ -1,7 +1,5 @@
 import { auth } from "@clerk/nextjs/server";
-import { Unit } from "./unit";
-import { StickyWrapper } from "@/components/sticky-wrapper";
-import { UserProgress } from "@/components/user-progress";
+
 import {
   getCourseProgress,
   getUnits,
@@ -11,10 +9,7 @@ import {
   getCoursePercentage,
 } from "@/db/queries";
 import { redirect } from "next/navigation";
-import { lessons, units as unitsSchema } from "@/db/schema";
-import { ScrollingHeader } from "./scrolling-header";
-import { Updates } from "@/components/updates";
-import { LearnFeedWrapper } from "@/components/learn-feed-wrapper";
+
 
 import LearnPageClient from "./learn-page-client";
 

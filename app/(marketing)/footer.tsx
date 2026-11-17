@@ -7,7 +7,7 @@ export const Footer = () => {
       <div className="max-w-screen-lg mx-auto flex items-center justify-evenly h-full">
         <Button variant="ghost" className="flex-1">
           <Image
-            src="/gumbo-circle.svg"
+            src="/menu-drawings/gumbo.webp"
             alt="Bowl of Gumbo"
             height={58}
             width={58}
@@ -16,16 +16,16 @@ export const Footer = () => {
         </Button>
         <Button variant="ghost" className="flex-1">
           <Image
-            src="/wine-red.svg"
+            src="/menu-drawings/wine-bottle-red.webp"
             alt="Red wine Bottle"
-            height={78}
-            width={78}
+            height={58}
+            width={58}
             className="mr-4 rounded-md"
           />
         </Button>
         <Button variant="ghost" className="flex-1">
           <Image
-            src="/spaghetti.svg"
+            src="/menu-drawings/spaghetti.webp"
             alt="Spaghetti"
             height={58}
             width={58}
@@ -34,8 +34,8 @@ export const Footer = () => {
         </Button>
         <Button variant="ghost" className="flex-1">
           <Image
-            src="/wholer-ham.svg"
-            alt="Ham Bone"
+             src="/menu-drawings/duck-leg.webp"
+            alt="Duck Leg"
             height={58}
             width={58}
             className="mr-4 rounded-md"
@@ -43,7 +43,7 @@ export const Footer = () => {
         </Button>
         <Button variant="ghost" className="flex-1">
           <Image
-            src="/glass-wine.svg"
+           src="/menu-drawings/martini.webp"
             alt="Wine Glass"
             height={58}
             width={58}

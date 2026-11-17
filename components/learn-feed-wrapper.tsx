@@ -8,7 +8,7 @@ type Props = {
 };
 
 export const LearnFeedWrapper = ({ children }: Props) => {
-  const isMobile = useMedia("(max-width: 425px", true);
+  const isMobile = useMedia("(max-width: 440px", true);
   return (
     <div className="flex-1 relative lg:top-0 mb-40">
       {/* Mascot */}

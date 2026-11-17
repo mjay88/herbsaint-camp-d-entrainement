@@ -13,7 +13,6 @@ import {
 
 import { Separator } from "@/components/ui/separator";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { Quests } from "@/components/quests";
 import { Progress } from "@/components/ui/progress";
 
 const UserProgressPage = async () => {
@@ -37,10 +36,10 @@ const UserProgressPage = async () => {
 
   return (
     <div className="flex flex-row-reverse gap-[48px] px-6">
-      <StickyWrapper>
+      {/* <StickyWrapper>
         <UserProgress points={userProgress.points} percentage={coursePercentage} />
         
-      </StickyWrapper>
+      </StickyWrapper> */}
       <FeedWrapper>
         <div className="w-full flex flex-col items-center">
           <Image src="/percent.svg" alt="Shop" height={90} width={90} />

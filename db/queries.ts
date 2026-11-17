@@ -287,7 +287,7 @@ export const getCoursePercentage = async (
     (totalCompletedChallenges / totalChallengesInCourse) * 100,
   );
 
-  return percentage;
+  return percentage === 0 ? 1 : percentage;
 };
 
 export const getLesson = async (
