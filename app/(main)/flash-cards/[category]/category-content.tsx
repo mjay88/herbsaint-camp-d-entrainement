@@ -1,7 +1,6 @@
-import { getCustomCardsByCategory } from "@/db/queries";
+import { getCustomCardsByCategory, getUserSavedCards } from "@/db/queries";
 import { auth } from "@clerk/nextjs/server";
 import { convertCategory } from "@/lib/utils";
-import { Deck } from "../deck";
 import { CategoryClient } from "./category-client";
 
 type Props = {
@@ -21,12 +20,15 @@ export const CategoryContent = async ({ params }: Props) => {
     userId,
   );
 
-  console.log("cards", cards);
+  const userSavedCards = await getUserSavedCards(userId);
+
+  // console.log("cards", cards);
+  console.log("userSavedCard", userSavedCards);
   //add the header, footer, deck component here.
 
   return (
     <div className="flex flex-col h-full w-full">
-     <CategoryClient cards={cards} />
+     <CategoryClient cards={cards} savedCards={userSavedCards} />
     </div>
   );
 };

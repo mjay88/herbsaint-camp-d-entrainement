@@ -16,8 +16,6 @@ const FlashcardPage = async () => {
  //Pass to List, get list to render first
   //user saved cards will be empty? handle user saved cards edge case. (Just need it to appear regardless).
 
-//When a deck is clicked, navigate to flashcards/[category]
-  //child will fetch category specific cards
 
 
 

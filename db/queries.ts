@@ -2,7 +2,7 @@ import { db } from "@/db/drizzle";
 import { cacheLife, cacheTag } from "next/cache";
 import { list } from "@vercel/blob";
 import { CARD_CATEGORIES } from "@/constants";
-import { cards, cardsEnum, wineCards } from "./schema";
+import { cards, cardsEnum, userSavedCards, userSavedWineCards, wineCards } from "./schema";
 //get all courses
 export const getCourses = async () => {
   "use cache";
@@ -431,8 +431,17 @@ export const getUserSavedCards = async (loggedInUserId: string | null) => {
   cacheLife("days");
 
   if (!loggedInUserId) return null;
-
+  //TODO: Clean up types saveable to userSavedCards and userSavedWineCards
   const data = await db.query.userSavedCards.findMany({
+    where: {
+      userId: loggedInUserId,
+    },
+    with: {
+      //matches the key name cards defined in relationship
+      cards: true,
+    },
+  });
+  const wineData = await db.query.userSavedWineCards.findMany({
     where: {
       userId: loggedInUserId,
     },
@@ -445,7 +454,13 @@ export const getUserSavedCards = async (loggedInUserId: string | null) => {
   const normalizedData = data
     .map((savedCard) => savedCard.cards)
     .filter((card) => card != null);
-  return normalizedData;
+
+  const normalizedWineData = wineData
+    .map((savedCard) => savedCard.cards)
+    .filter((card) => card != null);
+  
+  const combinedData = [...normalizedData, ...normalizedWineData];
+  return combinedData;
 };
 
 export const getCustomCardsByCategory = async (
@@ -455,7 +470,7 @@ export const getCustomCardsByCategory = async (
   (typeof cards.$inferSelect | typeof wineCards.$inferSelect)[] | []
 > => {
   "use cache";
-  cacheTag(`flashcard-by-category:${category}`);
+  cacheTag(`flashcard-by-category:${category}-${loggedInUserId ?? "none"}`);
   cacheLife("days");
 
   let filteredCards: (

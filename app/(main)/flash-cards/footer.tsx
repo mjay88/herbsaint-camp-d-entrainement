@@ -10,6 +10,7 @@ type Props = {
   onPrevious: () => void;
   deckCompleted?: boolean;
   disabled?: boolean;
+  isEmptyDeck?: boolean;
 };
 
 export const Footer = ({
@@ -17,6 +18,7 @@ export const Footer = ({
   onPrevious,
   deckCompleted,
   disabled,
+  isEmptyDeck
 }: Props) => {
   useKey("ArrowLeft", onPrevious, {}, [onPrevious]);
   useKey("ArrowRight", onNext, {}, [onNext]);
@@ -25,12 +27,28 @@ export const Footer = ({
   return (
     <footer className={cn("h-[100px] min-h-[75px] lg:-h[140px]")}>
       <div className="max-w-[1140px] h-full mx-auto flex items-center justify-between px-6 lg:px-10">
+        {isEmptyDeck ? (
+          <>
+         
+
         <Button
+          disabled={disabled}
+          variant="secondary"
+          className="mx-auto"
+          size={isMobile ? "sm" : "lg"}
+          onClick={onNext}
+        >
+          {deckCompleted === undefined ? "Next Card" : "Back To Flashcards"}
+        </Button>
+        </>
+        ) : (
+          <>
+           <Button
           disabled={disabled}
           variant="secondary"
           size={isMobile ? "sm" : "lg"}
           onClick={onPrevious}
-        >
+          >
           {deckCompleted === undefined ? "Previous Card" : "Start Over"}
         </Button>
 
@@ -40,9 +58,12 @@ export const Footer = ({
           className="ml-auto"
           size={isMobile ? "sm" : "lg"}
           onClick={onNext}
-        >
+          >
           {deckCompleted === undefined ? "Next Card" : "Back To Flashcards"}
         </Button>
+          </>
+        )}
+       
       </div>
     </footer>
   );

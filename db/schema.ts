@@ -127,3 +127,15 @@ export const userSavedCards = pgTable(
   },
   (t) => [unique().on(t.userId, t.cardId)],
 );
+export const userSavedWineCards = pgTable(
+  "userSavedWineCards",
+  {
+    id: serial("id").primaryKey(),
+    userId: text("user_id").notNull(),
+    cardId: integer("card_id")
+    //TODO: UPDATE FOR WINES
+      .references(() => wineCards.id, { onDelete: "cascade" })
+      .notNull(),
+  },
+  (t) => [unique().on(t.userId, t.cardId)],
+);

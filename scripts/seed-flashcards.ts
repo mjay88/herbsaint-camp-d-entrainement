@@ -12,6 +12,7 @@ const main = async () => {
 
     await db.delete(schema.cards);
     await db.delete(schema.wineCards);
+    await db.execute(sql`ALTER SEQUENCE wine_cards_id_seq RESTART WITH 100`);
 
     /**
      * ============================================================
