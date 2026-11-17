@@ -36,12 +36,17 @@ export const toggleUserSavedCard = async (
   if (!userId) {
     throw new Error("Unauthorized");
   }
-
+  console.log("firing toggleUserSavedCard");
   if (category === "WINES BY THE GLASS") {
     const foundCard = await db.query.userSavedWineCards.findFirst({
       where: { userId: userId, cardId: cardToToggleId },
     });
     if (!!foundCard) {
+      await db.insert(userSavedWineCards).values({
+        userId: userId,
+        cardId: cardToToggleId,
+      });
+    } else {
       await db
         .delete(userSavedWineCards)
         .where(
@@ -50,17 +55,19 @@ export const toggleUserSavedCard = async (
             eq(userSavedWineCards.cardId, cardToToggleId),
           ),
         );
-    } else {
-      await db.insert(userSavedWineCards).values({
-        userId: userId,
-        cardId: cardToToggleId,
-      });
     }
   } else {
     const foundCard = await db.query.userSavedCards.findFirst({
       where: { userId: userId },
     });
     if (!!foundCard) {
+      console.log("firing save branch");
+      await db.insert(userSavedCards).values({
+        userId: userId,
+        cardId: cardToToggleId,
+      });
+    } else {
+      console.log("firing delete branch");
       await db
         .delete(userSavedCards)
         .where(
@@ -69,11 +76,6 @@ export const toggleUserSavedCard = async (
             eq(userSavedCards.cardId, cardToToggleId),
           ),
         );
-    } else {
-      await db.insert(userSavedCards).values({
-        userId: userId,
-        cardId: cardToToggleId,
-      });
     }
   }
 

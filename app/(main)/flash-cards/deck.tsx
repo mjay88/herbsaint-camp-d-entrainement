@@ -1,5 +1,5 @@
 import { cards, wineCards } from "@/db/schema";
-import { useState, useTransition } from "react";
+import { useCallback, useState, useTransition } from "react";
 import { ActiveCard } from "./activeCard";
 import { Footer } from "./footer";
 import Confetti from "react-confetti";
@@ -11,7 +11,9 @@ import { Header } from "./header";
 import { ALL_CARD_CATEGORIES } from "@/constants";
 import { toggleUserSavedCard } from "@/actions/save-flashcards";
 type Props = {
-  cards: (typeof cards.$inferSelect | typeof wineCards.$inferSelect)[] | [];
+  initialCards:
+    | (typeof cards.$inferSelect | typeof wineCards.$inferSelect)[]
+    | [];
   savedCards:
     | (typeof cards.$inferSelect | typeof wineCards.$inferSelect)[]
     | []
@@ -19,15 +21,47 @@ type Props = {
   //   category: typeof ALL_CARD_CATEGORIES;
 };
 
-export const Deck = ({ cards, savedCards }: Props) => {
-  //need action to save card
+export const Deck = ({ initialCards, savedCards }: Props) => {
+  //TODO: add null return for !cards
 
   //TODO: eventually need to optimize to track current card somehow
+  const [cards, setCards] = useState(initialCards);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isCardSaved, setIsCardSaved] = useState(() => {
-    if (!cards[currentIndex]) return false;
     return !!savedCards?.find((card) => card.id === cards[currentIndex]?.id);
   });
+  const [isInShuffleMode, setIsInShuffleMode] = useState(false);
+
+  const shuffleDeck = () => {
+    console.log("firing shuffleDeck");
+
+    if (!isInShuffleMode) {
+      const randomizedDeck = [...cards];
+
+      for (let i = randomizedDeck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [randomizedDeck[i], randomizedDeck[j]] = [
+          randomizedDeck[j],
+          randomizedDeck[i],
+        ];
+      }
+      setCards(randomizedDeck);
+      setIsCardSaved(() => {
+        if (!randomizedDeck[currentIndex]) return false;
+        return !!savedCards?.find(
+          (card) => card.id === randomizedDeck[currentIndex]?.id,
+        );
+      });
+    } else {
+      setCards(initialCards);
+      setIsCardSaved(() => {
+        return !!savedCards?.find(
+          (initialCards) => initialCards.id === cards[currentIndex]?.id,
+        );
+      });
+    }
+    setIsInShuffleMode((mode) => !mode);
+  };
 
   const [pending, startTransition] = useTransition();
 
@@ -63,6 +97,12 @@ export const Deck = ({ cards, savedCards }: Props) => {
       window.location.href = `/flash-cards`;
     } else {
       setSwipe({ dir: "left", phase: "out" });
+      setIsCardSaved(() => {
+        if (!cards[currentIndex + 1]) return false;
+        return !!savedCards?.find(
+          (card) => card.id === cards[currentIndex + 1]?.id,
+        );
+      });
     }
   };
 
@@ -71,8 +111,18 @@ export const Deck = ({ cards, savedCards }: Props) => {
     if (isFirstCard) return null;
     if (deckCompleted) {
       setCurrentIndex(0);
+      setIsCardSaved(() => {
+        if (!cards[0]) return false;
+        return !!savedCards?.find((card) => card.id === cards[0]?.id);
+      });
     } else {
       setSwipe({ dir: "right", phase: "out" });
+      setIsCardSaved(() => {
+        if (!cards[currentIndex - 1]) return false;
+        return !!savedCards?.find(
+          (card) => card.id === cards[currentIndex - 1]?.id,
+        );
+      });
     }
   };
 
@@ -174,7 +224,14 @@ export const Deck = ({ cards, savedCards }: Props) => {
       {finishAudio}
       {correctAudio}
       {incorrectAudio}
-      <Header isCardSaved={isCardSaved} toggleSavedCard={toggleSavedCard} />
+      <Header
+        isCardSaved={isCardSaved}
+        toggleSavedCard={toggleSavedCard}
+        pending={pending}
+        isInShuffleMode={isInShuffleMode}
+        setIsInShuffleMode={setIsInShuffleMode}
+        shuffleDeck={shuffleDeck}
+      />
       <div className="flex-1 my-4 overflow-hidden">
         <div
           className={cn(
@@ -205,7 +262,8 @@ export const Deck = ({ cards, savedCards }: Props) => {
       <Footer
         onNext={onNext}
         onPrevious={onPrevious}
-        disabled={swipe !== null}
+        nextDisabled={swipe !== null || deckCompleted}
+        previousDisabled={swipe !== null || isFirstCard}
       />
     </>
   );

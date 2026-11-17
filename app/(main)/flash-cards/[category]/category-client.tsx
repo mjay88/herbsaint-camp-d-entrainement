@@ -13,7 +13,7 @@ export const CategoryClient = ({ cards, savedCards }: Props) => {
   return (
     <div className="flex flex-col h-full w-full">
      
-      <Deck cards={cards} savedCards={savedCards} />
+      <Deck initialCards={cards} savedCards={savedCards} />
     </div>
   );
 };

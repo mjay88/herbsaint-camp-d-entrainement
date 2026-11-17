@@ -1,8 +1,5 @@
-"use client";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { CheckCircle, XCircle } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { useKey, useMedia } from "react-use";
 
 type Props = {
@@ -11,14 +8,18 @@ type Props = {
   deckCompleted?: boolean;
   disabled?: boolean;
   isEmptyDeck?: boolean;
+  nextDisabled?: boolean;
+  previousDisabled?: boolean;
+
 };
 
 export const Footer = ({
   onNext,
   onPrevious,
   deckCompleted,
-  disabled,
-  isEmptyDeck
+  isEmptyDeck,
+  nextDisabled,
+  previousDisabled
 }: Props) => {
   useKey("ArrowLeft", onPrevious, {}, [onPrevious]);
   useKey("ArrowRight", onNext, {}, [onNext]);
@@ -32,7 +33,6 @@ export const Footer = ({
          
 
         <Button
-          disabled={disabled}
           variant="secondary"
           className="mx-auto"
           size={isMobile ? "sm" : "lg"}
@@ -44,7 +44,7 @@ export const Footer = ({
         ) : (
           <>
            <Button
-          disabled={disabled}
+          disabled={previousDisabled}
           variant="secondary"
           size={isMobile ? "sm" : "lg"}
           onClick={onPrevious}
@@ -53,7 +53,7 @@ export const Footer = ({
         </Button>
 
         <Button
-          disabled={disabled}
+          disabled={nextDisabled}
           variant="secondary"
           className="ml-auto"
           size={isMobile ? "sm" : "lg"}
