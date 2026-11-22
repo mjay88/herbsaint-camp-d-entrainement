@@ -25,8 +25,8 @@ type Props = {
       })
     | undefined;
   activeLessonPercentage: number;
+  activeUnitId?: number;
 };
-
 export const Unit = ({
   id,
   order,
@@ -35,6 +35,7 @@ export const Unit = ({
   lessons,
   activeLesson,
   activeLessonPercentage,
+  activeUnitId
 }: Props) => {
   const icons = [Shrimp, Fish, Drumstick, Salad, Beef, BottleWine, Wine];
   return (
@@ -60,6 +61,8 @@ export const Unit = ({
               percentage={activeLessonPercentage}
               iconIndex={index % icons.length}
               currentIndex={currentIndex}
+              unitId={id}
+              activeUnitId={activeUnitId}
             />
           );
         })}

@@ -33,6 +33,8 @@ type Props = {
   lessonTitle: string;
   iconIndex: number;
   currentIndex: number;
+  activeUnitId?: number;
+  unitId: number;
 };
 
 export const LessonButton = ({
@@ -45,6 +47,8 @@ export const LessonButton = ({
   lessonTitle,
   iconIndex,
   currentIndex,
+  activeUnitId,
+  unitId
 }: Props) => {
     const isMobile = useMedia("(max-width: 1024px", true);
 
@@ -70,8 +74,16 @@ export const LessonButton = ({
   //For testing
    
   // const isCompleted = !current && !locked;
-  const isCompleted = index < currentIndex && !current;
+// TODO: Since index starts over when you finish a Unit, the styling is thrown off because the index count resets.
+//track the unitId or current unit, once a unit is completed, increment currentUnitId. If the unitId is < currentUnitId 
+//TODO: Don't know if this type narrowing is correct
+ if(!activeUnitId) return null;
 
+  const isCompleted = (index < currentIndex && !current) || (unitId < activeUnitId);
+  // console.log("isCompleted: ", isCompleted)
+  // console.log("index: ", index)
+  console.log("activeUnitId", activeUnitId)
+  console.log("unitId", unitId)
   const icons = [Shrimp, Fish, Drumstick, Salad, Beef, BottleWine, Wine];
   const Icon = isCompleted
     ? Check

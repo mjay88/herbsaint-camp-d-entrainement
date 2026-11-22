@@ -51,7 +51,7 @@ const LeaderBoardPage = async () => {
             Leaderboard
           </h1>
           <p className="text-muted-foreground text-center text-lg mb-6">
-            See whos been practicing
+            See who&apos;s been practicing
           </p>
           <Separator className="mb-4 h-0.5 rounded-full" />
           {leaderboard.map((userProgress, index) => (

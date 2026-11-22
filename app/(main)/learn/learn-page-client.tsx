@@ -65,10 +65,11 @@ const LearnPageClient = ({
   const { open: openTutorialModal } = useTutorialModal();
   
   useMount(() => {
-    if (showTutorial) {
+    if (true) {
       openTutorialModal();
     }
   });
+  console.log("units", units.flatMap((unit) => unit.lessons))
 
   const router = useRouter();
   if (!userProgress || !userProgress.activeCourse) {
@@ -111,6 +112,9 @@ const LearnPageClient = ({
                         unit: typeof unitsSchema.$inferSelect;
                       })
                     | undefined
+                }
+                    activeUnitId={
+                  courseProgress?.activeLesson?.unitId === 2 ? 3 : courseProgress?.activeLesson?.unitId
                 }
                 activeLessonPercentage={lessonPercentage}
               />
