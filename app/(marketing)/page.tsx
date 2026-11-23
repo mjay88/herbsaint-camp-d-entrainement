@@ -30,6 +30,7 @@ export default async function Home() {
             <Show when="signed-out">
               <SignUpButton
                 mode="modal"
+                forceRedirectUrl="/onboarding"
               >
                 <Button size="lg" variant="secondary" className="w-full">
                   SIGN UP
@@ -37,7 +38,7 @@ export default async function Home() {
               </SignUpButton>
               <SignInButton
                 mode="modal"
-                
+                fallbackRedirectUrl="/learn"
               >
                 <Button size="lg" variant="primaryOutline" className="w-full">
                   I ALREADY HAVE AN ACCOUNT

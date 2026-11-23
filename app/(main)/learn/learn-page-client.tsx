@@ -63,24 +63,23 @@ const LearnPageClient = ({
   showTutorial,
 }: Props) => {
   const { open: openTutorialModal } = useTutorialModal();
-  
+  console.log("showTutorial from LearnPageClient", showTutorial);
   useMount(() => {
-    if (true) {
+    if (showTutorial) {
       openTutorialModal();
     }
   });
-  console.log("units", units.flatMap((unit) => unit.lessons))
+  // console.log(
+  //   "units",
+  //   units.flatMap((unit) => unit.lessons),
+  // );
 
   const router = useRouter();
-  if (!userProgress || !userProgress.activeCourse) {
-    router.push("/learn");
+
+  if (!userProgress || !userProgress.activeCourse || !courseProgress) {
     return null;
   }
 
-  if (!courseProgress) {
-    router.push("/learn");
-    return null;
-  }
   return (
     <div className="flex flex-row-reverse gap-[48px] px-3 lg:px-6">
       {/* <StickyWrapper>
@@ -113,8 +112,10 @@ const LearnPageClient = ({
                       })
                     | undefined
                 }
-                    activeUnitId={
-                  courseProgress?.activeLesson?.unitId === 2 ? 3 : courseProgress?.activeLesson?.unitId
+                activeUnitId={
+                  courseProgress?.activeLesson?.unitId === 2
+                    ? 3
+                    : courseProgress?.activeLesson?.unitId
                 }
                 activeLessonPercentage={lessonPercentage}
               />

@@ -1,4 +1,3 @@
-
 "use server";
 
 import { auth, clerkClient, currentUser } from "@clerk/nextjs/server";
@@ -25,24 +24,42 @@ export const enrollNewUser = async () => {
 
   // Insert directly — no revalidateTag, no redirect
   try {
+    await db
+      .insert(userProgress)
+      .values({
+        userId,
+        activeCourseId: HERBSAINT_TRAINING_COURSE_ID,
+        userName: user.firstName || "User",
+        userImageSrc: user.imageUrl || "/mascot.svg",
+      })
+      .onConflictDoNothing(); // safe if they somehow already exist
 
-  
-  await db
-    .insert(userProgress)
-    .values({
-      userId,
-      activeCourseId: HERBSAINT_TRAINING_COURSE_ID,
-      userName: user.firstName || "User",
-      userImageSrc: user.imageUrl || "/mascot.svg",
-    })
-    .onConflictDoNothing(); // safe if they somehow already exist
+    // Mark as onboarded in Clerk
+    const client = await clerkClient();
+    await client.users.updateUserMetadata(userId, {
+      publicMetadata: { onboarded: true },
+    });
+  } catch (error) {
+    return { error: "There was an error in enrollNewUser" };
+  }
+};
 
-  // Mark as onboarded in Clerk
-  const client = await clerkClient();
-  await client.users.updateUserMetadata(userId, {
-    publicMetadata: { onboarded: true },
-  });
-} catch(error){
-  return {error: "There was an error in enrollNewUser"}
-}
+export const markTutorialAsSeen = async () => {
+  const { userId } = await auth();
+
+  if (!userId) throw new Error("Unauthorized");
+  // Mark as onboarded in Clerk, use property for showTutorial in /learn
+
+  try {
+    const client = await clerkClient();
+    await client.users.updateUserMetadata(userId, {
+      publicMetadata: { onboarded: true },
+    });
+  } catch (e) {
+    console.error(e);
+    throw new Error(
+      "There was an issue marking the user as publickMetadata: {onboarded:true}",
+      { cause: e },
+    );
+  }
 };

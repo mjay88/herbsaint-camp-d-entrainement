@@ -38,7 +38,6 @@ export const ScrollingHeader = ({ courseTitle, units, children, points, coursePe
           currentTitle = courseTitle;
         }
       });
-      console.log("currentTitle: ", currentTitle);
       setActiveTitle(currentTitle);
     };
 

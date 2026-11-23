@@ -10,7 +10,6 @@ import {
 } from "@/db/queries";
 import { redirect } from "next/navigation";
 
-
 import LearnPageClient from "./learn-page-client";
 
 type Props = {
@@ -18,7 +17,6 @@ type Props = {
 };
 
 export const LearnPageContent = async ({ showTutorial }: Props) => {
- 
   const { userId, isAuthenticated, redirectToSignIn } = await auth();
   if (!isAuthenticated) {
     return redirectToSignIn();
@@ -47,12 +45,9 @@ export const LearnPageContent = async ({ showTutorial }: Props) => {
     courseProgress?.activeLessonId ?? null,
     lesson ?? null,
   );
-  if (!userProgress || !userProgress.activeCourse) {
-    redirect("/learn");
-  }
 
-  if (!courseProgress) {
-    redirect("/learn");
+  if (!userProgress || !userProgress.activeCourse || !courseProgress) {
+    redirect("/onboarding");
   }
 
   return (

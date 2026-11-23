@@ -82,8 +82,8 @@ export const LessonButton = ({
   const isCompleted = (index < currentIndex && !current) || (unitId < activeUnitId);
   // console.log("isCompleted: ", isCompleted)
   // console.log("index: ", index)
-  console.log("activeUnitId", activeUnitId)
-  console.log("unitId", unitId)
+  // console.log("activeUnitId", activeUnitId)
+  // console.log("unitId", unitId)
   const icons = [Shrimp, Fish, Drumstick, Salad, Beef, BottleWine, Wine];
   const Icon = isCompleted
     ? Check

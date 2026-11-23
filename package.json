@@ -9,7 +9,7 @@
     "lint": "eslint",
     "db:seed": "tsx ./scripts/seed.ts",
     "db:seed-flashcards": "tsx ./scripts/seed-flashcards.ts",
-    "db:reset-user-progress": "tsx ./scripts/seed.ts"
+    "db:reset-user-progress": "tsx ./scripts/reset-userProgress.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

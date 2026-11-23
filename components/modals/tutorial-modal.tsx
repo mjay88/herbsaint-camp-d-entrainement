@@ -22,7 +22,7 @@ import { useTutorialModal } from "@/store/use-tutorial-modal";
 
 export const TutorialModal = () => {
   const [isClient, setIsClient] = useState(false);
-  const { isOpen, close } = useTutorialModal();
+  const { isOpen, close, handleClose } = useTutorialModal();
 
   /**
    *
@@ -36,7 +36,7 @@ export const TutorialModal = () => {
   }
 
   return (
-    <Dialog open={isOpen} onOpenChange={close}>
+    <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent className="w-[80vw] max-w-[80vw]">
         <DialogHeader>
           <Carousel>
@@ -171,7 +171,7 @@ export const TutorialModal = () => {
               variant="primary"
               className="w-full"
               size="lg"
-              onClick={close}
+              onClick={handleClose}
             >
               Exit Tutorial
             </Button>

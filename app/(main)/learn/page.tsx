@@ -10,19 +10,17 @@ import { connection } from "next/server";
 const LearnPage = async () => {
   await connection();
   const { isAuthenticated, redirectToSignIn } = await auth();
+  console.log("isAuthenticated", isAuthenticated)
   if (!isAuthenticated) {
     return redirectToSignIn();
   }
   const user = await currentUser();
-  //TODO: ADD tutorial after flash card module
-  const isFirstTimeLoggingIn = !user?.publicMetadata?.onboarded;
-  if (isFirstTimeLoggingIn) {
-    await enrollNewUser();
-  }
 
+  const showTutorial = user?.publicMetadata?.onboarded;
+  
   return (
     <Suspense fallback={<Skeleton />}>
-      <LearnPageContent showTutorial={isFirstTimeLoggingIn}></LearnPageContent>
+      <LearnPageContent showTutorial={!showTutorial}></LearnPageContent>
     </Suspense>
   );
 };

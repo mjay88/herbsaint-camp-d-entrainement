@@ -60,7 +60,7 @@ export const getCourseById = async (courseId: number) => {
 
   return data;
 };
-
+//TODO: update cacheTag and wherever revalidate tag is to include userId or else it refreshes the tag for all users. 
 export const getUnits = async (
   activeCourseId: number | null,
   authenticatedUserId: string | null,
