@@ -1,13 +1,10 @@
 "use client";
 
-import { toast } from "sonner";
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
 
-import { courses, userProgress } from "@/db/schema";
 
 import { Card } from "./card";
-import { upsertUserProgress } from "@/actions/user-progress";
 import { ALL_CARD_CATEGORIES } from "@/constants";
 import { stripCategory } from "@/lib/utils";
 

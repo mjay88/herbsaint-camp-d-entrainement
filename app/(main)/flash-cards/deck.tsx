@@ -17,7 +17,6 @@ type Props = {
     | (typeof cards.$inferSelect | typeof wineCards.$inferSelect)[]
     | []
     | null;
-
 };
 
 export const Deck = ({ initialCards, savedCards }: Props) => {
@@ -79,7 +78,6 @@ export const Deck = ({ initialCards, savedCards }: Props) => {
   const { width, height } = useWindowSize();
   const [finishAudio] = useAudio({ src: "/finish.mp3" });
 
-
   const onNext = () => {
     if (deckCompleted) {
       setSwipe(null);
@@ -123,7 +121,9 @@ export const Deck = ({ initialCards, savedCards }: Props) => {
   };
 
   const toggleSavedCard = () => {
+    console.log("firing toggleSavedCard from deck.tsx");
     startTransition(() => {
+      console.log("currentCard", currentCard);
       toggleUserSavedCard(currentCard.id, currentCard.category)
         .then((res) => {
           setIsCardSaved((prevState) => !prevState);
@@ -140,7 +140,7 @@ export const Deck = ({ initialCards, savedCards }: Props) => {
     return (
       <>
         {finishAudio}
-    
+
         <div className="flex flex-col gap-y-2 lg:gap-y-8 max-w-lg mx-auto text-center items-center justify-center h-full">
           <Image
             src="/mascot/mascot-thumbs-up.webp"
@@ -176,7 +176,7 @@ export const Deck = ({ initialCards, savedCards }: Props) => {
     return (
       <>
         {finishAudio}
-     
+
         <Confetti
           width={width}
           height={height}
@@ -216,7 +216,7 @@ export const Deck = ({ initialCards, savedCards }: Props) => {
   return (
     <>
       {finishAudio}
-     
+
       <Header
         isCardSaved={isCardSaved}
         toggleSavedCard={toggleSavedCard}

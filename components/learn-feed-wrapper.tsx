@@ -17,6 +17,7 @@ export const LearnFeedWrapper = ({ children }: Props) => {
         height={isMobile ? 120 : 175}
         width={isMobile ? 120 : 175}
         alt="Mascot"
+        loading="eager"
         className="absolute animate-bounce-slow-alt"
         style={{
           left: isMobile ? "0%" : "3%",
@@ -29,7 +30,7 @@ export const LearnFeedWrapper = ({ children }: Props) => {
         height={isMobile ? 100 : 175}
         width={isMobile ? 100 : 175}
         alt="Gumbo"
-        className="absolute"
+        className="absolute aspect-square object-contain"
         style={{
           right: isMobile ? "3%" : "8%",
           top: isMobile ? "5.5%" : "7%",
@@ -41,7 +42,7 @@ export const LearnFeedWrapper = ({ children }: Props) => {
         height={isMobile ? 125 : 200}
         width={isMobile ? 125 : 200}
         alt="Round Table"
-        className="absolute animate-back-and-forth"
+        className="absolute animate-back-and-forth aspect-square object-contain"
         style={{
           right: isMobile ? "9%" : "25%",
           top: isMobile ? "13%" : "14%",
@@ -53,7 +54,7 @@ export const LearnFeedWrapper = ({ children }: Props) => {
         height={isMobile ? 100 : 150}
         width={isMobile ? 100 : 150}
         alt="Cocktail"
-        className="absolute -rotate-7"
+        className="absolute -rotate-7 aspect-square object-contain"
         style={{
           right: isMobile ? "75%" : "75%",
           top: isMobile ? "16%" : "17%",
@@ -65,7 +66,7 @@ export const LearnFeedWrapper = ({ children }: Props) => {
         height={isMobile ? 130 : 165}
         width={isMobile ? 130 : 165}
         alt="Dessert"
-        className="absolute animate-bounce-slow-alt"
+        className="absolute animate-bounce-slow-alt aspect-square object-contain"
         style={{
           left: isMobile ? "7%" : "25%",
           top: isMobile ? "26%" : "24.5%",
@@ -77,7 +78,7 @@ export const LearnFeedWrapper = ({ children }: Props) => {
         height={isMobile ? 100 : 165}
         width={isMobile ? 100 : 165}
         alt="Dessert"
-        className="absolute"
+        className="absolute aspect-square object-contain"
         style={{
           right: isMobile ? "0%" : "10%",
           top: isMobile ? "23%" : "22%",
@@ -89,7 +90,7 @@ export const LearnFeedWrapper = ({ children }: Props) => {
         height={isMobile ? 120 : 175}
         width={isMobile ? 120 : 175}
         alt="Mascot"
-        className="absolute animate-bounce-slow-alt -scale-x-100"
+        className="absolute animate-bounce-slow-alt -scale-x-100 aspect-square object-contain"
         style={{
           right: isMobile ? "-3%" : "10%",
           top: isMobile ? "33.5%" : "33.9%",
@@ -101,7 +102,7 @@ export const LearnFeedWrapper = ({ children }: Props) => {
         height={isMobile ? 90 : 175}
         width={isMobile ? 90 : 175}
         alt="Mascot"
-        className="absolute"
+        className="absolute aspect-square object-contain"
         style={{
           left: isMobile ? "0%" : "10%",
           top: isMobile ? "33%" : "33.9%",
@@ -113,7 +114,7 @@ export const LearnFeedWrapper = ({ children }: Props) => {
         height={isMobile ? 120 : 165}
         width={isMobile ? 120 : 165}
         alt="Spaghetti"
-        className="absolute"
+        className="absolute aspect-square object-contain"
         style={{
           right: isMobile ? "7%" : "27%",
           top: isMobile ? "38.5%" : "40.9%",
@@ -125,7 +126,7 @@ export const LearnFeedWrapper = ({ children }: Props) => {
         height={isMobile ? 155 : 205}
         width={isMobile ? 155 : 205}
         alt="Wine Bottle"
-        className="absolute animate-bounce-slow-alt rotate-9"
+        className="absolute animate-bounce-slow-alt rotate-9 aspect-square object-contain"
         style={{
           right: isMobile ? "0%" : "7%",
           top: isMobile ? "44.5%" : "46.9%",
@@ -138,7 +139,7 @@ export const LearnFeedWrapper = ({ children }: Props) => {
         height={isMobile ? 140 : 205}
         width={isMobile ? 140 : 205}
         alt="Fried Green Tomatos"
-        className="absolute"
+        className="absolute aspect-square object-contain"
         style={{
           right: isMobile ? "55%" : "70%",
           top: isMobile ? "56.5%" : "47.9%",
@@ -150,7 +151,7 @@ export const LearnFeedWrapper = ({ children }: Props) => {
         height={isMobile ? 175 : 205}
         width={isMobile ? 175 : 205}
         alt="Wine Bottle"
-        className="absolute animate-back-and-forth"
+        className="absolute animate-back-and-forth aspect-square object-contain"
         style={{
           right: isMobile ? "60%" : "60%",
           top: isMobile ? "47.5%" : "53.9%",
@@ -162,9 +163,9 @@ export const LearnFeedWrapper = ({ children }: Props) => {
         height={isMobile ? 135 : 165}
         width={isMobile ? 135 : 165}
         alt="Gumbo"
-        className="absolute animate-bounce-slow-alt"
+        className="absolute animate-bounce-slow-alt aspect-square object-contain"
         style={{
-           left: isMobile ? "0%" : "7%",
+          left: isMobile ? "0%" : "7%",
           top: isMobile ? "69%" : "72%",
         }}
       />
@@ -174,7 +175,7 @@ export const LearnFeedWrapper = ({ children }: Props) => {
         height={isMobile ? 135 : 165}
         width={isMobile ? 135 : 165}
         alt="Martini"
-        className="absolute rotate-5"
+        className="absolute rotate-5 aspect-square object-contain"
         style={{
           right: isMobile ? "0%" : "17%",
           top: isMobile ? "71%" : "70%",
@@ -186,7 +187,7 @@ export const LearnFeedWrapper = ({ children }: Props) => {
         height={isMobile ? 125 : 205}
         width={isMobile ? 125 : 205}
         alt="Gumbo"
-        className="absolute animate-back-and-forth"
+        className="absolute animate-back-and-forth aspect-square object-contain"
         style={{
           right: isMobile ? "2%" : "7%",
           top: isMobile ? "64.5%" : "60.5%",
@@ -198,7 +199,7 @@ export const LearnFeedWrapper = ({ children }: Props) => {
         height={isMobile ? 125 : 200}
         width={isMobile ? 125 : 200}
         alt="Gumbo"
-        className="absolute animate-back-and-forth"
+        className="absolute animate-back-and-forth aspect-square object-contain"
         style={{
           right: isMobile ? "9%" : "30%",
           top: isMobile ? "77.5%" : "75.5%",
@@ -210,7 +211,7 @@ export const LearnFeedWrapper = ({ children }: Props) => {
         height={isMobile ? 120 : 165}
         width={isMobile ? 120 : 165}
         alt="Table"
-        className="absolute"
+        className="absolute aspect-square object-contain"
         style={{
           right: isMobile ? "0%" : "12%",
           top: isMobile ? "84.5%" : "84.9%",
@@ -222,7 +223,7 @@ export const LearnFeedWrapper = ({ children }: Props) => {
         height={isMobile ? 120 : 165}
         width={isMobile ? 120 : 165}
         alt="Tuna Tartare"
-        className="absolute animate-bounce-slow-alt"
+        className="absolute animate-bounce-slow-alt aspect-square object-contain"
         style={{
           left: isMobile ? "0%" : "12%",
           top: isMobile ? "84.5%" : "84.9%",
@@ -234,7 +235,7 @@ export const LearnFeedWrapper = ({ children }: Props) => {
         height={isMobile ? 135 : 175}
         width={isMobile ? 135 : 175}
         alt="Gumbo"
-        className="absolute animate-bounce-slow-alt"
+        className="absolute animate-bounce-slow-alt aspect-square object-contain"
         style={{
           right: isMobile ? "10%" : "25%",
           top: isMobile ? "91.5%" : "91.9%",
@@ -245,7 +246,7 @@ export const LearnFeedWrapper = ({ children }: Props) => {
         height={isMobile ? 300 : 400}
         width={isMobile ? 300 : 400}
         alt="Gumbo"
-        className="absolute animate-back-and-forth"
+        className="absolute animate-back-and-forth aspect-square object-contain"
         style={{
           left: isMobile ? "5%" : "3%",
           top: isMobile ? "99.5%" : "98.5%",
