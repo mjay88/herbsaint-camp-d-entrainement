@@ -28,18 +28,12 @@ export default async function Home() {
           </ClerkLoading>
           <ClerkLoaded>
             <Show when="signed-out">
-              <SignUpButton
-                mode="modal"
-                forceRedirectUrl="/onboarding"
-              >
+              <SignUpButton mode="modal">
                 <Button size="lg" variant="secondary" className="w-full">
                   SIGN UP
                 </Button>
               </SignUpButton>
-              <SignInButton
-                mode="modal"
-                fallbackRedirectUrl="/learn"
-              >
+              <SignInButton mode="modal">
                 <Button size="lg" variant="primaryOutline" className="w-full">
                   I ALREADY HAVE AN ACCOUNT
                 </Button>
